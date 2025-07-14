@@ -1,0 +1,12 @@
+{
+	"window.title": "the birch collective",
+	"css.lint.unknownAtRules": "ignore",
+	"editor.quickSuggestions": {
+		"other": true,
+		"comments": false,
+		"strings": true
+	},
+	"workbench.statusBar.visible": true,
+	"workbench.editor.showTabs": "none",
+	"editor.snippetSuggestions": "top"
+}
