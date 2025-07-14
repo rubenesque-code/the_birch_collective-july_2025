@@ -8,7 +8,10 @@
 			<enhanced:img class="w-[40px]" src={image.birch.logo.img_only} alt="" />
 		</div>
 
-		<a class="font-display scale-y-90 text-[40px] font-bold tracking-[0.02em]" href="/">
+		<a
+			class="font-display text-bc-burnt-sienna scale-y-90 text-[40px] font-bold tracking-[0.02em]"
+			href="/"
+		>
 			The Birch Collective
 		</a>
 	</div>
