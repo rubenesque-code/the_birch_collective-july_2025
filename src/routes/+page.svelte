@@ -1,14 +1,5 @@
 <script lang="ts" context="module">
-	import {
-		ArrowRight,
-		PersonSimpleHike,
-		Plant,
-		Quotes,
-		Resize,
-		Tree,
-		UsersThree,
-		Wind
-	} from 'phosphor-svelte';
+	import { Footprints, Quotes, Tree, UsersThree, Wind } from 'phosphor-svelte';
 
 	import image from '^assets/image';
 
@@ -108,7 +99,7 @@
 		<div class="flex max-w-[700px] flex-col gap-4">
 			<div class="flex items-center gap-4 text-xl">
 				<div class="text-bc-amber text-4xl">
-					<PersonSimpleHike />
+					<Footprints />
 				</div>
 				<p>We work alongside you to empower and support your transition into adulthood.</p>
 			</div>
@@ -143,38 +134,74 @@
 	</div>
 </section>
 
-<!-- <div class="px-44 py-10">
-	<div class="flex items-center gap-4"><h3 class="text-2xl font-semibold">What's on</h3></div>
+<div class="mt-20 grid px-52">
+	<h2 class="font-display text-bc-slate-pine text-center text-6xl font-bold">Programmes</h2>
 
-	<div class="mt-6 flex items-center gap-12">
-		<a class="group/card relative aspect-[9/13] w-[400px]" href="/fresh-air-thursday">
+	<div class="mt-8 grid grid-cols-3 gap-10">
+		<div class="relative">
 			<enhanced:img
-				class="h-full w-full object-cover object-left"
-				src={image.placeholder.james_and_helper_talking_to_participant}
+				class="aspect-[9/12] object-cover object-[30%_50%]"
+				src={image.placeholder.participant_1}
 				alt=""
 			/>
 
 			<div
-				class="bg-bc-amber absolute bottom-0 left-1/2 w-3/4 -translate-x-1/2 translate-y-1/2 p-6 transition-all duration-300 ease-in-out group-hover/card:translate-y-1/3"
+				class="from-bc-slate-pine absolute bottom-0 left-0 z-10 flex h-1/2 w-full flex-col justify-end bg-gradient-to-t to-transparent p-2"
 			>
-				<h4
-					class="font-fjalla text-bc-black1 font-display text-[32px] font-bold tracking-wide text-white"
-				>
-					Fresh Air Thursdays
-				</h4>
-
-				<div class="flex items-center gap-4">
-					<p class="font-montserrat mt-2 text-[15px] font-medium text-white">
-						Get stuck in at our weekly meet-up.
-					</p>
-
-					<span
-						class="border-bc-soft-black group-hover/card:bg-bc-soft-black rounded-full p-1 text-white transition-transform duration-300 ease-in-out group-hover/card:translate-x-[6px] group-hover/card:text-white"
+				<p class="flex flex-col text-center text-[22px]">
+					<span class="text-bc-amber scale-y-[-1] rotate-180 self-start"
+						><Quotes weight="fill" /></span
 					>
-						<ArrowRight />
-					</span>
-				</div>
+					<span class="text-white">I feel I've left feeling more accepting of myself.</span>
+					<span class="text-bc-amber self-end"><Quotes weight="fill" /></span>
+				</p>
 			</div>
-		</a>
+		</div>
+
+		<div class="relative">
+			<enhanced:img
+				class="aspect-[9/12] object-cover object-[30%_50%]"
+				src={image.placeholder.caregiver_with_partipant_face_to_face}
+				alt=""
+			/>
+
+			<div
+				class="from-bc-slate-pine absolute bottom-0 left-0 z-10 flex h-1/2 w-full flex-col justify-end bg-gradient-to-t to-transparent p-2"
+			>
+				<p class="flex flex-col text-center text-[22px]">
+					<span class="text-bc-amber scale-y-[-1] rotate-180 self-start"
+						><Quotes weight="fill" /></span
+					>
+					<span class="text-white"
+						>The Birch Collective has been a transformative experience, both for the individuals I
+						care for and for myself as a caregiver.</span
+					>
+					<span class="text-bc-amber self-end"><Quotes weight="fill" /></span>
+				</p>
+			</div>
+		</div>
+
+		<div class="relative">
+			<enhanced:img
+				class="aspect-[9/12] object-cover object-[50%_50%]"
+				src={image.placeholder.lying_in_grass}
+				alt=""
+			/>
+
+			<div
+				class="from-bc-slate-pine absolute bottom-0 left-0 z-10 flex h-1/2 w-full flex-col justify-end bg-gradient-to-t to-transparent p-2"
+			>
+				<p class="flex flex-col text-center text-[22px]">
+					<span class="text-bc-amber scale-y-[-1] rotate-180 self-start"
+						><Quotes weight="fill" /></span
+					>
+					<span class="text-white"
+						>The time I got to spend with others on the camp was just something so magical and
+						wonderful and beautiful.</span
+					>
+					<span class="text-bc-amber self-end"><Quotes weight="fill" /></span>
+				</p>
+			</div>
+		</div>
 	</div>
-</div> -->
+</div>
