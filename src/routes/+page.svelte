@@ -16,26 +16,26 @@
 	/>
 </div>
 
-<div class="flex flex-col items-center py-10">
-	<h2 class="font-display text-bc-burnt-sienna text-center text-[100px] font-bold">
+<div class="mt-16 flex flex-col items-center">
+	<h2 class="font-display two-tone-text-main-title text-center text-[140px] leading-none font-bold">
 		The Birch Collective
 	</h2>
 
-	<h3 class="text-bc-amber max-w-[700px] text-center text-3xl uppercase">
+	<!-- <h3 class="text-bc-amber max-w-[700px] text-center text-3xl uppercase">
 		cultivating purpose, belonging, resilience and relationships with nature
-	</h3>
+	</h3> -->
 </div>
 
-<div class="mt-20 grid grid-cols-3 gap-10 px-52">
+<div class="mt-16 grid grid-cols-3 gap-10 px-52">
 	<div class="relative">
 		<enhanced:img
-			class="aspect-[9/12] object-cover object-[30%_50%]"
+			class="aspect-[9/10] rounded-md object-cover object-[30%_50%]"
 			src={image.placeholder.participant_1}
 			alt=""
 		/>
 
 		<div
-			class="from-bc-slate-pine absolute bottom-0 left-0 z-10 flex h-1/2 w-full flex-col justify-end bg-gradient-to-t to-transparent p-2"
+			class="from-bc-slate-pine absolute bottom-0 left-0 z-10 flex h-1/2 w-full flex-col justify-end rounded-b-md bg-gradient-to-t to-transparent p-2"
 		>
 			<p class="flex flex-col text-center text-[22px]">
 				<span class="text-bc-amber scale-y-[-1] rotate-180 self-start"
@@ -49,13 +49,13 @@
 
 	<div class="relative">
 		<enhanced:img
-			class="aspect-[9/12] object-cover object-[30%_50%]"
+			class="aspect-[9/10] rounded-md object-cover object-[30%_50%]"
 			src={image.placeholder.caregiver_with_partipant_face_to_face}
 			alt=""
 		/>
 
 		<div
-			class="from-bc-slate-pine absolute bottom-0 left-0 z-10 flex h-1/2 w-full flex-col justify-end bg-gradient-to-t to-transparent p-2"
+			class="from-bc-slate-pine absolute bottom-0 left-0 z-10 flex h-1/2 w-full flex-col justify-end rounded-b-md bg-gradient-to-t to-transparent p-2"
 		>
 			<p class="flex flex-col text-center text-[22px]">
 				<span class="text-bc-amber scale-y-[-1] rotate-180 self-start"
@@ -72,13 +72,13 @@
 
 	<div class="relative">
 		<enhanced:img
-			class="aspect-[9/12] object-cover object-[50%_50%]"
+			class="aspect-[9/10] rounded-md object-cover object-[50%_50%]"
 			src={image.placeholder.lying_in_grass}
 			alt=""
 		/>
 
 		<div
-			class="from-bc-slate-pine absolute bottom-0 left-0 z-10 flex h-1/2 w-full flex-col justify-end bg-gradient-to-t to-transparent p-2"
+			class="from-bc-slate-pine absolute bottom-0 left-0 z-10 flex h-1/2 w-full flex-col justify-end rounded-b-md bg-gradient-to-t to-transparent p-2"
 		>
 			<p class="flex flex-col text-center text-[22px]">
 				<span class="text-bc-amber scale-y-[-1] rotate-180 self-start"
@@ -281,3 +281,14 @@
 		</div>
 	</div>
 </section>
+
+<style>
+	.two-tone-text-main-title {
+		background: linear-gradient(to top, #d17a22 50%, #b25d17 50%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		/* For Firefox */
+		background-clip: text;
+		color: transparent;
+	}
+</style>

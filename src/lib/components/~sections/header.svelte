@@ -5,24 +5,24 @@
 
 <header class="flex items-center justify-between px-4 py-[10px]">
 	<div class="flex items-baseline gap-12">
-		<div class="relative flex items-center gap-2">
+		<div class="relative flex items-center gap-[10px]">
 			<div class="">
 				<enhanced:img class="w-[50px]" src={image.birch.logo.img_only} alt="" />
 			</div>
 
 			<div class="relative">
-				<a class="font-display text-[40px] leading-none font-bold tracking-[0.02em]" href="/">
+				<a class="font-display text-[40px] leading-none font-bold tracking-[0.03em]" href="/">
 					The Birch Collective
 				</a>
 
 				<div
-					class="text-bc-slate-pine absolute -right-6 bottom-0 flex translate-x-full -translate-y-[2px] items-center gap-4 text-xl leading-none"
+					class="text-bc-amber absolute top-1/2 -right-6 flex translate-x-full -translate-y-1/2 items-center gap-4 text-[22px] leading-none"
 				>
-					<a class="" href="/">
+					<a class="bg-bc-sea-foam-teal rounded-md p-1 text-white" href="/">
 						<FacebookLogo />
 					</a>
-					<a href="/"><InstagramLogo /></a>
-					<a href="/"><TiktokLogo /></a>
+					<a class="bg-bc-sea-foam-teal rounded-md p-1 text-white" href="/"><InstagramLogo /></a>
+					<a class="bg-bc-sea-foam-teal rounded-md p-1 text-white" href="/"><TiktokLogo /></a>
 				</div>
 			</div>
 		</div>
