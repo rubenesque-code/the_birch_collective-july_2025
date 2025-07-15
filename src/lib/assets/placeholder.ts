@@ -10,8 +10,12 @@ import axe_chopping from "./_files/images/placeholder/axe-chopping.jpg?enhanced"
 import group_photo from "./_files/images/placeholder/group-photo.jpg?enhanced";
 import seeding_change from "./_files/images/placeholder/seeding-change.webp?enhanced";
 import therapeutic_forest_school from "./_files/images/placeholder/therapeutic-forest-school.webp?enhanced";
+import donate from "./_files/images/placeholder/donate.webp?enhanced";
+import volunteer from "./_files/images/placeholder/volunteer.webp?enhanced";
 
 const placeholder = {
+  donate,
+  volunteer,
   chillies,
   axe_chopping,
   group_photo,

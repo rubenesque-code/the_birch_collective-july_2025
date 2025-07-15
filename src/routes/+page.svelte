@@ -136,7 +136,7 @@
 	</div>
 </section>
 
-<div class="mt-20 grid px-52">
+<section class="mt-20 grid px-52">
 	<h2 class="font-display text-bc-slate-pine text-center text-6xl font-bold">Programmes</h2>
 
 	<div class="flex justify-center">
@@ -217,7 +217,7 @@
 				/>
 			</div>
 			<h4 class="font-display text-bc-amber mt-4 text-4xl font-bold tracking-wide">
-				Therapeutic forest school
+				Therapeutic Forest School
 			</h4>
 			<p class="mt-4 text-lg">
 				Tailored programs for specific groups, co-designed with partner organisations.
@@ -240,4 +240,44 @@
 			</div>
 		</div>
 	</div>
-</div>
+</section>
+
+<section class="mt-20 grid px-52">
+	<h2 class="font-display text-bc-slate-pine text-center text-6xl font-bold">Support Us</h2>
+
+	<div class="flex justify-center">
+		<p class="mt-4 max-w-[700px] text-center text-xl">
+			If you like our work, there are a number of ways you can support us.
+		</p>
+	</div>
+
+	<div class="flex justify-center">
+		<div class="mt-8 grid max-w-[1100px] grid-cols-2 gap-16">
+			<div class="relative">
+				<enhanced:img
+					class="aspect-square w-full object-cover"
+					src={image.placeholder.donate}
+					alt=""
+				/>
+				<div class="absolute inset-0 flex flex-col items-start justify-end">
+					<div class="bg-bc-slate-pine px-6 py-3 text-white">
+						<p class="font-display text-3xl font-bold">Donate</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="relative">
+				<enhanced:img
+					class="aspect-square w-full object-cover"
+					src={image.placeholder.volunteer}
+					alt=""
+				/>
+				<div class="absolute inset-0 flex flex-col items-start justify-end">
+					<div class="bg-bc-slate-pine px-6 py-3 text-white">
+						<p class="font-display text-3xl font-bold">Volunteer</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
