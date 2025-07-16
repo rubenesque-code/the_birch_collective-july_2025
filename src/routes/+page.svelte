@@ -38,80 +38,81 @@
 <div class="mt-32 grid grid-cols-3 gap-10 px-52">
 	<div class="relative">
 		<enhanced:img
-			class="aspect-[9/10] rounded-md object-cover object-[30%_50%]"
+			class="aspect-[4/3] rounded-2xl object-cover object-[30%_50%]"
 			src={image.placeholder.participant_1}
 			alt=""
 		/>
 
-		<div
-			class="from-bc-slate-pine absolute bottom-0 left-0 z-10 flex h-1/2 w-full flex-col items-center justify-end overflow-hidden rounded-b-md bg-gradient-to-t to-transparent p-2"
-		>
-			<div class="flex h-[150px] flex-col justify-end overflow-hidden">
-				<p class="flex flex-col text-center text-[22px]">
+		<div class=" mt-4 flex w-full flex-col items-center justify-end overflow-hidden">
+			<div class="flex flex-col justify-end overflow-hidden">
+				<div class="relative flex flex-col gap-1 text-center text-[22px]">
 					<span class="text-bc-amber scale-y-[-1] rotate-180 self-start text-[22px]"
 						><Quotes weight="fill" /></span
 					>
-					<span class="line-clamp-2 text-white"
-						>I feel I've left feeling more accepting of myself.
-					</span>
-					<span class="text-bc-amber self-end"><Quotes weight="fill" /></span>
-				</p>
-				<p class="shrink-0 pb-2 text-center text-lg text-white">Alissa - Participant</p>
+					<span class="line-clamp-2">I feel I've left feeling more accepting of myself. </span>
+
+					<p class="text-center text-lg uppercase">Alissa - Participant</p>
+
+					<span class="text-bc-amber absolute right-0 bottom-0 self-end"
+						><Quotes weight="fill" /></span
+					>
+				</div>
 			</div>
 		</div>
 	</div>
 
 	<div class="relative">
 		<enhanced:img
-			class="aspect-[9/10] rounded-md object-cover object-[30%_50%]"
+			class="aspect-[4/3] rounded-2xl object-cover object-[30%_50%]"
 			src={image.placeholder.caregiver_with_partipant_face_to_face}
 			alt=""
 		/>
 
-		<div
-			class="from-bc-slate-pine absolute bottom-0 left-0 z-10 flex h-1/2 w-full flex-col items-center justify-end overflow-hidden rounded-b-md bg-gradient-to-t to-transparent p-2"
-		>
-			<div class="flex h-[150px] flex-col justify-end overflow-hidden">
-				<p class="flex flex-col text-center text-[22px]">
+		<div class=" mt-4 flex w-full flex-col items-center justify-end overflow-hidden">
+			<div class="flex flex-col justify-end overflow-hidden">
+				<div class="relative flex flex-col gap-1 text-center text-[22px]">
 					<span class="text-bc-amber scale-y-[-1] rotate-180 self-start text-[22px]"
 						><Quotes weight="fill" /></span
 					>
-					<!-- <span class="text-white"
-						>The Birch Collective has been a transformative experience, both for the individuals I
-						care for and for myself as a caregiver.</span
-					> -->
-					<span class="line-clamp-2 text-white"
-						>The Birch Collective has been a transformative experience, both for the individuals I
+					<span class="line-clamp-2"
+						>The Birch Collective has been a transformative experience, both for the individuals
+						I...
 					</span>
-					<span class="text-bc-amber self-end"><Quotes weight="fill" /></span>
-				</p>
-				<p class="shrink-0 pb-2 text-center text-lg text-white">Pauline - Support Worker</p>
+
+					<p class="text-center text-lg uppercase">Pauline - Support Worker</p>
+
+					<span class="text-bc-amber absolute right-0 bottom-0 self-end"
+						><Quotes weight="fill" /></span
+					>
+				</div>
 			</div>
 		</div>
 	</div>
 
 	<div class="relative">
 		<enhanced:img
-			class="aspect-[9/10] rounded-md object-cover object-[50%_50%]"
+			class="aspect-[4/3] rounded-2xl object-cover object-[30%_50%]"
 			src={image.placeholder.lying_in_grass}
 			alt=""
 		/>
 
-		<div
-			class="from-bc-slate-pine absolute bottom-0 left-0 z-10 flex h-1/2 w-full flex-col items-center justify-end overflow-hidden rounded-b-md bg-gradient-to-t to-transparent p-2"
-		>
-			<div class="flex h-[150px] flex-col justify-end overflow-hidden">
-				<p class="flex flex-col text-center text-[22px]">
+		<div class=" mt-4 flex w-full flex-col items-center justify-end overflow-hidden">
+			<div class="relative flex flex-col justify-end overflow-hidden">
+				<div class="flex flex-col gap-1 text-center text-[22px]">
 					<span class="text-bc-amber scale-y-[-1] rotate-180 self-start text-[22px]"
 						><Quotes weight="fill" /></span
 					>
-					<span class="line-clamp-2 text-white">
+					<span class="line-clamp-2">
 						The time I got to spend with others on the camp was just something so magical and
-						wonderful and beautiful.
+						wonderful and beautiful
 					</span>
-					<span class="text-bc-amber self-end"><Quotes weight="fill" /></span>
-				</p>
-				<p class="shrink-0 pb-2 text-center text-lg text-white">Jo - Participant</p>
+
+					<p class="text-center text-lg uppercase">Jo - Participant</p>
+
+					<span class="text-bc-amber absolute right-0 bottom-0 self-end"
+						><Quotes weight="fill" /></span
+					>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -122,10 +123,10 @@
 		Cultivating Purpose, Belonging and Resilience
 	</h2>
 
-	<div class="mt-12 flex justify-center">
-		<div class="flex max-w-[700px] flex-col gap-6 leading-relaxed">
-			<div class="flex flex-col items-center gap-2 text-2xl">
-				<div class="text-bc-amber rounded-md p-1 text-4xl">
+	<div class="mt-20 flex justify-center">
+		<div class="grid grid-cols-2 gap-x-16 gap-y-10 px-52 leading-relaxed">
+			<div class="flex flex-col items-center gap-2 p-8 text-2xl">
+				<div class="bg-bc-amber/70 rounded-full p-2 text-4xl text-white">
 					<Footprints />
 				</div>
 				<p class="text-center font-light">
@@ -133,8 +134,8 @@
 				</p>
 			</div>
 
-			<div class="flex flex-col items-center gap-2 text-2xl">
-				<div class="text-bc-amber text-4xl">
+			<div class="flex flex-col items-center gap-2 p-8 text-2xl">
+				<div class="bg-bc-amber/70 rounded-full p-2 text-4xl text-white">
 					<Wind />
 				</div>
 				<p class="text-center font-light">
@@ -143,8 +144,8 @@
 				</p>
 			</div>
 
-			<div class="flex flex-col items-center gap-4 text-2xl">
-				<div class="text-bc-amber text-4xl">
+			<div class="flex flex-col items-center gap-2 p-8 text-2xl">
+				<div class="bg-bc-amber/70 rounded-full p-2 text-4xl text-white">
 					<Tree />
 				</div>
 				<p class="text-center font-light">
@@ -153,8 +154,8 @@
 				</p>
 			</div>
 
-			<div class="flex flex-col items-center gap-4 text-2xl">
-				<div class="text-bc-amber text-4xl">
+			<div class="flex flex-col items-center gap-2 p-8 text-2xl">
+				<div class="bg-bc-amber/70 rounded-full p-2 text-4xl text-white">
 					<UsersThree />
 				</div>
 				<p class="text-center font-light">
@@ -265,7 +266,7 @@
 				/>
 			</div>
 			<h4 class="font-display text-bc-amber mt-4 text-5xl font-bold tracking-wide">
-				Seeding Change
+				Therapeutic Forest School
 			</h4>
 			<p class="mt-4 line-clamp-2 text-xl font-light">
 				Tailored programs for specific groups, co-designed with partner organisations.
