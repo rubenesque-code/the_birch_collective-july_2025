@@ -4,6 +4,7 @@
 		Basket,
 		Footprints,
 		Plant,
+		Plus,
 		Quotes,
 		Tree,
 		UsersThree,
@@ -119,46 +120,45 @@
 </div>
 
 <section class="mt-32">
-	<h2 class="font-display text-bc-slate-pine text-center text-7xl font-bold">
+	<h2 class="font-display text-bc-slate-pine text-center text-7xl font-bold tracking-[0.02em]">
 		Cultivating Purpose, Belonging and Resilience
 	</h2>
 
-	<div class="mt-20 flex justify-center">
-		<div class="grid grid-cols-2 gap-x-16 gap-y-10 px-52 leading-relaxed">
-			<div class="flex flex-col items-center gap-2 p-8 text-2xl">
-				<div class="bg-bc-amber/70 rounded-full p-2 text-4xl text-white">
-					<Footprints />
+	<div class="mt-12 flex justify-center">
+		<div class="flex flex-col items-center gap-y-4">
+			<div class="flex max-w-[600px] items-center gap-4 text-2xl">
+				<div class="text-bc-amber border-bc-amber rounded-full p-1 text-4xl">
+					<Tree weight="light" />
 				</div>
-				<p class="text-center font-light">
+				<p class="text-[22px] leading-relaxed">
 					We walk alongside you to empower and support your transition into adulthood.
 				</p>
 			</div>
 
-			<div class="flex flex-col items-center gap-2 p-8 text-2xl">
-				<div class="bg-bc-amber/70 rounded-full p-2 text-4xl text-white">
-					<Wind />
+			<div class="flex max-w-[600px] items-center gap-4 text-2xl">
+				<div class="text-bc-amber border-bc-amber rounded-full p-1 text-4xl">
+					<Tree weight="light" />
 				</div>
-				<p class="text-center font-light">
+				<p class="text-[22px] leading-relaxed">
 					We want you to unlock your potential to engage fully with life, and to respond resiliently
 					to life's challenges.
 				</p>
 			</div>
 
-			<div class="flex flex-col items-center gap-2 p-8 text-2xl">
-				<div class="bg-bc-amber/70 rounded-full p-2 text-4xl text-white">
-					<Tree />
+			<div class="flex max-w-[600px] items-center gap-4 text-2xl">
+				<div class="text-bc-amber border-bc-amber rounded-full p-1 text-4xl">
+					<Tree weight="light" />
 				</div>
-				<p class="text-center font-light">
+				<p class="text-[22px] leading-relaxed">
 					We believe that developing connections with the natural world gives you a sense of
 					belonging, and helps you find purpose in life.
 				</p>
 			</div>
-
-			<div class="flex flex-col items-center gap-2 p-8 text-2xl">
-				<div class="bg-bc-amber/70 rounded-full p-2 text-4xl text-white">
-					<UsersThree />
+			<div class="flex max-w-[600px] items-center gap-4 text-2xl">
+				<div class="text-bc-amber border-bc-amber rounded-full p-1 text-4xl">
+					<Tree weight="light" />
 				</div>
-				<p class="text-center font-light">
+				<p class="text-[22px] leading-relaxed">
 					We offer you the chance to be part of an inclusive community where you can explore new
 					found skills and interests.
 				</p>
@@ -168,7 +168,9 @@
 </section>
 
 <section class="mt-24 grid px-52">
-	<h2 class="font-display text-bc-slate-pine text-center text-7xl font-bold">Programmes</h2>
+	<h2 class="font-display text-bc-slate-pine text-center text-7xl font-bold tracking-[0.02em]">
+		Programmes
+	</h2>
 
 	<!-- <div class="flex justify-center">
 		<p class="mt-6 max-w-[700px] text-center text-2xl font-light">
@@ -181,7 +183,7 @@
 		<div>
 			<div>
 				<enhanced:img
-					class="aspect-video rounded-md object-cover"
+					class="aspect-video rounded-2xl object-cover"
 					src={image.placeholder.chillies}
 					alt=""
 				/>
@@ -189,23 +191,30 @@
 			<h4 class="font-display text-bc-amber mt-4 text-5xl font-bold tracking-wide">
 				Fresh Air Thursday
 			</h4>
-			<p class="mt-4 text-xl font-light">
+
+			<p class="mt-4 text-xl leading-relaxed font-light">
 				A free weekly group for 16-25 year olds, Just a 5-minute walk form St George's Park!
 			</p>
 
-			<div class="mt-4 text-xl font-light">
+			<div class="mt-3 text-xl font-light">
 				<p>Includes:</p>
 				<div class="mt-2 flex items-center gap-2">
 					<span class="text-bc-slate-pine">
 						<Plant />
 					</span>
-					<p>Herb growing</p>
+					<p class="font-medium">Herb growing</p>
 				</div>
 				<div class="mt-2 flex items-center gap-2">
 					<span class="text-bc-slate-pine">
 						<Basket />
 					</span>
-					<p>Nature based craft</p>
+					<p class="font-medium">Nature based craft</p>
+				</div>
+				<div class="mt-2 flex items-center gap-2">
+					<span class="text-bc-slate-pine">
+						<Plus />
+					</span>
+					<p class="font-medium italic">And more!</p>
 				</div>
 			</div>
 
@@ -220,7 +229,7 @@
 		<div>
 			<div>
 				<enhanced:img
-					class="aspect-video rounded-md object-cover"
+					class="aspect-video rounded-2xl object-cover"
 					src={image.placeholder.seeding_change}
 					alt=""
 				/>
@@ -228,24 +237,30 @@
 			<h4 class="font-display text-bc-amber mt-4 text-5xl font-bold tracking-wide">
 				Seeding Change
 			</h4>
-			<p class="mt-4 line-clamp-2 text-xl font-light">
+			<p class="mt-4 line-clamp-2 text-xl leading-relaxed font-light">
 				A FREE camp for 18–25-year-olds who are feeling low, unmotivated, or ready for a fresh start
 				— connect with nature, yourself, and others, just 35 minutes from Bristol.
 			</p>
 
-			<div class="mt-4 text-xl font-light">
+			<div class="mt-3 text-xl font-light">
 				<p>Includes:</p>
 				<div class="mt-2 flex items-center gap-2">
 					<span class="text-bc-slate-pine">
 						<Plant />
 					</span>
-					<p>Herb growing</p>
+					<p class="font-medium">Herb growing</p>
 				</div>
 				<div class="mt-2 flex items-center gap-2">
 					<span class="text-bc-slate-pine">
 						<Basket />
 					</span>
-					<p>Nature based craft</p>
+					<p class="font-medium">Nature based craft</p>
+				</div>
+				<div class="mt-2 flex items-center gap-2">
+					<span class="text-bc-slate-pine">
+						<Plus />
+					</span>
+					<p class="font-medium italic">And more!</p>
 				</div>
 			</div>
 
@@ -260,7 +275,7 @@
 		<div>
 			<div>
 				<enhanced:img
-					class="aspect-video rounded-md object-cover"
+					class="aspect-video rounded-2xl object-cover"
 					src={image.placeholder.therapeutic_forest_school}
 					alt=""
 				/>
@@ -268,23 +283,29 @@
 			<h4 class="font-display text-bc-amber mt-4 text-5xl font-bold tracking-wide">
 				Therapeutic Forest School
 			</h4>
-			<p class="mt-4 line-clamp-2 text-xl font-light">
+			<p class="mt-4 line-clamp-2 text-xl leading-relaxed font-light">
 				Tailored programs for specific groups, co-designed with partner organisations.
 			</p>
 
-			<div class="mt-4 text-xl font-light">
+			<div class="mt-3 text-xl font-light">
 				<p>Includes:</p>
 				<div class="mt-2 flex items-center gap-2">
 					<span class="text-bc-slate-pine">
 						<Plant />
 					</span>
-					<p>Herb growing</p>
+					<p class="font-medium">Herb growing</p>
 				</div>
 				<div class="mt-2 flex items-center gap-2">
 					<span class="text-bc-slate-pine">
 						<Basket />
 					</span>
-					<p>Nature based craft</p>
+					<p class="font-medium">Nature based craft</p>
+				</div>
+				<div class="mt-2 flex items-center gap-2">
+					<span class="text-bc-slate-pine">
+						<Plus />
+					</span>
+					<p class="font-medium italic">And more!</p>
 				</div>
 			</div>
 
@@ -299,7 +320,9 @@
 </section>
 
 <section class="mt-24 grid px-52">
-	<h2 class="font-display text-bc-slate-pine text-center text-7xl font-bold">Support Us</h2>
+	<h2 class="font-display text-bc-slate-pine text-center text-7xl font-bold tracking-[0.02em]">
+		Support Us
+	</h2>
 
 	<div class="flex justify-center">
 		<p class="mt-4 max-w-[700px] text-center text-xl">
@@ -307,17 +330,17 @@
 		</p>
 	</div>
 
-	<div class="flex justify-center">
-		<div class="mt-8 grid max-w-[1100px] grid-cols-2 gap-16">
+	<div class="mt-12 flex justify-center">
+		<div class="grid max-w-[1100px] grid-cols-2 gap-16">
 			<div class="relative">
 				<enhanced:img
 					class="aspect-square w-full object-cover"
 					src={image.placeholder.donate}
 					alt=""
 				/>
-				<div class="absolute inset-0 flex flex-col items-start justify-end">
-					<div class="bg-bc-slate-pine px-6 py-3 text-white">
-						<p class="font-display text-3xl font-bold">Donate</p>
+				<div class="absolute inset-0 flex flex-col items-center justify-end">
+					<div class="text-bc-amber bg-white px-6 py-1">
+						<p class="font-display text-4xl font-bold tracking-wide">Donate</p>
 					</div>
 				</div>
 			</div>
@@ -328,9 +351,9 @@
 					src={image.placeholder.volunteer}
 					alt=""
 				/>
-				<div class="absolute inset-0 flex flex-col items-start justify-end">
-					<div class="bg-bc-slate-pine px-6 py-3 text-white">
-						<p class="font-display text-3xl font-bold">Volunteer</p>
+				<div class="absolute inset-0 flex flex-col items-center justify-end">
+					<div class="text-bc-amber bg-white px-6 py-1">
+						<p class="font-display text-4xl font-bold tracking-wide">Volunteer</p>
 					</div>
 				</div>
 			</div>
