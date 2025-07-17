@@ -1,15 +1,5 @@
 <script lang="ts" context="module">
-	import {
-		ArrowRight,
-		Basket,
-		Footprints,
-		Plant,
-		Plus,
-		Quotes,
-		Tree,
-		UsersThree,
-		Wind
-	} from 'phosphor-svelte';
+	import { ArrowRight, Basket, Plant, Plus, Quotes, Tree } from 'phosphor-svelte';
 
 	import image from '^assets/image';
 
@@ -27,7 +17,7 @@
 </div>
 
 <div class="mt-16 flex flex-col items-center">
-	<h2 class="font-display two-tone-text-main-title text-center text-[140px] leading-none font-bold">
+	<h2 class="font-display text-bc-amber text-center text-[140px] leading-none font-bold">
 		The Birch Collective
 	</h2>
 
@@ -361,7 +351,19 @@
 	</div>
 </section>
 
-<style>
+<section class="mt-24 grid px-52">
+	<h2 class="font-display text-bc-slate-pine text-center text-7xl font-bold tracking-[0.02em]">
+		Partners & Supporters
+	</h2>
+
+	<div class="flex justify-center">
+		<p class="mt-4 max-w-[700px] text-center text-xl">
+			We are proud to work alongside and receive support from our partners and supporters.
+		</p>
+	</div>
+</section>
+
+<!-- <style>
 	.two-tone-text-main-title {
 		background: linear-gradient(to top, #d17a22 50%, #b25d17 50%);
 		-webkit-background-clip: text;
@@ -370,4 +372,4 @@
 		background-clip: text;
 		color: transparent;
 	}
-</style>
+</style> -->
