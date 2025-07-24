@@ -382,3 +382,17 @@
 		</div>
 	</div>
 </section>
+
+<section class="mt-32 flex justify-center px-52">
+	<div>
+		<h2 class="font-display text-bc-slate-pine text-center text-[68px] leading-none font-bold">
+			Our Partners & Supporters
+		</h2>
+
+		<div class="mt-8 flex justify-center">
+			<p class="max-w-[770px] text-center text-xl leading-relaxed">
+				We are grateful for our community partnerships and national supporters.
+			</p>
+		</div>
+	</div>
+</section>
