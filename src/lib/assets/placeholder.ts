@@ -12,6 +12,7 @@ import seeding_change from "./_files/images/placeholder/seeding-change.webp?enha
 import therapeutic_forest_school from "./_files/images/placeholder/therapeutic-forest-school.webp?enhanced";
 import donate from "./_files/images/placeholder/donate.webp?enhanced";
 import volunteer from "./_files/images/placeholder/volunteer.webp?enhanced";
+import young_people_volunteering_in_nature_illustration from "./_files/images/placeholder/young-people-working-in-nature-illustration.webp?enhanced";
 
 const placeholder = {
   donate,
@@ -27,7 +28,8 @@ const placeholder = {
   caregiver_with_partipant_face_to_face,
   stay_calm_and_listen_to_nature,
   seeding_change,
-  therapeutic_forest_school
+  therapeutic_forest_school,
+  young_people_volunteering_in_nature_illustration
 }
 
 export default placeholder

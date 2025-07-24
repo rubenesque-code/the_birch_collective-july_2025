@@ -245,3 +245,140 @@
 		</div>
 	</div>
 </section>
+
+<section class="mt-32 flex justify-center px-52">
+	<div class="w-full">
+		<h2 class="font-display text-bc-slate-pine text-center text-[68px] leading-none font-bold">
+			Our Impact
+		</h2>
+
+		<div class="mt-8 flex justify-center">
+			<p class="max-w-[770px] text-center text-xl leading-relaxed">
+				We cherish feedback from our participants and use it to improve our programmes. We also use
+				data to see the impact we're having.
+			</p>
+		</div>
+
+		<div class="flex justify-center">
+			<div class="border-bc-amber/40 mt-12 w-[120px] border-b-3"></div>
+		</div>
+
+		<div class="mt-12 flex justify-center">
+			<div class="grid w-full grid-cols-2 flex-col items-center gap-x-40 gap-y-20">
+				<div class="flex items-center gap-8">
+					<div class="flex flex-col items-center gap-y-6">
+						<enhanced:img
+							class="border-bc-amber/80 aspect-square w-[120px] rounded-full border-[6px] object-cover"
+							src={image.placeholder.participant_1}
+							alt=""
+						/>
+
+						<p class="flex gap-1 text-center text-2xl">
+							<span class="text-bc-amber/70 scale-x-[-1] text-xl"><Quotes weight="fill" /></span>
+							I feel I've left feeling more accepting of other people and myself
+							<span class="text-bc-amber/70 text-xl"><Quotes weight="fill" /></span>
+						</p>
+						<p class="text-xl text-black/70">Pauline - Participant</p>
+					</div>
+				</div>
+
+				<div class="flex items-center gap-8">
+					<div class="flex flex-col items-center gap-y-6">
+						<enhanced:img
+							class="border-bc-slate-pine/80 aspect-square w-[120px] rounded-full border-[6px] object-cover"
+							src={image.placeholder.caregiver_with_partipant_face_to_face}
+							alt=""
+						/>
+
+						<p class=" gap-1 text-center text-2xl">
+							<span class="text-bc-slate-pine/70 float-left scale-x-[-1] text-xl"
+								><Quotes weight="fill" /></span
+							>
+							<span class="text-center">
+								The young person I work with is delighted with The Birch Collective, and so much
+								enjoys spending time in nature.
+							</span>
+							<span class="text-bc-slate-pine/70 float-right text-xl"><Quotes weight="fill" /></span
+							>
+						</p>
+						<p class="text-xl text-black/70">Carol - Support Worker</p>
+					</div>
+				</div>
+
+				<div class="flex items-center gap-8">
+					<div class="flex flex-col items-center gap-y-6">
+						<enhanced:img
+							class="border-bc-slate-pine/80 aspect-square w-[120px] rounded-full border-[6px] object-cover"
+							src={image.placeholder.caregiver_with_partipant_face_to_face}
+							alt=""
+						/>
+
+						<p class=" gap-1 text-center text-2xl">
+							<span class="text-bc-slate-pine/70 float-left scale-x-[-1] text-xl"
+								><Quotes weight="fill" /></span
+							>
+							<span class="text-center">
+								The young person I work with is delighted with The Birch Collective, and so much
+								enjoys spending time in nature.
+							</span>
+							<span class="text-bc-slate-pine/70 float-right text-xl"><Quotes weight="fill" /></span
+							>
+						</p>
+						<p class="text-xl text-black/70">Carol - Support Worker</p>
+					</div>
+				</div>
+
+				<div class="flex items-center gap-8">
+					<div class="flex flex-col items-center gap-y-6">
+						<enhanced:img
+							class="border-bc-amber/80 aspect-square w-[120px] rounded-full border-[6px] object-cover"
+							src={image.placeholder.participant_1}
+							alt=""
+						/>
+
+						<p class="flex gap-1 text-center text-2xl">
+							<span class="text-bc-amber/70 scale-x-[-1] text-xl"><Quotes weight="fill" /></span>
+							I feel I've left feeling more accepting of other people and myself
+							<span class="text-bc-amber/70 text-xl"><Quotes weight="fill" /></span>
+						</p>
+						<p class="text-xl text-black/70">Pauline - Participant</p>
+					</div>
+				</div>
+
+				<!-- <div class="flex gap-8">
+					<p class="text-bc-mineral-jade font-display text-5xl font-bold">80%</p>
+					<p class="text-2xl">of participants report improved mental wellbeing</p>
+				</div> -->
+			</div>
+		</div>
+
+		<div class="flex justify-center">
+			<div class="border-bc-amber/40 mt-12 w-[120px] border-b-3"></div>
+		</div>
+
+		<div class="mt-12 flex justify-center">
+			<p class="max-w-[770px] text-center text-xl leading-relaxed">
+				During the last academic year, out of the young people we worked with:
+			</p>
+		</div>
+
+		<div class="mt-12 flex justify-center">
+			<div class="flex max-w-[450px] flex-col gap-10">
+				<div class="flex items-center gap-10">
+					<p class="font-display text-bc-amber text-6xl font-bold">80%</p>
+					<p class="text-[24px]">have improved wellbeing</p>
+				</div>
+
+				<div class="flex items-center gap-10">
+					<p class="font-display text-bc-slate-pine text-6xl font-bold">78%</p>
+					<p class="text-[24px]">have improved improved behaviour for learning</p>
+				</div>
+
+				<div class="flex max-w-[776px] items-center gap-10">
+					<p class="font-display text-bc-amber text-6xl font-bold">90%</p>
+					<p class="text-[24px]">have improved social interactions</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
