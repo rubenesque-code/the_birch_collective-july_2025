@@ -1,9 +1,9 @@
 <script lang="ts" context="module">
 	import image from '^assets/image';
-	import { FacebookLogo, InstagramLogo, List, TiktokLogo } from 'phosphor-svelte';
+	import { FacebookLogo, InstagramLogo, TiktokLogo } from 'phosphor-svelte';
 </script>
 
-<header class="flex items-center justify-between px-4 py-[10px]">
+<header class="flex w-full items-center justify-between px-4 py-[10px]">
 	<div class="flex items-baseline gap-12">
 		<div class="relative flex items-center gap-[10px]">
 			<div class="">

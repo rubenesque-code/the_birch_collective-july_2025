@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-	import { ArrowRight, Basket, Plant, Plus, Quotes, Tree } from 'phosphor-svelte';
+	import { ArrowRight, Quotes } from 'phosphor-svelte';
 
 	import image from '^assets/image';
 
@@ -9,6 +9,21 @@
 	// programmes (for individuals to sign up to); 1:1 mentoring; tailored programs for groups; youth advisory board
 	// for young people: group based nature programmes; 1:1 mentoring; youth advisory board; non-official volunteering (as mentor or something like that)?
 	// for institution: tailored programs.
+
+	// - linkedin icon in header
+	// - wants colour changes on buttons
+	// - having videos made for each programme -> land on it
+	// - clear cta to sign up
+	// - who, what, where, why, when
+
+	// PROGRAMME PAGE.
+	// - want google map. if it's big then don't worry.
+	// - testimonials
+	// - no booking system. just sign up and Birch will send the info.
+	//    - sign up -> we'll send an email -> come to first session and see if it's for you.
+	//    - some will be reassured by just being accepted and no vetting, etc.
+	// - don't want feedback section on each programme page
+	// - on form - legal text maybe make clear is legal, and so don't have to read.
 </script>
 
 <Header />
