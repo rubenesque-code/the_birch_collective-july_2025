@@ -2,7 +2,7 @@
 	import image from '^assets/image';
 
 	import { Header } from '^components/~sections';
-	import { ArrowRight } from 'phosphor-svelte';
+	import { ArrowRight, CaretDown, Tree } from 'phosphor-svelte';
 </script>
 
 <Header />
@@ -139,6 +139,98 @@
 
 					<p class="mt-6 text-xl">Anyone aged 18+ (no experience needed)</p>
 				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="mt-24 flex justify-center px-52">
+	<div class="max-w-[1800px]">
+		<h2 class="font-display text-bc-slate-pine text-center text-[68px] leading-none font-bold">
+			Activities
+		</h2>
+
+		<div class="mt-8 flex justify-center">
+			<p class="max-w-[770px] text-center text-xl leading-relaxed text-black/70">
+				You’ll learn a wide range of practical woodland skills and traditional crafts.
+			</p>
+		</div>
+
+		<div class="mt-12 grid grid-cols-2 gap-24">
+			<div class="flex max-w-[500px] flex-col items-center gap-5">
+				<h3 class="font-display text-4xl font-bold text-black/70">
+					Organic Growing & Horticulture
+				</h3>
+
+				<enhanced:img
+					class="border-bc-pale-sandstone border-6"
+					src={image.placeholder.chillies}
+					alt=""
+				/>
+
+				<p
+					class="border-bc-pale-sandstone/50 line-clamp-2 overflow-hidden px-2 pb-2 text-xl text-black/60"
+				>
+					Our team has many years experience in growing organic vegetables. We will explore and
+					offer learning in a range of wildlife friendly food growing and horticulture techniques
+					and practices. - We also explore wider land management techniques such as; coppicing,
+					hedging, habitat creation and permaculture techniques for designing spaces.
+				</p>
+			</div>
+
+			<div class="flex max-w-[500px] flex-col items-center gap-4">
+				<h3 class="font-display text-4xl font-bold text-black/70">Nature based craft</h3>
+
+				<enhanced:img
+					class="border-bc-pale-sandstone max-w-[500px] border-6"
+					src={image.placeholder.axe_chopping}
+					alt=""
+				/>
+
+				<p
+					class="border-bc-pale-sandstone/50 line-clamp-2 overflow-hidden px-2 pb-2 text-xl text-black/60"
+				>
+					Making all manner of things from willow with our resident willow expert Amy, from baskets
+					to bird feeders, fences to climbing structures for plants. - Natural and traditional
+					building techniques - such as using cob, building using round wood timber or using hazel
+					to make fences. - Making functional or decorative items from found and foraged items in
+					the garden or nearby woodland.
+				</p>
+			</div>
+		</div>
+
+		<div class="mt-12 flex justify-center">
+			<p class="max-w-[770px] text-center text-xl leading-relaxed text-black/80">
+				You can also expect to take part in:
+			</p>
+		</div>
+
+		<div class="mt-8 flex justify-center">
+			<div class="flex max-w-[770px] flex-col gap-4">
+				<div class="flex items-center gap-4">
+					<span class="text-bc-burnt-sienna/50 rounded-full p-2 text-3xl"
+						><Tree weight="fill" /></span
+					>
+					<p class="text-xl">
+						Traditional Seasonal Woodland Management: Learn coppicing, charcoal burning, and hedge
+						laying to help restore the woodland and encourage biodiversity.
+					</p>
+				</div>
+
+				<div class="flex items-center gap-4">
+					<span class="text-bc-burnt-sienna/50 rounded-full p-2 text-3xl"
+						><Tree weight="fill" /></span
+					>
+					<p class="text-xl">
+						<b>Wildlife Habitat Creation and Tree Planting:</b>
+						Identify and map wildlife species, learning how to create habitats for birds, bats, and insects.
+					</p>
+				</div>
+
+				<button class="mt-4 flex items-center gap-2 self-center"
+					><span class="text-black/70">read more</span><span class="text-sm"><CaretDown /></span
+					></button
+				>
 			</div>
 		</div>
 	</div>
