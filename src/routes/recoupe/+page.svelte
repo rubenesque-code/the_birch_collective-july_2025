@@ -2,7 +2,13 @@
 	import image from '^assets/image';
 
 	import { Header } from '^components/~sections';
-	import { ArrowRight, CaretDown, Tree } from 'phosphor-svelte';
+	import { ArrowRight, Axe, CaretDown, Mountains, PersonSimpleHike, Tree } from 'phosphor-svelte';
+
+	// need a 'who is this suitable for' section?
+	// what want for 1:1 mentoring, therapeutic forest school...
+	// - def need a 'who is this for' section
+	// - testimonials, space for more info about the programme.
+	// want all of that info in seeding change?
 </script>
 
 <Header />
@@ -147,7 +153,7 @@
 <section class="mt-24 flex justify-center px-52">
 	<div class="max-w-[1800px]">
 		<h2 class="font-display text-bc-slate-pine text-center text-[68px] leading-none font-bold">
-			Activities
+			What to Expect
 		</h2>
 
 		<div class="mt-8 flex justify-center">
@@ -235,3 +241,89 @@
 		</div>
 	</div>
 </section>
+
+<section class="mt-24 flex justify-center px-52">
+	<div class="max-w-[1800px]">
+		<h2 class="font-display text-bc-slate-pine text-center text-[68px] leading-none font-bold">
+			Who is this suitable for?
+		</h2>
+
+		<div class="mt-16 flex justify-center">
+			<div class="flex gap-16">
+				<div class="flex max-w-[550px] flex-col gap-4">
+					<div class="flex items-center gap-4">
+						<span class="text-bc-burnt-sienna/50 rounded-full text-3xl"
+							><PersonSimpleHike weight="fill" /></span
+						>
+						<p class="text-xl">Anyone who enjoys being outdoors and learning practical skills.</p>
+					</div>
+
+					<div class="flex items-center gap-4">
+						<span class="text-bc-burnt-sienna/50 rounded-full text-3xl"
+							><Mountains weight="fill" /></span
+						>
+						<p class="text-xl">People keen to restore nature and boost biodiversity.</p>
+					</div>
+				</div>
+
+				<div class="w-[600px]">
+					<enhanced:img
+						class="border-bc-pale-sandstone aspect-[5/3] border-8 object-cover"
+						src={image.placeholder.standing_around_fire}
+						alt=""
+					/>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- <section class="mt-24 flex justify-center px-52">
+	<div class="max-w-[1800px]">
+		<h2 class="font-display text-bc-slate-pine text-center text-[68px] leading-none font-bold">
+			More About Recoupe
+		</h2>
+
+		<div class="mt-20 flex justify-between gap-20 px-44">
+			<div class="w-[700px]">
+				<p class="text-xl">
+					Our goal is to build a healthy ecosystem with abundance at its core, creating a nurturing
+					green space for nature and people to enjoy, explore and thrive.
+				</p>
+
+				<h3 class="text-bc-amber mt-6 text-xl font-bold">Recoupe is suitable for anyone who...</h3>
+
+				<div class="mt-5 flex flex-col gap-3 text-xl">
+					<div class="flex items-center gap-4">
+						<span class="text-bc-burnt-sienna/50 rounded-full p-[8px] text-2xl">
+							<PersonSimpleHike weight="fill" />
+						</span>
+						<p>Enjoys being outdoors and learning practical skills</p>
+					</div>
+
+					<div class="flex items-center gap-4">
+						<span class="text-bc-burnt-sienna/50 rounded-full p-[8px] text-2xl">
+							<Tree weight="fill" />
+						</span>
+						<p>People keen to restore nature and boost biodiversity.</p>
+					</div>
+
+					<div class="flex items-center gap-4">
+						<span class="text-bc-burnt-sienna/50 rounded-full p-[8px] text-2xl">
+							<Axe weight="fill" />
+						</span>
+						<p>Those interested in traditional woodland crafts.</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="w-[700px]">
+				<enhanced:img
+					class="border-bc-pale-sandstone aspect-video border-8 object-cover"
+					src={image.placeholder.standing_around_fire}
+					alt=""
+				/>
+			</div>
+		</div>
+	</div>
+</section> -->
