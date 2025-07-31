@@ -2,13 +2,30 @@
 	import image from '^assets/image';
 
 	import { Header } from '^components/~sections';
-	import { ArrowRight, Axe, CaretDown, Mountains, PersonSimpleHike, Tree } from 'phosphor-svelte';
+	import {
+		ArrowRight,
+		CaretDown,
+		Check,
+		Clock,
+		Envelope,
+		EnvelopeSimple,
+		Mailbox,
+		Mountains,
+		PaperPlaneTilt,
+		PersonSimpleHike,
+		Tree
+	} from 'phosphor-svelte';
 
-	// need a 'who is this suitable for' section?
 	// what want for 1:1 mentoring, therapeutic forest school...
 	// - def need a 'who is this for' section
 	// - testimonials, space for more info about the programme.
 	// want all of that info in seeding change?
+	// how to find out more section in seeding change: zoom session, download info pack.
+	// - also, download interest form
+	// - deadline to apply
+	// - places confirmed
+
+	// resources tab on programme page, for e.g. link to feedback form, pdfs (?)
 </script>
 
 <Header />
@@ -47,7 +64,7 @@
 
 <section class="mt-20 flex justify-center">
 	<div class="max-w-[800px]">
-		<p class="text-2xl leading-relaxed">
+		<p class="text-[22px] leading-relaxed">
 			Recoupe is a regenerative ecological project breathing new life into Troopers Hill Woods. Our
 			focus is to work sensitively with the land to create a thriving and diverse working woodland.
 			We will mainly use hand tools and apply traditional woodland management techniques such as
@@ -278,52 +295,129 @@
 	</div>
 </section>
 
-<!-- <section class="mt-24 flex justify-center px-52">
-	<div class="max-w-[1800px]">
+<section class="mt-24 flex justify-center px-52">
+	<div>
 		<h2 class="font-display text-bc-slate-pine text-center text-[68px] leading-none font-bold">
 			More About Recoupe
 		</h2>
 
-		<div class="mt-20 flex justify-between gap-20 px-44">
-			<div class="w-[700px]">
-				<p class="text-xl">
-					Our goal is to build a healthy ecosystem with abundance at its core, creating a nurturing
-					green space for nature and people to enjoy, explore and thrive.
-				</p>
+		<div class="mt-12 flex justify-center">
+			<div class="grid max-w-[1200px] grid-cols-2 gap-20">
+				<div class="">
+					<p class="text-xl">
+						Our goal is to build a healthy ecosystem with abundance at its core, creating a
+						nurturing green space for nature and people to enjoy, explore and thrive.
+					</p>
 
-				<h3 class="text-bc-amber mt-6 text-xl font-bold">Recoupe is suitable for anyone who...</h3>
+					<h3 class="text-bc-amber mt-6 text-xl font-bold">The benefits of Recoupe</h3>
 
-				<div class="mt-5 flex flex-col gap-3 text-xl">
-					<div class="flex items-center gap-4">
-						<span class="text-bc-burnt-sienna/50 rounded-full p-[8px] text-2xl">
-							<PersonSimpleHike weight="fill" />
-						</span>
-						<p>Enjoys being outdoors and learning practical skills</p>
-					</div>
-
-					<div class="flex items-center gap-4">
-						<span class="text-bc-burnt-sienna/50 rounded-full p-[8px] text-2xl">
-							<Tree weight="fill" />
-						</span>
-						<p>People keen to restore nature and boost biodiversity.</p>
-					</div>
-
-					<div class="flex items-center gap-4">
-						<span class="text-bc-burnt-sienna/50 rounded-full p-[8px] text-2xl">
-							<Axe weight="fill" />
-						</span>
-						<p>Those interested in traditional woodland crafts.</p>
+					<div class="mt-5 flex flex-col gap-0 text-xl">
+						<div class="flex items-center gap-4">
+							<span class="text-bc-sea-foam-teal rounded-full p-[8px] text-2xl">
+								<Check weight="fill" />
+							</span>
+							<p class="text-black/70">Grow your confidence and feel more sure of yourself</p>
+						</div>
+						<div class="flex items-center gap-4">
+							<span class="text-bc-sea-foam-teal rounded-full p-[8px] text-2xl">
+								<Check weight="fill" />
+							</span>
+							<p class="text-black/70">Make friends and build a supportive community</p>
+						</div>
+						<div class="flex items-center gap-4">
+							<span class="text-bc-sea-foam-teal rounded-full p-[8px] text-2xl">
+								<Check weight="fill" />
+							</span>
+							<p class="text-black/70">
+								Feel more connected to nature, your values, and your direction in life
+							</p>
+						</div>
 					</div>
 				</div>
-			</div>
 
-			<div class="w-[700px]">
-				<enhanced:img
-					class="border-bc-pale-sandstone aspect-video border-8 object-cover"
-					src={image.placeholder.standing_around_fire}
-					alt=""
-				/>
+				<div>
+					<p class="text-xl text-black/70">
+						We strive to cultivate a vibrant environment where life flourishes in harmony, offering
+						a sanctuary for both wildlife and communities to connect, grow, and prosper. By
+						fostering biodiversity and sustainable practices, we aim to create a lasting legacy of
+						balance and renewal for generations to come.
+					</p>
+					<p class="mt-4 text-xl text-black/70">
+						Our vision is rooted in the belief that nature and humanity can coexist in mutual
+						benefit, transforming landscapes into thriving havens of productivity and peace.
+					</p>
+				</div>
 			</div>
 		</div>
 	</div>
-</section> -->
+</section>
+
+<section class="mt-28">
+	<div class="flex justify-center">
+		<div>
+			<div class="flex justify-center gap-20">
+				<div class="relative flex flex-col items-center rounded-lg p-4">
+					<div class="flex flex-col items-center">
+						<h3 class=" font-display text-recoupe-green text-4xl font-bold">
+							click here to book a place
+						</h3>
+
+						<p class="mt-1 flex items-center gap-2 text-center text-sm text-black/50">
+							<span><Clock /></span>
+							<span>Takes 3 mins</span>
+						</p>
+					</div>
+
+					<div class="absolute top-[3px] left-1/2 w-[120px] -translate-x-1/2 scale-y-50">
+						<enhanced:img
+							class="h-full w-full object-cover opacity-40"
+							sizes="80px"
+							src={image.illustration.drawn_line_black}
+							alt=""
+						/>
+					</div>
+
+					<div class="absolute bottom-[1px] left-1/2 w-[120px] -translate-x-1/2 scale-y-[0.50]">
+						<enhanced:img
+							class="h-full w-full object-cover opacity-40"
+							sizes="80px"
+							src={image.illustration.drawn_line_black}
+							alt=""
+						/>
+					</div>
+				</div>
+
+				<div class="relative flex flex-col items-center rounded-lg p-4">
+					<div class="flex flex-col items-center">
+						<h3 class=" font-display text-recoupe-green text-4xl font-bold">
+							click here to register interest
+						</h3>
+
+						<p class="mt-1 flex items-center gap-2 text-center text-sm text-black/50">
+							<span class=""><EnvelopeSimple /></span>
+							<span>We'll send you updates</span>
+						</p>
+					</div>
+
+					<div class="absolute top-[3px] left-1/2 w-[120px] -translate-x-1/2 scale-y-50">
+						<enhanced:img
+							class="h-full w-full object-cover opacity-40"
+							sizes="80px"
+							src={image.illustration.drawn_line_black}
+							alt=""
+						/>
+					</div>
+
+					<div class="absolute bottom-[1px] left-1/2 w-[120px] -translate-x-1/2 scale-y-[0.50]">
+						<enhanced:img
+							class="h-full w-full object-cover opacity-40"
+							sizes="80px"
+							src={image.illustration.drawn_line_black}
+							alt=""
+						/>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
