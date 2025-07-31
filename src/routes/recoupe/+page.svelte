@@ -7,11 +7,8 @@
 		CaretDown,
 		Check,
 		Clock,
-		Envelope,
 		EnvelopeSimple,
-		Mailbox,
 		Mountains,
-		PaperPlaneTilt,
 		PersonSimpleHike,
 		Tree
 	} from 'phosphor-svelte';
@@ -24,6 +21,7 @@
 	// - also, download interest form
 	// - deadline to apply
 	// - places confirmed
+	// click here to give feedback - in feedback section.
 
 	// resources tab on programme page, for e.g. link to feedback form, pdfs (?)
 </script>
@@ -309,7 +307,7 @@
 						nurturing green space for nature and people to enjoy, explore and thrive.
 					</p>
 
-					<h3 class="text-bc-amber mt-6 text-xl font-bold">The benefits of Recoupe</h3>
+					<h3 class="text-bc-amber mt-6 text-xl font-bold">The benefits</h3>
 
 					<div class="mt-5 flex flex-col gap-0 text-xl">
 						<div class="flex items-center gap-4">
@@ -358,9 +356,9 @@
 			<div class="flex justify-center gap-20">
 				<div class="relative flex flex-col items-center rounded-lg p-4">
 					<div class="flex flex-col items-center">
-						<h3 class=" font-display text-recoupe-green text-4xl font-bold">
+						<button class=" font-display text-bc-amber text-4xl font-bold" type="button">
 							click here to book a place
-						</h3>
+						</button>
 
 						<p class="mt-1 flex items-center gap-2 text-center text-sm text-black/50">
 							<span><Clock /></span>
@@ -389,9 +387,12 @@
 
 				<div class="relative flex flex-col items-center rounded-lg p-4">
 					<div class="flex flex-col items-center">
-						<h3 class=" font-display text-recoupe-green text-4xl font-bold">
+						<button
+							class=" font-display text-recoupe-green text-bc-amber text-4xl font-bold"
+							type="button"
+						>
 							click here to register interest
-						</h3>
+						</button>
 
 						<p class="mt-1 flex items-center gap-2 text-center text-sm text-black/50">
 							<span class=""><EnvelopeSimple /></span>
@@ -415,6 +416,94 @@
 							src={image.illustration.drawn_line_black}
 							alt=""
 						/>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="mt-24 flex justify-center px-52">
+	<div class="w-full">
+		<h2 class="font-display text-bc-slate-pine text-center text-[68px] leading-none font-bold">
+			Feedback
+		</h2>
+
+		<div class="mt-12 flex w-full justify-center">
+			<div class="flex w-full max-w-[1200px] justify-between gap-20">
+				<div class="basis-1/2">
+					<h3 class="text-bc-amber font-display mt-6 text-center text-4xl font-bold tracking-wide">
+						What Participants Say
+					</h3>
+
+					<div class="mt-6 flex flex-col items-center gap-6 text-xl">
+						<div class="flex items-center gap-4">
+							<p class="max-w-[480px] leading-relaxed text-black/70">
+								<span class="text-bc-sea-foam-teal text-3xl">"</span>
+								The time I got to spend with others on camp was so magical and beautiful I can’t fully
+								describe it. If you're struggling with mental health or socialising, please give it a
+								go.
+								<span class="text-bc-sea-foam-teal text-3xl">"</span>
+							</p>
+						</div>
+
+						<div class="flex items-center gap-4">
+							<p class="max-w-[480px] leading-relaxed text-black/70">
+								<span class="text-bc-sea-foam-teal text-3xl">"</span>
+								It was one of the best times of my life. I made friends, tested myself, and learned more
+								about the world and myself.
+								<span class="text-bc-sea-foam-teal text-3xl">"</span>
+							</p>
+						</div>
+
+						<div class="flex items-center gap-4">
+							<p class="max-w-[480px] leading-relaxed text-black/70">
+								<span class="text-bc-sea-foam-teal text-3xl">"</span>
+								It gave me the confidence boost I needed and helped me feel more like myself
+								<span class="text-bc-sea-foam-teal text-3xl">"</span>
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="basis-1/2">
+					<h3 class="text-bc-amber font-display mt-6 text-center text-4xl font-bold tracking-wide">
+						What Referrers Say
+					</h3>
+
+					<div class="mt-6 flex flex-col items-center gap-6 text-xl">
+						<div class="flex max-w-[480px] flex-col gap-2">
+							<p class="leading-relaxed text-black/70">
+								<span class="text-bc-sea-foam-teal text-3xl">"</span>
+								B reflected on how Camp Birch helped her feel more connected to herself and nature. She
+								came away with tools for managing stress and adjusting to university life.
+								<span class="text-bc-sea-foam-teal text-3xl">"</span>
+							</p>
+
+							<p class="text-lg text-black/60">
+								<span class="text-bc-mighty-silver">—</span>
+								<span class="text-bc-amber"
+									>Emma Martin | Senior Personal Adviser | Bristol Through Care Team</span
+								>
+							</p>
+						</div>
+
+						<div class="flex max-w-[480px] flex-col gap-2">
+							<p class="leading-relaxed text-black/70">
+								<span class="text-bc-sea-foam-teal text-3xl">"</span>
+								Camp Birch had a huge impact on our young people. Many came back more confident and motivated
+								to re-engage with education, volunteering and wellbeing activities. I’d highly recommend
+								The Birch Collective — plus it looked like so much fun
+								<span class="text-bc-sea-foam-teal text-3xl">"</span>
+							</p>
+
+							<p class="text-lg text-black/60">
+								<span class="text-bc-mighty-silver">—</span>
+								<span class="text-bc-amber"
+									>Rosie Kinnear | Youth Development Lead | The Prince's Trust</span
+								>
+							</p>
+						</div>
 					</div>
 				</div>
 			</div>
