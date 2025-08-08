@@ -152,9 +152,27 @@
 	font-display: swap;
 }
 
+@font-face {
+	font-family: 'Bebas';
+	font-style: normal;
+	font-weight: 400;
+	src: url('/fonts/Bebas_Neue/Bebas-Neue-SemiRounded-Regular.otf') format('opentype');
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Oswald';
+	src: url('/fonts/Oswald/Oswald-VariableFont_wght.ttf') format('truetype');
+	font-weight: 200 800;
+	font-style: normal;
+	font-display: swap;
+}
+
 @theme {
 	--font-display: 'Amatic SC', 'sans-serif';
 	--font-sans: 'Karla', 'sans-serif';
+	--font-bebas: 'Bebas', 'sans-serif';
+	--font-oswald: 'Oswald', 'sans-serif';
 
 	--color-bc-burnt-sienna: #b25d17;
 	--color-bc-amber: #d17a22;

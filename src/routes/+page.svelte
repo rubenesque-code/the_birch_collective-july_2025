@@ -48,7 +48,9 @@
 		</div>
 
 		<div class="absolute bottom-[100px] left-[150px] z-10 w-full">
-			<h2 class="flex flex-col text-6xl font-bold text-white">Connect Through Nature</h2>
+			<h2 class="font-oswald flex flex-col text-6xl font-semibold text-white">
+				Connect Through Nature
+			</h2>
 		</div>
 	</div>
 </section>
