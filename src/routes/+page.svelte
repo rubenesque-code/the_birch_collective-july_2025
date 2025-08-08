@@ -113,12 +113,10 @@
 
 <section class="mt-24 px-40 pb-40">
 	<div class="">
-		<div class="bg-bc-amber inline-block px-8">
-			<h2 class="font-display text-7xl text-[22px] font-bold tracking-wide text-white">
-				What We Do
-			</h2>
-		</div>
+		<h2 class="font-display text-bc-slate-pine py-2 text-5xl font-bold">What We Do</h2>
 
-		<div class="flex flex-col items-center"></div>
+		<div class="grid grid-cols-3 gap-x-12">
+			<div></div>
+		</div>
 	</div>
 </section>
