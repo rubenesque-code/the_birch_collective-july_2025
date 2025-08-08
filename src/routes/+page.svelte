@@ -56,7 +56,7 @@
 			<p class="mt-10 text-2xl text-white">Start today in Bristol!</p>
 			<p class="mt-2 max-w-[690px] text-2xl leading-[1.5em] text-white">
 				Join in through one of our programmes! They are both free and paid, and range from one-day
-				drop-ins longer adventures.
+				drop-ins to longer adventures.
 			</p>
 
 			<div class="mt-8 flex items-center gap-12">
