@@ -4,6 +4,7 @@
 	import image from '^assets/image';
 
 	import { Header } from '^components/~sections';
+	import { bannerVideoMp4, bannerVideoWebm } from '^assets/videos';
 
 	// need distinction between paid and free.
 	// programmes (for individuals to sign up to); 1:1 mentoring; tailored programs for groups; youth advisory board
@@ -26,15 +27,31 @@
 	// - on form - legal text maybe make clear is legal, and so don't have to read.
 </script>
 
-<Header />
+<!-- <Header /> -->
 
-<div class="relative">
-	<enhanced:img
-		class="aspect-[22/9] w-full overflow-hidden object-cover object-[50%_20%]"
-		src={image.placeholder.standing_around_fire}
-		alt=""
-	/>
-</div>
+<section class="flex max-h-screen flex-col">
+	<div class="relative grow">
+		<video class="h-full w-full object-cover" loop muted>
+			<!-- <video class="h-full w-full object-cover" loop autoplay muted> -->
+			<!-- <video class="h-full w-full object-cover" loop autoplay muted bind:paused={bannerIsPaused}> -->
+			<source src={bannerVideoMp4} type="video/mp4" />
+			<source src={bannerVideoWebm} type="video/webm" />
+			Your browser does not support the video tag.
+		</video>
+
+		<div class="absolute top-0 left-0 z-10 w-full p-4">
+			<h1 class="font-display flex flex-col text-6xl font-bold text-white">
+				<span class="translate-x-[40px]">The</span>
+				<span class="translate-x-[60px] translate-y-[-10px] text-[66px]">Birch</span>
+				<span class="translate-x-[20px] translate-y-[-20px]">Collective</span>
+			</h1>
+		</div>
+
+		<div class="absolute bottom-[100px] left-[150px] z-10 w-full">
+			<h2 class="flex flex-col text-6xl font-bold text-white">Connect Through Nature</h2>
+		</div>
+	</div>
+</section>
 
 <div class="mt-16 flex flex-col items-center">
 	<h2 class="font-display text-bc-amber text-center text-[80px] leading-none font-bold">

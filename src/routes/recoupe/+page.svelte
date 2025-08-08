@@ -14,8 +14,7 @@
 	} from 'phosphor-svelte';
 
 	// what want for 1:1 mentoring, therapeutic forest school...
-	// - def need a 'who is this for' section
-	// - testimonials, space for more info about the programme.
+
 	// want all of that info in seeding change?
 	// how to find out more section in seeding change: zoom session, download info pack.
 	// - also, download interest form
@@ -24,6 +23,13 @@
 	// click here to give feedback - in feedback section.
 
 	// resources tab on programme page, for e.g. link to feedback form, pdfs (?)
+
+	// MEETING 31 July
+	// seperate section of site for 'give feedback'
+	// videos are currently explanations by the facilatator
+	// are also videos of testimonials
+	// about us page has 3-4 minute video Henry has made
+	// potentially want a where page that has accessibility
 </script>
 
 <Header />
