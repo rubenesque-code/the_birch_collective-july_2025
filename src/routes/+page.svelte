@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-	import { ArrowRight, Quotes } from 'phosphor-svelte';
+	import { ArrowRight, Play, PlayCircle, Quotes } from 'phosphor-svelte';
 
 	import image from '^assets/image';
 
@@ -46,11 +46,44 @@
 				<span class="translate-x-[20px] translate-y-[-20px]">Collective</span>
 			</h1>
 		</div>
+		<div
+			class="from-bc-slate-pine absolute bottom-0 left-0 z-10 h-1/2 w-full bg-gradient-to-t to-transparent"
+		></div>
 
-		<div class="absolute bottom-[100px] left-[150px] z-10 w-full">
+		<div class="absolute bottom-[100px] left-[150px] z-20 w-full">
 			<h2 class="font-oswald flex flex-col text-6xl font-semibold text-white">
 				Connect Through Nature
 			</h2>
+
+			<p class="mt-10 text-2xl text-white">Start today in Bristol!</p>
+			<p class="mt-2 max-w-[690px] text-2xl leading-[1.5em] text-white">
+				Join in through one of our programmes! They are both free and paid, and range from one-day
+				drop-ins longer adventures.
+			</p>
+
+			<div class="mt-8 flex items-center gap-12">
+				<a
+					class="bg-bc-amber inline-flex items-center gap-4 rounded-full px-6 py-[8px] text-xl tracking-wide text-white uppercase"
+					href="/"
+				>
+					<span>Programmes</span>
+					<span
+						class="grid aspect-square h-[40px] w-[40px] place-items-center rounded-full border border-white p-[6px] text-2xl"
+						><ArrowRight /></span
+					>
+				</a>
+
+				<button
+					class="border-bc-black flex items-center gap-2 rounded-full border px-6 py-[8px] text-xl tracking-wide uppercase"
+					type="button"
+				>
+					<span class="">Our Mission</span>
+					<span
+						class="grid aspect-square h-[40px] w-[40px] place-items-center rounded-full p-[6px] text-2xl text-white"
+						><Play weight="fill" /></span
+					>
+				</button>
+			</div>
 		</div>
 	</div>
 </section>
