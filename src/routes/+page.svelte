@@ -3,6 +3,7 @@
 
 	import image from '^assets/image';
 
+	import { bannerVideoMp4, bannerVideoWebm } from '^assets/videos';
 	import { Header } from '^components/~sections';
 
 	// need distinction between paid and free.
@@ -28,13 +29,17 @@
 
 <Header />
 
-<div class="relative">
-	<enhanced:img
-		class="aspect-[22/9] w-full overflow-hidden object-cover object-[50%_20%]"
-		src={image.placeholder.standing_around_fire}
-		alt=""
-	/>
-</div>
+<section class="flex max-h-screen flex-col">
+	<div class="relative grow">
+		<video class="h-full w-full object-cover" loop muted>
+			<!-- <video class="h-full w-full object-cover" loop autoplay muted> -->
+			<!-- <video class="h-full w-full object-cover" loop autoplay muted bind:paused={bannerIsPaused}> -->
+			<source src={bannerVideoWebm} type="video/webm" />
+			<source src={bannerVideoMp4} type="video/mp4" />
+			Your browser does not support the video tag.
+		</video>
+	</div>
+</section>
 
 <div class="mt-16 flex flex-col items-center">
 	<h2 class="font-display text-bc-amber text-center text-[80px] leading-none font-bold">
