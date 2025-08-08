@@ -3,8 +3,8 @@
 
 	import image from '^assets/image';
 
-	import { bannerVideoMp4, bannerVideoWebm } from '^assets/videos';
 	import { Header } from '^components/~sections';
+	import { bannerVideo } from '^assets/videos';
 
 	// need distinction between paid and free.
 	// programmes (for individuals to sign up to); 1:1 mentoring; tailored programs for groups; youth advisory board
@@ -34,8 +34,7 @@
 		<video class="h-full w-full object-cover" loop muted>
 			<!-- <video class="h-full w-full object-cover" loop autoplay muted> -->
 			<!-- <video class="h-full w-full object-cover" loop autoplay muted bind:paused={bannerIsPaused}> -->
-			<source src={bannerVideoWebm} type="video/webm" />
-			<source src={bannerVideoMp4} type="video/mp4" />
+			<source src={bannerVideo} type="video/mp4" />
 			Your browser does not support the video tag.
 		</video>
 	</div>
