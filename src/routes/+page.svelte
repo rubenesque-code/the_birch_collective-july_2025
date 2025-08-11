@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-	import { ArrowRight } from 'phosphor-svelte';
+	import { ArrowCircleRight, ArrowRight } from 'phosphor-svelte';
 
 	import image from '^assets/image';
 
@@ -29,17 +29,21 @@
 <div class="max-w-screen overflow-hidden pb-40">
 	<section class="flex max-h-screen flex-col">
 		<div class="relative grow">
-			<video class="h-full w-full object-cover" loop autoplay muted>
+			<video class="h-full w-full object-cover" loop muted>
 				<source src={bannerVideoMp4} type="video/mp4" />
 				<source src={bannerVideoWebm} type="video/webm" />
 				Your browser does not support the video tag.
 			</video>
 
-			<div class="absolute top-0 left-0 z-10 w-full p-4">
+			<div class="absolute top-0 left-0 z-10 flex w-full p-4">
+				<div class="translate-x-[10px] translate-y-[21px]">
+					<enhanced:img class="w-[68px]" src={image.birch.logo.img_only} alt="" />
+				</div>
+
 				<h1 class="font-display flex flex-col text-4xl font-bold">
-					<span class="translate-x-[40px]">The</span>
-					<span class="translate-x-[60px] translate-y-[-10px] text-[66px]">Birch</span>
-					<span class="translate-x-[20px] translate-y-[-20px]">Collective</span>
+					<span class="translate-x-[20px]">The</span>
+					<span class="translate-x-[40px] translate-y-[-10px] text-[66px]">Birch</span>
+					<span class="translate-x-[0px] translate-y-[-20px]">Collective</span>
 				</h1>
 			</div>
 			<div
@@ -57,27 +61,26 @@
 					drop-ins to longer adventures.
 				</p>
 
-				<div class="mt-10 flex items-center gap-12">
-					<!-- <a
-						class="bg-my-light-orangey-brown inline-flex items-center gap-4 rounded-full px-6 py-[12px] text-xl tracking-wide text-white uppercase"
-						href="/"
+				<!-- <div class="mt-10 flex items-center gap-12">
+					<button
+						class="bg-bc-sea-foam-teal relative flex items-center gap-4 rounded-3xl py-2 pr-2 pl-5 tracking-wide text-white"
+						type="button"
 					>
-						<span>Programmes</span>
-						<span
-							class="text-bc-amber grid aspect-square h-[34px] w-[34px] place-items-center rounded-full border border-white bg-white text-2xl"
-							><ArrowRight weight="bold" /></span
-						>
-					</a> -->
+						<span class="font-semibold tracking-wide uppercase">Get Involved Today</span>
+						<span class="text-5xl"><ArrowCircleRight weight="thin" /></span>
+					</button>
+				</div> -->
+
+				<div class="mt-10 flex items-center gap-12">
 					<a
 						class="font-display relative flex items-center gap-4 text-4xl font-bold tracking-wide text-white"
 						href="/"
 					>
 						<span>Programmes</span>
-						<!-- <span class="text-xl"><ArrowRight weight="bold" /></span> -->
 						<span>
 							<enhanced:img
 								class="absolute bottom-[-7px] left-0 h-[3px] w-full -translate-x-[8px] object-cover"
-								src={image.illustration.drawn_line_black}
+								src={image.illustration.drawn_line_amber}
 								alt=""
 							/>
 						</span>
@@ -89,12 +92,11 @@
 					>
 						<span class="text-white">Our Mission</span>
 						<enhanced:img class="w-[20px]" src={image.illustration.play_icon_white} alt="" />
-						<!-- <span class="text-xl"><Play weight="fill" /></span> -->
 
 						<span
 							><enhanced:img
 								class="absolute bottom-[-7px] left-0 h-[3px] w-full -translate-x-[8px] object-cover"
-								src={image.illustration.drawn_line_black}
+								src={image.illustration.drawn_line_amber}
 								alt=""
 							/></span
 						>
@@ -107,13 +109,11 @@
 	<section class="mt-32 flex justify-center px-40">
 		<div class="flex w-full justify-between">
 			<div class="mt-8 w-[600px]">
-				<h2 class="font-display text-6xl font-bold">
+				<h2 class="font-display two-tone-text-main-title text-6xl font-bold">
 					Welcome to <span class="">The Birch Collective</span>
 				</h2>
 				<div class="mt-8">
-					<!-- <span class="font-display float-left mr-4 mb-2 text-7xl font-bold">T</span> --><span
-						class="text-lg"
-					>
+					<span class="text-lg">
 						The Birch Collective believes in the power of nature, community, and connection. We’re a
 						social enterprise dedicated to helping people aged 16-25 in Bristol and the surrounding
 						areas who might be feeling isolated, overwhelmed, or unsure of their place in the world.
@@ -143,14 +143,14 @@
 	<section class="mt-32 flex justify-center px-40">
 		<div>
 			<h2 class="font-display relative inline-block text-3xl font-bold">
-				<span>What We Offer</span>
+				<span class="">What We Offer</span>
 				<enhanced:img
 					class="absolute bottom-[-7px] left-0 h-[3px] w-full object-cover"
 					src={image.illustration.drawn_line_black}
 					alt=""
 				/>
 			</h2>
-			<div class="mt-8 grid w-full grid-cols-3 gap-16">
+			<div class="mt-8 grid w-full grid-cols-2 gap-40">
 				<div>
 					<div class="flex items-center justify-center gap-4">
 						<!-- <enhanced:img class="w-[50px]" src={image.illustration.sun_yellow} alt="" /> -->
@@ -190,42 +190,7 @@
 				<div>
 					<div class="flex items-center justify-center gap-4">
 						<h3 class="font-display text-bc-slate-pine mt-4 text-center text-5xl font-bold">
-							Paid Services
-						</h3>
-					</div>
-					<p class="mt-4 line-clamp-2 px-4 text-center text-lg text-black/70">
-						For young people, organisations, schools, youth groups, and professionals who want to
-						bring nature-based learning and wellbeing into their work.
-					</p>
-					<div class="mt-8 grid grid-cols-3 gap-3">
-						<div class="bg-bc-pale-sandstone/30 -rotate-6 p-2 pb-6">
-							<enhanced:img
-								class="aspect-square object-cover"
-								src={image.placeholder.standing_around_fire}
-								alt=""
-							/>
-						</div>
-						<div class="bg-bc-pale-sandstone/30 rotate-3 p-2 pb-6">
-							<enhanced:img
-								class="aspect-square object-cover"
-								src={image.placeholder.standing_around_fire}
-								alt=""
-							/>
-						</div>
-						<div class="bg-bc-pale-sandstone/30 p-2 pb-6">
-							<enhanced:img
-								class="aspect-square object-cover"
-								src={image.placeholder.standing_around_fire}
-								alt=""
-							/>
-						</div>
-					</div>
-				</div>
-
-				<div>
-					<div class="flex items-center justify-center gap-4">
-						<h3 class="font-display text-bc-slate-pine mt-4 text-center text-5xl font-bold">
-							Volunteer
+							Work With Us
 						</h3>
 					</div>
 					<p class="mt-4 line-clamp-2 px-4 text-center text-lg text-black/70">
@@ -260,3 +225,14 @@
 		</div>
 	</section>
 </div>
+
+<style>
+	.two-tone-text-main-title {
+		background: linear-gradient(to bottom, #e18a2f 50%, #e6b777 50%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		/* For Firefox */
+		background-clip: text;
+		color: transparent;
+	}
+</style>
