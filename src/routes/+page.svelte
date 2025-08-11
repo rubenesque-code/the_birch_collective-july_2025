@@ -140,31 +140,88 @@
 		</div>
 	</section>
 
-	<!-- <section>
-		<div class="mt-20 flex justify-center">
-			<div>
-				<div class="w-[600px]">
-					<span class="font-display float-left mr-4 mb-2 text-7xl font-bold">T</span><span
-						class="text-lg"
-					>
-						he Birch Collective believes in the power of nature, community, and connection. We’re a
-						social enterprise dedicated to helping people aged 16-25 in Bristol and the surrounding
-						areas who might be feeling isolated, overwhelmed, or unsure of their place in the world.
-						Whether you’re dealing with anxiety, depression, or just looking for a space to belong,
-						we’re here to walk alongside you.
-					</span>
+	<section class="mt-32 flex justify-center px-40">
+		<div>
+			<h2 class="font-display relative inline-block text-3xl font-bold">
+				<span>What We Offer</span>
+				<enhanced:img
+					class="absolute bottom-[-7px] left-0 h-[3px] w-full object-cover"
+					src={image.illustration.drawn_line_black}
+					alt=""
+				/>
+			</h2>
+			<div class="mt-8 grid w-full grid-cols-3 gap-16">
+				<div>
+					<div class="flex items-center justify-center gap-4">
+						<!-- <enhanced:img class="w-[50px]" src={image.illustration.sun_yellow} alt="" /> -->
+						<h3 class="font-display text-bc-slate-pine mt-4 text-center text-5xl font-bold">
+							Free Programmes
+						</h3>
+					</div>
+					<p class="mt-4 px-4 text-center text-lg text-black/70">
+						If you're 16-25 and interested in nature based activities for wellbeing, click here.
+						They're free!
+					</p>
+					<div class="mt-8 grid grid-cols-3 gap-3">
+						<div class="bg-bc-pale-sandstone/30 -rotate-6 p-2 pb-6">
+							<enhanced:img
+								class="aspect-square object-cover"
+								src={image.placeholder.standing_around_fire}
+								alt=""
+							/>
+						</div>
+						<div class="bg-bc-pale-sandstone/30 rotate-3 p-2 pb-6">
+							<enhanced:img
+								class="aspect-square object-cover"
+								src={image.placeholder.standing_around_fire}
+								alt=""
+							/>
+						</div>
+						<div class="bg-bc-pale-sandstone/30 p-2 pb-6">
+							<enhanced:img
+								class="aspect-square object-cover"
+								src={image.placeholder.standing_around_fire}
+								alt=""
+							/>
+						</div>
+					</div>
 				</div>
-				<div class="mt-8 flex justify-center">
-					<button class="relative flex items-center gap-4" type="button"
-						><span class="">
-							<span class="font-display text-3xl font-bold text-black/60">about us</span></span
-						>
-						<span>
-							<enhanced:img class="w-[20px]" src={image.illustration.play_icon_yellow} alt="" />
-						</span>
-					</button>
+
+				<div>
+					<div class="flex items-center justify-center gap-4">
+						<h3 class="font-display text-bc-slate-pine mt-4 text-center text-5xl font-bold">
+							Paid Services
+						</h3>
+					</div>
+					<p class="mt-4 line-clamp-2 px-4 text-center text-lg text-black/70">
+						For young people, organisations, schools, youth groups, and professionals who want to
+						bring nature-based learning and wellbeing into their work.
+					</p>
+					<div class="mt-8 grid grid-cols-3 gap-3">
+						<div class="bg-bc-pale-sandstone/30 -rotate-6 p-2 pb-6">
+							<enhanced:img
+								class="aspect-square object-cover"
+								src={image.placeholder.standing_around_fire}
+								alt=""
+							/>
+						</div>
+						<div class="bg-bc-pale-sandstone/30 rotate-3 p-2 pb-6">
+							<enhanced:img
+								class="aspect-square object-cover"
+								src={image.placeholder.standing_around_fire}
+								alt=""
+							/>
+						</div>
+						<div class="bg-bc-pale-sandstone/30 p-2 pb-6">
+							<enhanced:img
+								class="aspect-square object-cover"
+								src={image.placeholder.standing_around_fire}
+								alt=""
+							/>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
-	</section> -->
+	</section>
 </div>
