@@ -29,7 +29,7 @@
 <div class="max-w-screen overflow-hidden pb-40">
 	<section class="flex max-h-screen flex-col">
 		<div class="relative grow">
-			<video class="h-full w-full object-cover" loop muted>
+			<video class="h-full w-full object-cover" loop autoplay muted>
 				<source src={bannerVideoMp4} type="video/mp4" />
 				<source src={bannerVideoWebm} type="video/webm" />
 				Your browser does not support the video tag.
@@ -191,6 +191,41 @@
 					<div class="flex items-center justify-center gap-4">
 						<h3 class="font-display text-bc-slate-pine mt-4 text-center text-5xl font-bold">
 							Paid Services
+						</h3>
+					</div>
+					<p class="mt-4 line-clamp-2 px-4 text-center text-lg text-black/70">
+						For young people, organisations, schools, youth groups, and professionals who want to
+						bring nature-based learning and wellbeing into their work.
+					</p>
+					<div class="mt-8 grid grid-cols-3 gap-3">
+						<div class="bg-bc-pale-sandstone/30 -rotate-6 p-2 pb-6">
+							<enhanced:img
+								class="aspect-square object-cover"
+								src={image.placeholder.standing_around_fire}
+								alt=""
+							/>
+						</div>
+						<div class="bg-bc-pale-sandstone/30 rotate-3 p-2 pb-6">
+							<enhanced:img
+								class="aspect-square object-cover"
+								src={image.placeholder.standing_around_fire}
+								alt=""
+							/>
+						</div>
+						<div class="bg-bc-pale-sandstone/30 p-2 pb-6">
+							<enhanced:img
+								class="aspect-square object-cover"
+								src={image.placeholder.standing_around_fire}
+								alt=""
+							/>
+						</div>
+					</div>
+				</div>
+
+				<div>
+					<div class="flex items-center justify-center gap-4">
+						<h3 class="font-display text-bc-slate-pine mt-4 text-center text-5xl font-bold">
+							Volunteer
 						</h3>
 					</div>
 					<p class="mt-4 line-clamp-2 px-4 text-center text-lg text-black/70">
