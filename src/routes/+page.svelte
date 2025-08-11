@@ -142,42 +142,49 @@
 
 	<section class="mt-32 flex justify-center px-40">
 		<div>
-			<h2 class="font-display relative inline-block text-3xl font-bold">
+			<!-- <h2 class="font-display relative inline-block text-3xl font-bold">
 				<span class="">What We Offer</span>
 				<enhanced:img
 					class="absolute bottom-[-7px] left-0 h-[3px] w-full object-cover"
 					src={image.illustration.drawn_line_black}
 					alt=""
 				/>
-			</h2>
+			</h2> -->
+
 			<div class="mt-8 grid w-full grid-cols-2 gap-40">
-				<div>
-					<div class="flex items-center justify-center gap-4">
-						<!-- <enhanced:img class="w-[50px]" src={image.illustration.sun_yellow} alt="" /> -->
-						<h3 class="font-display text-bc-slate-pine mt-4 text-center text-5xl font-bold">
+				<div class="flex flex-col items-center">
+					<div class="relative inline-flex items-center justify-center gap-4">
+						<h3 class="font-display mt-4 text-center text-5xl font-bold text-black/80">
 							Free Programmes
 						</h3>
+
+						<enhanced:img
+							class="absolute bottom-[-7px] left-0 h-[3px] w-full object-cover"
+							src={image.illustration.drawn_line_amber}
+							alt=""
+						/>
 					</div>
-					<p class="mt-4 px-4 text-center text-lg text-black/70">
+
+					<p class="mt-4 px-4 text-center text-lg text-black">
 						If you're 16-25 and interested in nature based activities for wellbeing, click here.
 						They're free!
 					</p>
 					<div class="mt-8 grid grid-cols-3 gap-3">
-						<div class="bg-bc-pale-sandstone/30 -rotate-6 p-2 pb-6">
+						<div class="-rotate-6 bg-white p-2 pb-6 shadow-lg">
 							<enhanced:img
 								class="aspect-square object-cover"
 								src={image.placeholder.standing_around_fire}
 								alt=""
 							/>
 						</div>
-						<div class="bg-bc-pale-sandstone/30 rotate-3 p-2 pb-6">
+						<div class="rotate-3 bg-white p-2 pb-6">
 							<enhanced:img
 								class="aspect-square object-cover"
 								src={image.placeholder.standing_around_fire}
 								alt=""
 							/>
 						</div>
-						<div class="bg-bc-pale-sandstone/30 p-2 pb-6">
+						<div class="bg-white p-2 pb-6">
 							<enhanced:img
 								class="aspect-square object-cover"
 								src={image.placeholder.standing_around_fire}

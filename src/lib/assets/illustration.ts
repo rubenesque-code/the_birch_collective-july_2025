@@ -3,8 +3,10 @@ import drawn_line_amber from "./_files/images/illustrations/drawn-line-amber.png
 import play_icon_white from "./_files/images/illustrations/play-icon-white.png?enhanced";
 import play_icon_yellow from "./_files/images/illustrations/play-icon-yellow.png?enhanced";
 import sun_yellow from "./_files/images/illustrations/sun-yellow.png?enhanced";
+import square from "./_files/images/illustrations/hand-drawn-square.png?enhanced";
 
 const illustration = {
+  square,
   sun_yellow,
   drawn_line_black,
   drawn_line_amber,
