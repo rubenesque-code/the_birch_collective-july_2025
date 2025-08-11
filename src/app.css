@@ -161,6 +161,14 @@
 }
 
 @font-face {
+	font-family: 'Franklin Gothic';
+	font-style: normal;
+	font-weight: 400;
+	src: url('/fonts/franklin-gothic/Franklin\ Gothic\ Condensed.ttf') format('truetype');
+	font-display: swap;
+}
+
+@font-face {
 	font-family: 'Oswald';
 	src: url('/fonts/Oswald/Oswald-VariableFont_wght.ttf') format('truetype');
 	font-weight: 200 800;
@@ -170,9 +178,10 @@
 
 @theme {
 	--font-display: 'Amatic SC', 'sans-serif';
-	--font-sans: 'Karla', 'sans-serif';
+	--font-karla: 'Karla', 'sans-serif';
 	--font-bebas: 'Bebas', 'sans-serif';
 	--font-oswald: 'Oswald', 'sans-serif';
+	--font-franklin-gothic: 'Franklin Gothic', 'sans-serif';
 
 	--color-bc-burnt-sienna: #b25d17;
 	--color-bc-amber: #d17a22;
@@ -185,4 +194,7 @@
 	--color-bc-sea-foam-teal: #76afaa;
 	--color-bc-mineral-jade: #64908c;
 	--color-bc-logo-black: #030201;
+
+	--color-my-pale-yellow: #e9eb98;
+	--color-my-light-orangey-brown: #e6b777;
 }
