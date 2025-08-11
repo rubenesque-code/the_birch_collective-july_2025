@@ -13,8 +13,10 @@ import therapeutic_forest_school from "./_files/images/placeholder/therapeutic-f
 import donate from "./_files/images/placeholder/donate.webp?enhanced";
 import volunteer from "./_files/images/placeholder/volunteer.webp?enhanced";
 import young_people_volunteering_in_nature_illustration from "./_files/images/placeholder/young-people-working-in-nature-illustration.webp?enhanced";
+import mission_vid_placeholder from "./_files/images/placeholder/frame_at_10s.png?enhanced";
 
 const placeholder = {
+  mission_vid_placeholder,
   donate,
   volunteer,
   chillies,
