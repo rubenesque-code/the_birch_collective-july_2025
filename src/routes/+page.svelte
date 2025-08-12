@@ -106,7 +106,11 @@
 		</div>
 	</section>
 
-	<section class="mt-32 flex justify-center px-40">
+	<section class="relative mt-32 flex justify-center px-40">
+		<div
+			class="bg-my-pale-yellow absolute -top-1/2 -right-1/2 -z-10 aspect-square w-[80%] -translate-y-1/2 rounded-full"
+		></div>
+
 		<div class="flex w-full justify-between">
 			<div class="mt-8 w-[600px]">
 				<h2 class="font-display two-tone-text-main-title text-6xl font-bold">
@@ -135,6 +139,55 @@
 
 				<div class="absolute top-2 right-2">
 					<p class="text-[17px] font-medium text-white">The Birch Collective — Our Mission</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- <section class="mt-28 flex justify-center">
+		<enhanced:img
+			class="h-[3px] w-[250px] object-cover"
+			src={image.illustration.drawn_line_black}
+			alt=""
+		/>
+	</section> -->
+
+	<section class="relative mt-40 flex justify-center overflow-hidden px-40">
+		<div class="w-full">
+			<h2 class="text-center text-3xl font-bold">What We Offer</h2>
+			<!-- <h2 class="text-center text-3xl font-bold">How We Help Young People</h2> -->
+
+			<div class="mt-4 flex justify-center">
+				<p class="max-w-[600px] text-center text-lg">
+					We have a range of programmes, from free to paid, and from drop-ins to week-long nature
+					camps, that are inclusive and supportive.
+				</p>
+			</div>
+
+			<div class="mt-20 grid w-full grid-cols-2 justify-between gap-40">
+				<div class="relative aspect-square p-8">
+					<!-- <h3 class="text-center text-5xl text-white"></h3> -->
+
+					<enhanced:img
+						class="absolute top-0 left-0 z-10 h-[3px] w-full object-cover"
+						src={image.illustration.drawn_line_black}
+						alt=""
+					/>
+					<enhanced:img
+						class="absolute bottom-0 left-0 z-10 h-[3px] w-full object-cover"
+						src={image.illustration.drawn_line_black}
+						alt=""
+					/>
+					<enhanced:img
+						class="absolute top-0 left-0 z-10 h-[3px] w-full origin-bottom-left rotate-90 object-cover"
+						src={image.illustration.drawn_line_black}
+						alt=""
+					/>
+					<enhanced:img
+						class="absolute top-0 left-0 z-10 h-[3px] w-full origin-right -rotate-90 object-cover"
+						src={image.illustration.drawn_line_black}
+						alt=""
+					/>
 				</div>
 			</div>
 		</div>
