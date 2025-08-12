@@ -24,6 +24,16 @@
 	//    - some will be reassured by just being accepted and no vetting, etc.
 	// - don't want feedback section on each programme page
 	// - on form - legal text maybe make clear is legal, and so don't have to read.
+
+	// TODO
+	// - body font. Browser font seems good.
+
+	// LANDING PAGE
+	// - volunteer
+	// - our impact
+	// - partners & supporters
+	// - images/videos.
+	// - other: donate, newsletter,
 </script>
 
 <div class="max-w-screen overflow-hidden pb-40">
@@ -152,7 +162,7 @@
 		/>
 	</section> -->
 
-	<section class="relative mt-40 flex justify-center overflow-hidden px-40">
+	<section class="relative mt-40 flex justify-center overflow-hidden px-40 pb-20">
 		<div class="w-full">
 			<h2 class="text-center text-3xl font-bold">What We Offer</h2>
 			<!-- <h2 class="text-center text-3xl font-bold">How We Help Young People</h2> -->
@@ -165,8 +175,69 @@
 			</div>
 
 			<div class="mt-20 grid w-full grid-cols-2 justify-between gap-40">
-				<div class="relative aspect-square p-8">
-					<!-- <h3 class="text-center text-5xl text-white"></h3> -->
+				<div class="relative overflow-visible p-4">
+					<enhanced:img
+						class="aspect-square w-full object-cover"
+						src={image.placeholder.standing_around_fire}
+						alt=""
+					/>
+
+					<div
+						class="bg-my-light-orangey-brown absolute bottom-0 left-1/2 z-20 w-3/4 -translate-x-1/2 translate-y-[80px] p-8 text-black"
+					>
+						<h3 class="font-display text-5xl font-bold">Free Programmes</h3>
+						<div class="flex items-end gap-4">
+							<p class="mt-5 text-lg leading-relaxed">
+								If you're 16-25 and interested in nature based activities for wellbeing, click here.
+								They're free!
+							</p>
+
+							<span class="text-[54px]"><ArrowCircleRight weight="thin" /></span>
+						</div>
+					</div>
+
+					<enhanced:img
+						class="absolute top-0 left-0 z-10 h-[3px] w-full object-cover"
+						src={image.illustration.drawn_line_black}
+						alt=""
+					/>
+					<enhanced:img
+						class="absolute bottom-0 left-0 z-10 h-[3px] w-full object-cover"
+						src={image.illustration.drawn_line_black}
+						alt=""
+					/>
+					<enhanced:img
+						class="absolute top-0 left-0 z-10 h-[3px] w-full origin-bottom-left rotate-90 object-cover"
+						src={image.illustration.drawn_line_black}
+						alt=""
+					/>
+					<enhanced:img
+						class="absolute top-0 left-0 z-10 h-[3px] w-full origin-right -rotate-90 object-cover"
+						src={image.illustration.drawn_line_black}
+						alt=""
+					/>
+				</div>
+
+				<div class="relative overflow-visible p-4">
+					<enhanced:img
+						class="aspect-square w-full object-cover"
+						src={image.placeholder.group_photo}
+						alt=""
+					/>
+
+					<div
+						class="bg-my-pale-yellow absolute bottom-0 left-1/2 z-20 w-3/4 -translate-x-1/2 translate-y-[80px] p-8 text-black"
+					>
+						<h3 class="font-display text-5xl font-bold">Work With Us</h3>
+						<div class="flex items-end gap-4">
+							<p class="mt-5 text-lg leading-relaxed">
+								For young people, organisations, schools, youth groups, and professionals who want
+								to bring nature-based learning and wellbeing into their work.
+							</p>
+
+							<span class="text-[54px]"><ArrowCircleRight weight="thin" /></span>
+						</div>
+					</div>
 
 					<enhanced:img
 						class="absolute top-0 left-0 z-10 h-[3px] w-full object-cover"
@@ -193,95 +264,15 @@
 		</div>
 	</section>
 
-	<section class="mt-32 flex justify-center px-40">
-		<div>
-			<!-- <h2 class="font-display relative inline-block text-3xl font-bold">
-				<span class="">What We Offer</span>
-				<enhanced:img
-					class="absolute bottom-[-7px] left-0 h-[3px] w-full object-cover"
-					src={image.illustration.drawn_line_black}
-					alt=""
-				/>
-			</h2> -->
+	<section class="relative mt-40 flex justify-center overflow-hidden px-40 pb-40">
+		<div
+			class="bg-my-pale-yellow absolute -top-0 -left-1/2 -z-10 aspect-square w-[80%] rounded-full"
+		></div>
 
-			<div class="mt-8 grid w-full grid-cols-2 gap-40">
-				<div class="flex flex-col items-center">
-					<div class="relative inline-flex items-center justify-center gap-4">
-						<h3 class="font-display mt-4 text-center text-5xl font-bold text-black/80">
-							Free Programmes
-						</h3>
+		<div class="w-full">
+			<h2 class="text-center text-3xl font-bold">Our Impact</h2>
 
-						<enhanced:img
-							class="absolute bottom-[-7px] left-0 h-[3px] w-full object-cover"
-							src={image.illustration.drawn_line_amber}
-							alt=""
-						/>
-					</div>
-
-					<p class="mt-4 px-4 text-center text-lg text-black">
-						If you're 16-25 and interested in nature based activities for wellbeing, click here.
-						They're free!
-					</p>
-					<div class="mt-8 grid grid-cols-3 gap-3">
-						<div class="-rotate-6 bg-white p-2 pb-6 shadow-lg">
-							<enhanced:img
-								class="aspect-square object-cover"
-								src={image.placeholder.standing_around_fire}
-								alt=""
-							/>
-						</div>
-						<div class="rotate-3 bg-white p-2 pb-6">
-							<enhanced:img
-								class="aspect-square object-cover"
-								src={image.placeholder.standing_around_fire}
-								alt=""
-							/>
-						</div>
-						<div class="bg-white p-2 pb-6">
-							<enhanced:img
-								class="aspect-square object-cover"
-								src={image.placeholder.standing_around_fire}
-								alt=""
-							/>
-						</div>
-					</div>
-				</div>
-
-				<div>
-					<div class="flex items-center justify-center gap-4">
-						<h3 class="font-display text-bc-slate-pine mt-4 text-center text-5xl font-bold">
-							Work With Us
-						</h3>
-					</div>
-					<p class="mt-4 line-clamp-2 px-4 text-center text-lg text-black/70">
-						For young people, organisations, schools, youth groups, and professionals who want to
-						bring nature-based learning and wellbeing into their work.
-					</p>
-					<div class="mt-8 grid grid-cols-3 gap-3">
-						<div class="bg-bc-pale-sandstone/30 -rotate-6 p-2 pb-6">
-							<enhanced:img
-								class="aspect-square object-cover"
-								src={image.placeholder.standing_around_fire}
-								alt=""
-							/>
-						</div>
-						<div class="bg-bc-pale-sandstone/30 rotate-3 p-2 pb-6">
-							<enhanced:img
-								class="aspect-square object-cover"
-								src={image.placeholder.standing_around_fire}
-								alt=""
-							/>
-						</div>
-						<div class="bg-bc-pale-sandstone/30 p-2 pb-6">
-							<enhanced:img
-								class="aspect-square object-cover"
-								src={image.placeholder.standing_around_fire}
-								alt=""
-							/>
-						</div>
-					</div>
-				</div>
-			</div>
+			<div class="mt-20 grid w-full grid-cols-2 justify-between gap-40"></div>
 		</div>
 	</section>
 </div>
