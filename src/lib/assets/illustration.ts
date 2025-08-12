@@ -4,8 +4,12 @@ import play_icon_white from "./_files/images/illustrations/play-icon-white.png?e
 import play_icon_yellow from "./_files/images/illustrations/play-icon-yellow.png?enhanced";
 import sun_yellow from "./_files/images/illustrations/sun-yellow.png?enhanced";
 import square from "./_files/images/illustrations/hand-drawn-square.png?enhanced";
+import line_2 from "./_files/images/illustrations/underline-2.png?enhanced";
+import line_2_amber from "./_files/images/illustrations/underline-2-amber.png?enhanced";
 
 const illustration = {
+  line_2_amber,
+  line_2,
   square,
   sun_yellow,
   drawn_line_black,

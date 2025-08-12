@@ -266,13 +266,126 @@
 
 	<section class="relative mt-40 flex justify-center overflow-hidden px-40 pb-40">
 		<div
-			class="bg-my-pale-yellow absolute -top-0 -left-1/2 -z-10 aspect-square w-[80%] rounded-full"
+			class="bg-bc-pale-sandstone/30 absolute -top-0 -left-1/2 -z-10 aspect-square w-[80%] rounded-full"
 		></div>
 
 		<div class="w-full">
 			<h2 class="text-center text-3xl font-bold">Our Impact</h2>
 
-			<div class="mt-20 grid w-full grid-cols-2 justify-between gap-40"></div>
+			<div class="mt-4 flex justify-center">
+				<p class="max-w-[600px] text-center text-lg">
+					We aim to have a lasting impact on young peoples' lives. As well as drop-in sessions, we
+					offer a long-term path for our participants.
+				</p>
+			</div>
+
+			<div class="mt-20 grid w-full grid-cols-4 justify-between gap-10">
+				<div class="flex flex-col items-center gap-3 rounded-md">
+					<div>
+						<p class="font-display text-6xl font-bold">
+							100<span class="ml-[2px] text-4xl">s</span>
+						</p>
+
+						<enhanced:img
+							class="h-[3px] w-full object-cover"
+							src={image.illustration.line_2_amber}
+							alt=""
+						/>
+					</div>
+
+					<p class="max-w-[300px] text-center text-lg leading-relaxed text-black/80">
+						Of young people supported since 2018
+					</p>
+				</div>
+
+				<div class="flex flex-col items-center gap-3 rounded-md">
+					<div>
+						<p class="font-display text-6xl font-bold">
+							80<span class="ml-[2px] text-4xl">%</span>
+						</p>
+
+						<enhanced:img
+							class="h-[3px] w-full object-cover"
+							src={image.illustration.line_2_amber}
+							alt=""
+						/>
+					</div>
+
+					<p class="max-w-[300px] text-center text-lg leading-relaxed text-black/80">
+						Have improved mental health and wellbeing
+					</p>
+				</div>
+
+				<div class="flex flex-col items-center gap-3 rounded-md">
+					<div>
+						<p class="font-display text-6xl font-bold">
+							78<span class="ml-[2px] text-4xl">%</span>
+						</p>
+
+						<enhanced:img
+							class="h-[3px] w-full object-cover"
+							src={image.illustration.line_2_amber}
+							alt=""
+						/>
+					</div>
+
+					<p class="max-w-[300px] text-center text-lg leading-relaxed text-black/80">
+						Have improved improved behaviour for learning
+					</p>
+				</div>
+
+				<div class="flex flex-col items-center gap-3 rounded-md">
+					<div>
+						<p class="font-display text-6xl font-bold">
+							90<span class="ml-[2px] text-4xl">%</span>
+						</p>
+
+						<enhanced:img
+							class="h-[3px] w-full object-cover"
+							src={image.illustration.line_2_amber}
+							alt=""
+						/>
+					</div>
+
+					<p class="max-w-[300px] text-center text-lg leading-relaxed text-black/80">
+						Have improved social interactions
+					</p>
+				</div>
+			</div>
+
+			<div class="mt-20 flex justify-center">
+				<div class="grid grid-cols-2 gap-16">
+					<div class="relative">
+						<enhanced:img
+							class="aspect-video w-[640px] rounded-md object-cover"
+							src={image.placeholder.participant_1}
+							alt=""
+						/>
+
+						<div class="absolute top-2 right-4 flex max-w-1/2 flex-col items-end">
+							<p class="text-[17px] font-medium text-white">Pauline, participant</p>
+							<p class="mt-8 text-right text-[21px] font-medium text-white">
+								" I feel I've left feeling more accepting of other people and myself "
+							</p>
+						</div>
+					</div>
+
+					<div class="relative">
+						<enhanced:img
+							class="aspect-video w-[640px] rounded-md object-cover"
+							src={image.placeholder.participant_1}
+							alt=""
+						/>
+
+						<div class="absolute top-2 right-4 flex max-w-1/2 flex-col items-end">
+							<p class="text-[17px] font-medium text-white">Pauline, participant</p>
+							<p class="mt-8 text-right text-[21px] font-medium text-white">
+								" I feel I've left feeling more accepting of other people and myself "
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</section>
 </div>
