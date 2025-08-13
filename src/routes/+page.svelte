@@ -61,27 +61,27 @@
 			></div>
 
 			<div class="absolute bottom-[100px] left-[150px] z-20 w-full">
-				<h2 class="font-display flex flex-col text-6xl font-semibold tracking-wide text-white">
+				<h2 class="font-display flex flex-col text-7xl font-semibold tracking-wide text-white">
 					Connect Through Nature
 				</h2>
 
-				<p class="mt-10 text-xl text-white">Start today in Bristol!</p>
-				<p class="mt-2 max-w-[690px] text-xl leading-[1.5em] text-white">
+				<p class="mt-16 text-xl font-medium text-white">Start today in Bristol!</p>
+				<p class="mt-4 max-w-[690px] text-xl leading-[1.5em] font-medium text-white">
 					Join in through one of our programmes! They are both free and paid, and range from one-day
 					drop-ins to longer adventures.
 				</p>
 
-				<!-- <div class="mt-10 flex items-center gap-12">
+				<div class="mt-10 flex items-center gap-12">
 					<button
-						class="bg-bc-sea-foam-teal relative flex items-center gap-4 rounded-3xl py-2 pr-2 pl-5 tracking-wide text-white"
+						class="bg-my-pale-yellow relative flex items-center gap-4 rounded-3xl px-5 py-3 tracking-wide"
 						type="button"
 					>
-						<span class="font-semibold tracking-wide uppercase">Get Involved Today</span>
-						<span class="text-5xl"><ArrowCircleRight weight="thin" /></span>
+						<span class="text-lg font-medium">Get Involved Today</span>
+						<span class="text-2xl"><ArrowRight /></span>
 					</button>
-				</div> -->
+				</div>
 
-				<div class="mt-10 flex items-center gap-12">
+				<!-- <div class="mt-10 flex items-center gap-12">
 					<a
 						class="font-display relative flex items-center gap-4 text-4xl font-bold tracking-wide text-white"
 						href="/"
@@ -111,7 +111,7 @@
 							/></span
 						>
 					</button>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</section>
@@ -175,7 +175,7 @@
 			</div>
 
 			<div class="mt-20 grid w-full grid-cols-2 justify-between gap-40">
-				<div class="relative overflow-visible p-4">
+				<div class="relative overflow-visible border-3 border-black p-4">
 					<enhanced:img
 						class="aspect-square w-full object-cover"
 						src={image.placeholder.standing_around_fire}
@@ -195,30 +195,9 @@
 							<span class="text-[54px]"><ArrowCircleRight weight="thin" /></span>
 						</div>
 					</div>
-
-					<enhanced:img
-						class="absolute top-0 left-0 z-10 h-[3px] w-full object-cover"
-						src={image.illustration.drawn_line_black}
-						alt=""
-					/>
-					<enhanced:img
-						class="absolute bottom-0 left-0 z-10 h-[3px] w-full object-cover"
-						src={image.illustration.drawn_line_black}
-						alt=""
-					/>
-					<enhanced:img
-						class="absolute top-0 left-0 z-10 h-[3px] w-full origin-bottom-left rotate-90 object-cover"
-						src={image.illustration.drawn_line_black}
-						alt=""
-					/>
-					<enhanced:img
-						class="absolute top-0 left-0 z-10 h-[3px] w-full origin-right -rotate-90 object-cover"
-						src={image.illustration.drawn_line_black}
-						alt=""
-					/>
 				</div>
 
-				<div class="relative overflow-visible p-4">
+				<div class="relative overflow-visible border-3 border-black p-4">
 					<enhanced:img
 						class="aspect-square w-full object-cover"
 						src={image.placeholder.group_photo}
@@ -238,27 +217,6 @@
 							<span class="text-[54px]"><ArrowCircleRight weight="thin" /></span>
 						</div>
 					</div>
-
-					<enhanced:img
-						class="absolute top-0 left-0 z-10 h-[3px] w-full object-cover"
-						src={image.illustration.drawn_line_black}
-						alt=""
-					/>
-					<enhanced:img
-						class="absolute bottom-0 left-0 z-10 h-[3px] w-full object-cover"
-						src={image.illustration.drawn_line_black}
-						alt=""
-					/>
-					<enhanced:img
-						class="absolute top-0 left-0 z-10 h-[3px] w-full origin-bottom-left rotate-90 object-cover"
-						src={image.illustration.drawn_line_black}
-						alt=""
-					/>
-					<enhanced:img
-						class="absolute top-0 left-0 z-10 h-[3px] w-full origin-right -rotate-90 object-cover"
-						src={image.illustration.drawn_line_black}
-						alt=""
-					/>
 				</div>
 			</div>
 		</div>
@@ -353,39 +311,39 @@
 				</div>
 			</div>
 
-			<div class="mt-20 flex justify-center">
-				<div class="grid grid-cols-2 gap-16">
-					<div class="relative">
-						<enhanced:img
-							class="aspect-video w-[640px] rounded-md object-cover"
-							src={image.placeholder.participant_1}
-							alt=""
-						/>
-
-						<div class="absolute top-2 right-4 flex max-w-1/2 flex-col items-end">
-							<p class="text-[17px] font-medium text-white">Pauline, participant</p>
-							<p class="mt-8 text-right text-[21px] font-medium text-white">
-								" I feel I've left feeling more accepting of other people and myself "
-							</p>
-						</div>
-					</div>
-
-					<div class="relative">
-						<enhanced:img
-							class="aspect-video w-[640px] rounded-md object-cover"
-							src={image.placeholder.participant_1}
-							alt=""
-						/>
-
-						<div class="absolute top-2 right-4 flex max-w-1/2 flex-col items-end">
-							<p class="text-[17px] font-medium text-white">Pauline, participant</p>
-							<p class="mt-8 text-right text-[21px] font-medium text-white">
-								" I feel I've left feeling more accepting of other people and myself "
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
+			<!-- <div class="mt-20 flex justify-center">
+  				<div class="grid grid-cols-2 gap-16">
+  					<div class="relative">
+  						<enhanced:img
+  							class="aspect-video w-[640px] rounded-md object-cover"
+  							src={image.placeholder.participant_1}
+  							alt=""
+  						/>
+  
+  						<div class="absolute top-2 right-4 flex max-w-1/2 flex-col items-end">
+  							<p class="text-[17px] font-medium text-white">Pauline, participant</p>
+  							<p class="mt-8 text-right text-[21px] font-medium text-white">
+  								" I feel I've left feeling more accepting of other people and myself "
+  							</p>
+  						</div>
+  					</div>
+  
+  					<div class="relative">
+  						<enhanced:img
+  							class="aspect-video w-[640px] rounded-md object-cover"
+  							src={image.placeholder.participant_1}
+  							alt=""
+  						/>
+  
+  						<div class="absolute top-2 right-4 flex max-w-1/2 flex-col items-end">
+  							<p class="text-[17px] font-medium text-white">Pauline, participant</p>
+  							<p class="mt-8 text-right text-[21px] font-medium text-white">
+  								" I feel I've left feeling more accepting of other people and myself "
+  							</p>
+  						</div>
+  					</div>
+  				</div>
+  			</div> -->
 		</div>
 	</section>
 </div>
