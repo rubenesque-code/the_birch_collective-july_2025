@@ -6,8 +6,10 @@ import sun_yellow from "./_files/images/illustrations/sun-yellow.png?enhanced";
 import square from "./_files/images/illustrations/hand-drawn-square.png?enhanced";
 import line_2 from "./_files/images/illustrations/underline-2.png?enhanced";
 import line_2_amber from "./_files/images/illustrations/underline-2-amber.png?enhanced";
+import line_2_yellow from "./_files/images/illustrations/underline-2-yellow.png?enhanced";
 
 const illustration = {
+  line_2_yellow,
   line_2_amber,
   line_2,
   square,
