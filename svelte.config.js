@@ -39,7 +39,7 @@ const config = {
 
 			'^services': 'src/lib/services',
 
-			'^stores': 'src/lib/stores',
+			'^state': 'src/lib/state',
 
 			'^structured-data-parts': 'src/lib/structured-data-parts',
 

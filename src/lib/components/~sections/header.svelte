@@ -1,58 +1,54 @@
 <script lang="ts" context="module">
+	import { ChatCircle, HandHeart, List } from 'phosphor-svelte';
+
 	import image from '^assets/image';
-	import { FacebookLogo, InstagramLogo, TiktokLogo } from 'phosphor-svelte';
+	import { Tooltip } from '^components/ui';
 </script>
 
-<header class="flex w-full items-center justify-between px-4 py-[10px]">
-	<div class="flex items-baseline gap-12">
-		<div class="relative flex items-center gap-[10px]">
-			<div class="">
-				<enhanced:img class="w-[50px]" src={image.birch.logo.img_only} alt="" />
-			</div>
-
-			<div class="relative">
-				<a class="font-display text-[40px] leading-none font-bold tracking-[0.03em]" href="/">
-					The Birch Collective
-				</a>
-
-				<div
-					class="text-bc-amber absolute top-1/2 -right-6 flex translate-x-full -translate-y-1/2 items-center gap-4 text-[22px] leading-none"
-				>
-					<a class="bg-bc-sea-foam-teal rounded-md p-1 text-white" href="/">
-						<FacebookLogo />
-					</a>
-					<a class="bg-bc-sea-foam-teal rounded-md p-1 text-white" href="/"><InstagramLogo /></a>
-					<a class="bg-bc-sea-foam-teal rounded-md p-1 text-white" href="/"><TiktokLogo /></a>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="flex items-center gap-8">
-		<div class="relative">
-			<p
-				class="bg-bc-burnt-sienna rounded-md px-2 py-1 font-medium tracking-wide text-white uppercase"
-			>
-				Donate
-			</p>
-		</div>
-		<div class="relative">
-			<p
-				class="bg-bc-slate-pine rounded-md px-2 py-1 font-medium tracking-wide text-white uppercase"
-			>
-				Get in Touch
-			</p>
-		</div>
-		<div class="relative">
-			<p class="tracking-wide uppercase">About Us</p>
+<header class="absolute top-0 left-0 z-10 flex w-full items-start justify-between p-4">
+	<div class="flex shrink-0">
+		<div class="translate-x-[10px] translate-y-[21px]">
+			<enhanced:img class="w-[68px]" src={image.birch.logo.img_only} alt="" />
 		</div>
 
-		<div class="relative">
-			<p class="tracking-wide uppercase">Programmes</p>
-		</div>
-
-		<div class="relative">
-			<p class="tracking-wide uppercase">Get Involved</p>
-		</div>
+		<h1 class="font-display flex flex-col text-4xl font-bold">
+			<span class="translate-x-[20px]">The</span>
+			<span class="translate-x-[40px] translate-y-[-10px] text-[66px]">Birch</span>
+			<span class="translate-x-[0px] translate-y-[-20px]">Collective</span>
+		</h1>
 	</div>
 </header>
+
+<nav
+	class="bg-bc-logo-black/50 fixed top-4 right-4 z-30 flex flex-col items-center gap-4 rounded-full p-4"
+>
+	<div class="cursor-pointer rounded-full border border-white p-2 text-2xl text-white">
+		<List />
+	</div>
+
+	<Tooltip.Provider>
+		<Tooltip.Root>
+			<Tooltip.Trigger>
+				<div class="cursor-pointer rounded-full border border-white p-2 text-2xl text-white">
+					<ChatCircle />
+				</div>
+			</Tooltip.Trigger>
+			<Tooltip.Content side="left">
+				<p>Get in touch</p>
+			</Tooltip.Content>
+		</Tooltip.Root>
+	</Tooltip.Provider>
+
+	<Tooltip.Provider>
+		<Tooltip.Root>
+			<Tooltip.Trigger>
+				<div class="cursor-pointer rounded-full border border-white p-2 text-2xl text-white">
+					<HandHeart />
+				</div>
+			</Tooltip.Trigger>
+			<Tooltip.Content side="left">
+				<p>Donate</p>
+			</Tooltip.Content>
+		</Tooltip.Root>
+	</Tooltip.Provider>
+</nav>

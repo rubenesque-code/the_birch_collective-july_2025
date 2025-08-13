@@ -1,9 +1,11 @@
 <script lang="ts" context="module">
-	import { ArrowCircleRight, ArrowRight, ChatCircle, HandHeart, List } from 'phosphor-svelte';
+	import { ArrowCircleRight, ArrowRight } from 'phosphor-svelte';
 
 	import image from '^assets/image';
 
 	import { bannerVideoMp4, bannerVideoWebm } from '^assets/videos';
+	import { Header, OurMissionModal } from '^components/~sections';
+	import { updateSiteState } from '^lib/state';
 
 	// need distinction between paid and free.
 	// programmes (for individuals to sign up to); 1:1 mentoring; tailored programs for groups; youth advisory board
@@ -34,19 +36,13 @@
 	// - other: donate, newsletter,
 </script>
 
-<div
-	class="bg-bc-logo-black/50 fixed top-4 right-4 z-50 flex flex-col items-center gap-4 rounded-full p-4"
->
-	<div class="rounded-full border border-white p-2 text-2xl text-white">
-		<List />
-	</div>
-	<div class="rounded-full border border-white p-2 text-2xl text-white">
-		<ChatCircle />
-	</div>
-	<div class="rounded-full border border-white p-2 text-2xl text-white">
-		<HandHeart />
-	</div>
-</div>
+<Header />
+
+<OurMissionModal
+	onClickCloseShowreel={() => {
+		updateSiteState.showreel.setIsOpen(false);
+	}}
+/>
 
 <div class="max-w-screen overflow-hidden pb-40">
 	<section class="flex max-h-screen flex-col">
@@ -56,48 +52,6 @@
 				<source src={bannerVideoWebm} type="video/webm" />
 				Your browser does not support the video tag.
 			</video>
-
-			<header class="absolute top-0 left-0 z-10 flex w-full items-start justify-between p-4">
-				<div class="flex shrink-0">
-					<div class="translate-x-[10px] translate-y-[21px]">
-						<enhanced:img class="w-[68px]" src={image.birch.logo.img_only} alt="" />
-					</div>
-
-					<h1 class="font-display flex flex-col text-4xl font-bold">
-						<span class="translate-x-[20px]">The</span>
-						<span class="translate-x-[40px] translate-y-[-10px] text-[66px]">Birch</span>
-						<span class="translate-x-[0px] translate-y-[-20px]">Collective</span>
-					</h1>
-				</div>
-
-				<!-- <div class="flex items-center gap-4">
-					<p
-						class="bg-bc-slate-pine rounded-md px-2 py-1 text-lg font-medium tracking-wide text-white"
-					>
-						Donate
-					</p>
-					<p
-						class="bg-bc-slate-pine rounded-md px-2 py-1 text-lg font-medium tracking-wide text-white"
-					>
-						Get in Touch
-					</p>
-					<p
-						class="bg-bc-slate-pine rounded-md px-2 py-1 text-lg font-medium tracking-wide text-white"
-					>
-						About Us
-					</p>
-					<p
-						class="bg-bc-slate-pine rounded-md px-2 py-1 text-lg font-medium tracking-wide text-white"
-					>
-						Programmes
-					</p>
-					<p
-						class="bg-bc-slate-pine rounded-md px-2 py-1 text-lg font-medium tracking-wide text-white"
-					>
-						Get Involved
-					</p>
-				</div> -->
-			</header>
 
 			<div
 				class="from-bc-slate-pine absolute bottom-0 left-0 z-10 h-1/2 w-full bg-gradient-to-t to-transparent"
@@ -184,7 +138,15 @@
 					<span><ArrowRight /></span>
 				</p> -->
 			</div>
-			<div class="relative">
+
+			<!-- svelte-ignore a11y_click_events_have_key_events -->
+			<!-- svelte-ignore a11y_no_static_element_interactions -->
+			<div
+				class="relative cursor-pointer"
+				on:click={() => {
+					updateSiteState.showreel.setIsOpen(true);
+				}}
+			>
 				<enhanced:img
 					class="w-[700px] rounded-md"
 					src={image.placeholder.mission_vid_placeholder}
