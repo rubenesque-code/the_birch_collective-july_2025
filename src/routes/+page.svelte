@@ -3,7 +3,7 @@
 
 	import image from '^assets/image';
 
-	import { bannerVideoMp4, bannerVideoWebm } from '^assets/videos';
+	import { bannerVideoMp4 } from '^assets/videos';
 	import { Header, OurMissionModal } from '^components/~sections';
 	import { updateSiteState } from '^lib/state';
 
@@ -48,7 +48,6 @@
 		<div class="relative grow">
 			<video class="h-full w-full object-cover" loop muted>
 				<source src={bannerVideoMp4} type="video/mp4" />
-				<source src={bannerVideoWebm} type="video/webm" />
 				Your browser does not support the video tag.
 			</video>
 
