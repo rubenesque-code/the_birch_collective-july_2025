@@ -10,7 +10,6 @@
 	// programmes (for individuals to sign up to); 1:1 mentoring; tailored programs for groups; youth advisory board
 	// for young people: group based nature programmes; 1:1 mentoring; youth advisory board; non-official volunteering (as mentor or something like that)?
 	// for institution: tailored programs.
-	// a
 
 	// - linkedin icon in header
 	// - wants colour changes on buttons
