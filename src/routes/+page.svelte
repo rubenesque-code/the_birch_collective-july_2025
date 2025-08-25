@@ -10,7 +10,6 @@
 	// programmes (for individuals to sign up to); 1:1 mentoring; tailored programs for groups; youth advisory board
 	// for young people: group based nature programmes; 1:1 mentoring; youth advisory board; non-official volunteering (as mentor or something like that)?
 	// for institution: tailored programs.
-	// 'a'
 
 	// - linkedin icon in header
 	// - wants colour changes on buttons
@@ -118,7 +117,7 @@
 		></div>
 
 		<div class="flex w-full justify-between">
-			<div class="mt-8 w-[600px]">
+			<div class="w-[600px]">
 				<h2 class="font-display text-my-light-orangey-brown text-6xl font-bold">
 					Welcome to <span class="">The Birch Collective</span>
 				</h2>
@@ -171,36 +170,54 @@
 		/>
 	</section> -->
 
-	<section class="relative mt-40 flex justify-center overflow-hidden px-40 pb-20">
+	<section class="relative mt-48 flex justify-center overflow-hidden px-40 pb-20">
 		<div class="w-full">
-			<h2 class="text-center text-3xl font-bold">What We Offer</h2>
+			<div class="">
+				<h2 class="font-display text-bc-pale-sandstone text-5xl font-bold">What We Offer</h2>
 
-			<div class="mt-4 flex justify-center">
-				<p class="max-w-[600px] text-center text-lg">
-					We have a range of programmes, from free to paid, and from drop-ins to week-long nature
-					camps, that are inclusive and supportive.
-				</p>
+				<div class="mt-6">
+					<p class="max-w-[768px] text-lg leading-relaxed">
+						We have a range of programmes, from free to paid, and from drop-ins to week-long nature
+						camps, that are inclusive and supportive.
+					</p>
+				</div>
 			</div>
 
-			<div class="mt-20 grid w-full grid-cols-2 justify-between gap-40">
-				<div class="relative overflow-visible border-3 border-black p-4">
+			<div class="mt-20 grid w-full grid-cols-2 justify-between gap-40 pb-80">
+				<div class="relative overflow-visible">
 					<enhanced:img
 						class="aspect-square w-full object-cover"
 						src={image.placeholder.standing_around_fire}
 						alt=""
 					/>
 
-					<div
-						class="bg-my-light-orangey-brown absolute bottom-0 left-1/2 z-20 w-3/4 -translate-x-1/2 translate-y-[80px] p-8 text-black"
-					>
-						<h3 class="font-display text-5xl font-bold">Free Programmes</h3>
-						<div class="flex items-end gap-4">
-							<p class="mt-5 text-lg leading-relaxed">
-								If you're 16-25 and interested in nature based activities for wellbeing, click here.
-								They're free!
-							</p>
+					<div class="absolute bottom-0 -left-6 -z-10 w-[110%] translate-y-[40px]">
+						<svg viewBox="0 0 113 106" xmlns="http://www.w3.org/2000/svg">
+							<path
+								fill="#e9eb98"
+								d="M51.3,-18.1C58,3.8,48.9,29.4,32.9,39.7C16.8,50.1,-6.3,45.3,-26.3,31.9C-46.3,18.4,-63.2,-3.8,-58.3,-23.3C-53.4,-42.8,-26.7,-59.7,-2.2,-59C22.3,-58.2,44.7,-40,51.3,-18.1Z"
+								transform="translate(59.4 60)"
+							/>
+						</svg>
+					</div>
 
-							<span class="text-[54px]"><ArrowCircleRight weight="thin" /></span>
+					<div
+						class="to-bc-slate-pine absolute bottom-0 left-1/2 z-20 w-full -translate-x-1/2 bg-gradient-to-b from-transparent p-8 pt-20 pb-10 text-white"
+					>
+						<div class="mx-auto max-w-[560px]">
+							<h3
+								class="font-display text-5xl font-bold tracking-wide text-white underline decoration-2 underline-offset-[8px]"
+							>
+								Free Programmes
+							</h3>
+							<div class="mt-4 flex items-end gap-4">
+								<p class="mt-5 text-xl leading-relaxed font-medium">
+									If you're 16-25 and interested in nature based activities for wellbeing, click
+									here. They're free!
+								</p>
+
+								<span class="text-[54px]"><ArrowCircleRight weight="thin" /></span>
+							</div>
 						</div>
 					</div>
 				</div>
