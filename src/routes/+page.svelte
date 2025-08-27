@@ -183,7 +183,7 @@
 				</div>
 			</div>
 
-			<div class="mt-20 grid w-full grid-cols-2 justify-between gap-40 pb-80">
+			<div class="mt-20 grid w-full grid-cols-2 justify-between gap-40">
 				<div class="relative overflow-visible">
 					<enhanced:img
 						class="aspect-square w-full object-cover"
@@ -205,9 +205,7 @@
 						class="to-bc-slate-pine absolute bottom-0 left-1/2 z-20 w-full -translate-x-1/2 bg-gradient-to-b from-transparent p-8 pt-20 pb-10 text-white"
 					>
 						<div class="mx-auto max-w-[560px]">
-							<h3
-								class="font-display text-5xl font-bold tracking-wide text-white underline decoration-2 underline-offset-[8px]"
-							>
+							<h3 class="font-display text-6xl font-bold tracking-wide text-white">
 								Free Programmes
 							</h3>
 							<div class="mt-4 flex items-end gap-4">
@@ -215,31 +213,55 @@
 									If you're 16-25 and interested in nature based activities for wellbeing, click
 									here. They're free!
 								</p>
-
-								<span class="text-[54px]"><ArrowCircleRight weight="thin" /></span>
 							</div>
+
+							<button
+								class="bg-my-pale-yellow relative mt-8 flex items-center gap-4 rounded-3xl px-5 py-3 tracking-wide text-black"
+								type="button"
+							>
+								<span class="text-lg font-medium">Find out more</span>
+								<span class="text-2xl"><ArrowRight /></span>
+							</button>
 						</div>
 					</div>
 				</div>
 
-				<div class="relative overflow-visible border-3 border-black p-4">
+				<div class="relative overflow-visible">
 					<enhanced:img
 						class="aspect-square w-full object-cover"
 						src={image.placeholder.group_photo}
 						alt=""
 					/>
 
-					<div
-						class="bg-my-pale-yellow absolute bottom-0 left-1/2 z-20 w-3/4 -translate-x-1/2 translate-y-[80px] p-8 text-black"
-					>
-						<h3 class="font-display text-5xl font-bold">Work With Us</h3>
-						<div class="flex items-end gap-4">
-							<p class="mt-5 text-lg leading-relaxed">
-								For young people, organisations, schools, youth groups, and professionals who want
-								to bring nature-based learning and wellbeing into their work.
-							</p>
+					<!-- <div class="absolute top-[-160px] left-20 -z-10 w-[110%] translate-y-[40px] rotate-12">
+						<svg viewBox="0 0 113 106" xmlns="http://www.w3.org/2000/svg">
+							<path
+								fill="#e6b777"
+								d="M51.3,-18.1C58,3.8,48.9,29.4,32.9,39.7C16.8,50.1,-6.3,45.3,-26.3,31.9C-46.3,18.4,-63.2,-3.8,-58.3,-23.3C-53.4,-42.8,-26.7,-59.7,-2.2,-59C22.3,-58.2,44.7,-40,51.3,-18.1Z"
+								transform="translate(59.4 60)"
+							/>
+						</svg>
+					</div> -->
 
-							<span class="text-[54px]"><ArrowCircleRight weight="thin" /></span>
+					<div
+						class="to-bc-slate-pine absolute bottom-0 left-1/2 z-20 w-full -translate-x-1/2 bg-gradient-to-b from-transparent p-8 pt-20 pb-10 text-white"
+					>
+						<div class="mx-auto max-w-[560px]">
+							<h3 class="font-display text-6xl font-bold tracking-wide text-white">Partnerships</h3>
+							<div class="mt-4 flex items-end gap-4">
+								<p class="mt-5 text-xl leading-relaxed font-medium">
+									For young people, organisations, schools, youth groups, and professionals who want
+									to bring nature-based learning and wellbeing into their work.
+								</p>
+							</div>
+
+							<button
+								class="bg-my-pale-yellow relative mt-8 flex items-center gap-4 rounded-3xl px-5 py-3 tracking-wide text-black"
+								type="button"
+							>
+								<span class="text-lg font-medium">Find out more</span>
+								<span class="text-2xl"><ArrowRight /></span>
+							</button>
 						</div>
 					</div>
 				</div>
@@ -248,19 +270,14 @@
 	</section>
 
 	<section class="relative mt-40 flex justify-center overflow-hidden px-40">
-		<div>
+		<div class="w-full">
 			<div
 				class="bg-bc-pale-sandstone/30 absolute -top-0 -left-1/2 -z-10 aspect-square w-[65%] rounded-full"
 			></div>
 
 			<div class="w-full">
-				<h2 class="text-center text-3xl font-bold">Our Impact</h2>
-
-				<div class="mt-4 flex justify-center">
-					<p class="max-w-[600px] text-center text-lg">
-						We aim to have a lasting impact on young peoples' lives. As well as drop-in sessions, we
-						offer a long-term path for our participants.
-					</p>
+				<div class="">
+					<h2 class="font-display text-bc-pale-sandstone text-5xl font-bold">Our Impact</h2>
 				</div>
 
 				<div class="mt-20 grid w-full grid-cols-4 justify-between gap-10">
@@ -381,7 +398,9 @@
 	<section class="relative mt-40 flex justify-center overflow-hidden px-40 pb-40">
 		<div>
 			<div class="w-full">
-				<h2 class="text-center text-3xl font-bold">Other Ways To Get Involved</h2>
+				<h2 class="font-display text-bc-pale-sandstone text-5xl font-bold">
+					Other Ways to Get Involved
+				</h2>
 
 				<!-- <div class="mt-4 flex justify-center">
 					<p class="max-w-[600px] text-center text-lg">
