@@ -4,7 +4,7 @@
 	import image from '^assets/image';
 
 	import { bannerVideoMp4 } from '^assets/videos';
-	import { Header, OurMissionModal } from '^components/~sections';
+	import { Header, OurMissionModal, PartnersAndSupportersCarousel } from '^components/~sections';
 	import { updateSiteState } from '^lib/state';
 
 	// programmes (for individuals to sign up to); 1:1 mentoring; tailored programs for groups; youth advisory board
@@ -170,7 +170,6 @@
 			alt=""
 		/>
 	</section> -->
-
 	<section class="relative mt-40 flex justify-center overflow-hidden px-40">
 		<div class="w-full">
 			<div class="">
@@ -240,133 +239,75 @@
 		</div>
 	</section>
 
-	<!-- <section class="relative mt-40 flex justify-center overflow-hidden px-40">
+	<section class="relative mt-40 flex justify-center overflow-hidden px-40">
 		<div class="w-full">
-			<div
-				class="bg-bc-pale-sandstone/30 absolute -top-0 -left-1/2 -z-10 aspect-square w-[65%] rounded-full"
-			></div>
+			<div class="">
+				<h2 class="font-display text-bc-pale-sandstone text-5xl font-bold">Our Impact</h2>
 
-			<div class="w-full">
-				<div class="">
-					<h2 class="font-display text-bc-pale-sandstone text-5xl font-bold">Our Impact</h2>
-				</div>
-
-				<div class="mt-20 grid w-full grid-cols-4 justify-between gap-10">
-					<div class="flex flex-col items-center gap-3">
-						<div>
-							<p class="font-display text-6xl font-bold">
-								100<span class="ml-[2px] text-4xl">s</span>
-							</p>
-
-							<enhanced:img
-								class="h-[4px] w-full object-cover"
-								src={image.illustration.line_2_yellow}
-								alt=""
-							/>
-						</div>
-
-						<p class="max-w-[300px] text-center text-[19px] leading-relaxed text-black">
-							Of young people supported since 2018
-						</p>
-					</div>
-
-					<div class="flex flex-col items-center gap-3 rounded-md">
-						<div>
-							<p class="font-display text-6xl font-bold">
-								80<span class="ml-[2px] text-4xl">%</span>
-							</p>
-
-							<enhanced:img
-								class="h-[3px] w-full object-cover"
-								src={image.illustration.line_2_yellow}
-								alt=""
-							/>
-						</div>
-
-						<p class="max-w-[300px] text-center text-lg leading-relaxed text-black/80">
-							Have improved mental health and wellbeing
-						</p>
-					</div>
-
-					<div class="flex flex-col items-center gap-3 rounded-md">
-						<div>
-							<p class="font-display text-6xl font-bold">
-								78<span class="ml-[2px] text-4xl">%</span>
-							</p>
-
-							<enhanced:img
-								class="h-[3px] w-full object-cover"
-								src={image.illustration.line_2_yellow}
-								alt=""
-							/>
-						</div>
-
-						<p class="max-w-[300px] text-center text-lg leading-relaxed text-black/80">
-							Have improved improved behaviour for learning
-						</p>
-					</div>
-
-					<div class="flex flex-col items-center gap-3 rounded-md">
-						<div>
-							<p class="font-display text-6xl font-bold">
-								90<span class="ml-[2px] text-4xl">%</span>
-							</p>
-
-							<enhanced:img
-								class="h-[3px] w-full object-cover"
-								src={image.illustration.line_2_yellow}
-								alt=""
-							/>
-						</div>
-
-						<p class="max-w-[300px] text-center text-lg leading-relaxed text-black/80">
-							Have improved social interactions
-						</p>
-					</div>
-				</div>
-
-				<div class="mt-20 flex justify-center">
-					<div class="grid grid-cols-2 items-center gap-16">
-						<div class="">
-							<div class="flex flex-col text-lg">
-								<p class="relative flex max-w-[600px]">
-									<span
-										class="font-display text-my-light-orangey-brown absolute -top-2 -left-1 -translate-x-full text-7xl font-bold"
-										>"</span
-									>
-									<span class="max-w-[440px] text-xl leading-relaxed">
-										The young person I work with is delighted with The Birch Collective, and now
-										feels more ready to take on life.
-									</span>
-								</p>
-								<div class="mt-4">
-									<p class="font-display text-bc-slate-pine text-3xl font-bold">
-										- Carol Baskin, Support Worker
-									</p>
-								</div>
-							</div>
-						</div>
-
-						<div class="flex justify-center">
-							<div class="bg-my-pale-yellow rotate-2 rounded-md p-4">
-								<enhanced:img
-									class="aspect-square w-[440px] rounded-md object-cover"
-									src={image.placeholder.participant_1}
-									alt=""
-								/>
-							</div>
-						</div>
-					</div>
+				<div class="mt-6">
+					<p class="max-w-[768px] text-lg leading-relaxed text-black/90">
+						We have a range of programmes, from free to paid, and from drop-ins to week-long nature
+						camps, that are inclusive and supportive.
+					</p>
 				</div>
 			</div>
 
-			<div class="mt-16 flex justify-center">
-				<p class="bg-bc-slate-pine rounded-md px-3 py-2 font-medium text-white">Read more</p>
+			<div class="mt-16 grid grid-cols-4 gap-20 px-10">
+				<div class="flex flex-col items-center gap-2 px-4">
+					<p class="font-display text-my-light-orangey-brown text-3xl font-bold">70%</p>
+					<p class="text-center text-lg leading-relaxed">
+						of respondents reported an increase in their feeling of wellbeing.
+					</p>
+				</div>
+				<div class="flex flex-col items-center gap-2 px-4">
+					<p class="font-display text-my-light-orangey-brown text-3xl font-bold">70%</p>
+					<p class="text-center text-lg leading-relaxed">
+						of respondents reported an increase in their feeling of wellbeing.
+					</p>
+				</div>
+				<div class="flex flex-col items-center gap-2 px-4">
+					<p class="font-display text-my-light-orangey-brown text-3xl font-bold">70%</p>
+					<p class="text-center text-lg leading-relaxed">
+						of respondents reported an increase in their feeling of wellbeing.
+					</p>
+				</div>
+				<div class="flex flex-col items-center gap-2 px-4">
+					<p class="font-display text-my-light-orangey-brown text-3xl font-bold">70%</p>
+					<p class="text-center text-lg leading-relaxed">
+						of respondents reported an increase in their feeling of wellbeing.
+					</p>
+				</div>
+			</div>
+
+			<div class="relative mt-32 flex flex-col items-center gap-8">
+				<div class="flex max-w-[800px] items-center gap-2 text-center">
+					<span class="font-display text-bc-pale-sandstone -rotate-6 text-7xl font-bold">"</span>
+					<p class="text-xl leading-relaxed">
+						The time I got to spend with others on the camp was just something so magical and
+						wonderful and beautiful I can't fully describe it.
+					</p>
+					<span class="font-display text-bc-pale-sandstone rotate-6 text-7xl font-bold">"</span>
+				</div>
+				<div class="flex max-w-[800px] items-center gap-2 text-center">
+					<span class="font-display text-bc-pale-sandstone -rotate-6 text-7xl font-bold">"</span>
+					<p class="text-xl leading-relaxed">
+						I feel I've left more accepting of others and myself
+					</p>
+					<span class="font-display text-bc-pale-sandstone rotate-6 text-7xl font-bold">"</span>
+				</div>
+
+				<button
+					class="bg-my-pale-yellow text-bc-slate-pine flex items-center gap-4 rounded-3xl px-5 py-3 tracking-wide"
+					type="button"
+				>
+					<span class="font-medium">Read more</span>
+					<span class="text-xl"><ArrowRight /></span>
+				</button>
 			</div>
 		</div>
-	</section> -->
+	</section>
 
-	<section class="relative mt-40 flex justify-center overflow-hidden px-40 pb-40">
+	<section class="relative mt-40 flex justify-center overflow-hidden px-40">
 		<div>
 			<div class="w-full">
 				<h2 class="font-display text-bc-pale-sandstone text-5xl font-bold">Ways to Help Out</h2>
@@ -446,12 +387,30 @@
 								class="bg-my-pale-yellow text-bc-slate-pine absolute bottom-4 left-1/2 mt-8 flex -translate-x-1/2 items-center gap-4 rounded-3xl px-5 py-3 tracking-wide"
 								type="button"
 							>
-								<span class="font-medium">Find out more</span>
+								<span class="font-medium">Donate now</span>
 								<span class="text-xl"><ArrowRight /></span>
 							</button>
 						</div>
 					</div>
 				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="relative mt-40 flex justify-center overflow-hidden px-40">
+		<div class="w-full">
+			<h2 class="font-display text-bc-pale-sandstone text-5xl font-bold">
+				Partners and Supporters
+			</h2>
+
+			<div class="mt-6">
+				<p class="max-w-[768px] text-lg leading-relaxed">
+					We're grateful to the following who are partners and support us.
+				</p>
+			</div>
+
+			<div class="mt-16">
+				<PartnersAndSupportersCarousel />
 			</div>
 		</div>
 	</section>
