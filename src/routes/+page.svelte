@@ -170,7 +170,7 @@
 		/>
 	</section> -->
 
-	<section class="relative mt-48 flex justify-center overflow-hidden px-40 pb-20">
+	<section class="relative mt-40 flex justify-center overflow-hidden px-40">
 		<div class="w-full">
 			<div class="">
 				<h2 class="font-display text-bc-pale-sandstone text-5xl font-bold">What We Offer</h2>
@@ -183,86 +183,56 @@
 				</div>
 			</div>
 
-			<div class="mt-20 grid w-full grid-cols-2 justify-between gap-40">
-				<div class="relative overflow-visible">
-					<enhanced:img
-						class="aspect-square w-full object-cover"
-						src={image.placeholder.standing_around_fire}
-						alt=""
-					/>
+			<div class="mt-16 grid grid-cols-2 gap-20">
+				<div class="flex flex-col items-center px-8">
+					<h3 class="font-display text-my-light-orangey-brown text-[54px] font-bold">
+						Free Programmes
+					</h3>
+					<p class="mt-5 text-center text-xl leading-relaxed">
+						If you're 16-25 and interested in nature based activities for wellbeing, click here.
+						They're free!
+					</p>
 
-					<div class="absolute bottom-0 -left-6 -z-10 w-[110%] translate-y-[40px]">
-						<svg viewBox="0 0 113 106" xmlns="http://www.w3.org/2000/svg">
-							<path
-								fill="#e9eb98"
-								d="M51.3,-18.1C58,3.8,48.9,29.4,32.9,39.7C16.8,50.1,-6.3,45.3,-26.3,31.9C-46.3,18.4,-63.2,-3.8,-58.3,-23.3C-53.4,-42.8,-26.7,-59.7,-2.2,-59C22.3,-58.2,44.7,-40,51.3,-18.1Z"
-								transform="translate(59.4 60)"
-							/>
-						</svg>
-					</div>
+					<div class="relative mt-8 px-8">
+						<enhanced:img
+							class="aspect-video w-full rounded-md object-cover"
+							src={image.placeholder.standing_around_fire}
+							alt=""
+						/>
 
-					<div
-						class="to-bc-slate-pine absolute bottom-0 left-1/2 z-20 w-full -translate-x-1/2 bg-gradient-to-b from-transparent p-8 pt-20 pb-10 text-white"
-					>
-						<div class="mx-auto max-w-[560px]">
-							<h3 class="font-display text-6xl font-bold tracking-wide text-white">
-								Free Programmes
-							</h3>
-							<div class="mt-4 flex items-end gap-4">
-								<p class="mt-5 text-xl leading-relaxed font-medium">
-									If you're 16-25 and interested in nature based activities for wellbeing, click
-									here. They're free!
-								</p>
-							</div>
-
-							<button
-								class="bg-my-pale-yellow relative mt-8 flex items-center gap-4 rounded-3xl px-5 py-3 tracking-wide text-black"
-								type="button"
-							>
-								<span class="text-lg font-medium">Find out more</span>
-								<span class="text-2xl"><ArrowRight /></span>
-							</button>
-						</div>
+						<button
+							class="bg-my-pale-yellow absolute bottom-4 left-1/2 mt-8 flex -translate-x-1/2 items-center gap-4 rounded-3xl px-5 py-3 tracking-wide text-black"
+							type="button"
+						>
+							<span class="text-lg font-medium">Find out more</span>
+							<span class="text-2xl"><ArrowRight /></span>
+						</button>
 					</div>
 				</div>
 
-				<div class="relative overflow-visible">
-					<enhanced:img
-						class="aspect-square w-full object-cover"
-						src={image.placeholder.group_photo}
-						alt=""
-					/>
+				<div class="flex flex-col items-center px-8">
+					<h3 class="font-display text-my-light-orangey-brown text-[54px] font-bold">
+						Partnerships
+					</h3>
+					<p class="mt-5 text-center text-xl leading-relaxed">
+						For young people, organisations, schools, youth groups, and professionals who want to
+						bring nature-based learning and wellbeing into their work.
+					</p>
 
-					<!-- <div class="absolute top-[-160px] left-20 -z-10 w-[110%] translate-y-[40px] rotate-12">
-						<svg viewBox="0 0 113 106" xmlns="http://www.w3.org/2000/svg">
-							<path
-								fill="#e6b777"
-								d="M51.3,-18.1C58,3.8,48.9,29.4,32.9,39.7C16.8,50.1,-6.3,45.3,-26.3,31.9C-46.3,18.4,-63.2,-3.8,-58.3,-23.3C-53.4,-42.8,-26.7,-59.7,-2.2,-59C22.3,-58.2,44.7,-40,51.3,-18.1Z"
-								transform="translate(59.4 60)"
-							/>
-						</svg>
-					</div> -->
+					<div class="relative mt-8 px-8">
+						<enhanced:img
+							class="aspect-video w-full rounded-md object-cover"
+							src={image.placeholder.group_photo}
+							alt=""
+						/>
 
-					<div
-						class="to-bc-slate-pine absolute bottom-0 left-1/2 z-20 w-full -translate-x-1/2 bg-gradient-to-b from-transparent p-8 pt-20 pb-10 text-white"
-					>
-						<div class="mx-auto max-w-[560px]">
-							<h3 class="font-display text-6xl font-bold tracking-wide text-white">Partnerships</h3>
-							<div class="mt-4 flex items-end gap-4">
-								<p class="mt-5 text-xl leading-relaxed font-medium">
-									For young people, organisations, schools, youth groups, and professionals who want
-									to bring nature-based learning and wellbeing into their work.
-								</p>
-							</div>
-
-							<button
-								class="bg-my-pale-yellow relative mt-8 flex items-center gap-4 rounded-3xl px-5 py-3 tracking-wide text-black"
-								type="button"
-							>
-								<span class="text-lg font-medium">Find out more</span>
-								<span class="text-2xl"><ArrowRight /></span>
-							</button>
-						</div>
+						<button
+							class="bg-my-pale-yellow absolute bottom-4 left-1/2 mt-8 flex -translate-x-1/2 items-center gap-4 rounded-3xl px-5 py-3 tracking-wide text-black"
+							type="button"
+						>
+							<span class="text-lg font-medium">Find out more</span>
+							<span class="text-2xl"><ArrowRight /></span>
+						</button>
 					</div>
 				</div>
 			</div>
