@@ -33,6 +33,7 @@
 	// - partners & supporters
 	// - images/videos.
 	// - other: donate, newsletter,
+	// - our impact - what they want??
 </script>
 
 <Header />
@@ -201,7 +202,7 @@
 						/>
 
 						<button
-							class="bg-my-pale-yellow absolute bottom-4 left-1/2 mt-8 flex -translate-x-1/2 items-center gap-4 rounded-3xl px-5 py-3 tracking-wide text-black"
+							class="bg-my-pale-yellow text-bc-slate-pine absolute bottom-4 left-1/2 mt-8 flex -translate-x-1/2 items-center gap-4 rounded-3xl px-5 py-3 tracking-wide"
 							type="button"
 						>
 							<span class="text-lg font-medium">Find out more</span>
@@ -227,7 +228,7 @@
 						/>
 
 						<button
-							class="bg-my-pale-yellow absolute bottom-4 left-1/2 mt-8 flex -translate-x-1/2 items-center gap-4 rounded-3xl px-5 py-3 tracking-wide text-black"
+							class="bg-my-pale-yellow text-bc-slate-pine absolute bottom-4 left-1/2 mt-8 flex -translate-x-1/2 items-center gap-4 rounded-3xl px-5 py-3 tracking-wide"
 							type="button"
 						>
 							<span class="text-lg font-medium">Find out more</span>
@@ -239,7 +240,7 @@
 		</div>
 	</section>
 
-	<section class="relative mt-40 flex justify-center overflow-hidden px-40">
+	<!-- <section class="relative mt-40 flex justify-center overflow-hidden px-40">
 		<div class="w-full">
 			<div
 				class="bg-bc-pale-sandstone/30 absolute -top-0 -left-1/2 -z-10 aspect-square w-[65%] rounded-full"
@@ -363,77 +364,91 @@
 				<p class="bg-bc-slate-pine rounded-md px-3 py-2 font-medium text-white">Read more</p>
 			</div>
 		</div>
-	</section>
+	</section> -->
 
 	<section class="relative mt-40 flex justify-center overflow-hidden px-40 pb-40">
 		<div>
 			<div class="w-full">
-				<h2 class="font-display text-bc-pale-sandstone text-5xl font-bold">
-					Other Ways to Get Involved
-				</h2>
+				<h2 class="font-display text-bc-pale-sandstone text-5xl font-bold">Ways to Help Out</h2>
 
-				<!-- <div class="mt-4 flex justify-center">
-					<p class="max-w-[600px] text-center text-lg">
-						We aim to have a lasting impact on young peoples' lives. As well as drop-in sessions, we
-						offer a long-term path for our participants.
+				<div class="mt-6">
+					<p class="max-w-[768px] text-lg leading-relaxed">
+						If you'd like to contribute or just get involved for your own development, there are a
+						number of ways!
 					</p>
-				</div> -->
+				</div>
 
-				<div class="mt-12 grid w-full grid-cols-3 justify-between gap-10">
-					<div>
-						<div class="relative">
-							<enhanced:img src={image.placeholder.caregiver_with_partipant_face_to_face} alt="" />
+				<div class="mt-16 grid grid-cols-3 gap-12 px-2">
+					<div class="flex flex-col items-center">
+						<h3 class="font-display text-my-light-orangey-brown text-[42px] font-bold">
+							Volunteer At a Programme
+						</h3>
+						<p class="mt-5 text-center text-[19px]">
+							Help out by supporting us at one or more of our programmes
+						</p>
 
-							<div
-								class="bg-my-light-orangey-brown absolute bottom-0 left-1/2 z-20 w-3/4 -translate-x-1/2 translate-y-1/2 p-8 text-black"
+						<div class="relative mt-8 px-8">
+							<enhanced:img
+								class="aspect-video w-full rounded-md object-cover"
+								src={image.placeholder.caregiver_with_partipant_face_to_face}
+								alt=""
+							/>
+
+							<button
+								class="bg-my-pale-yellow text-bc-slate-pine absolute bottom-4 left-1/2 mt-8 flex -translate-x-1/2 items-center gap-4 rounded-3xl px-5 py-3 tracking-wide"
+								type="button"
 							>
-								<h3 class="font-display text-4xl font-bold">Help Out at a Programme</h3>
-								<div class="flex items-end gap-4">
-									<p class="mt-5 text-lg leading-relaxed">
-										If you want to help out at one of our programmes, get in touch!
-									</p>
-
-									<span class="text-[44px]"><ArrowCircleRight weight="thin" /></span>
-								</div>
-							</div>
+								<span class="font-medium">Find out more</span>
+								<span class="text-xl"><ArrowRight /></span>
+							</button>
 						</div>
 					</div>
 
-					<div>
-						<div class="relative">
-							<enhanced:img src={image.placeholder.stay_calm_and_listen_to_nature} alt="" />
+					<div class="flex flex-col items-center">
+						<h3 class="font-display text-my-light-orangey-brown text-[42px] font-bold">
+							Voluntary Roles
+						</h3>
+						<p class="mt-5 text-center text-[19px]">
+							These are longer term and can be excellent work experience!
+						</p>
 
-							<div
-								class="bg-bc-slate-pine absolute bottom-0 left-1/2 z-20 w-3/4 -translate-x-1/2 translate-y-1/2 p-8 text-white"
+						<div class="relative mt-8 px-8">
+							<enhanced:img
+								class="aspect-video w-full rounded-md object-cover"
+								src={image.placeholder.stay_calm_and_listen_to_nature}
+								alt=""
+							/>
+
+							<button
+								class="bg-my-pale-yellow text-bc-slate-pine absolute bottom-4 left-1/2 mt-8 flex -translate-x-1/2 items-center gap-4 rounded-3xl px-5 py-3 tracking-wide"
+								type="button"
 							>
-								<h3 class="font-display text-4xl font-bold">Voluntary Roles</h3>
-								<div class="flex items-end gap-4">
-									<p class="mt-5 text-lg leading-relaxed">
-										These are longer term and can be excellent work experience!
-									</p>
-
-									<span class="text-[44px]"><ArrowCircleRight weight="thin" /></span>
-								</div>
-							</div>
+								<span class="font-medium">Find out more</span>
+								<span class="text-xl"><ArrowRight /></span>
+							</button>
 						</div>
 					</div>
 
-					<div>
-						<div class="relative">
-							<enhanced:img src={image.placeholder.chillies} alt="" />
+					<div class="flex flex-col items-center">
+						<h3 class="font-display text-my-light-orangey-brown text-[42px] font-bold">Donate</h3>
+						<p class="mt-5 grow text-center text-[19px]">
+							We appreciate any donation, no matter how small!
+						</p>
 
-							<div
-								class="bg-my-pale-yellow absolute bottom-0 left-1/2 z-20 w-3/4 -translate-x-1/2 translate-y-1/2 p-8"
+						<div class="relative mt-8 px-8">
+							<enhanced:img
+								class="aspect-video w-full rounded-md object-cover"
+								src={image.placeholder.axe_chopping}
+								alt=""
+							/>
+
+							<button
+								class="bg-my-pale-yellow text-bc-slate-pine absolute bottom-4 left-1/2 mt-8 flex -translate-x-1/2 items-center gap-4 rounded-3xl px-5 py-3 tracking-wide"
+								type="button"
 							>
-								<h3 class="font-display text-4xl font-bold">Donate</h3>
-								<div class="flex items-end gap-4">
-									<p class="mt-5 text-lg leading-relaxed">
-										We appreciate any donation, no matter how small!
-									</p>
-
-									<span class="text-[44px]"><ArrowCircleRight weight="thin" /></span>
-								</div>
-							</div>
+								<span class="font-medium">Find out more</span>
+								<span class="text-xl"><ArrowRight /></span>
+							</button>
 						</div>
 					</div>
 				</div>
@@ -441,14 +456,3 @@
 		</div>
 	</section>
 </div>
-
-<!-- <style>
-	.two-tone-text-main-title {
-		background: linear-gradient(to bottom, #e18a2f 50%, #e6b777 50%);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		/* For Firefox */
-		background-clip: text;
-		color: transparent;
-	}
-</style> -->
