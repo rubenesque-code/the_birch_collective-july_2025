@@ -47,9 +47,9 @@
 		{#each items as item, i (i)}
 			<Carousel.Item class="basis-1/6 ">
 				<div class="p-1">
-					<Card.Root class="border-my-pale-yellow">
+					<Card.Root class="border-white shadow-none">
 						<Card.Content class="flex items-center justify-center p-6">
-							<enhanced:img class="aspect-video object-contain" src={item} alt="" />
+							<enhanced:img class="aspect-video h-full w-full object-contain" src={item} alt="" />
 						</Card.Content>
 					</Card.Root>
 				</div>

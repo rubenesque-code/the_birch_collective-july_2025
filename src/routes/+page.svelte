@@ -30,10 +30,11 @@
 	// - body font. Browser font seems good.
 
 	// LANDING PAGE
-	// - partners & supporters
 	// - images/videos.
 	// - other: donate, newsletter,
-	// - our impact - what they want??
+
+	// IDEAS
+	// - second section of landing after banner being bullet points, the third section using hiqh quality nature images from the videos as cards as on bakken-beck
 </script>
 
 <Header />
