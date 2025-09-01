@@ -245,8 +245,8 @@
 					<h3 class="font-display text-bc-slate-pine mt-3 text-[42px] font-bold">Partnerships</h3>
 
 					<p class="mt-1 text-lg leading-relaxed">
-						If you're 16-25 and interested in nature based activities for wellbeing, click here.
-						They're free!
+						For young people, organisations, schools, youth groups, and professionals who want to
+						bring nature-based learning and wellbeing into their work.
 					</p>
 				</div>
 			</div>
