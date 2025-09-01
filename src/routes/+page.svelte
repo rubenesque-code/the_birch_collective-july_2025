@@ -319,22 +319,59 @@
 				Ways to Support Us
 			</h2>
 
-			<div class=" mt-6 grid w-full grid-cols-3 justify-between gap-20">
+			<div class=" mt-6 grid w-full grid-cols-3 justify-between gap-12">
 				<div class="">
 					<enhanced:img
 						class="aspect-video rounded-sm object-cover"
-						src={image.placeholder.banner_4}
+						src={image.placeholder.caregiver_with_partipant_face_to_face}
 						alt=""
 					/>
 
 					<h3 class="font-display text-bc-amber mt-3 text-[42px] font-bold">Programme Volunteer</h3>
 
 					<p class="mt-1 text-lg leading-relaxed">
-						If you're 16-25 and interested in nature based activities for wellbeing, click here.
-						They're free!
+						Help out by supporting us at one or more of our programmes
+					</p>
+				</div>
+
+				<div class="">
+					<enhanced:img
+						class="aspect-video rounded-sm object-cover"
+						src={image.placeholder.axe_chopping}
+						alt=""
+					/>
+
+					<h3 class="font-display text-bc-amber mt-3 text-[42px] font-bold">Voluntary Role</h3>
+
+					<p class="mt-1 text-lg leading-relaxed">
+						These are longer term and can be excellent work experience!
+					</p>
+				</div>
+
+				<div class="">
+					<enhanced:img
+						class="aspect-video rounded-sm object-cover"
+						src={image.placeholder.chillies}
+						alt=""
+					/>
+
+					<h3 class="font-display text-bc-amber mt-3 text-[42px] font-bold">Make a Donation</h3>
+
+					<p class="mt-1 text-lg leading-relaxed">
+						These are longer term and can be excellent work experience!
 					</p>
 				</div>
 			</div>
+		</div>
+	</section>
+
+	<section class="relative mt-36 flex justify-center px-40">
+		<div>
+			<h2 class="font-display text-3xl font-bold tracking-wide text-black/70">
+				Partners & Supporters
+			</h2>
+
+			<div class="mt-6"><PartnersAndSupportersCarousel /></div>
 		</div>
 	</section>
 </div>
