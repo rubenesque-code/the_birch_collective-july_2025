@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-	import { ArrowCircleRight, ArrowRight } from 'phosphor-svelte';
+	import { ArrowCircleRight, ArrowRight, Clover } from 'phosphor-svelte';
 
 	import image from '^assets/image';
 
@@ -163,6 +163,70 @@
 		</div>
 	</section>
 
+	<section class="relative mt-36 flex justify-center px-40">
+		<div class=" max-w-[680px]">
+			<h2 class="font-display text-bc-slate-pine text-[52px] leading-[1.25em] font-bold">
+				Cultivating Purpose, Belonging & Resilience
+			</h2>
+
+			<div class="mt-4 flex flex-col gap-3">
+				<div class="mt-2 flex items-center gap-4">
+					<span class="text-bc-pale-sandstone text-3xl"><Clover /></span>
+					<p class="text-xl leading-relaxed">
+						We work alongside young adults to empower and support your transition into adulthood
+					</p>
+				</div>
+
+				<div class="mt-2 flex items-center gap-4">
+					<span class="text-bc-pale-sandstone text-3xl"><Clover /></span>
+					<p class="text-xl leading-relaxed">
+						We want you to unlock your potential to engage fully with life, and to respond
+						resiliently to life's challenges
+					</p>
+				</div>
+
+				<div class="mt-2 flex items-center gap-4">
+					<span class="text-bc-pale-sandstone text-3xl"><Clover /></span>
+					<p class="text-xl leading-relaxed">
+						We believe that developing connections with the natural world gives you a sense of
+						belonging
+					</p>
+				</div>
+
+				<div class="mt-2 flex items-center gap-4">
+					<span class="text-bc-pale-sandstone text-3xl"><Clover /></span>
+					<p class="text-xl leading-relaxed">
+						We offer you the chance to be part of an inclusive community where you can explore
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="relative mt-32 flex justify-center px-40">
+		<div class=" flex w-full justify-between gap-40">
+			<div class="">
+				<div class="w-[700px]">
+					<enhanced:img
+						class="aspect-video rounded-sm object-cover"
+						src={image.placeholder.banner_4}
+						alt=""
+					/>
+				</div>
+			</div>
+
+			<div class="">
+				<div class="w-[700px]">
+					<enhanced:img
+						class="aspect-video rounded-sm object-cover"
+						src={image.placeholder.banner_15}
+						alt=""
+					/>
+				</div>
+			</div>
+		</div>
+	</section>
+
 	<!-- <section class="mt-28 flex justify-center">
 		<enhanced:img
 			class="h-[3px] w-[250px] object-cover"
@@ -170,248 +234,4 @@
 			alt=""
 		/>
 	</section> -->
-	<section class="relative mt-40 flex justify-center overflow-hidden px-40">
-		<div class="w-full">
-			<div class="">
-				<h2 class="font-display text-bc-pale-sandstone text-5xl font-bold">What We Offer</h2>
-
-				<div class="mt-6">
-					<p class="max-w-[768px] text-lg leading-relaxed">
-						We have a range of programmes, from free to paid, and from drop-ins to week-long nature
-						camps, that are inclusive and supportive.
-					</p>
-				</div>
-			</div>
-
-			<div class="mt-16 grid grid-cols-2 gap-20">
-				<div class="flex flex-col items-center px-8">
-					<h3 class="font-display text-my-light-orangey-brown text-[54px] font-bold">
-						Free Programmes
-					</h3>
-					<p class="mt-5 text-center text-xl leading-relaxed">
-						If you're 16-25 and interested in nature based activities for wellbeing, click here.
-						They're free!
-					</p>
-
-					<div class="relative mt-8 px-8">
-						<enhanced:img
-							class="aspect-video w-full rounded-md object-cover"
-							src={image.placeholder.standing_around_fire}
-							alt=""
-						/>
-
-						<button
-							class="bg-my-pale-yellow text-bc-slate-pine absolute bottom-4 left-1/2 mt-8 flex -translate-x-1/2 items-center gap-4 rounded-3xl px-5 py-3 tracking-wide"
-							type="button"
-						>
-							<span class="text-lg font-medium">Find out more</span>
-							<span class="text-2xl"><ArrowRight /></span>
-						</button>
-					</div>
-				</div>
-
-				<div class="flex flex-col items-center px-8">
-					<h3 class="font-display text-my-light-orangey-brown text-[54px] font-bold">
-						Partnerships
-					</h3>
-					<p class="mt-5 text-center text-xl leading-relaxed">
-						For young people, organisations, schools, youth groups, and professionals who want to
-						bring nature-based learning and wellbeing into their work.
-					</p>
-
-					<div class="relative mt-8 px-8">
-						<enhanced:img
-							class="aspect-video w-full rounded-md object-cover"
-							src={image.placeholder.group_photo}
-							alt=""
-						/>
-
-						<button
-							class="bg-my-pale-yellow text-bc-slate-pine absolute bottom-4 left-1/2 mt-8 flex -translate-x-1/2 items-center gap-4 rounded-3xl px-5 py-3 tracking-wide"
-							type="button"
-						>
-							<span class="text-lg font-medium">Find out more</span>
-							<span class="text-2xl"><ArrowRight /></span>
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section class="relative mt-40 flex justify-center overflow-hidden px-40">
-		<div class="w-full">
-			<div class="">
-				<h2 class="font-display text-bc-pale-sandstone text-5xl font-bold">Our Impact</h2>
-
-				<div class="mt-6">
-					<p class="max-w-[768px] text-lg leading-relaxed text-black/90">
-						We have a range of programmes, from free to paid, and from drop-ins to week-long nature
-						camps, that are inclusive and supportive.
-					</p>
-				</div>
-			</div>
-
-			<div class="mt-16 grid grid-cols-4 gap-20 px-10">
-				<div class="flex flex-col items-center gap-2 px-4">
-					<p class="font-display text-my-light-orangey-brown text-3xl font-bold">70%</p>
-					<p class="text-center text-lg leading-relaxed">
-						of respondents reported an increase in their feeling of wellbeing.
-					</p>
-				</div>
-				<div class="flex flex-col items-center gap-2 px-4">
-					<p class="font-display text-my-light-orangey-brown text-3xl font-bold">70%</p>
-					<p class="text-center text-lg leading-relaxed">
-						of respondents reported an increase in their feeling of wellbeing.
-					</p>
-				</div>
-				<div class="flex flex-col items-center gap-2 px-4">
-					<p class="font-display text-my-light-orangey-brown text-3xl font-bold">70%</p>
-					<p class="text-center text-lg leading-relaxed">
-						of respondents reported an increase in their feeling of wellbeing.
-					</p>
-				</div>
-				<div class="flex flex-col items-center gap-2 px-4">
-					<p class="font-display text-my-light-orangey-brown text-3xl font-bold">70%</p>
-					<p class="text-center text-lg leading-relaxed">
-						of respondents reported an increase in their feeling of wellbeing.
-					</p>
-				</div>
-			</div>
-
-			<div class="relative mt-32 flex flex-col items-center gap-8">
-				<div class="flex max-w-[800px] items-center gap-2 text-center">
-					<span class="font-display text-bc-pale-sandstone -rotate-6 text-7xl font-bold">"</span>
-					<p class="text-xl leading-relaxed">
-						The time I got to spend with others on the camp was just something so magical and
-						wonderful and beautiful I can't fully describe it.
-					</p>
-					<span class="font-display text-bc-pale-sandstone rotate-6 text-7xl font-bold">"</span>
-				</div>
-				<div class="flex max-w-[800px] items-center gap-2 text-center">
-					<span class="font-display text-bc-pale-sandstone -rotate-6 text-7xl font-bold">"</span>
-					<p class="text-xl leading-relaxed">
-						I feel I've left more accepting of others and myself
-					</p>
-					<span class="font-display text-bc-pale-sandstone rotate-6 text-7xl font-bold">"</span>
-				</div>
-
-				<button
-					class="bg-my-pale-yellow text-bc-slate-pine flex items-center gap-4 rounded-3xl px-5 py-3 tracking-wide"
-					type="button"
-				>
-					<span class="font-medium">Read more</span>
-					<span class="text-xl"><ArrowRight /></span>
-				</button>
-			</div>
-		</div>
-	</section>
-
-	<section class="relative mt-40 flex justify-center overflow-hidden px-40">
-		<div>
-			<div class="w-full">
-				<h2 class="font-display text-bc-pale-sandstone text-5xl font-bold">Ways to Help Out</h2>
-
-				<div class="mt-6">
-					<p class="max-w-[768px] text-lg leading-relaxed">
-						If you'd like to contribute or just get involved for your own development, there are a
-						number of ways!
-					</p>
-				</div>
-
-				<div class="mt-16 grid grid-cols-3 gap-12 px-2">
-					<div class="flex flex-col items-center">
-						<h3 class="font-display text-my-light-orangey-brown text-[42px] font-bold">
-							Volunteer At a Programme
-						</h3>
-						<p class="mt-5 text-center text-[19px]">
-							Help out by supporting us at one or more of our programmes
-						</p>
-
-						<div class="relative mt-8 px-8">
-							<enhanced:img
-								class="aspect-video w-full rounded-md object-cover"
-								src={image.placeholder.caregiver_with_partipant_face_to_face}
-								alt=""
-							/>
-
-							<button
-								class="bg-my-pale-yellow text-bc-slate-pine absolute bottom-4 left-1/2 mt-8 flex -translate-x-1/2 items-center gap-4 rounded-3xl px-5 py-3 tracking-wide"
-								type="button"
-							>
-								<span class="font-medium">Find out more</span>
-								<span class="text-xl"><ArrowRight /></span>
-							</button>
-						</div>
-					</div>
-
-					<div class="flex flex-col items-center">
-						<h3 class="font-display text-my-light-orangey-brown text-[42px] font-bold">
-							Voluntary Roles
-						</h3>
-						<p class="mt-5 text-center text-[19px]">
-							These are longer term and can be excellent work experience!
-						</p>
-
-						<div class="relative mt-8 px-8">
-							<enhanced:img
-								class="aspect-video w-full rounded-md object-cover"
-								src={image.placeholder.stay_calm_and_listen_to_nature}
-								alt=""
-							/>
-
-							<button
-								class="bg-my-pale-yellow text-bc-slate-pine absolute bottom-4 left-1/2 mt-8 flex -translate-x-1/2 items-center gap-4 rounded-3xl px-5 py-3 tracking-wide"
-								type="button"
-							>
-								<span class="font-medium">Find out more</span>
-								<span class="text-xl"><ArrowRight /></span>
-							</button>
-						</div>
-					</div>
-
-					<div class="flex flex-col items-center">
-						<h3 class="font-display text-my-light-orangey-brown text-[42px] font-bold">Donate</h3>
-						<p class="mt-5 grow text-center text-[19px]">
-							We appreciate any donation, no matter how small!
-						</p>
-
-						<div class="relative mt-8 px-8">
-							<enhanced:img
-								class="aspect-video w-full rounded-md object-cover"
-								src={image.placeholder.axe_chopping}
-								alt=""
-							/>
-
-							<button
-								class="bg-my-pale-yellow text-bc-slate-pine absolute bottom-4 left-1/2 mt-8 flex -translate-x-1/2 items-center gap-4 rounded-3xl px-5 py-3 tracking-wide"
-								type="button"
-							>
-								<span class="font-medium">Donate now</span>
-								<span class="text-xl"><ArrowRight /></span>
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section class="relative mt-40 flex justify-center overflow-hidden px-40">
-		<div class="w-full">
-			<h2 class="font-display text-bc-pale-sandstone text-5xl font-bold">
-				Partners and Supporters
-			</h2>
-
-			<div class="mt-6">
-				<p class="max-w-[768px] text-lg leading-relaxed">
-					We're grateful to the following who are partners and support us.
-				</p>
-			</div>
-
-			<div class="mt-16">
-				<PartnersAndSupportersCarousel />
-			</div>
-		</div>
-	</section>
 </div>

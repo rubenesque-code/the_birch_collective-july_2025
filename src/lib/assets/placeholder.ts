@@ -14,8 +14,14 @@ import donate from "./_files/images/placeholder/donate.webp?enhanced";
 import volunteer from "./_files/images/placeholder/volunteer.webp?enhanced";
 import young_people_volunteering_in_nature_illustration from "./_files/images/placeholder/young-people-working-in-nature-illustration.webp?enhanced";
 import mission_vid_placeholder from "./_files/images/placeholder/frame_at_10s.png?enhanced";
+import banner_4 from "./_files/images/placeholder/banner_frame_0004.jpg?enhanced";
+import banner_10 from "./_files/images/placeholder/banner_frame_0010.jpg?enhanced";
+import banner_15 from "./_files/images/placeholder/banner_frame_0015.jpg?enhanced";
 
 const placeholder = {
+  banner_4,
+  banner_10,
+  banner_15,
   mission_vid_placeholder,
   donate,
   volunteer,
