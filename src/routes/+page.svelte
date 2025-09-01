@@ -327,7 +327,7 @@
 						alt=""
 					/>
 
-					<h3 class="font-display text-bc-amber mt-3 text-[42px] font-bold">Free Programmes</h3>
+					<h3 class="font-display text-bc-amber mt-3 text-[42px] font-bold">Programme Volunteer</h3>
 
 					<p class="mt-1 text-lg leading-relaxed">
 						If you're 16-25 and interested in nature based activities for wellbeing, click here.
