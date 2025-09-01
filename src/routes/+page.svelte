@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-	import { ArrowCircleRight, ArrowRight, Clover } from 'phosphor-svelte';
+	import { ArrowCircleRight, ArrowRight, Circle, Clover, Quotes } from 'phosphor-svelte';
 
 	import image from '^assets/image';
 
@@ -225,9 +225,7 @@
 						alt=""
 					/>
 
-					<h3 class="font-display text-bc-slate-pine mt-3 text-[42px] font-bold">
-						Free Programmes
-					</h3>
+					<h3 class="font-display text-bc-amber mt-3 text-[42px] font-bold">Free Programmes</h3>
 
 					<p class="mt-1 text-lg leading-relaxed">
 						If you're 16-25 and interested in nature based activities for wellbeing, click here.
@@ -242,7 +240,7 @@
 						alt=""
 					/>
 
-					<h3 class="font-display text-bc-slate-pine mt-3 text-[42px] font-bold">Partnerships</h3>
+					<h3 class="font-display text-bc-amber mt-3 text-[42px] font-bold">Partnerships</h3>
 
 					<p class="mt-1 text-lg leading-relaxed">
 						For young people, organisations, schools, youth groups, and professionals who want to
@@ -253,11 +251,65 @@
 		</div>
 	</section>
 
-	<!-- <section class="mt-28 flex justify-center">
-		<enhanced:img
-			class="h-[3px] w-[250px] object-cover"
-			src={image.illustration.drawn_line_black}
-			alt=""
-		/>
-	</section> -->
+	<section class="relative mt-36 flex justify-center px-40">
+		<div class=" max-w-[680px]">
+			<h2 class="font-display text-bc-slate-pine text-[52px] leading-[1.25em] font-bold">
+				Our Impact
+			</h2>
+
+			<div class="mt-4 flex flex-col gap-4">
+				<div class="flex items-center gap-4">
+					<span class="text-bc-pale-sandstone text-3xl"><Circle /></span>
+					<p class="text-xl leading-relaxed">70% of participants report an increase in wellbeing</p>
+				</div>
+				<div class="flex items-center gap-4">
+					<span class="text-bc-pale-sandstone text-3xl"><Circle /></span>
+					<p class="text-xl leading-relaxed">80% have improved behaviour for learning</p>
+				</div>
+				<div class="flex items-center gap-4">
+					<span class="text-bc-pale-sandstone text-3xl"><Circle /></span>
+					<p class="text-xl leading-relaxed">90% have improved social interaction</p>
+				</div>
+
+				<div class="mt-4 flex items-start gap-4">
+					<span class="text-bc-pale-sandstone scale-x-[-1] text-3xl"
+						><Quotes weight="duotone" /></span
+					>
+					<p class="text-xl leading-relaxed text-black/80">
+						I can see a future for myself now; I can see myself doing well in exams and getting a
+						good <span class="relative"
+							>job
+							<span class="text-bc-pale-sandstone absolute top-0 -right-1 translate-x-full text-lg"
+								><Quotes weight="duotone" /></span
+							>
+						</span>
+					</p>
+				</div>
+
+				<div class="flex items-start gap-4">
+					<span class="text-bc-pale-sandstone scale-x-[-1] text-3xl"
+						><Quotes weight="duotone" /></span
+					>
+					<p class="text-xl leading-relaxed text-black/80">
+						I leave feeling more accepting of other people and <span class="relative"
+							>myself
+							<span class="text-bc-pale-sandstone absolute top-0 -right-1 translate-x-full text-lg"
+								><Quotes weight="duotone" /></span
+							>
+						</span>
+					</p>
+				</div>
+			</div>
+
+			<div class="mt-12 flex justify-center">
+				<button
+					class="bg-bc-slate-pine flex items-center gap-2 rounded-full px-5 py-[6px] text-lg text-white"
+					type="button"
+				>
+					<span>Read more</span>
+					<span><ArrowRight /></span>
+				</button>
+			</div>
+		</div>
+	</section>
 </div>
