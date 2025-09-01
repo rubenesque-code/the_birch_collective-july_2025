@@ -218,27 +218,36 @@
 			<h2 class="font-display text-3xl font-bold tracking-wide text-black/70">What We Offer</h2>
 
 			<div class=" mt-6 flex w-full justify-between gap-40">
-				<div class="">
-					<div class="w-[700px]">
-						<enhanced:img
-							class="aspect-video rounded-sm object-cover"
-							src={image.placeholder.banner_4}
-							alt=""
-						/>
-					</div>
+				<div class="w-[700px]">
+					<enhanced:img
+						class="aspect-video rounded-sm object-cover"
+						src={image.placeholder.banner_4}
+						alt=""
+					/>
+
 					<h3 class="font-display text-bc-slate-pine mt-3 text-[42px] font-bold">
 						Free Programmes
 					</h3>
+
+					<p class="mt-1 text-lg leading-relaxed">
+						If you're 16-25 and interested in nature based activities for wellbeing, click here.
+						They're free!
+					</p>
 				</div>
 
-				<div class="">
-					<div class="w-[700px]">
-						<enhanced:img
-							class="aspect-video rounded-sm object-cover"
-							src={image.placeholder.banner_15}
-							alt=""
-						/>
-					</div>
+				<div class="w-[700px]">
+					<enhanced:img
+						class="aspect-video rounded-sm object-cover"
+						src={image.placeholder.banner_15}
+						alt=""
+					/>
+
+					<h3 class="font-display text-bc-slate-pine mt-3 text-[42px] font-bold">Partnerships</h3>
+
+					<p class="mt-1 text-lg leading-relaxed">
+						If you're 16-25 and interested in nature based activities for wellbeing, click here.
+						They're free!
+					</p>
 				</div>
 			</div>
 		</div>
