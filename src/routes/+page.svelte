@@ -200,10 +200,22 @@
 					</p>
 				</div>
 			</div>
+
+			<div class="mt-12 flex justify-center">
+				<button
+					class="bg-bc-pale-sandstone flex items-center gap-2 rounded-full px-5 py-[6px] text-lg text-black/65"
+					type="button"
+				>
+					<span>Our Theory of Change</span>
+					<span><ArrowRight /></span>
+				</button>
+			</div>
 		</div>
 	</section>
 
-	<section class="relative mt-32 flex justify-center px-40">
+	<section class="relative mt-36 flex justify-center px-40">
+		<h2>What We Offer</h2>
+
 		<div class=" flex w-full justify-between gap-40">
 			<div class="">
 				<div class="w-[700px]">
