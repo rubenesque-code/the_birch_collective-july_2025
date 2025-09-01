@@ -76,38 +76,6 @@
 						<span class="text-2xl"><ArrowRight /></span>
 					</button>
 				</div>
-
-				<!-- <div class="mt-10 flex items-center gap-12">
-					<a
-						class="font-display relative flex items-center gap-4 text-4xl font-bold tracking-wide text-white"
-						href="/"
-					>
-						<span>Programmes</span>
-						<span>
-							<enhanced:img
-								class="absolute bottom-[-7px] left-0 h-[3px] w-full -translate-x-[8px] object-cover"
-								src={image.illustration.drawn_line_amber}
-								alt=""
-							/>
-						</span>
-					</a>
-
-					<button
-						class="font-display relative flex items-center gap-2 text-4xl font-bold tracking-wide text-white"
-						type="button"
-					>
-						<span class="text-white">Our Mission</span>
-						<enhanced:img class="w-[20px]" src={image.illustration.play_icon_white} alt="" />
-
-						<span
-							><enhanced:img
-								class="absolute bottom-[-7px] left-0 h-[3px] w-full -translate-x-[8px] object-cover"
-								src={image.illustration.drawn_line_amber}
-								alt=""
-							/></span
-						>
-					</button>
-				</div> -->
 			</div>
 		</div>
 	</section>
@@ -218,7 +186,7 @@
 			<h2 class="font-display text-3xl font-bold tracking-wide text-black/70">What We Offer</h2>
 
 			<div class=" mt-6 flex w-full justify-between gap-40">
-				<div class="w-[700px]">
+				<a class="w-[700px]" href="/free-programmes">
 					<enhanced:img
 						class="aspect-video rounded-sm object-cover"
 						src={image.placeholder.banner_4}
@@ -231,7 +199,7 @@
 						If you're 16-25 and interested in nature based activities for wellbeing, click here.
 						They're free!
 					</p>
-				</div>
+				</a>
 
 				<div class="w-[700px]">
 					<enhanced:img

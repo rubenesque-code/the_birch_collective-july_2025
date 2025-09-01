@@ -11,11 +11,11 @@
 			<enhanced:img class="w-[68px]" src={image.birch.logo.img_only} alt="" />
 		</div>
 
-		<h1 class="font-display flex flex-col text-4xl font-bold">
+		<a class="font-display flex flex-col text-4xl font-bold" href="/">
 			<span class="translate-x-[20px]">The</span>
 			<span class="translate-x-[40px] translate-y-[-10px] text-[66px]">Birch</span>
 			<span class="translate-x-[0px] translate-y-[-20px]">Collective</span>
-		</h1>
+		</a>
 	</div>
 </header>
 
