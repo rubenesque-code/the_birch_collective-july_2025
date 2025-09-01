@@ -214,26 +214,31 @@
 	</section>
 
 	<section class="relative mt-36 flex justify-center px-40">
-		<h2>What We Offer</h2>
+		<div>
+			<h2 class="font-display text-3xl font-bold tracking-wide text-black/70">What We Offer</h2>
 
-		<div class=" flex w-full justify-between gap-40">
-			<div class="">
-				<div class="w-[700px]">
-					<enhanced:img
-						class="aspect-video rounded-sm object-cover"
-						src={image.placeholder.banner_4}
-						alt=""
-					/>
+			<div class=" mt-6 flex w-full justify-between gap-40">
+				<div class="">
+					<div class="w-[700px]">
+						<enhanced:img
+							class="aspect-video rounded-sm object-cover"
+							src={image.placeholder.banner_4}
+							alt=""
+						/>
+					</div>
+					<h3 class="font-display text-bc-slate-pine mt-3 text-[42px] font-bold">
+						Free Programmes
+					</h3>
 				</div>
-			</div>
 
-			<div class="">
-				<div class="w-[700px]">
-					<enhanced:img
-						class="aspect-video rounded-sm object-cover"
-						src={image.placeholder.banner_15}
-						alt=""
-					/>
+				<div class="">
+					<div class="w-[700px]">
+						<enhanced:img
+							class="aspect-video rounded-sm object-cover"
+							src={image.placeholder.banner_15}
+							alt=""
+						/>
+					</div>
 				</div>
 			</div>
 		</div>
