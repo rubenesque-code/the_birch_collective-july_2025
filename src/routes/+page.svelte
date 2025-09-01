@@ -312,4 +312,29 @@
 			</div>
 		</div>
 	</section>
+
+	<section class="relative mt-36 flex justify-center px-40">
+		<div>
+			<h2 class="font-display text-3xl font-bold tracking-wide text-black/70">
+				Ways to Support Us
+			</h2>
+
+			<div class=" mt-6 grid w-full grid-cols-3 justify-between gap-20">
+				<div class="">
+					<enhanced:img
+						class="aspect-video rounded-sm object-cover"
+						src={image.placeholder.banner_4}
+						alt=""
+					/>
+
+					<h3 class="font-display text-bc-amber mt-3 text-[42px] font-bold">Free Programmes</h3>
+
+					<p class="mt-1 text-lg leading-relaxed">
+						If you're 16-25 and interested in nature based activities for wellbeing, click here.
+						They're free!
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
 </div>
