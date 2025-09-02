@@ -69,7 +69,7 @@
 				</div>
 
 				<div class="flex justify-end">
-					<a class="w-[700px]" href="/free-programmes">
+					<a class="w-[700px]" href="/fresh-air-thursday">
 						<enhanced:img
 							class="aspect-video rounded-sm object-cover"
 							src={image.placeholder.group_photo}
