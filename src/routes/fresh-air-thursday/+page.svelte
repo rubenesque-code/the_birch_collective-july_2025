@@ -1,5 +1,6 @@
 <script lang="ts" module>
 	import image from '^assets/image';
+	import { fresh_air_thursday_participant_testimonial_placeholder } from '^assets/videos';
 	import { Header } from '^components/~sections';
 	import { Clover } from 'phosphor-svelte';
 </script>
@@ -39,7 +40,45 @@
 		</div>
 	</section>
 
-	<section class="mt-32 px-60">
+	<section class="mt-10 px-60">
+		<div class="flex w-full justify-center">
+			<div class="max-w-[768px]">
+				<p class="text-xl leading-relaxed">
+					Fresh, is our weekly group for 16-25 year olds. We offer a range of activities designed at
+					a pace to make learning accessible and to draw out your creativity. There is no fixed time
+					limit to attendance, attend all year round, once a month or just one off, totally up to
+					you. You can attend until your 26 birthday. If you are older the 26 or reach that age
+					there are opportunities to return as peer mentor to support others, if this is of interest
+					to you.
+				</p>
+
+				<div class="mt-6 text-xl leading-relaxed">
+					<div class="flex flex-col gap-[5px]">
+						<p>
+							This is currently running from <span class="underline"
+								>February 20th 2025 - December 18th 2025</span
+							>.
+						</p>
+						<p>
+							It runs from <span class="underline">1pm to 5pm</span>.
+						</p>
+						<p>
+							It's for <span class="underline">anyone 16 - 25 years old</span>.
+						</p>
+						<p>
+							This is <span class="underline">free but booking is essential</span>!
+						</p>
+						<p>
+							This takes place at <span class="underline">Strawberry Lane Community Garden</span>.
+							See on <span class="underline">Google Maps</span>.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="mt-24 px-60">
 		<div class="flex justify-center">
 			<!-- svelte-ignore a11y_click_events_have_key_events -->
 			<!-- svelte-ignore a11y_no_static_element_interactions -->
@@ -49,14 +88,233 @@
 					playIntroVideo = true;
 				}}
 			>
-				<enhanced:img class="w-[700px] rounded-md" src={image.placeholder.banner_1} alt="" />
+				<p class="text-right text-black/70">Fresh Air Thursdays - An Introduction</p>
+				<enhanced:img class="mt-2 w-[900px] rounded-md" src={image.placeholder.banner_1} alt="" />
 
 				<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
 					<enhanced:img class="w-[50px]" src={image.illustration.play_icon_white} alt="" />
 				</div>
+			</div>
+		</div>
+	</section>
 
-				<div class="absolute top-2 right-2">
-					<p class="text-[17px] font-medium text-white">Fresh Air Thursday — An Introduction</p>
+	<section class="mt-24 flex justify-center px-60">
+		<div class="w-full max-w-[768px]">
+			<h2 class="font-display text-bc-slate-pine text-6xl font-bold">What To Expect</h2>
+
+			<div class="mt-12">
+				<div class="flex flex-col gap-8">
+					<div>
+						<h4 class="text-xl font-medium text-black/80">Nature based craft</h4>
+						<p class="mt-4 text-lg">
+							Making all manner of things from willow with our resident willow expert Amy, from
+							baskets to bird feeders, fences to climbing structures for plants. - Natural and
+							traditional building techniques - such as using cob, building using round wood timber
+							or using hazel to make fences. - Making functional or decorative items from found and
+							foraged items in the garden or nearby woodland.
+						</p>
+					</div>
+
+					<div>
+						<h4 class="text-xl font-medium text-black/80">Organic horticulture and permaculture</h4>
+						<p class="mt-4 text-lg">
+							Our team has many years experience in growing organic vegetables. We will explore and
+							offer learning in a range of wildlife friendly food growing and horticulture
+							techniques and practices. - We also explore wider land management techniques such as;
+							coppicing, hedging, habitat creation and permaculture techniques for designing spaces.
+						</p>
+					</div>
+					<div>
+						<h4 class="text-xl font-medium text-black/80">Cookery</h4>
+						<p class="mt-4 text-lg">
+							Outdoor cookery or cooking on the campfire is a fine art and also a greatly satisfying
+							process. - Ro is a master and loves teaching people suitable recipes but importantly
+							how to build and maintain fires that allow you to cook a wide range of treats, without
+							ending up with burnt grub!
+						</p>
+					</div>
+					<div>
+						<h4 class="text-xl font-medium text-black/80">
+							Nature based awareness and mindfulness techniques
+						</h4>
+						<p class="mt-4 text-lg">
+							Alongside all the 'doing' we also encourage people to just be. - During sessions we
+							will share with you simple practices to enable you to feel a greater sense of inner
+							peace, calm and aid in managing stress. - We suggest ways to use the natural world as
+							the lens through which to see the world and our personal struggles through, offering
+							new perspective and comfort.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="mt-24 flex justify-center px-60">
+		<div class="w-full max-w-[768px]">
+			<h2 class="font-display text-bc-amber text-6xl font-bold">Who Is This Suitable For</h2>
+
+			<div class="mt-12">
+				<div class="flex flex-col gap-4">
+					<p class="text-lg underline">
+						Anyone seeking to spend more time in the outdoors and meet new people.
+					</p>
+					<p class="text-lg underline">Struggling with family and relationship issues.​</p>
+					<p class="text-lg underline">Experiencing feelings of loneliness or isolation​.</p>
+					<p class="text-lg underline">Struggling to engage with study​​.</p>
+					<p class="text-lg underline">Not in education, employment or training​.</p>
+					<p class="text-lg underline">Experiencing low-level mental health issues.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="mt-24 flex justify-center px-60">
+		<div class="my-grid">
+			<enhanced:img
+				class="mb-4 h-full w-full object-cover"
+				src={image.placeholder.caregiver_with_partipant_face_to_face}
+				alt=""
+			/>
+			<enhanced:img
+				class="mb-4 h-full w-full object-cover"
+				src={image.placeholder.axe_chopping}
+				alt=""
+			/>
+			<enhanced:img
+				class="mb-4 h-full w-full object-cover"
+				src={image.placeholder.standing_around_fire}
+				alt=""
+			/>
+			<enhanced:img
+				class="mb-4 h-full w-full object-cover"
+				src={image.placeholder.james_and_helper_talking_to_participant}
+				alt=""
+			/>
+			<enhanced:img
+				class="mb-4 h-full w-full object-cover"
+				src={image.placeholder.chillies}
+				alt=""
+			/>
+			<enhanced:img
+				class="mb-4 h-full w-full object-cover"
+				src={image.placeholder.fresh_air_thursday_sign}
+				alt=""
+			/>
+			<enhanced:img
+				class="mb-4 h-full w-full object-cover"
+				src={image.placeholder.banner_10}
+				alt=""
+			/>
+			<enhanced:img class="h-full w-full object-cover" src={image.placeholder.banner_15} alt="" />
+		</div>
+	</section>
+
+	<div class="mt-16 flex justify-center">
+		<div class="h-[1px] w-[300px] border border-black/10"></div>
+	</div>
+
+	<section class="mt-24 flex justify-center px-60">
+		<div class="flex items-center gap-8">
+			<button
+				class="bg-bc-slate-pine rounded-full px-5 py-3 text-xl font-medium tracking-wide text-white"
+				type="button">Sign Up Today</button
+			>
+
+			<p class="">(It takes around 5 minutes)</p>
+		</div>
+		<!-- <div class="w-full max-w-[768px]">
+			<div class="flex flex-col gap-6">
+				<div class="flex items-center gap-8">
+					<button
+						class="bg-bc-slate-pine rounded-full px-5 py-3 text-xl font-medium tracking-wide text-white"
+						type="button">Sign Up Today</button
+					>
+
+					<p class="">(It takes around 5 minutes)</p>
+				</div>
+
+				<p class="pl-16 underline">Or</p>
+
+				<div class="flex items-end gap-2">
+					<button class="text-bc-amber text-xl font-medium" type="button">Register interest.</button
+					>
+
+					<p class="">We'll keep you informed.</p>
+				</div>
+			</div>
+		</div> -->
+	</section>
+
+	<section class="mt-24 flex justify-center px-60">
+		<div class="w-full max-w-[768px]">
+			<h2 class="font-display text-bc-amber text-6xl font-bold">Feedback</h2>
+
+			<div class="mt-12">
+				<h4 class="text-bc-slate-pine/80 font-display text-4xl font-bold">What Participants Say</h4>
+				<div class="mt-6 flex flex-col gap-6">
+					<p class="text-xl">
+						"The time I got to spend with others on camp was so magical and beautiful I can’t fully
+						describe it. If you're struggling with mental health or socialising, please give it a
+						go."
+					</p>
+					<p class="text-xl">
+						"It was one of the best times of my life. I made friends, tested myself, and learned
+						more about the world and myself."
+					</p>
+					<p class="text-xl">
+						"It gave me the confidence boost I needed and helped me feel more like myself."
+					</p>
+				</div>
+
+				<div class="mt-8 flex justify-center">
+					<!-- svelte-ignore a11y_click_events_have_key_events -->
+					<!-- svelte-ignore a11y_no_static_element_interactions -->
+					<div
+						class="relative cursor-pointer"
+						on:click={() => {
+							playIntroVideo = true;
+						}}
+					>
+						<p class="text-right text-black/70">Participant Testimonial</p>
+						<enhanced:img
+							class="mt-2 w-[900px] rounded-md"
+							src={fresh_air_thursday_participant_testimonial_placeholder}
+							alt=""
+						/>
+
+						<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+							<enhanced:img class="w-[50px]" src={image.illustration.play_icon_white} alt="" />
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- ffmpeg -i fresh-air-thursday-participant-testimonial.mp4 -c:v libx264 -preset slow -crf 23 -c:a aac -b:a 128k -movflags +faststart output.mp4 -->
+
+			<div class="mt-12">
+				<h4 class="text-bc-slate-pine/80 font-display text-4xl font-bold">What Referrers Say</h4>
+				<div class="mt-6 flex flex-col gap-6">
+					<div>
+						<p class="text-xl leading-relaxed">
+							"B reflected on how Camp Birch helped her feel more connected to herself and nature.
+							She came away with tools for managing stress and adjusting to university life."
+						</p>
+						<p class="mt-2 text-xl font-medium text-black/70">
+							— Emma Martin | Senior Personal Adviser | Bristol Through Care Team
+						</p>
+					</div>
+
+					<div>
+						<p class="text-xl leading-relaxed">
+							"Camp Birch had a huge impact on our young people. Many came back more confident and
+							motivated to re-engage with education, volunteering and wellbeing activities. I’d
+							highly recommend The Birch Collective — plus it looked like so much fun"
+						</p>
+						<p class="mt-2 text-xl font-medium text-black/70">
+							— Rosie Kinnear | Youth Development Lead | The Prince's Trust
+						</p>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -66,5 +324,9 @@
 <style>
 	.my-shape {
 		clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+	}
+	.my-grid {
+		column-count: 4;
+		column-gap: 1rem;
 	}
 </style>
