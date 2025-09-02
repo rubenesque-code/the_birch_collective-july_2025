@@ -171,7 +171,7 @@
 
 			<div class="mt-12 flex justify-center">
 				<button
-					class="bg-bc-pale-sandstone flex items-center gap-2 rounded-full px-5 py-[6px] text-lg text-black/65"
+					class="bg-my-pale-yellow flex items-center gap-2 rounded-full px-5 py-[6px] text-lg text-black/75"
 					type="button"
 				>
 					<span>Our Theory of Change</span>
@@ -193,7 +193,9 @@
 						alt=""
 					/>
 
-					<h3 class="font-display text-bc-amber mt-3 text-[42px] font-bold">Free Programmes</h3>
+					<h3 class="font-display text-bc-slate-pine mt-3 text-[42px] font-bold">
+						Free Programmes
+					</h3>
 
 					<p class="mt-1 text-lg leading-relaxed">
 						If you're 16-25 and interested in nature based activities for wellbeing, click here.
@@ -208,7 +210,7 @@
 						alt=""
 					/>
 
-					<h3 class="font-display text-bc-amber mt-3 text-[42px] font-bold">Partnerships</h3>
+					<h3 class="font-display text-bc-slate-pine mt-3 text-[42px] font-bold">Partnerships</h3>
 
 					<p class="mt-1 text-lg leading-relaxed">
 						For young people, organisations, schools, youth groups, and professionals who want to
@@ -221,7 +223,7 @@
 
 	<section class="relative mt-36 flex justify-center px-40">
 		<div class=" max-w-[680px]">
-			<h2 class="font-display text-bc-slate-pine text-[52px] leading-[1.25em] font-bold">
+			<h2 class="font-display text-my-light-orangey-brown text-[52px] leading-[1.25em] font-bold">
 				Our Impact
 			</h2>
 
@@ -271,7 +273,7 @@
 
 			<div class="mt-12 flex justify-center">
 				<button
-					class="bg-bc-slate-pine flex items-center gap-2 rounded-full px-5 py-[6px] text-lg text-white"
+					class="bg-my-pale-yellow flex items-center gap-2 rounded-full px-5 py-[6px] text-lg text-black/75"
 					type="button"
 				>
 					<span>Read more</span>
@@ -294,8 +296,9 @@
 						src={image.placeholder.caregiver_with_partipant_face_to_face}
 						alt=""
 					/>
-
-					<h3 class="font-display text-bc-amber mt-3 text-[42px] font-bold">Programme Volunteer</h3>
+					<h3 class="font-display text-bc-slate-pine mt-3 text-[42px] font-bold">
+						Programme Volunteer
+					</h3>
 
 					<p class="mt-1 text-lg leading-relaxed">
 						Help out by supporting us at one or more of our programmes
@@ -309,7 +312,7 @@
 						alt=""
 					/>
 
-					<h3 class="font-display text-bc-amber mt-3 text-[42px] font-bold">Voluntary Role</h3>
+					<h3 class="font-display text-bc-slate-pine mt-3 text-[42px] font-bold">Voluntary Role</h3>
 
 					<p class="mt-1 text-lg leading-relaxed">
 						These are longer term and can be excellent work experience!
@@ -323,7 +326,9 @@
 						alt=""
 					/>
 
-					<h3 class="font-display text-bc-amber mt-3 text-[42px] font-bold">Make a Donation</h3>
+					<h3 class="font-display text-bc-slate-pine mt-3 text-[42px] font-bold">
+						Make a Donation
+					</h3>
 
 					<p class="mt-1 text-lg leading-relaxed">
 						These are longer term and can be excellent work experience!
