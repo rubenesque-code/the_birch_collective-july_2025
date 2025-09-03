@@ -173,14 +173,14 @@
 
 			<div class="mt-12">
 				<div class="flex flex-col gap-4">
-					<p class="text-lg underline">
+					<p class="text-[19px] underline">
 						Anyone seeking to spend more time in the outdoors and meet new people.
 					</p>
-					<p class="text-lg underline">Struggling with family and relationship issues.​</p>
-					<p class="text-lg underline">Experiencing feelings of loneliness or isolation​.</p>
-					<p class="text-lg underline">Struggling to engage with study​​.</p>
-					<p class="text-lg underline">Not in education, employment or training​.</p>
-					<p class="text-lg underline">Experiencing low-level mental health issues.</p>
+					<p class="text-[19px] underline">Struggling with family and relationship issues.​</p>
+					<p class="text-[19px] underline">Experiencing feelings of loneliness or isolation​.</p>
+					<p class="text-[19px] underline">Struggling to engage with study​​.</p>
+					<p class="text-[19px] underline">Not in education, employment or training​.</p>
+					<p class="text-[19px] underline">Experiencing low-level mental health issues.</p>
 				</div>
 			</div>
 		</div>
