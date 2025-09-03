@@ -1,15 +1,32 @@
 <script lang="ts" module>
 	import image from '^assets/image';
-	import { fresh_air_thursday_participant_testimonial_placeholder } from '^assets/videos';
+	import {
+		fresh_air_thursday_introduction,
+		fresh_air_thursday_participant_testimonial,
+		fresh_air_thursday_participant_testimonial_placeholder
+	} from '^assets/videos';
 	import { Header } from '^components/~sections';
-	import { Clover } from 'phosphor-svelte';
+	import { VideoModal } from '^components';
 </script>
 
 <script lang="ts">
-	let playIntroVideo = false;
+	let playIntro = false;
+	let playTestimonial = false;
 </script>
 
 <Header />
+
+<VideoModal
+	bind:isOpen={playIntro}
+	onClickClose={() => (playIntro = false)}
+	mp4Src={fresh_air_thursday_introduction}
+/>
+
+<VideoModal
+	bind:isOpen={playTestimonial}
+	onClickClose={() => (playTestimonial = false)}
+	mp4Src={fresh_air_thursday_participant_testimonial}
+/>
 
 <div class="relative max-w-screen overflow-hidden pb-40">
 	<section class="relative flex justify-center overflow-visible px-80 pt-32 pb-40">
@@ -85,7 +102,7 @@
 			<div
 				class="relative cursor-pointer"
 				on:click={() => {
-					playIntroVideo = true;
+					playIntro = true;
 				}}
 			>
 				<p class="text-right text-black/70">Fresh Air Thursdays - An Introduction</p>
@@ -212,10 +229,7 @@
 
 	<section class="mt-24 flex justify-center px-60">
 		<div class="w-full max-w-[768px]">
-			<!-- <div class="mt-16 flex justify-center"> -->
 			<div class="h-[1px] w-[300px] border border-black/10"></div>
-			<!-- </div> -->
-			<!-- <h2 class="font-display text-bc-slate-pine text-6xl font-bold">Who Is This Suitable For</h2> -->
 			<p class="mt-10 text-xl font-medium text-black/80 italic">
 				Heard enough and ready to get on board?
 			</p>
@@ -228,28 +242,6 @@
 
 				<p class="">(It takes around 3 minutes)</p>
 			</div>
-
-			<!-- <div class="w-full max-w-[768px]">
-			<div class="flex flex-col gap-6">
-				<div class="flex items-center gap-8">
-					<button
-						class="bg-bc-slate-pine rounded-full px-5 py-3 text-xl font-medium tracking-wide text-white"
-						type="button">Sign Up Today</button
-					>
-
-					<p class="">(It takes around 5 minutes)</p>
-				</div>
-
-				<p class="pl-16 underline">Or</p>
-
-				<div class="flex items-end gap-2">
-					<button class="text-bc-amber text-xl font-medium" type="button">Register interest.</button
-					>
-
-					<p class="">We'll keep you informed.</p>
-				</div>
-			</div>
-		</div> -->
 		</div>
 	</section>
 
@@ -280,7 +272,7 @@
 					<div
 						class="relative cursor-pointer"
 						on:click={() => {
-							playIntroVideo = true;
+							playTestimonial = true;
 						}}
 					>
 						<p class="text-right text-black/70">Participant Testimonial</p>
@@ -296,8 +288,6 @@
 					</div>
 				</div>
 			</div>
-
-			<!-- ffmpeg -i fresh-air-thursday-participant-testimonial.mp4 -c:v libx264 -preset slow -crf 23 -c:a aac -b:a 128k -movflags +faststart output.mp4 -->
 
 			<div class="mt-12">
 				<h3 class="font-display text-bc-slate-pine text-5xl font-bold">What Referrers Say</h3>
