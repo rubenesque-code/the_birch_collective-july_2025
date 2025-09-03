@@ -46,8 +46,8 @@
 
 <div class="max-w-screen overflow-hidden pb-40">
 	<section class="flex max-h-screen flex-col">
-		<div class="relative grow">
-			<video class="h-full w-full object-cover" loop muted>
+		<div class="relative h-screen w-screen grow">
+			<video class="absolute top-0 left-0 h-full w-full object-cover" loop muted autoplay>
 				<source src={bannerVideoMp4} type="video/mp4" />
 				Your browser does not support the video tag.
 			</video>
