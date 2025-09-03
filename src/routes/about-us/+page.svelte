@@ -1,13 +1,8 @@
 <script lang="ts" module>
 	import image from '^assets/image';
-	import {
-		fresh_air_thursday_introduction,
-		fresh_air_thursday_participant_testimonial,
-		fresh_air_thursday_participant_testimonial_placeholder,
-		mission
-	} from '^assets/videos';
-	import { Header } from '^components/~sections';
+	import { mission } from '^assets/videos';
 	import { VideoModal } from '^components';
+	import { Header } from '^components/~sections';
 </script>
 
 <script lang="ts">

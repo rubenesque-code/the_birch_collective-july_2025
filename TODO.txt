@@ -1,1 +1,2 @@
 - On programme page, click on image to open image modal with prev/next functionality
+- seperate supporters and partners page?
