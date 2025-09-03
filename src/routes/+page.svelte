@@ -91,7 +91,7 @@
 					Welcome to <span class="">The Birch Collective</span>
 				</h2>
 				<div class="mt-8">
-					<span class="text-lg">
+					<span class="text-xl leading-[1.45em]">
 						The Birch Collective believes in the power of nature, community, and connection. We’re a
 						social enterprise dedicated to helping people aged 16-25 in Bristol and the surrounding
 						areas who might be feeling isolated, overwhelmed, or unsure of their place in the world.
@@ -137,32 +137,37 @@
 				Cultivating Purpose, Belonging & Resilience
 			</h2>
 
-			<div class="mt-4 flex flex-col gap-3">
-				<div class="mt-2 flex items-center gap-4">
-					<span class="text-bc-pale-sandstone text-3xl"><Clover /></span>
-					<p class="text-xl leading-relaxed">
-						We work alongside young adults to empower and support your transition into adulthood
+			<div class="mt-5 flex flex-col gap-1">
+				<div class="mt-2 flex items-center gap-6">
+					<span class="text-my-pale-yellow text-xl"><Circle weight="fill" /></span>
+					<!-- <span class="text-bc-pale-sandstone text-3xl"><Clover /></span> -->
+					<p class="text-xl leading-[1.6em] text-black/90">
+						We work alongside you, young adults, to empower and support your transition into
+						adulthood
 					</p>
 				</div>
 
-				<div class="mt-2 flex items-center gap-4">
-					<span class="text-bc-pale-sandstone text-3xl"><Clover /></span>
+				<div class="mt-2 flex items-center gap-6">
+					<span class="text-my-pale-yellow text-xl"><Circle weight="fill" /></span>
+					<!-- <span class="text-bc-pale-sandstone text-3xl"><Clover /></span> -->
 					<p class="text-xl leading-relaxed">
 						We want you to unlock your potential to engage fully with life, and to respond
 						resiliently to life's challenges
 					</p>
 				</div>
 
-				<div class="mt-2 flex items-center gap-4">
-					<span class="text-bc-pale-sandstone text-3xl"><Clover /></span>
+				<div class="mt-2 flex items-center gap-6">
+					<span class="text-my-pale-yellow text-xl"><Circle weight="fill" /></span>
+					<!-- <span class="text-bc-pale-sandstone text-3xl"><Clover /></span> -->
 					<p class="text-xl leading-relaxed">
 						We believe that developing connections with the natural world gives you a sense of
 						belonging
 					</p>
 				</div>
 
-				<div class="mt-2 flex items-center gap-4">
-					<span class="text-bc-pale-sandstone text-3xl"><Clover /></span>
+				<div class="mt-2 flex items-center gap-6">
+					<span class="text-my-pale-yellow text-xl"><Circle weight="fill" /></span>
+					<!-- <span class="text-bc-pale-sandstone text-3xl"><Clover /></span> -->
 					<p class="text-xl leading-relaxed">
 						We offer you the chance to be part of an inclusive community where you can explore
 					</p>
@@ -171,7 +176,7 @@
 
 			<div class="mt-12 flex justify-center">
 				<button
-					class="bg-my-pale-yellow flex items-center gap-2 rounded-full px-5 py-[6px] text-lg text-black/75"
+					class="bg-bc-slate-pine/70 flex items-center gap-2 rounded-full px-5 py-[8px] text-lg font-medium text-white"
 					type="button"
 				>
 					<span>Our Theory of Change</span>
@@ -197,7 +202,7 @@
 						Free Programmes
 					</h3>
 
-					<p class="mt-1 text-lg leading-relaxed">
+					<p class="mt-1 text-xl leading-relaxed">
 						If you're 16-25 and interested in nature based activities for wellbeing, click here.
 						They're free!
 					</p>
@@ -212,7 +217,7 @@
 
 					<h3 class="font-display text-bc-slate-pine mt-3 text-[42px] font-bold">Partnerships</h3>
 
-					<p class="mt-1 text-lg leading-relaxed">
+					<p class="mt-1 text-xl leading-relaxed">
 						For young people, organisations, schools, youth groups, and professionals who want to
 						bring nature-based learning and wellbeing into their work.
 					</p>

@@ -152,7 +152,7 @@
 
 	<section class="mt-24 flex justify-center px-60">
 		<div class="w-full max-w-[768px]">
-			<h2 class="font-display text-bc-amber text-6xl font-bold">Who Is This Suitable For</h2>
+			<h2 class="font-display text-bc-slate-pine text-6xl font-bold">Who Is This Suitable For</h2>
 
 			<div class="mt-12">
 				<div class="flex flex-col gap-4">
@@ -210,20 +210,26 @@
 		</div>
 	</section>
 
-	<div class="mt-16 flex justify-center">
-		<div class="h-[1px] w-[300px] border border-black/10"></div>
-	</div>
-
 	<section class="mt-24 flex justify-center px-60">
-		<div class="flex items-center gap-8">
-			<button
-				class="bg-bc-slate-pine rounded-full px-5 py-3 text-xl font-medium tracking-wide text-white"
-				type="button">Sign Up Today</button
-			>
+		<div class="w-full max-w-[768px]">
+			<!-- <div class="mt-16 flex justify-center"> -->
+			<div class="h-[1px] w-[300px] border border-black/10"></div>
+			<!-- </div> -->
+			<!-- <h2 class="font-display text-bc-slate-pine text-6xl font-bold">Who Is This Suitable For</h2> -->
+			<p class="mt-10 text-xl font-medium text-black/80 italic">
+				Heard enough and ready to get on board?
+			</p>
 
-			<p class="">(It takes around 5 minutes)</p>
-		</div>
-		<!-- <div class="w-full max-w-[768px]">
+			<div class="mt-8 flex items-center gap-8">
+				<button
+					class="bg-my-pale-yellow rounded-full px-5 py-3 text-lg font-medium tracking-wide text-black/80"
+					type="button">Sign Up Today</button
+				>
+
+				<p class="">(It takes around 3 minutes)</p>
+			</div>
+
+			<!-- <div class="w-full max-w-[768px]">
 			<div class="flex flex-col gap-6">
 				<div class="flex items-center gap-8">
 					<button
@@ -244,25 +250,26 @@
 				</div>
 			</div>
 		</div> -->
+		</div>
 	</section>
 
 	<section class="mt-24 flex justify-center px-60">
 		<div class="w-full max-w-[768px]">
-			<h2 class="font-display text-bc-amber text-6xl font-bold">Feedback</h2>
+			<!-- <h2 class="font-display text-bc-slate-pine text-6xl font-bold">Feedback</h2> -->
 
-			<div class="mt-12">
-				<h4 class="text-bc-slate-pine/80 font-display text-4xl font-bold">What Participants Say</h4>
-				<div class="mt-6 flex flex-col gap-6">
-					<p class="text-xl">
+			<div class="">
+				<h3 class="font-display text-bc-slate-pine text-5xl font-bold">What Participants Say</h3>
+				<div class="mt-8 flex flex-col gap-6">
+					<p class="text-xl leading-relaxed">
 						"The time I got to spend with others on camp was so magical and beautiful I can’t fully
 						describe it. If you're struggling with mental health or socialising, please give it a
 						go."
 					</p>
-					<p class="text-xl">
+					<p class="text-xl leading-relaxed">
 						"It was one of the best times of my life. I made friends, tested myself, and learned
 						more about the world and myself."
 					</p>
-					<p class="text-xl">
+					<p class="text-xl leading-relaxed">
 						"It gave me the confidence boost I needed and helped me feel more like myself."
 					</p>
 				</div>
@@ -293,14 +300,15 @@
 			<!-- ffmpeg -i fresh-air-thursday-participant-testimonial.mp4 -c:v libx264 -preset slow -crf 23 -c:a aac -b:a 128k -movflags +faststart output.mp4 -->
 
 			<div class="mt-12">
-				<h4 class="text-bc-slate-pine/80 font-display text-4xl font-bold">What Referrers Say</h4>
+				<h3 class="font-display text-bc-slate-pine text-5xl font-bold">What Referrers Say</h3>
+
 				<div class="mt-6 flex flex-col gap-6">
 					<div>
 						<p class="text-xl leading-relaxed">
 							"B reflected on how Camp Birch helped her feel more connected to herself and nature.
 							She came away with tools for managing stress and adjusting to university life."
 						</p>
-						<p class="mt-2 text-xl font-medium text-black/70">
+						<p class="mt-2 text-xl text-black/70">
 							— Emma Martin | Senior Personal Adviser | Bristol Through Care Team
 						</p>
 					</div>
@@ -311,7 +319,7 @@
 							motivated to re-engage with education, volunteering and wellbeing activities. I’d
 							highly recommend The Birch Collective — plus it looked like so much fun"
 						</p>
-						<p class="mt-2 text-xl font-medium text-black/70">
+						<p class="mt-2 text-xl text-black/70">
 							— Rosie Kinnear | Youth Development Lead | The Prince's Trust
 						</p>
 					</div>
