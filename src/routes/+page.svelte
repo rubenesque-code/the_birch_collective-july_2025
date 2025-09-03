@@ -30,9 +30,7 @@
 	// - body font. Browser font seems good.
 
 	// LANDING PAGE
-	// - partners & supporters
-	// - images/videos.
-	// - other: donate, newsletter,
+	// - other: newsletter,
 	// - our impact - what they want??
 </script>
 
