@@ -3,10 +3,6 @@
 	import { Header } from '^components/~sections';
 </script>
 
-<script lang="ts">
-	let playTestimonial = false;
-</script>
-
 <Header />
 
 <div class="relative max-w-screen overflow-hidden pb-40">
@@ -28,7 +24,7 @@
 
 	<section class="mt-10 px-60">
 		<div class="flex w-full justify-center">
-			<div class="max-w-[768px]">
+			<div class="w-full max-w-[768px]">
 				<p class="mt-8 text-xl leading-relaxed">...</p>
 			</div>
 		</div>

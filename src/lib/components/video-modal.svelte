@@ -11,18 +11,12 @@
 	let {
 		isOpen = $bindable(),
 		onClickClose,
-		onClickOpen,
 		mp4Src
 	} = $props<{
 		isOpen: boolean;
 		onClickClose: () => void;
-		onClickOpen: () => void;
 		mp4Src: string;
 	}>();
-
-	$inspect('isOpen', isOpen);
-
-	// let isOpen = $bindable(props.isOpen)
 
 	$effect(() => {
 		$: browser && toggleBodyScroll({ triggerDisableOn: isOpen });
@@ -33,7 +27,7 @@
 	<!-- svelte-ignore a11y_click_events_have_key_events -->
 	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<div
-		class="fixed inset-0 z-40 grid place-items-center bg-black"
+		class="fixed inset-0 z-50 grid place-items-center bg-black"
 		onclick={onClickClose}
 		transition:scale={{ start: 0.9 }}
 	>

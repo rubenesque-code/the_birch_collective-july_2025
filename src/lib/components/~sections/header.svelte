@@ -1,8 +1,23 @@
-<script lang="ts" context="module">
+<script lang="ts" module>
 	import { ChatCircle, HandHeart, List } from 'phosphor-svelte';
 
 	import image from '^assets/image';
 	import { Tooltip } from '^components/ui';
+	import { browser } from '$app/environment';
+	import { toggleBodyScroll } from '^helpers';
+	import { afterNavigate } from '$app/navigation';
+</script>
+
+<script lang="ts">
+	let isOpen = $state(false);
+
+	$effect(() => {
+		$: browser && toggleBodyScroll({ triggerDisableOn: isOpen });
+	});
+
+	afterNavigate(() => {
+		isOpen = false;
+	});
 </script>
 
 <header class="absolute top-0 left-0 z-10 flex w-full items-start justify-between p-4">
@@ -20,11 +35,15 @@
 </header>
 
 <nav
-	class="bg-bc-logo-black/50 fixed top-4 right-4 z-30 flex flex-col items-center gap-4 rounded-full p-4"
+	class="bg-bc-logo-black/50 fixed top-4 right-4 z-40 flex flex-col items-center gap-4 rounded-full p-4"
 >
-	<div class="cursor-pointer rounded-full border border-white p-2 text-2xl text-white">
+	<button
+		class="cursor-pointer rounded-full border border-white p-2 text-2xl text-white"
+		onclick={() => (isOpen = !isOpen)}
+		type="button"
+	>
 		<List />
-	</div>
+	</button>
 
 	<Tooltip.Provider>
 		<Tooltip.Root>
@@ -34,7 +53,7 @@
 				</div>
 			</Tooltip.Trigger>
 			<Tooltip.Content side="left">
-				<p>Get in touch</p>
+				<p class="text-base">Get in touch</p>
 			</Tooltip.Content>
 		</Tooltip.Root>
 	</Tooltip.Provider>
@@ -47,8 +66,42 @@
 				</div>
 			</Tooltip.Trigger>
 			<Tooltip.Content side="left">
-				<p>Donate</p>
+				<p class="text-base">Donate</p>
 			</Tooltip.Content>
 		</Tooltip.Root>
 	</Tooltip.Provider>
 </nav>
+
+<!-- svelte-ignore a11y_click_events_have_key_events -->
+<!-- svelte-ignore a11y_no_static_element_interactions -->
+<div
+	class={`fixed right-0 z-20 h-screen w-screen bg-white/80 transition-opacity duration-300 ease-in-out ${!isOpen ? 'pointer-events-none opacity-0' : ''}`}
+	onclick={() => (isOpen = false)}
+></div>
+
+<div
+	class={`bg-bc-slate-pine/50 fixed right-0 z-30 h-screen w-[600px] max-w-screen overflow-y-auto pt-4 pr-[100px] pl-12 transition-transform duration-300 ease-in-out ${!isOpen ? 'translate-x-full' : ''}`}
+>
+	<div class="flex shrink-0">
+		<a class="font-display flex flex-col text-4xl font-bold" href="/">
+			<span class="translate-x-[20px]">The</span>
+			<span class="translate-x-[40px] translate-y-[-10px] text-[66px]">Birch</span>
+			<span class="translate-x-[0px] translate-y-[-20px]">Collective</span>
+		</a>
+	</div>
+	<div class="mt-12 flex flex-col gap-8">
+		<a class="font-display text-4xl font-bold text-white" href="/">Home</a>
+		<a class="font-display text-4xl font-bold text-white" href="free-programmes">Free Programmes</a>
+		<a class="font-display text-4xl font-bold text-white" href="/">Partnerships</a>
+		<a class="font-display text-4xl font-bold text-white" href="/about-us">About Us</a>
+		<a class="font-display text-4xl font-bold text-white" href="/meet-the-team">Meet The Team</a>
+		<a class="font-display text-4xl font-bold text-white" href="/practice-methodology"
+			>Practice Methodology</a
+		>
+		<a class="font-display text-4xl font-bold text-white" href="/testimonials">Testimonials</a>
+		<a class="font-display text-4xl font-bold text-white" href="/theory-of-change"
+			>Theory of Change</a
+		>
+		<a class="font-display text-4xl font-bold text-white" href="/volunteer">Volunteer</a>
+	</div>
+</div>

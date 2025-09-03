@@ -247,8 +247,6 @@
 
 	<section class="mt-24 flex justify-center px-60">
 		<div class="w-full max-w-[768px]">
-			<!-- <h2 class="font-display text-bc-slate-pine text-6xl font-bold">Feedback</h2> -->
-
 			<div class="">
 				<h3 class="font-display text-bc-slate-pine text-5xl font-bold">What Participants Say</h3>
 				<div class="mt-8 flex flex-col gap-6">
