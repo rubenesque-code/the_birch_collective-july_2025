@@ -30,6 +30,8 @@
 
 	// TODO
 	// - body font. Browser font seems good.
+	// - a section with nice nature bg image.
+	// - a quote or 2
 
 	// LANDING PAGE
 	// - other: newsletter,
@@ -166,7 +168,6 @@
 
 	<section class="relative mt-36 flex justify-center px-40">
 		<div>
-			<!-- <h2 class="font-display text-3xl font-bold tracking-wide text-black/70">What We Offer</h2> -->
 			<h2 class="font-display text-bc-slate-pine text-[52px] leading-[1.25em] font-bold">
 				What We Offer
 			</h2>
@@ -192,61 +193,30 @@
 	</section>
 
 	<section class="relative mt-36 flex justify-center px-40">
-		<div class=" max-w-[680px]">
-			<h2 class="font-display text-my-light-orangey-brown text-[52px] leading-[1.25em] font-bold">
+		<div class="max-w-[680px]">
+			<h2 class="font-display text-bc-slate-pine text-[52px] leading-[1.25em] font-bold">
 				Our Impact
 			</h2>
 
-			<div class="mt-4 flex flex-col gap-4">
-				<div class="flex items-center gap-4">
-					<span class="text-bc-pale-sandstone text-3xl"><Circle /></span>
-					<p class="text-xl leading-relaxed">70% of participants report an increase in wellbeing</p>
-				</div>
-				<div class="flex items-center gap-4">
-					<span class="text-bc-pale-sandstone text-3xl"><Circle /></span>
-					<p class="text-xl leading-relaxed">80% have improved behaviour for learning</p>
-				</div>
-				<div class="flex items-center gap-4">
-					<span class="text-bc-pale-sandstone text-3xl"><Circle /></span>
-					<p class="text-xl leading-relaxed">90% have improved social interaction</p>
-				</div>
+			<p class="mt-3 text-xl leading-relaxed">
+				What participants feed back to us is very important and we're constantly striving to improve
+				our programmes.
+			</p>
 
-				<div class="mt-4 flex items-start gap-4">
-					<span class="text-bc-pale-sandstone scale-x-[-1] text-3xl"
-						><Quotes weight="duotone" /></span
-					>
-					<p class="text-xl leading-relaxed text-black/80">
-						I can see a future for myself now; I can see myself doing well in exams and getting a
-						good <span class="relative"
-							>job
-							<span class="text-bc-pale-sandstone absolute top-0 -right-1 translate-x-full text-lg"
-								><Quotes weight="duotone" /></span
-							>
-						</span>
-					</p>
-				</div>
-
-				<div class="flex items-start gap-4">
-					<span class="text-bc-pale-sandstone scale-x-[-1] text-3xl"
-						><Quotes weight="duotone" /></span
-					>
-					<p class="text-xl leading-relaxed text-black/80">
-						I leave feeling more accepting of other people and <span class="relative"
-							>myself
-							<span class="text-bc-pale-sandstone absolute top-0 -right-1 translate-x-full text-lg"
-								><Quotes weight="duotone" /></span
-							>
-						</span>
-					</p>
-				</div>
+			<div class="mt-5 flex flex-col gap-3">
+				{#each ['70% of participants report an increase in wellbeing', '80% have improved behaviour for learning', '90% have improved social interaction'] as text}
+					<IntroductoryBullet>
+						{text}
+					</IntroductoryBullet>
+				{/each}
 			</div>
 
 			<div class="mt-12 flex justify-center">
 				<button
-					class="bg-my-pale-yellow flex items-center gap-2 rounded-full px-5 py-[6px] text-lg text-black/75"
+					class="bg-bc-slate-pine/70 flex items-center gap-2 rounded-full px-5 py-[8px] text-lg font-medium text-white"
 					type="button"
 				>
-					<span>Read more</span>
+					<span>Read More</span>
 					<span><ArrowRight /></span>
 				</button>
 			</div>
@@ -255,7 +225,10 @@
 
 	<section class="relative mt-36 flex justify-center px-40">
 		<div>
-			<h2 class="font-display text-3xl font-bold tracking-wide text-black/70">
+			<!-- <h2 class="font-display text-3xl font-bold tracking-wide text-black/70">
+				Ways to Support Us
+			</h2> -->
+			<h2 class="font-display text-bc-slate-pine text-[52px] leading-[1.25em] font-bold">
 				Ways to Support Us
 			</h2>
 
@@ -266,11 +239,11 @@
 						src={image.placeholder.caregiver_with_partipant_face_to_face}
 						alt=""
 					/>
-					<h3 class="font-display text-bc-slate-pine mt-3 text-[42px] font-bold">
+					<h3 class="font-display text-bc-amber mt-3 text-center text-[40px] font-bold">
 						Programme Volunteer
 					</h3>
 
-					<p class="mt-1 text-lg leading-relaxed">
+					<p class="mt-1 text-center text-lg leading-relaxed">
 						Help out by supporting us at one or more of our programmes
 					</p>
 				</div>
@@ -282,9 +255,11 @@
 						alt=""
 					/>
 
-					<h3 class="font-display text-bc-slate-pine mt-3 text-[42px] font-bold">Voluntary Role</h3>
+					<h3 class="font-display text-bc-amber mt-3 text-center text-[40px] font-bold">
+						Voluntary Role
+					</h3>
 
-					<p class="mt-1 text-lg leading-relaxed">
+					<p class="mt-1 text-center text-lg leading-relaxed">
 						These are longer term and can be excellent work experience!
 					</p>
 				</div>
@@ -296,11 +271,11 @@
 						alt=""
 					/>
 
-					<h3 class="font-display text-bc-slate-pine mt-3 text-[42px] font-bold">
+					<h3 class="font-display text-bc-amber mt-3 text-center text-[40px] font-bold">
 						Make a Donation
 					</h3>
 
-					<p class="mt-1 text-lg leading-relaxed">
+					<p class="mt-1 text-center text-lg leading-relaxed">
 						These are longer term and can be excellent work experience!
 					</p>
 				</div>
@@ -308,13 +283,13 @@
 		</div>
 	</section>
 
-	<section class="relative mt-36 flex justify-center px-40">
+	<!-- <section class="relative mt-36 flex justify-center px-40">
 		<div>
-			<h2 class="font-display text-3xl font-bold tracking-wide text-black/70">
+			<h2 class="font-display text-bc-slate-pine text-[52px] leading-[1.25em] font-bold">
 				Partners & Supporters
 			</h2>
 
 			<div class="mt-6"><PartnersAndSupportersCarousel /></div>
 		</div>
-	</section>
+	</section> -->
 </div>
