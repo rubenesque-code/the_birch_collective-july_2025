@@ -7,7 +7,7 @@
 	import { Header, OurMissionModal, PartnersAndSupportersCarousel } from '^components/~sections';
 	import { updateSiteState } from '^lib/state';
 	import { IntroductoryBullet, WhatWeOffer } from '^components/~pages/landing';
-	import { internalLink } from '^constants';
+	import { internalRoute } from '^constants';
 
 	// programmes (for individuals to sign up to); 1:1 mentoring; tailored programs for groups; youth advisory board
 	// for young people: group based nature programmes; 1:1 mentoring; youth advisory board; non-official volunteering (as mentor or something like that)?
@@ -174,7 +174,7 @@
 
 			<div class=" mt-6 flex w-full justify-between gap-40">
 				<WhatWeOffer
-					link={internalLink['free-programmes']}
+					link={internalRoute['free-programmes']}
 					imgAlt=""
 					imgSrc={image.placeholder.banner_4}
 					text="If you're 16-25 and interested in nature based activities for wellbeing, click here.  They're free!"
@@ -182,7 +182,7 @@
 				/>
 
 				<WhatWeOffer
-					link={internalLink.partnerships}
+					link={internalRoute.partnerships}
 					imgAlt=""
 					imgSrc={image.placeholder.banner_15}
 					text="For young people, organisations, schools, youth groups, and professionals who want to bring nature-based learning and wellbeing into their work."

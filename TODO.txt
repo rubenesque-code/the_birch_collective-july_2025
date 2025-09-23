@@ -1,4 +1,9 @@
 - On programme page, click on image to open image modal with prev/next functionality
 - seperate supporters and partners page?
 - careers, donate, get in touch
+  - get in touch: form, email, phone number? 
 - volunteer role + at programme pages
+
+QUESTIONS
+---------
+- have address for The Birch to put in contact page?

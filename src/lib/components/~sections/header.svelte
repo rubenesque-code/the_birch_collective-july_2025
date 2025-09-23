@@ -6,6 +6,7 @@
 	import { browser } from '$app/environment';
 	import { toggleBodyScroll } from '^helpers';
 	import { afterNavigate } from '$app/navigation';
+	import { internalRoute } from '^constants';
 </script>
 
 <script lang="ts">
@@ -52,9 +53,12 @@
 	<Tooltip.Provider>
 		<Tooltip.Root>
 			<Tooltip.Trigger>
-				<div class="cursor-pointer rounded-full border border-white p-2 text-2xl text-white">
+				<a
+					class="inline-block cursor-pointer rounded-full border border-white p-2 text-2xl text-white"
+					href={internalRoute['get-in-touch']}
+				>
 					<ChatCircle />
-				</div>
+				</a>
 			</Tooltip.Trigger>
 			<Tooltip.Content side="left">
 				<p class="text-base">Get in touch</p>
