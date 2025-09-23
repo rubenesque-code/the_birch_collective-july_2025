@@ -8,5 +8,15 @@
 	},
 	"workbench.statusBar.visible": true,
 	"workbench.editor.showTabs": "none",
-	"editor.snippetSuggestions": "top"
+	"editor.snippetSuggestions": "top",
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"[typescript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"prettier.requireConfig": false,
+	"editor.pasteAs.enabled": false,
+	"tailwindCSS.experimental.configFile": "./src/app.css"
 }

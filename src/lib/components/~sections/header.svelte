@@ -1,5 +1,5 @@
 <script lang="ts" module>
-	import { ChatCircle, HandHeart, List } from 'phosphor-svelte';
+	import { ChatCircle, HandHeart, List, X } from 'phosphor-svelte';
 
 	import image from '^assets/image';
 	import { Tooltip } from '^components/ui';
@@ -42,7 +42,11 @@
 		onclick={() => (isOpen = !isOpen)}
 		type="button"
 	>
-		<List />
+		{#if !isOpen}
+			<List />
+		{:else}
+			<X />
+		{/if}
 	</button>
 
 	<Tooltip.Provider>
@@ -75,12 +79,12 @@
 <!-- svelte-ignore a11y_click_events_have_key_events -->
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <div
-	class={`fixed right-0 z-20 h-screen w-screen bg-white/80 transition-opacity duration-300 ease-in-out ${!isOpen ? 'pointer-events-none opacity-0' : ''}`}
+	class={`fixed right-0 z-30 h-screen w-screen bg-white/80 transition-opacity duration-300 ease-in-out ${!isOpen ? 'pointer-events-none opacity-0' : ''}`}
 	onclick={() => (isOpen = false)}
 ></div>
 
 <div
-	class={`bg-bc-slate-pine/50 fixed right-0 z-30 h-screen w-[600px] max-w-screen overflow-y-auto pt-4 pr-[100px] pl-12 transition-transform duration-300 ease-in-out ${!isOpen ? 'translate-x-full' : ''}`}
+	class={`bg-bc-slate-pine/50 fixed right-0 z-[35] h-screen w-[600px] max-w-screen overflow-y-auto pt-4 pr-[100px] pl-12 transition-transform duration-300 ease-in-out ${!isOpen ? 'translate-x-full' : ''}`}
 >
 	<div class="flex shrink-0">
 		<a class="font-display flex flex-col text-4xl font-bold" href="/">
@@ -90,18 +94,14 @@
 		</a>
 	</div>
 	<div class="mt-12 flex flex-col gap-8">
-		<a class="font-display text-4xl font-bold text-white" href="/">Home</a>
-		<a class="font-display text-4xl font-bold text-white" href="free-programmes">Free Programmes</a>
-		<a class="font-display text-4xl font-bold text-white" href="/">Partnerships</a>
-		<a class="font-display text-4xl font-bold text-white" href="/about-us">About Us</a>
-		<a class="font-display text-4xl font-bold text-white" href="/meet-the-team">Meet The Team</a>
-		<a class="font-display text-4xl font-bold text-white" href="/practice-methodology"
-			>Practice Methodology</a
-		>
-		<a class="font-display text-4xl font-bold text-white" href="/testimonials">Testimonials</a>
-		<a class="font-display text-4xl font-bold text-white" href="/theory-of-change"
-			>Theory of Change</a
-		>
-		<a class="font-display text-4xl font-bold text-white" href="/volunteer">Volunteer</a>
+		<a class="font-display text-4xl font-bold" href="/">Home</a>
+		<a class="font-display text-4xl font-bold" href="free-programmes">Free Programmes</a>
+		<a class="font-display text-4xl font-bold" href="/">Partnerships</a>
+		<a class="font-display text-4xl font-bold" href="/about-us">About Us</a>
+		<a class="font-display text-4xl font-bold" href="/meet-the-team">Meet The Team</a>
+		<a class="font-display text-4xl font-bold" href="/practice-methodology">Practice Methodology</a>
+		<a class="font-display text-4xl font-bold" href="/testimonials">Testimonials</a>
+		<a class="font-display text-4xl font-bold" href="/theory-of-change">Theory of Change</a>
+		<a class="font-display text-4xl font-bold" href="/volunteer">Volunteer</a>
 	</div>
 </div>

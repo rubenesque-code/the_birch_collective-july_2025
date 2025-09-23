@@ -1,11 +1,13 @@
 <script lang="ts" context="module">
-	import { ArrowCircleRight, ArrowRight, Circle, Clover, Quotes } from 'phosphor-svelte';
+	import { ArrowRight, Circle, Quotes } from 'phosphor-svelte';
 
 	import image from '^assets/image';
 
 	import { bannerVideoMp4 } from '^assets/videos';
 	import { Header, OurMissionModal, PartnersAndSupportersCarousel } from '^components/~sections';
 	import { updateSiteState } from '^lib/state';
+	import { IntroductoryBullet, WhatWeOffer } from '^components/~pages/landing';
+	import { internalLink } from '^constants';
 
 	// programmes (for individuals to sign up to); 1:1 mentoring; tailored programs for groups; youth advisory board
 	// for young people: group based nature programmes; 1:1 mentoring; youth advisory board; non-official volunteering (as mentor or something like that)?
@@ -32,6 +34,13 @@
 	// LANDING PAGE
 	// - other: newsletter,
 	// - our impact - what they want??
+
+	const introductoryBullets = [
+		'We work alongside you, young adults, to empower and support your transition into adulthood',
+		"We want you to unlock your potential to engage fully with life, and to respond resiliently to life's challenges",
+		'We believe that developing connections with the natural world gives you a sense of belonging',
+		'We offer you the chance to be part of an inclusive community where you can explore'
+	];
 </script>
 
 <Header />
@@ -45,7 +54,7 @@
 <div class="max-w-screen overflow-hidden pb-40">
 	<section class="flex max-h-screen flex-col">
 		<div class="relative h-screen w-screen grow">
-			<video class="absolute top-0 left-0 h-full w-full object-cover" loop muted autoplay>
+			<video class="absolute top-0 left-0 h-full w-full object-cover" loop muted>
 				<source src={bannerVideoMp4} type="video/mp4" />
 				Your browser does not support the video tag.
 			</video>
@@ -135,41 +144,12 @@
 				Cultivating Purpose, Belonging & Resilience
 			</h2>
 
-			<div class="mt-5 flex flex-col gap-1">
-				<div class="mt-2 flex items-center gap-6">
-					<span class="text-my-pale-yellow text-xl"><Circle weight="fill" /></span>
-					<!-- <span class="text-bc-pale-sandstone text-3xl"><Clover /></span> -->
-					<p class="text-xl leading-[1.6em] text-black/90">
-						We work alongside you, young adults, to empower and support your transition into
-						adulthood
-					</p>
-				</div>
-
-				<div class="mt-2 flex items-center gap-6">
-					<span class="text-my-pale-yellow text-xl"><Circle weight="fill" /></span>
-					<!-- <span class="text-bc-pale-sandstone text-3xl"><Clover /></span> -->
-					<p class="text-xl leading-relaxed">
-						We want you to unlock your potential to engage fully with life, and to respond
-						resiliently to life's challenges
-					</p>
-				</div>
-
-				<div class="mt-2 flex items-center gap-6">
-					<span class="text-my-pale-yellow text-xl"><Circle weight="fill" /></span>
-					<!-- <span class="text-bc-pale-sandstone text-3xl"><Clover /></span> -->
-					<p class="text-xl leading-relaxed">
-						We believe that developing connections with the natural world gives you a sense of
-						belonging
-					</p>
-				</div>
-
-				<div class="mt-2 flex items-center gap-6">
-					<span class="text-my-pale-yellow text-xl"><Circle weight="fill" /></span>
-					<!-- <span class="text-bc-pale-sandstone text-3xl"><Clover /></span> -->
-					<p class="text-xl leading-relaxed">
-						We offer you the chance to be part of an inclusive community where you can explore
-					</p>
-				</div>
+			<div class="mt-5 flex flex-col gap-3">
+				{#each introductoryBullets as text}
+					<IntroductoryBullet>
+						{text}
+					</IntroductoryBullet>
+				{/each}
 			</div>
 
 			<div class="mt-12 flex justify-center">
@@ -186,40 +166,27 @@
 
 	<section class="relative mt-36 flex justify-center px-40">
 		<div>
-			<h2 class="font-display text-3xl font-bold tracking-wide text-black/70">What We Offer</h2>
+			<!-- <h2 class="font-display text-3xl font-bold tracking-wide text-black/70">What We Offer</h2> -->
+			<h2 class="font-display text-bc-slate-pine text-[52px] leading-[1.25em] font-bold">
+				What We Offer
+			</h2>
 
 			<div class=" mt-6 flex w-full justify-between gap-40">
-				<a class="w-[700px]" href="/free-programmes">
-					<enhanced:img
-						class="aspect-video rounded-sm object-cover"
-						src={image.placeholder.banner_4}
-						alt=""
-					/>
+				<WhatWeOffer
+					link={internalLink['free-programmes']}
+					imgAlt=""
+					imgSrc={image.placeholder.banner_4}
+					text="If you're 16-25 and interested in nature based activities for wellbeing, click here.  They're free!"
+					title="Free Programmes"
+				/>
 
-					<h3 class="font-display text-bc-slate-pine mt-3 text-[42px] font-bold">
-						Free Programmes
-					</h3>
-
-					<p class="mt-1 text-xl leading-relaxed">
-						If you're 16-25 and interested in nature based activities for wellbeing, click here.
-						They're free!
-					</p>
-				</a>
-
-				<div class="w-[700px]">
-					<enhanced:img
-						class="aspect-video rounded-sm object-cover"
-						src={image.placeholder.banner_15}
-						alt=""
-					/>
-
-					<h3 class="font-display text-bc-slate-pine mt-3 text-[42px] font-bold">Partnerships</h3>
-
-					<p class="mt-1 text-xl leading-relaxed">
-						For young people, organisations, schools, youth groups, and professionals who want to
-						bring nature-based learning and wellbeing into their work.
-					</p>
-				</div>
+				<WhatWeOffer
+					link={internalLink.partnerships}
+					imgAlt=""
+					imgSrc={image.placeholder.banner_15}
+					text="For young people, organisations, schools, youth groups, and professionals who want to bring nature-based learning and wellbeing into their work."
+					title="Partnerships"
+				/>
 			</div>
 		</div>
 	</section>

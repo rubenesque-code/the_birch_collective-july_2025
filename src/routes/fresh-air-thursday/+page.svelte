@@ -5,6 +5,7 @@
 		fresh_air_thursday_participant_testimonial,
 		fresh_air_thursday_participant_testimonial_placeholder
 	} from '^assets/videos';
+
 	import { Header } from '^components/~sections';
 	import { VideoModal } from '^components';
 </script>
@@ -72,22 +73,22 @@
 				<div class="mt-6 text-xl leading-relaxed">
 					<div class="flex flex-col gap-[5px]">
 						<p>
-							This is currently running from <span class="underline"
+							Currently running from: <span class="underline"
 								>February 20th 2025 - December 18th 2025</span
 							>.
 						</p>
 						<p>
-							It runs from <span class="underline">1pm to 5pm</span>.
+							Time: <span class="underline">1pm to 5pm</span>.
 						</p>
 						<p>
-							It's for <span class="underline">anyone 16 - 25 years old</span>.
+							Age group: <span class="underline">anyone 16 - 25 years old</span>.
 						</p>
 						<p>
-							This is <span class="underline">free but booking is essential</span>!
+							Cost: <span class="underline">free but booking is essential</span>!
 						</p>
 						<p>
-							This takes place at <span class="underline">Strawberry Lane Community Garden</span>.
-							See on <span class="underline">Google Maps</span>.
+							— Location: <span class="underline">Strawberry Lane Community Garden</span>. See on
+							<span class="underline">Google Maps</span>.
 						</p>
 					</div>
 				</div>
@@ -230,9 +231,7 @@
 	<section class="mt-24 flex justify-center px-60">
 		<div class="w-full max-w-[768px]">
 			<div class="h-[1px] w-[300px] border border-black/10"></div>
-			<p class="mt-10 text-xl font-medium text-black/80 italic">
-				Heard enough and ready to get on board?
-			</p>
+			<p class="mt-10 text-xl font-medium text-black/80 italic">Ready to get on board?</p>
 
 			<div class="mt-8 flex items-center gap-8">
 				<button
