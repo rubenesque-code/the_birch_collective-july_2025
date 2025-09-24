@@ -1,7 +1,7 @@
 const internalRoute = {
 	['free-programmes']: '/free-programmes',
 	['get-in-touch']: 'get-in-touch',
-	partnerships: '/partnerships'
+	partnerships: '/paid-for-services'
 };
 
 export { internalRoute };
