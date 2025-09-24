@@ -5,14 +5,14 @@
 		fresh_air_thursday_participant_testimonial_placeholder
 	} from '^assets/videos';
 	import { VideoModal } from '^components';
-	import { Header } from '^components/~sections';
+	import { Navigation } from '^components/~sections';
 </script>
 
 <script lang="ts">
 	let playTestimonial = false;
 </script>
 
-<Header />
+<Navigation />
 
 <VideoModal
 	bind:isOpen={playTestimonial}

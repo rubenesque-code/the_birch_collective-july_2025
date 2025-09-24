@@ -1,7 +1,7 @@
 <script lang="ts" context="module">
 	import image from '^assets/image';
 
-	import { Header } from '^components/~sections';
+	import { Navigation } from '^components/~sections';
 	import {
 		ArrowRight,
 		CaretDown,
@@ -32,7 +32,7 @@
 	// potentially want a where page that has accessibility
 </script>
 
-<Header />
+<Navigation />
 
 <section>
 	<div class="relative overflow-hidden">

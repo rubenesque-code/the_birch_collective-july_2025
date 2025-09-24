@@ -2,14 +2,14 @@
 	import image from '^assets/image';
 	import { mission } from '^assets/videos';
 	import { VideoModal } from '^components';
-	import { Header } from '^components/~sections';
+	import { Navigation } from '^components/~sections';
 </script>
 
 <script lang="ts">
 	let playOurMission = false;
 </script>
 
-<Header />
+<Navigation />
 
 <VideoModal
 	bind:isOpen={playOurMission}

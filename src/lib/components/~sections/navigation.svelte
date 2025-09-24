@@ -1,12 +1,14 @@
 <script lang="ts" module>
 	import { ChatCircle, HandHeart, List, X } from 'phosphor-svelte';
 
-	import image from '^assets/image';
-	import { Tooltip } from '^components/ui';
 	import { browser } from '$app/environment';
+
 	import { toggleBodyScroll } from '^helpers';
 	import { afterNavigate } from '$app/navigation';
 	import { internalRoute } from '^constants';
+	import image from '^assets/image';
+
+	import { Tooltip } from '^components/ui';
 </script>
 
 <script lang="ts">
@@ -88,7 +90,7 @@
 ></div>
 
 <div
-	class={`bg-bc-slate-pine/50 fixed right-0 z-[35] h-screen w-[600px] max-w-screen overflow-y-auto pt-4 pr-[100px] pl-12 transition-transform duration-300 ease-in-out ${!isOpen ? 'translate-x-full' : ''}`}
+	class={`fixed right-0 z-[35] h-screen w-[600px] max-w-screen overflow-y-auto border-l-2 border-black/40 bg-white/50 pt-4 pr-[100px] pl-12 shadow-2xl transition-transform duration-300 ease-in-out ${!isOpen ? 'translate-x-full' : ''}`}
 >
 	<div class="flex shrink-0">
 		<a class="font-display flex flex-col text-4xl font-bold" href="/">

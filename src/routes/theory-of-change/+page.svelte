@@ -1,9 +1,9 @@
 <script lang="ts" module>
 	import image from '^assets/image';
-	import { Header } from '^components/~sections';
+	import { Navigation } from '^components/~sections';
 </script>
 
-<Header />
+<Navigation />
 
 <div class="relative max-w-screen overflow-hidden pb-40">
 	<section class="relative flex justify-center overflow-visible px-80 pt-32 pb-40">

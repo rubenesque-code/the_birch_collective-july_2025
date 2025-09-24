@@ -1,13 +1,14 @@
 <script lang="ts" context="module">
-	import { ArrowRight, Circle, Quotes } from 'phosphor-svelte';
+	import { ArrowRight } from 'phosphor-svelte';
 
 	import image from '^assets/image';
 
 	import { bannerVideoMp4 } from '^assets/videos';
-	import { Header, OurMissionModal, PartnersAndSupportersCarousel } from '^components/~sections';
-	import { updateSiteState } from '^lib/state';
-	import { IntroductoryBullet, WhatWeOffer } from '^components/~pages/landing';
 	import { internalRoute } from '^constants';
+	import { updateSiteState } from '^state';
+
+	import { IntroductoryBullet, WhatWeOffer } from '^pages/landing';
+	import { Navigation, OurMissionModal } from '^components/~sections';
 
 	// programmes (for individuals to sign up to); 1:1 mentoring; tailored programs for groups; youth advisory board
 	// for young people: group based nature programmes; 1:1 mentoring; youth advisory board; non-official volunteering (as mentor or something like that)?
@@ -45,7 +46,7 @@
 	];
 </script>
 
-<Header />
+<Navigation />
 
 <OurMissionModal
 	onClickCloseShowreel={() => {

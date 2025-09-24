@@ -1,10 +1,10 @@
 <script lang="ts" module>
 	import image from '^assets/image';
-	import { Header } from '^components/~sections';
-	import { Clover } from 'phosphor-svelte';
+	import { Navigation } from '^components/~sections';
+	import { Clover, Square } from 'phosphor-svelte';
 </script>
 
-<Header />
+<Navigation />
 
 <div class="relative max-w-screen overflow-hidden pb-40">
 	<section class="relative flex justify-center overflow-visible px-60 pt-32 pb-40">
@@ -38,33 +38,33 @@
 							alt=""
 						/>
 
-						<h3 class="font-display text-bc-slate-pine mt-3 text-[42px] font-bold">
+						<h3 class="font-display text-bc-amber mt-3 text-center text-[42px] font-bold">
 							Recoupe: Working Woods
 						</h3>
 
-						<p class="mt-2 text-xl leading-relaxed">
+						<p class="mt-2 text-center text-xl leading-relaxed">
 							A weekly woodland sessions using traditional skills in Troopers Hill Woods.
 						</p>
 
-						<div class="mt-3">
+						<!-- <div class="mt-3 flex flex-col items-center border p-4 text-center">
 							<p class="text-xl">Expect to learn skills in:</p>
-							<div class="mt-3 flex flex-col gap-2">
-								<div class="flex items-center gap-2">
-									<span class="text-bc-pale-sandstone text-2xl"><Clover /></span>
-									<p class="text-xl text-black/80">woodland management for wildflife</p>
-								</div>
 
-								<div class="flex items-center gap-2">
-									<span class="text-bc-pale-sandstone text-2xl"><Clover /></span>
-									<p class="text-xl text-black/80">green woodworking</p>
-								</div>
+							<div class="mt-2 flex flex-col">
+								{#each ['woodland management for wildflife', 'green woodworking', 'tree planting'] as text}
+									<p class="flex items-center gap-4 pl-2">
+										<span class="text-bc-slate-pine">
+											<Square />
+										</span>
 
-								<div class="flex items-center gap-2">
-									<span class="text-bc-pale-sandstone text-2xl"><Clover /></span>
-									<p class="text-xl text-black/80">tree planting</p>
-								</div>
+										<span
+											class="decoration-bc-amber/30 text-xl leading-[1.6em] text-black/90 underline underline-offset-4"
+										>
+											{text}
+										</span>
+									</p>
+								{/each}
 							</div>
-						</div>
+						</div> -->
 					</a>
 				</div>
 
@@ -76,15 +76,15 @@
 							alt=""
 						/>
 
-						<h3 class="font-display text-bc-slate-pine mt-3 text-[42px] font-bold">
+						<h3 class="font-display text-bc-amber mt-3 text-center text-[42px] font-bold">
 							Fresh Air Thursdays
 						</h3>
 
-						<p class="mt-2 text-xl leading-relaxed">
+						<p class="mt-2 text-center text-xl leading-relaxed">
 							A FREE weekly group for 16-25 year olds, just a 5-minute walk from St George's Park!
 						</p>
 
-						<div class="mt-3">
+						<!-- <div class="mt-3">
 							<p class="text-xl">What to expect:</p>
 							<div class="mt-3 flex flex-col gap-2">
 								<div class="flex items-center gap-2">
@@ -102,7 +102,7 @@
 									<p class="text-xl text-black/80">organic food growing</p>
 								</div>
 							</div>
-						</div>
+						</div> -->
 					</a>
 				</div>
 			</div>
