@@ -10,7 +10,7 @@
 
 {#if show}
 	<div
-		class={`absolute left-0 z-10 flex min-w-[200px] flex-col rounded-md border border-my-grey-1 bg-white p-sm text-sm font-medium shadow-sm ${position === 'top' ? '-top-[1px] -translate-y-full' : '-bottom-[1px] translate-y-full'}`}
+		class={`border-my-grey-1 absolute left-0 z-10 flex min-w-[200px] flex-col rounded-md border bg-white p-2 text-sm font-medium shadow-sm ${position === 'top' ? '-top-[1px] -translate-y-full' : '-bottom-[1px] translate-y-full'}`}
 		transition:fade={{ duration: 150 }}
 	>
 		<p class="text-red-500">
@@ -19,7 +19,7 @@
 
 		{#if useCloseButton}
 			<button
-				class="mt-[11px] self-end rounded-md border border-my-grey-3 px-xs py-[3px] text-[13px] text-my-grey-1"
+				class="border-my-grey-3 px-xs text-my-grey-1 mt-[11px] self-end rounded-md border py-[3px] text-[13px]"
 				on:click={() => (show = false)}
 				type="button"
 			>

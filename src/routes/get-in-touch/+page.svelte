@@ -1,13 +1,16 @@
 <script lang="ts" module>
+	import { FacebookLogo, InstagramLogo, LinkedinLogo, TiktokLogo } from 'phosphor-svelte';
+
 	import {
 		PUBLIC_BIRCH_EMAIL,
 		PUBLIC_BIRCH_PHONE_1,
 		PUBLIC_BIRCH_PHONE_2
 	} from '$env/static/public';
+
 	import image from '^assets/image';
 
 	import { Header } from '^components/~sections';
-	import { FacebookLogo, InstagramLogo, LinkedinLogo, TiktokLogo } from 'phosphor-svelte';
+	import { Form } from '^pages/get-in-touch';
 </script>
 
 <Header />
@@ -36,7 +39,9 @@
 			<div>
 				<h3 class="text-2xl font-medium">Enquiry Form</h3>
 
-				<div></div>
+				<div>
+					<Form />
+				</div>
 			</div>
 			<div class="grid grid-cols-2">
 				<div>

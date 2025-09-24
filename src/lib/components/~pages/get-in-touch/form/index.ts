@@ -1,3 +1,3 @@
-import Form from "./+component.svelte";
+import Form from './+component.svelte';
 
-export default Form
+export { Form };
