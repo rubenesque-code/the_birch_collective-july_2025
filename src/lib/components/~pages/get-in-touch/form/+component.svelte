@@ -5,7 +5,7 @@
 	import { fade, slide } from 'svelte/transition';
 
 	import { isEmail } from '^helpers';
-	import { emailFormHandler } from '^services';
+	import { enquiryFormHandler } from '^services';
 
 	import type { SvelteSubmitEvent } from '^types';
 
@@ -103,7 +103,7 @@
 
 		toast.promise(
 			() =>
-				emailFormHandler.postEnquiry({
+				enquiryFormHandler.postEnquiry({
 					name: nameValue,
 					email: emailValue,
 					message: messageValue,

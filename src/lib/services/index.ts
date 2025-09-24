@@ -1,3 +1,3 @@
-import emailFormHandler from "./email-form-handler";
+import enquiryFormHandler from './email-form-handler';
 
-export { emailFormHandler }
+export { enquiryFormHandler };
