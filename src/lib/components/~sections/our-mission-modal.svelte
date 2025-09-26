@@ -15,8 +15,6 @@
 
 	let isOpen = $derived(siteState.showreel.isOpen);
 
-	$inspect(siteState);
-
 	$effect(() => {
 		$: browser && toggleBodyScroll({ triggerDisableOn: isOpen });
 	});

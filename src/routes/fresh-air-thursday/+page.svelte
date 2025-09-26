@@ -1,18 +1,19 @@
 <script lang="ts" module>
 	import image from '^assets/image';
+	import { location_map } from '^assets/images/programmes/fresh-air-thursday';
 	import {
 		fresh_air_thursday_introduction,
 		fresh_air_thursday_participant_testimonial,
 		fresh_air_thursday_participant_testimonial_placeholder
 	} from '^assets/videos';
 
-	import { Navigation } from '^components/~sections';
 	import { VideoModal } from '^components';
-	import { location_map } from '^assets/images/programmes/fresh-air-thursday';
+	import { Navigation } from '^components/~sections';
+	import { whatToExpectSection } from '^content/fresh-air-thursday';
 </script>
 
 <script lang="ts">
-	import { ArrowUpRight } from 'phosphor-svelte';
+	import { ArrowUpRight, Circle } from 'phosphor-svelte';
 
 	let playIntro = false;
 	let playTestimonial = false;
@@ -134,51 +135,20 @@
 
 	<section class="mt-24 flex justify-center px-60">
 		<div class="w-full max-w-[768px]">
-			<h2 class="font-display text-bc-slate-pine text-6xl font-bold">What To Expect</h2>
+			<h2 class="text-my-grey-1 text-[16px] font-medium tracking-wide uppercase">What To Expect</h2>
 
-			<div class="mt-12">
+			<div class="mt-[22px]">
 				<div class="flex flex-col gap-8">
-					<div>
-						<h4 class="text-xl font-medium text-black/80">Nature based craft</h4>
-						<p class="mt-4 text-lg">
-							Making all manner of things from willow with our resident willow expert Amy, from
-							baskets to bird feeders, fences to climbing structures for plants. - Natural and
-							traditional building techniques - such as using cob, building using round wood timber
-							or using hazel to make fences. - Making functional or decorative items from found and
-							foraged items in the garden or nearby woodland.
-						</p>
-					</div>
-
-					<div>
-						<h4 class="text-xl font-medium text-black/80">Organic horticulture and permaculture</h4>
-						<p class="mt-4 text-lg">
-							Our team has many years experience in growing organic vegetables. We will explore and
-							offer learning in a range of wildlife friendly food growing and horticulture
-							techniques and practices. - We also explore wider land management techniques such as;
-							coppicing, hedging, habitat creation and permaculture techniques for designing spaces.
-						</p>
-					</div>
-					<div>
-						<h4 class="text-xl font-medium text-black/80">Cookery</h4>
-						<p class="mt-4 text-lg">
-							Outdoor cookery or cooking on the campfire is a fine art and also a greatly satisfying
-							process. - Ro is a master and loves teaching people suitable recipes but importantly
-							how to build and maintain fires that allow you to cook a wide range of treats, without
-							ending up with burnt grub!
-						</p>
-					</div>
-					<div>
-						<h4 class="text-xl font-medium text-black/80">
-							Nature based awareness and mindfulness techniques
-						</h4>
-						<p class="mt-4 text-lg">
-							Alongside all the 'doing' we also encourage people to just be. - During sessions we
-							will share with you simple practices to enable you to feel a greater sense of inner
-							peace, calm and aid in managing stress. - We suggest ways to use the natural world as
-							the lens through which to see the world and our personal struggles through, offering
-							new perspective and comfort.
-						</p>
-					</div>
+					{#each whatToExpectSection as { title, text }}
+						<div>
+							<div class="flex items-center gap-6">
+								<h4 class="text-bc-slate-pine font-display text-[40px] font-bold">
+									{title}
+								</h4>
+							</div>
+							<p class="mt-4 text-lg">{text}</p>
+						</div>
+					{/each}
 				</div>
 			</div>
 		</div>
@@ -186,18 +156,26 @@
 
 	<section class="mt-24 flex justify-center px-60">
 		<div class="w-full max-w-[768px]">
-			<h2 class="font-display text-bc-slate-pine text-6xl font-bold">Who Is This Suitable For</h2>
+			<!-- <h2 class="font-display text-bc-amber text-[44px] font-bold">Who Is This Suitable For</h2> -->
+			<h2 class="text-my-grey-1 text-[16px] font-medium tracking-wide uppercase">Why join us</h2>
+			<h4 class="text-bc-slate-pine font-display mt-4 text-[44px] font-bold">
+				This Is Suitable For You If
+			</h4>
 
-			<div class="mt-12">
-				<div class="flex flex-col gap-4">
-					<p class="text-[19px] underline">
-						Anyone seeking to spend more time in the outdoors and meet new people.
-					</p>
-					<p class="text-[19px] underline">Struggling with family and relationship issues.​</p>
-					<p class="text-[19px] underline">Experiencing feelings of loneliness or isolation​.</p>
-					<p class="text-[19px] underline">Struggling to engage with study​​.</p>
-					<p class="text-[19px] underline">Not in education, employment or training​.</p>
-					<p class="text-[19px] underline">Experiencing low-level mental health issues.</p>
+			<div class="mt-8">
+				<div class="flex flex-col gap-3">
+					{#each ['Anyone seeking to spend more time in the outdoors and meet new people.', 'Struggling with family and relationship issues.', 'Experiencing feelings of loneliness or isolation.', 'Struggling to engage with study.', 'Not in education, employment or training.', 'Experiencing low-level mental health issues.'] as text}
+						<p class="flex items-center gap-3">
+							<span class="text-bc-amber">
+								<Circle />
+							</span>
+							<span
+								class="decoration-bc-amber/30 text-xl leading-[1.6em] text-black/90 underline-offset-2"
+							>
+								{text}
+							</span>
+						</p>
+					{/each}
 				</div>
 			</div>
 		</div>
@@ -331,6 +309,31 @@
 		</div>
 	</section>
 </div>
+
+<!-- <div class="mt-6">
+						<p class="text-right text-black/70">
+							Activities from <span class="italic">Fresh</span>
+						</p>
+
+						<div class="mt-1 flex h-[188px] gap-2">
+							<div class="border-my-grey-3/40 aspect-[256/320] h-full">
+								<enhanced:img class="h-full w-full" src={indoor_raised_bed} alt="" />
+							</div>
+							<div class="border-my-grey-3/40 aspect-[256/320] h-full">
+								<enhanced:img class="h-full w-full" src={intertwined_reed_branches} alt="" />
+							</div>
+							<div class="border-my-grey-3/40 aspect-[256/320] h-full">
+								<enhanced:img class="h-full w-full" src={garden_shed_from_outside} alt="" />
+							</div>
+							<div class="border-my-grey-3/40 aspect-[3200/2133] h-full">
+								<enhanced:img
+									class="h-full w-full"
+									src={group_and_facilitators_sitting_round_fireplace}
+									alt=""
+								/>
+							</div>
+						</div>
+					</div> -->
 
 <style>
 	.my-shape {
