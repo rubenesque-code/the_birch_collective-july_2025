@@ -40,18 +40,20 @@
 		<div class="mt-10 flex w-full items-end gap-40">
 			<div class="relative flex">
 				<div class="max-w-[600px] text-white">
-					<h1 class="font-display text-7xl font-bold tracking-wide">Fresh Air Thursdays</h1>
+					<h1 class="font-display text-my-pale-yellow text-7xl font-bold tracking-wide">
+						Fresh Air Thursdays
+					</h1>
 
-					<p class="mt-5 text-[22px] leading-relaxed font-medium">
+					<p class="mt-5 text-[21px] leading-relaxed font-medium">
 						A weekly group every Thursday. Currently running upto December 18th 2025
 					</p>
-					<p class="mt-5 text-[22px] leading-relaxed">5 minutes from St George's Park, Bristol</p>
+					<p class="mt-5 text-[21px] leading-relaxed">5 minutes from St George's Park, Bristol</p>
 				</div>
 			</div>
 
 			<div class="">
 				<button
-					class="shrink-0 rounded-full bg-white/90 px-5 py-3 text-xl whitespace-nowrap"
+					class="shrink-0 rounded-full bg-white/90 px-5 py-[10px] text-[20px] font-medium tracking-wide whitespace-nowrap text-black/70 uppercase"
 					type="button">Sign Up</button
 				>
 			</div>
@@ -62,7 +64,7 @@
 		<div class="flex w-full justify-center">
 			<div class="max-w-[768px]">
 				<p class="text-xl leading-relaxed">
-					Fresh, is our weekly group for 16-25 year olds. We offer a range of activities designed at
+					Fresh is our weekly group for 16-25 year olds. We offer a range of activities designed at
 					a pace to make learning accessible and to draw out your creativity. There is no fixed time
 					limit to attendance, attend all year round, once a month or just one off, totally up to
 					you. You can attend until your 26 birthday. If you are older the 26 or reach that age
@@ -72,20 +74,13 @@
 
 				<div class="mt-6 text-xl leading-relaxed">
 					<div class="flex flex-col gap-[5px]">
-						<p>
-							Currently running from: <span class="underline"
-								>February 20th 2025 - December 18th 2025</span
-							>.
-						</p>
-						<p>
-							Time: <span class="underline">1pm to 5pm</span>.
-						</p>
-						<p>
-							Age group: <span class="underline">anyone 16 - 25 years old</span>.
-						</p>
-						<p>
-							Cost: <span class="underline">free but booking is essential</span>!
-						</p>
+						{#each [{ title: 'currently running from', text: 'February 20th 2025 - December 18th 2025' }, { title: 'Time', text: '1pm — 5pm' }, { title: 'Age Group', text: 'anyone 16 — 25 years old' }, { title: 'Cost', text: 'free but booking is essential!' }] as item}
+							<p class="flex items-center gap-1">
+								<span class="font-display text-bc-amber text-[25px] font-bold">{item.title}</span>:
+								<span class="text-[19px] text-black/90 uppercase">{item.text}</span>
+							</p>
+						{/each}
+
 						<p>
 							— Location: <span class="underline">Strawberry Lane Community Garden</span>. See on
 							<span class="underline">Google Maps</span>.
