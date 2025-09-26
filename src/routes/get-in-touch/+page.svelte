@@ -54,7 +54,7 @@
 							Email
 						</h4>
 
-						<a class="mt-2 inline-block" href={`mailto:${PUBLIC_BIRCH_EMAIL}`}
+						<a class="mt-2 inline-block" href={`mailto:${PUBLIC_BIRCH_EMAIL}`} target="_blank"
 							>{PUBLIC_BIRCH_EMAIL}</a
 						>
 					</div>
@@ -66,9 +66,9 @@
 							Phone
 						</h4>
 						<div class="mt-2">
-							<a href={`tel:${PUBLIC_BIRCH_PHONE_1}`}>{PUBLIC_BIRCH_PHONE_1}</a>
+							<a href={`tel:${PUBLIC_BIRCH_PHONE_1}`} target="_blank">{PUBLIC_BIRCH_PHONE_1}</a>
 							<span>or</span>
-							<a href={`tel:${PUBLIC_BIRCH_PHONE_2}`}>{PUBLIC_BIRCH_PHONE_2}</a>
+							<a href={`tel:${PUBLIC_BIRCH_PHONE_2}`} target="_blank">{PUBLIC_BIRCH_PHONE_2}</a>
 						</div>
 						<p class="mt-1 text-black/90 italic">Only answered on Thursdays.</p>
 					</div>
@@ -82,6 +82,7 @@
 							<a
 								class="bg-bc-slate-pine grid place-items-center rounded-full p-[5px]"
 								href={item.href}
+								target="_blank"
 							>
 								<span class="text-[33px] text-white">
 									<svelte:component this={item.icon} />

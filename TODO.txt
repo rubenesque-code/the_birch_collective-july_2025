@@ -4,6 +4,8 @@
 - volunteer role + at programme pages
 - checkbox, participant or professional/referrer
 - ways to support us: share buttons
+- embedded map on each programme page for location.
+- click to expand location map.
 
 QUESTIONS
 ---------

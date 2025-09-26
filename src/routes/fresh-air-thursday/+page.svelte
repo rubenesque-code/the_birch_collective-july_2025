@@ -8,9 +8,12 @@
 
 	import { Navigation } from '^components/~sections';
 	import { VideoModal } from '^components';
+	import { location_map } from '^assets/images/programmes/fresh-air-thursday';
 </script>
 
 <script lang="ts">
+	import { ArrowUpRight } from 'phosphor-svelte';
+
 	let playIntro = false;
 	let playTestimonial = false;
 </script>
@@ -81,10 +84,25 @@
 							</p>
 						{/each}
 
-						<p>
-							— Location: <span class="underline">Strawberry Lane Community Garden</span>. See on
-							<span class="underline">Google Maps</span>.
-						</p>
+						<div class="flex items-center gap-8">
+							<div class="flex items-center gap-1">
+								<p class="font-display text-bc-amber text-[25px] font-bold">Location</p>
+								:
+								<p class="relative text-[19px] text-black/90 uppercase">
+									<span>Strawberry Lane Community Gardens,</span>
+
+									<a
+										class="absolute bottom-0 left-0 flex translate-y-full items-center gap-2 text-lg text-black/60 decoration-transparent underline-offset-2 transition-colors duration-200 ease-linear hover:underline hover:decoration-black/30"
+										href="https://maps.app.goo.gl/32cRvbigC2fC3pPF9"
+										target="_blank"><span>see on google maps</span><span><ArrowUpRight /></span></a
+									>
+								</p>
+							</div>
+
+							<div class="border-my-grey-3/50 border-[6px]">
+								<enhanced:img class="w-[200px]" src={location_map} alt="" />
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -92,7 +110,7 @@
 	</section>
 
 	<section class="mt-24 px-60">
-		<div class="flex justify-center">
+		<div class=" flex justify-center">
 			<!-- svelte-ignore a11y_click_events_have_key_events -->
 			<!-- svelte-ignore a11y_no_static_element_interactions -->
 			<div
@@ -101,11 +119,14 @@
 					playIntro = true;
 				}}
 			>
-				<p class="text-right text-black/70">Fresh Air Thursdays - An Introduction</p>
-				<enhanced:img class="mt-2 w-[900px] rounded-md" src={image.placeholder.banner_1} alt="" />
+				<enhanced:img class="w-[900px] rounded-md" src={image.placeholder.banner_1} alt="" />
 
 				<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
 					<enhanced:img class="w-[50px]" src={image.illustration.play_icon_white} alt="" />
+				</div>
+
+				<div class="absolute top-2 right-2">
+					<p class="text-[17px] font-medium text-white">Fresh — An Intro</p>
 				</div>
 			</div>
 		</div>
