@@ -11,6 +11,7 @@
 
 	import { Navigation } from '^components/~sections';
 	import { Form } from '^pages/get-in-touch';
+	import { socials } from '^constants';
 </script>
 
 <Navigation />
@@ -69,7 +70,7 @@
 							<span>or</span>
 							<a href={`tel:${PUBLIC_BIRCH_PHONE_2}`}>{PUBLIC_BIRCH_PHONE_2}</a>
 						</div>
-						<p class="mt-1 text-black/90 italic">Only answered on Thursdays</p>
+						<p class="mt-1 text-black/90 italic">Only answered on Thursdays.</p>
 					</div>
 				</div>
 
@@ -77,26 +78,16 @@
 					<h3 class="text-2xl font-medium">Socials</h3>
 
 					<div class="mt-4 inline-grid grid-cols-2 gap-8">
-						<div class="bg-bc-slate-pine grid place-items-center rounded-full p-[5px]">
-							<span class="text-[33px] text-white">
-								<FacebookLogo />
-							</span>
-						</div>
-						<div class="bg-bc-slate-pine grid place-items-center rounded-full p-[5px]">
-							<span class="text-[33px] text-white">
-								<InstagramLogo />
-							</span>
-						</div>
-						<div class="bg-bc-slate-pine grid place-items-center rounded-full p-[5px]">
-							<span class="text-[33px] text-white">
-								<TiktokLogo />
-							</span>
-						</div>
-						<div class="bg-bc-slate-pine grid place-items-center rounded-full p-[5px]">
-							<span class="text-[33px] text-white">
-								<LinkedinLogo />
-							</span>
-						</div>
+						{#each [{ href: socials.fb, icon: FacebookLogo }, { href: socials.insta, icon: InstagramLogo }, { href: socials.tiktok, icon: TiktokLogo }, { href: socials.linkedIn, icon: LinkedinLogo }] as item}
+							<a
+								class="bg-bc-slate-pine grid place-items-center rounded-full p-[5px]"
+								href={item.href}
+							>
+								<span class="text-[33px] text-white">
+									<svelte:component this={item.icon} />
+								</span>
+							</a>
+						{/each}
 					</div>
 				</div>
 			</div>

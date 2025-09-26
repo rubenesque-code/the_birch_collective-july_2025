@@ -146,7 +146,7 @@
 </script>
 
 <form
-	class="flex flex-col gap-6 rounded-lg px-3 pt-2 pb-6 sm:px-6 sm:pt-4"
+	class="flex flex-col gap-6 px-3 pt-2 pb-6 sm:px-6 sm:pt-4"
 	bind:this={form}
 	onsubmit={handleSubmit}
 	novalidate
@@ -157,7 +157,7 @@
 		<div class="relative">
 			<div class="relative">
 				<input
-					class={`input focus-visible:outline-my-grey-1 w-full rounded-md  border px-2 py-1 text-[15px] focus-visible:outline-2 sm:text-base ${postStatus === 'pending' ? 'opacity-40' : ''} ${nonTabbedInputSelection ? 'focus-visible:outline-transparent focus-visible:!outline-none' : ''}`}
+					class={`input focus-visible:outline-my-grey-1 w-full rounded-sm border px-2 py-1 text-[15px] focus-visible:outline-2 sm:text-base ${postStatus === 'pending' ? 'opacity-40' : ''} ${nonTabbedInputSelection ? 'focus-visible:outline-transparent focus-visible:!outline-none' : ''}`}
 					placeholder="Name"
 					id={formId.name}
 					name={formId.name}
@@ -218,7 +218,7 @@
 		<div class="relative">
 			<div class="relative">
 				<input
-					class={`input focus-visible:outline-my-grey-1 w-full rounded-md border px-2 py-1 text-[15px] focus-visible:outline-2 sm:text-base ${postStatus === 'pending' ? 'opacity-40' : ''} ${nonTabbedInputSelection ? 'focus-visible:outline-transparent focus-visible:!outline-none' : ''}`}
+					class={`input focus-visible:outline-my-grey-1 w-full rounded-sm border px-2 py-1 text-[15px] focus-visible:outline-2 sm:text-base ${postStatus === 'pending' ? 'opacity-40' : ''} ${nonTabbedInputSelection ? 'focus-visible:outline-transparent focus-visible:!outline-none' : ''}`}
 					placeholder="Email"
 					id={formId.email}
 					name={formId.email}
@@ -284,7 +284,7 @@
 			<div class="relative">
 				<!-- svelte-ignore element_invalid_self_closing_tag -->
 				<textarea
-					class={`input focus-visible:outline-my-grey-1 h-[100px] w-full resize-none rounded-md border px-2 py-1 text-[15px] focus-visible:outline-2 sm:text-base ${postStatus === 'pending' ? 'opacity-40' : ''} ${nonTabbedInputSelection ? 'focus-visible:outline-transparent focus-visible:!outline-none' : ''}`}
+					class={`input focus-visible:outline-my-grey-1 h-[100px] w-full resize-none rounded-sm border px-2 py-1 text-[15px] focus-visible:outline-2 sm:text-base ${postStatus === 'pending' ? 'opacity-40' : ''} ${nonTabbedInputSelection ? 'focus-visible:outline-transparent focus-visible:!outline-none' : ''}`}
 					placeholder="Your message..."
 					bind:this={messageInput}
 					bind:value={messageValue}
@@ -341,7 +341,7 @@
 	</div>
 
 	<button
-		class={`hover:border-my-grey-2 focus-visible:outline-my-grey-1 relative mt-8 w-[200px] max-w-full self-start rounded-md border px-3 py-2 text-[13.5px] tracking-wider uppercase transition-colors duration-75 ease-in-out focus-visible:outline-2 ${isInput ? 'cursor-pointer' : 'pointer-events-none cursor-auto opacity-50'}`}
+		class={`hover:border-my-grey-2 focus-visible:outline-my-grey-1 relative mt-8 w-[200px] max-w-full self-start rounded-sm border px-3 py-2 text-[13.5px] tracking-wider uppercase transition-colors duration-75 ease-in-out focus-visible:outline-2 ${isInput ? 'cursor-pointer' : 'pointer-events-none cursor-auto opacity-50'}`}
 		type="submit"
 		transition:slide={{ duration: 200 }}
 		tabindex="0"

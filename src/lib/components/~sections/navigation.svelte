@@ -29,7 +29,7 @@
 			<enhanced:img class="w-[68px]" src={image.birch.logo.img_only} alt="" />
 		</div>
 
-		<a class="font-display flex flex-col text-4xl font-bold" href="/">
+		<a class="font-display relative flex flex-col text-4xl font-bold" href="/">
 			<span class="translate-x-[20px]">The</span>
 			<span class="translate-x-[40px] translate-y-[-10px] text-[66px]">Birch</span>
 			<span class="translate-x-[0px] translate-y-[-20px]">Collective</span>
@@ -90,10 +90,10 @@
 ></div>
 
 <div
-	class={`fixed right-0 z-[35] h-screen w-[600px] max-w-screen overflow-y-auto border-l-2 border-black/40 bg-white/50 pt-4 pr-[100px] pl-12 shadow-2xl transition-transform duration-300 ease-in-out ${!isOpen ? 'translate-x-full' : ''}`}
+	class={`fixed right-0 z-[35] h-screen w-[600px] max-w-screen overflow-y-auto border-l-[2px] border-black/40 bg-white/50 pt-4 pr-[100px] pl-12 shadow-2xl transition-transform duration-300 ease-in-out ${!isOpen ? 'translate-x-full' : ''}`}
 >
 	<div class="flex shrink-0">
-		<a class="font-display flex flex-col text-4xl font-bold" href="/">
+		<a class="font-display relative flex flex-col text-4xl font-bold" href="/">
 			<span class="translate-x-[20px]">The</span>
 			<span class="translate-x-[40px] translate-y-[-10px] text-[66px]">Birch</span>
 			<span class="translate-x-[0px] translate-y-[-20px]">Collective</span>
