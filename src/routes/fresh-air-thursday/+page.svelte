@@ -15,18 +15,22 @@
 		fresh_air_thursday_participant_testimonial,
 		fresh_air_thursday_participant_testimonial_placeholder
 	} from '^assets/videos';
-
-	import { VideoModal } from '^components';
-	import { Navigation } from '^components/~sections';
 	import { whatToExpectSection, whyJoinUsSection } from '^content/fresh-air-thursday';
+
+	import { VideoModal, ImageModal } from '^components';
+	import { Navigation, SignUpFormModal } from '^components/~sections';
 </script>
 
 <script lang="ts">
 	let playIntro = false;
 	let playTestimonial = false;
+	let showLocationMap = false;
+	let signUpFormIsOpen = true;
 </script>
 
 <Navigation />
+
+<SignUpFormModal bind:isOpen={signUpFormIsOpen} onClickClose={() => (signUpFormIsOpen = false)} />
 
 <VideoModal
 	bind:isOpen={playIntro}
@@ -39,6 +43,19 @@
 	onClickClose={() => (playTestimonial = false)}
 	mp4Src={fresh_air_thursday_participant_testimonial}
 />
+
+<ImageModal
+	bind:isOpen={showLocationMap}
+	onClickClose={() => (showLocationMap = false)}
+	src={location_map}
+	isEnhanced
+>
+	<a
+		class="mt-2 flex items-center gap-2 text-lg text-black/90 decoration-transparent underline-offset-2 transition-colors duration-200 ease-linear hover:underline hover:decoration-black/30"
+		href="https://maps.app.goo.gl/32cRvbigC2fC3pPF9"
+		target="_blank"><span>See on Google maps</span><span><ArrowUpRight /></span></a
+	>
+</ImageModal>
 
 <div class="relative max-w-screen overflow-hidden pb-40">
 	<section class="relative flex justify-center overflow-visible px-80 pt-32 pb-40">
@@ -64,7 +81,8 @@
 
 			<div class="">
 				<button
-					class="shrink-0 rounded-full bg-white/90 px-5 py-[10px] text-[20px] font-medium tracking-wide whitespace-nowrap text-black/70 uppercase"
+					class="shrink-0 cursor-pointer rounded-full bg-white/90 px-5 py-[10px] text-[20px] font-medium tracking-wide whitespace-nowrap text-black/70 uppercase"
+					onclick={() => (signUpFormIsOpen = true)}
 					type="button">Sign Up</button
 				>
 			</div>
@@ -97,17 +115,29 @@
 								<p class="font-display text-bc-amber text-[25px] font-bold">Location</p>
 								:
 								<p class="relative text-[19px] text-black/90 uppercase">
-									<span>Strawberry Lane Community Gardens,</span>
+									<span class="uppercase">Strawberry Lane Community Gardens</span>
 
 									<a
 										class="absolute bottom-0 left-0 flex translate-y-full items-center gap-2 text-lg text-black/60 decoration-transparent underline-offset-2 transition-colors duration-200 ease-linear hover:underline hover:decoration-black/30"
 										href="https://maps.app.goo.gl/32cRvbigC2fC3pPF9"
-										target="_blank"><span>see on google maps</span><span><ArrowUpRight /></span></a
+										target="_blank"><span>See on google maps</span><span><ArrowUpRight /></span></a
 									>
 								</p>
 							</div>
 
-							<div class="border-my-grey-3/50 border-[6px]">
+							<div
+								class="border-my-grey-3/50 cursor-pointer border-[6px]"
+								role="button"
+								tabindex="0"
+								aria-label="Show location map"
+								onclick={() => (showLocationMap = true)}
+								onkeydown={(e) => {
+									if (e.key === 'Enter' || e.key === ' ') {
+										e.preventDefault();
+										showLocationMap = true;
+									}
+								}}
+							>
 								<enhanced:img class="w-[200px]" src={location_map} alt="" />
 							</div>
 						</div>
@@ -123,7 +153,7 @@
 			<!-- svelte-ignore a11y_no_static_element_interactions -->
 			<div
 				class="relative cursor-pointer"
-				on:click={() => {
+				onclick={() => {
 					playIntro = true;
 				}}
 			>
@@ -297,7 +327,7 @@
 				<!-- svelte-ignore a11y_no_static_element_interactions -->
 				<div
 					class="relative cursor-pointer"
-					on:click={() => {
+					onclick={() => {
 						playTestimonial = true;
 					}}
 				>

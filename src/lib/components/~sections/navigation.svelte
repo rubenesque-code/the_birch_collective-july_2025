@@ -99,6 +99,7 @@
 			<span class="translate-x-[0px] translate-y-[-20px]">Collective</span>
 		</a>
 	</div>
+
 	<div class="mt-12 flex flex-col gap-8">
 		<a class="font-display text-4xl font-bold" href="/">Home</a>
 		<a class="font-display text-4xl font-bold" href="free-programmes">Free Programmes</a>
