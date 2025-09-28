@@ -1,4 +1,6 @@
 <script lang="ts" module>
+	import { ArrowUpRight, Circle } from 'phosphor-svelte';
+
 	import image from '^assets/image';
 	import {
 		garden_shed_from_outside,
@@ -16,12 +18,10 @@
 
 	import { VideoModal } from '^components';
 	import { Navigation } from '^components/~sections';
-	import { whatToExpectSection } from '^content/fresh-air-thursday';
+	import { whatToExpectSection, whyJoinUsSection } from '^content/fresh-air-thursday';
 </script>
 
 <script lang="ts">
-	import { ArrowUpRight, Circle } from 'phosphor-svelte';
-
 	let playIntro = false;
 	let playTestimonial = false;
 </script>
@@ -144,16 +144,23 @@
 		<div class="w-full max-w-[768px]">
 			<h2 class="text-my-grey-1 text-[16px] font-medium tracking-wide uppercase">What To Expect</h2>
 
-			<div class="mt-[22px]">
+			<div class="mt-[28px]">
 				<div class="flex flex-col gap-8">
-					{#each whatToExpectSection as { title, text }}
+					{#each whatToExpectSection as { title, text, symbols }}
 						<div>
+							<!-- <p class="flex items-center gap-2 opacity-70">
+								{#each symbols as symbol}
+									<span>{symbol}</span>
+								{/each}
+							</p> -->
+
 							<div class="flex items-center gap-6">
 								<h4 class="text-bc-slate-pine font-display text-[40px] font-bold capitalize">
 									{title}
 								</h4>
 							</div>
-							<p class="mt-4 text-lg">{text}</p>
+
+							<p class="mt-3 text-lg leading-relaxed">{text}</p>
 						</div>
 					{/each}
 				</div>
@@ -171,11 +178,12 @@
 
 			<div class="mt-8">
 				<div class="flex flex-col gap-3">
-					{#each ['Seeking to spend more time in the outdoors and meet new people.', 'Struggling with family and relationship issues.', 'Experiencing feelings of loneliness or isolation.', 'Struggling to engage with study.', 'Not in education, employment or training.', 'Experiencing low-level mental health issues.'] as text}
+					{#each whyJoinUsSection as { text, symbols }}
 						<p class="flex items-center gap-3">
-							<span class="text-black/40">
+							<!-- <span class="text-black/40">
 								<Circle />
-							</span>
+							</span> -->
+							<span>{[symbols[0]]}</span>
 							<span
 								class="decoration-bc-amber/30 text-xl leading-[1.6em] text-black/90 underline-offset-2"
 							>
@@ -183,6 +191,7 @@
 							</span>
 						</p>
 					{/each}
+					<p class="mt-2 text-xl">Or for any other reason!</p>
 				</div>
 			</div>
 		</div>
@@ -289,10 +298,14 @@
 				<div
 					class="relative cursor-pointer"
 					on:click={() => {
-						playIntro = true;
+						playTestimonial = true;
 					}}
 				>
-					<enhanced:img class="w-[900px] rounded-md" src={image.placeholder.banner_1} alt="" />
+					<enhanced:img
+						class="w-[900px] rounded-md"
+						src={fresh_air_thursday_participant_testimonial_placeholder}
+						alt=""
+					/>
 
 					<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
 						<enhanced:img class="w-[50px]" src={image.illustration.play_icon_white} alt="" />
