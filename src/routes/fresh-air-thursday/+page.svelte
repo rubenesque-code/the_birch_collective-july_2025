@@ -1,6 +1,13 @@
 <script lang="ts" module>
 	import image from '^assets/image';
-	import { location_map } from '^assets/images/programmes/fresh-air-thursday';
+	import {
+		garden_shed_from_outside,
+		group_and_facilitators_sitting_round_fireplace,
+		indoor_workbench,
+		james_and_participants_peace_sign,
+		location_map,
+		participant_woman_glasses
+	} from '^assets/images/programmes/fresh-air-thursday';
 	import {
 		fresh_air_thursday_introduction,
 		fresh_air_thursday_participant_testimonial,
@@ -142,7 +149,7 @@
 					{#each whatToExpectSection as { title, text }}
 						<div>
 							<div class="flex items-center gap-6">
-								<h4 class="text-bc-slate-pine font-display text-[40px] font-bold">
+								<h4 class="text-bc-slate-pine font-display text-[40px] font-bold capitalize">
 									{title}
 								</h4>
 							</div>
@@ -159,14 +166,14 @@
 			<!-- <h2 class="font-display text-bc-amber text-[44px] font-bold">Who Is This Suitable For</h2> -->
 			<h2 class="text-my-grey-1 text-[16px] font-medium tracking-wide uppercase">Why join us</h2>
 			<h4 class="text-bc-slate-pine font-display mt-4 text-[44px] font-bold">
-				This Is Suitable For You If
+				This Is Suitable For You If You're
 			</h4>
 
 			<div class="mt-8">
 				<div class="flex flex-col gap-3">
-					{#each ['Anyone seeking to spend more time in the outdoors and meet new people.', 'Struggling with family and relationship issues.', 'Experiencing feelings of loneliness or isolation.', 'Struggling to engage with study.', 'Not in education, employment or training.', 'Experiencing low-level mental health issues.'] as text}
+					{#each ['Seeking to spend more time in the outdoors and meet new people.', 'Struggling with family and relationship issues.', 'Experiencing feelings of loneliness or isolation.', 'Struggling to engage with study.', 'Not in education, employment or training.', 'Experiencing low-level mental health issues.'] as text}
 						<p class="flex items-center gap-3">
-							<span class="text-bc-amber">
+							<span class="text-black/40">
 								<Circle />
 							</span>
 							<span
@@ -182,84 +189,123 @@
 	</section>
 
 	<section class="mt-24 flex justify-center px-60">
-		<div class="my-grid">
-			<enhanced:img
-				class="mb-4 h-full w-full object-cover"
-				src={image.placeholder.caregiver_with_partipant_face_to_face}
-				alt=""
-			/>
-			<enhanced:img
-				class="mb-4 h-full w-full object-cover"
-				src={image.placeholder.axe_chopping}
-				alt=""
-			/>
-			<enhanced:img
-				class="mb-4 h-full w-full object-cover"
-				src={image.placeholder.standing_around_fire}
-				alt=""
-			/>
-			<enhanced:img
-				class="mb-4 h-full w-full object-cover"
-				src={image.placeholder.james_and_helper_talking_to_participant}
-				alt=""
-			/>
-			<enhanced:img
-				class="mb-4 h-full w-full object-cover"
-				src={image.placeholder.chillies}
-				alt=""
-			/>
-			<enhanced:img
-				class="mb-4 h-full w-full object-cover"
-				src={image.placeholder.fresh_air_thursday_sign}
-				alt=""
-			/>
-			<enhanced:img
-				class="mb-4 h-full w-full object-cover"
-				src={image.placeholder.banner_10}
-				alt=""
-			/>
-			<enhanced:img class="h-full w-full object-cover" src={image.placeholder.banner_15} alt="" />
-		</div>
-	</section>
+		<div>
+			<p class="text-right text-black/70">
+				Images from <span class="text-bc-amber font-medium italic">Fresh</span>
+			</p>
 
-	<section class="mt-24 flex justify-center px-60">
-		<div class="w-full max-w-[768px]">
-			<div class="h-[1px] w-[300px] border border-black/10"></div>
-			<p class="mt-10 text-xl font-medium text-black/80 italic">Ready to get on board?</p>
+			<div class="mt-1 flex h-[300px] gap-3">
+				<div class="border-my-grey-3/40 aspect-[192/128] h-full">
+					<enhanced:img
+						class="h-full w-full"
+						src={image.placeholder.caregiver_with_partipant_face_to_face}
+						alt=""
+					/>
+				</div>
 
-			<div class="mt-8 flex items-center gap-8">
-				<button
-					class="bg-my-pale-yellow rounded-full px-5 py-3 text-lg font-medium tracking-wide text-black/80"
-					type="button">Sign Up Today</button
-				>
+				<div class="border-my-grey-3/40 aspect-[256/320] h-full">
+					<enhanced:img class="h-full w-full" src={garden_shed_from_outside} alt="" />
+				</div>
+				<div class="border-my-grey-3/40 aspect-[256/320] h-full">
+					<enhanced:img class="h-full w-full" src={participant_woman_glasses} alt="" />
+				</div>
+				<div class="border-my-grey-3/40 aspect-[3200/2133] h-full">
+					<enhanced:img
+						class="h-full w-full"
+						src={group_and_facilitators_sitting_round_fireplace}
+						alt=""
+					/>
+				</div>
+			</div>
 
-				<p class="">(It takes around 3 minutes)</p>
+			<div class="mt-3 flex h-[300px] gap-3">
+				<div class="border-my-grey-3/40 aspect-[192/128] h-full">
+					<enhanced:img class="h-full w-full" src={image.placeholder.axe_chopping} alt="" />
+				</div>
+				<div class="border-my-grey-3/40 aspect-[192/128] h-full">
+					<enhanced:img class="h-full w-full" src={image.placeholder.chillies} alt="" />
+				</div>
+				<div class="border-my-grey-3/40 aspect-[256/320] h-full">
+					<enhanced:img class="h-full w-full" src={james_and_participants_peace_sign} alt="" />
+				</div>
+				<div class="border-my-grey-3/40 aspect-[256/320] h-full">
+					<enhanced:img class="h-full w-full" src={indoor_workbench} alt="" />
+				</div>
 			</div>
 		</div>
 	</section>
 
 	<section class="mt-24 flex justify-center px-60">
-		<div class="w-full max-w-[768px]">
-			<div class="">
-				<h3 class="font-display text-bc-slate-pine text-5xl font-bold">What Participants Say</h3>
-				<div class="mt-8 flex flex-col gap-6">
-					<p class="text-xl leading-relaxed">
-						"The time I got to spend with others on camp was so magical and beautiful I can’t fully
-						describe it. If you're struggling with mental health or socialising, please give it a
-						go."
-					</p>
-					<p class="text-xl leading-relaxed">
-						"It was one of the best times of my life. I made friends, tested myself, and learned
-						more about the world and myself."
-					</p>
-					<p class="text-xl leading-relaxed">
-						"It gave me the confidence boost I needed and helped me feel more like myself."
-					</p>
-				</div>
+		<div class="flex w-full max-w-[768px] flex-col items-center">
+			<p class="text-lg text-black/80">
+				<span class="italic"> Ready to get on board?</span>
+				<span class="italic"> Fill out our online form - it takes around 3 minutes.</span>
+			</p>
 
-				<div class="mt-8 flex justify-center">
-					<!-- svelte-ignore a11y_click_events_have_key_events -->
-					<!-- svelte-ignore a11y_no_static_element_interactions -->
+			<div class="flex justify-center">
+				<div class="mt-4 flex items-center gap-8">
+					<button
+						class="font-display text-bc-amber cursor-pointer rounded-full px-5 py-3 text-4xl font-bold tracking-wide"
+						type="button">Sign Up Today</button
+					>
+
+					<!-- <p class="">(It takes around 3 minutes)</p> -->
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="mt-24">
+		<div class="flex w-full justify-center px-60">
+			<div class="w-full max-w-[768px]">
+				<div class="">
+					<h2 class="text-my-grey-1 text-[16px] font-medium tracking-wide uppercase">Feedback</h2>
+					<h4 class="text-bc-slate-pine font-display mt-4 text-[44px] font-bold">
+						What Participants Say
+					</h4>
+
+					<div class="mt-8 flex flex-col gap-6">
+						<p class="text-xl leading-relaxed">
+							"The time I got to spend with others on camp was so magical and beautiful I can’t
+							fully describe it. If you're struggling with mental health or socialising, please give
+							it a go."
+						</p>
+						<p class="text-xl leading-relaxed">
+							"It was one of the best times of my life. I made friends, tested myself, and learned
+							more about the world and myself."
+						</p>
+						<p class="text-xl leading-relaxed">
+							"It gave me the confidence boost I needed and helped me feel more like myself."
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="mt-16 px-60">
+			<div class=" flex justify-center">
+				<!-- svelte-ignore a11y_click_events_have_key_events -->
+				<!-- svelte-ignore a11y_no_static_element_interactions -->
+				<div
+					class="relative cursor-pointer"
+					on:click={() => {
+						playIntro = true;
+					}}
+				>
+					<enhanced:img class="w-[900px] rounded-md" src={image.placeholder.banner_1} alt="" />
+
+					<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+						<enhanced:img class="w-[50px]" src={image.illustration.play_icon_white} alt="" />
+					</div>
+
+					<div class="absolute top-2 right-2">
+						<p class="text-[17px] font-medium text-white">Participant Testimonial</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- <div class="mt-8 flex justify-center">
 					<div
 						class="relative cursor-pointer"
 						on:click={() => {
@@ -277,38 +323,47 @@
 							<enhanced:img class="w-[50px]" src={image.illustration.play_icon_white} alt="" />
 						</div>
 					</div>
-				</div>
-			</div>
+				</div> -->
+		<div class="mt-12 flex w-full justify-center px-60">
+			<div class="w-full max-w-[768px]">
+				<div class="">
+					<!-- <h3 class="font-display text-bc-slate-pine text-5xl font-bold">What Referrers Say</h3> -->
+					<h4 class="text-bc-slate-pine font-display mt-4 text-[44px] font-bold">
+						What Referrers Say
+					</h4>
 
-			<div class="mt-12">
-				<h3 class="font-display text-bc-slate-pine text-5xl font-bold">What Referrers Say</h3>
+					<div class="mt-6 flex flex-col gap-6">
+						<div>
+							<p class="text-xl leading-relaxed">
+								"B reflected on how Camp Birch helped her feel more connected to herself and nature.
+								She came away with tools for managing stress and adjusting to university life."
+							</p>
+							<p class="mt-2 text-xl text-black/70">
+								— Emma Martin | Senior Personal Adviser | Bristol Through Care Team
+							</p>
+						</div>
 
-				<div class="mt-6 flex flex-col gap-6">
-					<div>
-						<p class="text-xl leading-relaxed">
-							"B reflected on how Camp Birch helped her feel more connected to herself and nature.
-							She came away with tools for managing stress and adjusting to university life."
-						</p>
-						<p class="mt-2 text-xl text-black/70">
-							— Emma Martin | Senior Personal Adviser | Bristol Through Care Team
-						</p>
-					</div>
-
-					<div>
-						<p class="text-xl leading-relaxed">
-							"Camp Birch had a huge impact on our young people. Many came back more confident and
-							motivated to re-engage with education, volunteering and wellbeing activities. I’d
-							highly recommend The Birch Collective — plus it looked like so much fun"
-						</p>
-						<p class="mt-2 text-xl text-black/70">
-							— Rosie Kinnear | Youth Development Lead | The Prince's Trust
-						</p>
+						<div>
+							<p class="text-xl leading-relaxed">
+								"Camp Birch had a huge impact on our young people. Many came back more confident and
+								motivated to re-engage with education, volunteering and wellbeing activities. I’d
+								highly recommend The Birch Collective — plus it looked like so much fun"
+							</p>
+							<p class="mt-2 text-xl text-black/70">
+								— Rosie Kinnear | Youth Development Lead | The Prince's Trust
+							</p>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 </div>
+
+<!-- 	.my-grid {
+		column-count: 4;
+		column-gap: 1rem;
+	} -->
 
 <!-- <div class="mt-6">
 						<p class="text-right text-black/70">
@@ -338,9 +393,5 @@
 <style>
 	.my-shape {
 		clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
-	}
-	.my-grid {
-		column-count: 4;
-		column-gap: 1rem;
 	}
 </style>
