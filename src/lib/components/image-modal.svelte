@@ -1,7 +1,7 @@
 <script lang="ts" module>
 	import type { Snippet } from 'svelte';
 	import { X } from 'phosphor-svelte';
-	import { scale } from 'svelte/transition';
+	import { fade, scale } from 'svelte/transition';
 
 	import { browser } from '$app/environment';
 
@@ -35,7 +35,12 @@
 	<div
 		class="fixed inset-0 z-50 grid place-items-center bg-white/70"
 		onclick={onClickClose}
-		transition:scale={{ start: 0.9 }}
+		transition:fade={{ duration: 200 }}
+	></div>
+
+	<div
+		class="fixed top-1/2 left-1/2 z-[60] grid h-[80vh] max-h-[1200px] w-[80vw] max-w-[1000px] -translate-x-1/2 -translate-y-1/2 place-items-center"
+		transition:scale={{ start: 0.9, opacity: 0, duration: 300 }}
 	>
 		<div>
 			<div

@@ -1,5 +1,5 @@
 <script lang="ts" module>
-	import { scale } from 'svelte/transition';
+	import { fade, scale } from 'svelte/transition';
 
 	import { browser } from '$app/environment';
 
@@ -34,10 +34,13 @@
 {#if isOpen}
 	<div
 		class="fixed inset-0 z-50 grid place-items-center bg-white/90"
-		transition:scale={{ start: 0.9 }}
+		transition:fade={{ duration: 200 }}
 	></div>
 
-	<div class="fixed inset-0 z-[60] grid place-items-center" transition:scale={{ start: 0.9 }}>
+	<div
+		class="fixed inset-0 z-[60] grid place-items-center"
+		transition:scale={{ start: 0.9, opacity: 0, duration: 300 }}
+	>
 		<div>
 			<div class="relative mx-2 overflow-visible shadow-xl">
 				<button
