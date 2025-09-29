@@ -82,11 +82,11 @@
 									<Card.Root class="ml-0 flex grow flex-col border-none shadow-none">
 										<Card.Content class="flex grow flex-col p-6 text-lg leading-relaxed">
 											<Card.Title
-												class="decoration-bc-slate-pine/20 text-[15px] font-medium tracking-wide text-black/50 uppercase underline decoration-2 underline-offset-4"
+												class="decoration-bc-slate-pine/20 font-display text-[22px] font-bold tracking-wide text-black/50 uppercase underline decoration-2 underline-offset-4"
 												>Confidentiality</Card.Title
 											>
 
-											<div class="grid grow place-items-center">
+											<div class="grid max-h-full grow place-items-center overflow-auto">
 												<div>
 													<p class="mt-8 leading-relaxed">
 														First up, we need you to read and understand our confidentiality
