@@ -10,7 +10,7 @@
 	import { slides } from '^content/sign-up-form';
 	import { toggleBodyScroll } from '^helpers';
 
-	import { Card, Carousel, Checkbox, Input, Label } from '^components/ui';
+	import { Card, Carousel, Checkbox, Input, Label, Textarea } from '^components/ui';
 	// import { Input } from '^components/ui/input';
 	import NextButton from './next-button.svelte';
 	import DatePicker from './date-picker.svelte';
@@ -73,6 +73,136 @@
 								hiddenParentClass="grow flex flex-col px-6"
 								class="ml-0 w-full grow "
 							>
+								<Carousel.Item class="flex basis-full flex-col pl-0">
+									<Card.Root class="ml-0 flex grow flex-col border-none shadow-none">
+										<Card.Content class="flex grow flex-col p-6 text-lg leading-relaxed">
+											<Card.Title
+												class="decoration-bc-slate-pine/30 font-display text-[24px] font-bold tracking-wide text-black/50 underline decoration-2 underline-offset-4"
+												>For Referrals</Card.Title
+											>
+
+											<div class="mt-8 grid max-h-full grow place-items-center overflow-y-scroll">
+												<div class="flex max-h-[400px] w-full flex-col gap-12 px-1 pr-4 pb-10">
+													<div>
+														<h3 class="text-black">
+															<span
+																>If you're a professional referreing a client, is there any
+																additional information you think is important to share about your
+																client?</span
+															>
+														</h3>
+														<span class="text-sm text-black/50 italic">(optional)</span>
+
+														<Textarea
+															class="mt-2 h-[120px] w-full resize-none py-2 !text-base focus:outline-none focus-visible:border-black focus-visible:ring-1"
+															placeholder="Enter response here"
+															id="ethnicity"
+														/>
+													</div>
+												</div>
+											</div>
+										</Card.Content>
+									</Card.Root>
+								</Carousel.Item>
+								<Carousel.Item class="flex basis-full flex-col pl-0">
+									<Card.Root class="ml-0 flex grow flex-col border-none shadow-none">
+										<Card.Content class="flex grow flex-col p-6 text-lg leading-relaxed">
+											<Card.Title
+												class="decoration-bc-slate-pine/30 font-display text-[24px] font-bold tracking-wide text-black/50 underline decoration-2 underline-offset-4"
+												>Programme interest</Card.Title
+											>
+
+											<div class="mt-8 grid max-h-full grow place-items-center overflow-y-scroll">
+												<div class="flex max-h-[400px] w-full flex-col gap-12 px-1 pr-4 pb-10">
+													<div>
+														<h3 class="text-black">
+															<span
+																>Which programmes are you interested in and would like some more
+																information about?</span
+															>
+														</h3>
+														<span class="text-sm text-black/50 italic">(required)</span>
+														<p class="mt-2 text-[15px] text-black/70">
+															Tick all that apply to you. Pick at least one.
+														</p>
+
+														<div class="mt-6 flex flex-col gap-3">
+															<div class="flex items-center gap-4">
+																<Checkbox id="programme-recoupe" />
+																<Label class="text-base font-normal" for="programme-recoupe"
+																	>Recoupe: Working</Label
+																>
+															</div>
+															<div class="flex items-center gap-4">
+																<Checkbox id="programme-recoupe" />
+																<Label class="text-base font-normal" for="programme-recoupe"
+																	>Fresh Air Thursday</Label
+																>
+															</div>
+														</div>
+													</div>
+
+													<div>
+														<Label class="flex items-end gap-3" for="ethnicity"
+															><span class="text-lg font-normal"
+																>What do you hope to get out of going to The Birch Collective's
+																sessions or programmes?</span
+															>
+														</Label>
+
+														<span class="text-sm text-black/50 italic">optional</span>
+
+														<Textarea
+															class="mt-2 w-full py-2 !text-base focus:outline-none focus-visible:border-black focus-visible:ring-1"
+															placeholder="Enter response here"
+															id="ethnicity"
+														/>
+													</div>
+
+													<div>
+														<h3 class="text-black">
+															<span>Do you identify as any of the following?</span>
+														</h3>
+														<span class="text-sm text-black/50 italic">(required)</span>
+														<p class="mt-2 text-[15px] text-black/70">
+															Tick all that apply to you. Pick at least one.
+														</p>
+
+														<div class="mt-6 flex flex-col gap-3">
+															<div class="flex items-center gap-4">
+																<Checkbox id="identity-working-class" />
+																<Label class="text-base font-normal" for="identity-working-class"
+																	>working class</Label
+																>
+															</div>
+
+															<div class="flex items-center gap-4">
+																<Checkbox id="identity-working-class" />
+																<Label class="text-base font-normal" for="identity-working-class"
+																	>someone with a disability</Label
+																>
+															</div>
+
+															<div class="flex items-center gap-4">
+																<Checkbox id="identity-working-class" />
+																<Label class="text-base font-normal" for="identity-working-class"
+																	>male or male identifying</Label
+																>
+															</div>
+
+															<div class="flex items-center gap-4">
+																<Checkbox id="identity-working-class" />
+																<Label class="text-base font-normal" for="identity-working-class"
+																	>care experienced</Label
+																>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</Card.Content>
+									</Card.Root>
+								</Carousel.Item>
 								<Carousel.Item class="flex basis-full flex-col pl-0">
 									<Card.Root class="ml-0 flex grow flex-col border-none shadow-none">
 										<Card.Content class="flex grow flex-col p-6 text-lg leading-relaxed">

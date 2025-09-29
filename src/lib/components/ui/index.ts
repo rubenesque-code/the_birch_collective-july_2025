@@ -7,4 +7,5 @@ export { Input } from './input';
 export { Label } from './label';
 export * as Popover from './popover';
 export * from './sonner';
+export { Textarea } from './textarea';
 export * as Tooltip from './tooltip';
