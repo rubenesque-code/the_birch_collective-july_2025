@@ -1,7 +1,11 @@
 <script lang="ts" module>
+	import { ArrowCircleRight, Clover, Square } from 'phosphor-svelte';
+
 	import image from '^assets/image';
+	import { internalRoute } from '^constants';
+
 	import { Navigation } from '^components/~sections';
-	import { Clover, Square } from 'phosphor-svelte';
+	import { Tile } from '^pages/free-programmes';
 </script>
 
 <Navigation />
@@ -26,86 +30,22 @@
 	</section>
 
 	<section class="relative mt-16 flex justify-center overflow-visible px-60">
-		<div class="w-full">
-			<!-- <h2 class="font-display text-bc-slate-pine text-6xl font-bold">Book a Spot</h2> -->
+		<div class="mt-12 grid grid-cols-2 justify-between gap-32">
+			<Tile
+				link={internalRoute['recoupe']}
+				imgAlt=""
+				imgSrc={image.placeholder.axe_chopping}
+				text="A weekly woodland sessions using traditional skills in Troopers Hill Woods."
+				title="Recoupe: Working Woods"
+			/>
 
-			<div class="mt-12 grid grid-cols-2 gap-32">
-				<div class="">
-					<a class="w-[700px]" href="/recoupe">
-						<enhanced:img
-							class="aspect-video rounded-sm object-cover"
-							src={image.placeholder.axe_chopping}
-							alt=""
-						/>
-
-						<h3 class="font-display text-bc-amber mt-3 text-center text-[42px] font-bold">
-							Recoupe: Working Woods
-						</h3>
-
-						<p class="mt-2 text-center text-xl leading-relaxed">
-							A weekly woodland sessions using traditional skills in Troopers Hill Woods.
-						</p>
-
-						<!-- <div class="mt-3 flex flex-col items-center border p-4 text-center">
-							<p class="text-xl">Expect to learn skills in:</p>
-
-							<div class="mt-2 flex flex-col">
-								{#each ['woodland management for wildflife', 'green woodworking', 'tree planting'] as text}
-									<p class="flex items-center gap-4 pl-2">
-										<span class="text-bc-slate-pine">
-											<Square />
-										</span>
-
-										<span
-											class="decoration-bc-amber/30 text-xl leading-[1.6em] text-black/90 underline underline-offset-4"
-										>
-											{text}
-										</span>
-									</p>
-								{/each}
-							</div>
-						</div> -->
-					</a>
-				</div>
-
-				<div class="flex justify-end">
-					<a class="w-[700px]" href="/fresh-air-thursday">
-						<enhanced:img
-							class="aspect-video rounded-sm object-cover"
-							src={image.placeholder.group_photo}
-							alt=""
-						/>
-
-						<h3 class="font-display text-bc-amber mt-3 text-center text-[42px] font-bold">
-							Fresh Air Thursdays
-						</h3>
-
-						<p class="mt-2 text-center text-xl leading-relaxed">
-							A FREE weekly group for 16-25 year olds, just a 5-minute walk from St George's Park!
-						</p>
-
-						<!-- <div class="mt-3">
-							<p class="text-xl">What to expect:</p>
-							<div class="mt-3 flex flex-col gap-2">
-								<div class="flex items-center gap-2">
-									<span class="text-bc-pale-sandstone text-2xl"><Clover /></span>
-									<p class="text-xl text-black/80">hanging out and having fun in our garden!</p>
-								</div>
-
-								<div class="flex items-center gap-2">
-									<span class="text-bc-pale-sandstone text-2xl"><Clover /></span>
-									<p class="text-xl text-black/80">foraging walks</p>
-								</div>
-
-								<div class="flex items-center gap-2">
-									<span class="text-bc-pale-sandstone text-2xl"><Clover /></span>
-									<p class="text-xl text-black/80">organic food growing</p>
-								</div>
-							</div>
-						</div> -->
-					</a>
-				</div>
-			</div>
+			<Tile
+				link={internalRoute['fresh-air-thursday']}
+				imgAlt=""
+				imgSrc={image.placeholder.group_photo}
+				title="Fresh Air Thursdays"
+				text="A FREE weekly group for 16-25 year olds, just a 5-minute walk from St George's Park!"
+			/>
 		</div>
 	</section>
 </div>

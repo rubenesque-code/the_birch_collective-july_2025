@@ -3,8 +3,10 @@
 
 	import { browser } from '$app/environment';
 
-	import { Carousel } from '^components/ui';
 	import { toggleBodyScroll } from '^helpers';
+	import { slides } from '^content/sign-up-form';
+
+	import { Card, Carousel } from '^components/ui';
 </script>
 
 <script lang="ts">
@@ -16,6 +18,13 @@
 	$effect(() => {
 		$: browser && toggleBodyScroll({ triggerDisableOn: isOpen });
 	});
+
+	let activeSlide: 'intro' = 'intro';
+	let permitGoToNext = $derived.by(() => {
+		if (activeSlide === 'intro') {
+			return true;
+		}
+	});
 </script>
 
 {#if isOpen}
@@ -26,47 +35,51 @@
 
 	<div class="fixed inset-0 z-[60] grid place-items-center" transition:scale={{ start: 0.9 }}>
 		<div>
-			<div
-				class="md/lg:border-[12px] border-bc-pale-sandstone relative mx-2 overflow-visible border-[8px] lg:border-[16px]"
-			>
+			<div class="relative mx-2 overflow-visible shadow-xl">
 				<button
-					class="md/lg:right-[-14px] border-bc-sea-foam-teal absolute -top-[12px] right-[-10px] z-10 -translate-y-full cursor-pointer rounded-full border-4 bg-white px-2 py-1 text-[15px] font-medium tracking-wide text-black/70 uppercase md:-top-[16px] md:right-[-12px] lg:-right-[20px] xl:-top-[24px]"
+					class="border-bc-sea-foam-teal bg-my-grey-1 absolute -top-[12px] right-0 z-10 -translate-y-full cursor-pointer rounded-full px-2 py-1 text-[15px] font-medium tracking-wide text-white md:-top-[16px] xl:-top-[24px]"
 					onclick={onClickClose}
 					type="button"
 				>
-					close form
+					Close
 				</button>
 
-				<div class="flex h-[80vh] max-h-[800px] w-[95vw] max-w-[800px] flex-col bg-white p-2">
-					<div class="flex items-start justify-between">
-						<h3 class="font-display text-bc-amber text-3xl font-bold">The Birch Collective</h3>
-						<h2 class="text-my-grey-1 text-[15px] font-medium tracking-wide uppercase">
-							Programme Signup
-						</h2>
+				<div
+					class="flex h-[80vh] max-h-[800px] w-[95vw] max-w-[800px] flex-col rounded-sm bg-white px-4 py-3"
+				>
+					<div class="bg-my-grey-3/5 flex items-start justify-between p-3">
+						<h3 class="font-display text-bc-amber text-3xl font-bold">
+							<span class="text-black">The Birch Collective</span>
+						</h3>
+						<h2 class="font-display text-bc-amber text-3xl font-bold">Programme Signup</h2>
 					</div>
 
-					<div class="relative m-6 mt-4 grow">
-						<Carousel.Root
-							class="absolute inset-0 grid place-items-center border border-red-600"
-							opts={{ align: 'center' }}
-						>
-							<Carousel.Content>
-								<Carousel.Item class="w-full ">
-									<div class="p-1">Hello</div>
-								</Carousel.Item>
-
-								<Carousel.Item>
-									<div class="p-1">NUMBER 2</div>
+					<div class="relative flex grow flex-col">
+						<Carousel.Root class="flex grow flex-col " opts={{ align: 'center' }}>
+							<Carousel.Content
+								hiddenParentClass="grow flex flex-col px-6"
+								class="ml-0 w-full grow "
+							>
+								<Carousel.Item class="flex basis-full flex-col pl-0">
+									<Card.Root class="ml-0 grid grow place-items-center border-none shadow-none">
+										<Card.Content class="p-6 text-lg leading-relaxed">
+											<p class="font-medium">{slides.intro.title}</p>
+											<p class="mt-4">{slides.intro.text}</p>
+										</Card.Content>
+									</Card.Root>
 								</Carousel.Item>
 							</Carousel.Content>
 
-							<Carousel.Previous />
-							<Carousel.Next />
-						</Carousel.Root>
-					</div>
+							<div
+								class="bg-my-grey-3/5 relative mt-4 flex w-full shrink-0 items-center justify-between p-3"
+							>
+								<Carousel.Previous class="static translate-none" />
 
-					<div class="flex shrink-0 justify-center">
-						<button class="p-2" type="button">Start</button>
+								<button class="p-2" type="button">Start</button>
+
+								<Carousel.Next class="static translate-none" />
+							</div>
+						</Carousel.Root>
 					</div>
 				</div>
 			</div>
