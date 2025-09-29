@@ -2,12 +2,18 @@
 	import { fade, scale } from 'svelte/transition';
 
 	import { browser } from '$app/environment';
+	import {
+		PUBLIC_BIRCH_GDPR_CONTACT_EMAIL,
+		PUBLIC_BIRCH_GDPR_CONTACT_PHONE
+	} from '$env/static/public';
 
 	import { slides } from '^content/sign-up-form';
 	import { toggleBodyScroll } from '^helpers';
 
-	import { Card, Carousel } from '^components/ui';
+	import { Card, Carousel, Input, Label } from '^components/ui';
+	// import { Input } from '^components/ui/input';
 	import NextButton from './next-button.svelte';
+	import DatePicker from './date-picker.svelte';
 </script>
 
 <script lang="ts">
@@ -20,7 +26,7 @@
 		$: browser && toggleBodyScroll({ triggerDisableOn: isOpen });
 	});
 
-	let activeSlide: 'intro' = 'intro';
+	let activeSlide: 'intro' | 'terms' = 'intro';
 
 	let permitGoNext = $derived.by(() => {
 		if (activeSlide === 'intro') {
@@ -70,6 +76,58 @@
 								<Carousel.Item class="flex basis-full flex-col pl-0">
 									<Card.Root class="ml-0 flex grow flex-col border-none shadow-none">
 										<Card.Content class="flex grow flex-col p-6 text-lg leading-relaxed">
+											<Card.Title
+												class="decoration-bc-slate-pine/20 font-display text-[22px] font-bold tracking-wide text-black/50 underline decoration-2 underline-offset-4"
+												>Your Details</Card.Title
+											>
+
+											<div class="grid max-h-full grow place-items-center overflow-auto">
+												<div class="flex w-full flex-col gap-10 px-1">
+													<div>
+														<Label class="text-black/50" for="full name">Full name</Label>
+														<Input
+															class="mt-2 w-full py-2 !text-base focus:outline-none focus-visible:border-black focus-visible:ring-1"
+															placeholder="Enter your full name"
+															id="full name"
+															type="text"
+														/>
+													</div>
+
+													<div>
+														<Label class="text-black/50" for="dob">Date of birth</Label>
+														<div class="mt-2">
+															<DatePicker />
+														</div>
+													</div>
+
+													<div>
+														<Label class="text-black/50" for="email">Email address</Label>
+														<Input
+															class="mt-2 w-full py-2 !text-base focus:outline-none focus-visible:border-black focus-visible:ring-1"
+															placeholder="Enter your email address"
+															id="email"
+															type="email"
+														/>
+													</div>
+
+													<div>
+														<Label class="text-black/50" for="phone">Phone number</Label>
+														<Input
+															class="mt-2 w-full py-2 !text-base focus:outline-none focus-visible:border-black focus-visible:ring-1"
+															placeholder="Enter your phone number"
+															id="phone"
+															type="tel"
+														/>
+													</div>
+												</div>
+											</div>
+										</Card.Content>
+									</Card.Root>
+								</Carousel.Item>
+
+								<Carousel.Item class="flex basis-full flex-col pl-0">
+									<Card.Root class="ml-0 flex grow flex-col border-none shadow-none">
+										<Card.Content class="flex grow flex-col p-6 text-lg leading-relaxed">
 											<div class="grid grow place-items-center">
 												<div>
 													<Card.Title class="font-medium">{slides.intro.title}</Card.Title>
@@ -85,7 +143,7 @@
 									<Card.Root class="ml-0 flex grow flex-col border-none shadow-none">
 										<Card.Content class="flex grow flex-col p-6 text-lg leading-relaxed">
 											<Card.Title
-												class="decoration-bc-slate-pine/20 font-display text-[22px] font-bold tracking-wide text-black/50 uppercase underline decoration-2 underline-offset-4"
+												class="decoration-bc-slate-pine/20 font-display text-[22px] font-bold tracking-wide text-black/50 underline decoration-2 underline-offset-4"
 												>Confidentiality</Card.Title
 											>
 
@@ -103,6 +161,52 @@
 														not want us to share anything, but we will support you through the whole
 														thing.
 													</p>
+												</div>
+											</div>
+										</Card.Content>
+									</Card.Root>
+								</Carousel.Item>
+
+								<Carousel.Item class="flex basis-full flex-col pl-0">
+									<Card.Root class="ml-0 flex grow flex-col border-none shadow-none">
+										<Card.Content class="flex grow flex-col p-6 text-lg leading-relaxed">
+											<Card.Title
+												class="decoration-bc-slate-pine/20 font-display text-[22px] font-bold tracking-wide text-black/50 underline decoration-2 underline-offset-4"
+												>GDPR & GDPR Contacts</Card.Title
+											>
+
+											<div class="grid max-h-full grow place-items-center overflow-auto">
+												<div class="leading-relaxed">
+													<p class="mt-8 leading-relaxed">
+														By signing this form, you are giving us permission to contact you about
+														opportunities and events from the Birch Collective. In order to comply
+														with the General Data Protection Regulation, The Birch Collective is
+														seeking your consent to hold your information on our database. We are
+														required by our funders to gather information about the people who use
+														our services. We will not share your information with third parties
+														other than those you have agreed to. We use and store any information
+														that you give us in accordance with the Data Protection Act 2003.
+														Information you provide will be anonymised before being used in
+														monitoring and evaluation reports for our current funders, to support
+														funding applications. Your data will be held for a maximum of 2 years
+														after your last engagement.
+													</p>
+													<p class="mt-4">
+														For further details on our data protection and information sharing
+														policies or for any queries about the data we hold, please get in touch:
+													</p>
+													<div class="mt-4 flex flex-col text-black/70">
+														<p class="flex gap-2">
+															<span class="font-medium">Email:</span><span
+																>{PUBLIC_BIRCH_GDPR_CONTACT_EMAIL}</span
+															>
+														</p>
+														<p class="flex gap-2">
+															<span class="font-medium">Phone:</span><span
+																>{PUBLIC_BIRCH_GDPR_CONTACT_PHONE}</span
+															>
+														</p>
+													</div>
 												</div>
 											</div>
 										</Card.Content>
