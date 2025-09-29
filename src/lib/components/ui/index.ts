@@ -2,7 +2,7 @@ export * as Accordion from './accordion';
 export * as Calendar from './calendar';
 export * as Card from './card';
 export * as Carousel from './carousel';
-export * as Checkbox from './checkbox';
+export { Checkbox } from './checkbox';
 export { Input } from './input';
 export { Label } from './label';
 export * as Popover from './popover';

@@ -10,7 +10,7 @@
 	import { slides } from '^content/sign-up-form';
 	import { toggleBodyScroll } from '^helpers';
 
-	import { Card, Carousel, Input, Label } from '^components/ui';
+	import { Card, Carousel, Checkbox, Input, Label } from '^components/ui';
 	// import { Input } from '^components/ui/input';
 	import NextButton from './next-button.svelte';
 	import DatePicker from './date-picker.svelte';
@@ -77,6 +77,219 @@
 									<Card.Root class="ml-0 flex grow flex-col border-none shadow-none">
 										<Card.Content class="flex grow flex-col p-6 text-lg leading-relaxed">
 											<Card.Title
+												class="decoration-bc-slate-pine/30 font-display text-[24px] font-bold tracking-wide text-black/50 underline decoration-2 underline-offset-4"
+												>Identity</Card.Title
+											>
+
+											<div class="mt-8 grid max-h-full grow place-items-center overflow-y-scroll">
+												<div class="flex max-h-[400px] w-full flex-col gap-12 px-1 pr-4 pb-10">
+													<div>
+														<h3 class="text-black">
+															<span>Do you identify as any of the following?</span>
+														</h3>
+														<span class="text-sm text-black/50 italic">(required)</span>
+														<p class="mt-2 text-[15px] text-black/70">
+															Tick all that apply to you. Pick at least one.
+														</p>
+
+														<div class="mt-6 flex flex-col gap-3">
+															<div class="flex items-center gap-4">
+																<Checkbox id="identity-working-class" />
+																<Label class="text-base font-normal" for="identity-working-class"
+																	>working class</Label
+																>
+															</div>
+
+															<div class="flex items-center gap-4">
+																<Checkbox id="identity-working-class" />
+																<Label class="text-base font-normal" for="identity-working-class"
+																	>someone with a disability</Label
+																>
+															</div>
+
+															<div class="flex items-center gap-4">
+																<Checkbox id="identity-working-class" />
+																<Label class="text-base font-normal" for="identity-working-class"
+																	>male or male identifying</Label
+																>
+															</div>
+
+															<div class="flex items-center gap-4">
+																<Checkbox id="identity-working-class" />
+																<Label class="text-base font-normal" for="identity-working-class"
+																	>care experienced</Label
+																>
+															</div>
+														</div>
+													</div>
+
+													<div>
+														<Label class="flex items-end gap-3" for="ethnicity"
+															><span class="text-lg font-normal">Your ethnicity</span>
+															<span
+																class="-translate-y-[2px] text-right text-sm text-black/60 italic"
+																>required</span
+															>
+														</Label>
+														<Input
+															class="mt-2 w-full py-2 !text-base focus:outline-none focus-visible:border-black focus-visible:ring-1"
+															placeholder="Enter your ethnicity here"
+															id="ethnicity"
+															type="text"
+														/>
+													</div>
+
+													<div>
+														<h3 class="text-black">
+															<span>Do you identify as any of the following?</span>
+														</h3>
+														<span class="text-sm text-black/50 italic">(required)</span>
+														<p class="mt-2 text-[15px] text-black/70">
+															Tick all that apply to you. Pick at least one.
+														</p>
+
+														<div class="mt-6 flex flex-col gap-3">
+															<div class="flex items-center gap-4">
+																<Checkbox id="identity-working-class" />
+																<Label class="text-base font-normal" for="identity-working-class"
+																	>working class</Label
+																>
+															</div>
+
+															<div class="flex items-center gap-4">
+																<Checkbox id="identity-working-class" />
+																<Label class="text-base font-normal" for="identity-working-class"
+																	>someone with a disability</Label
+																>
+															</div>
+
+															<div class="flex items-center gap-4">
+																<Checkbox id="identity-working-class" />
+																<Label class="text-base font-normal" for="identity-working-class"
+																	>male or male identifying</Label
+																>
+															</div>
+
+															<div class="flex items-center gap-4">
+																<Checkbox id="identity-working-class" />
+																<Label class="text-base font-normal" for="identity-working-class"
+																	>care experienced</Label
+																>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</Card.Content>
+									</Card.Root>
+								</Carousel.Item>
+
+								<Carousel.Item class="flex basis-full flex-col pl-0">
+									<Card.Root class="ml-0 flex grow flex-col border-none shadow-none">
+										<Card.Content class="flex grow flex-col p-6 text-lg leading-relaxed">
+											<Card.Title
+												class="decoration-bc-slate-pine/20 font-display text-[22px] font-bold tracking-wide text-black/50 underline decoration-2 underline-offset-4"
+												>Emergency Contact Details</Card.Title
+											>
+
+											<div class="grid max-h-full grow place-items-center overflow-auto">
+												<div class="flex w-full flex-col gap-6 px-1">
+													<div>
+														<Label class="text-black/50" for="emergency full name">Full name</Label>
+														<Input
+															class="mt-2 w-full py-2 !text-base focus:outline-none focus-visible:border-black focus-visible:ring-1"
+															placeholder="Contact full name"
+															id="emergency full name"
+															type="text"
+														/>
+														<p class="mt-1 text-right text-sm text-black/60 italic">required</p>
+													</div>
+
+													<div>
+														<Label class="text-black/50" for="emergency phone">Phone number</Label>
+														<Input
+															class="mt-2 w-full py-2 !text-base focus:outline-none focus-visible:border-black focus-visible:ring-1"
+															placeholder="Contact phone number"
+															id="phone"
+															type="tel"
+														/>
+														<p class="mt-1 text-right text-sm text-black/60 italic">required</p>
+													</div>
+
+													<div>
+														<Label class="text-black/50" for="relationship">Relationship</Label>
+														<Input
+															class="mt-2 w-full py-2 !text-base focus:outline-none focus-visible:border-black focus-visible:ring-1"
+															placeholder="Contact relationship"
+															id="relationship"
+															type="text"
+														/>
+														<p class="mt-1 text-right text-sm text-black/60 italic">required</p>
+													</div>
+												</div>
+											</div>
+										</Card.Content>
+									</Card.Root>
+								</Carousel.Item>
+								<Carousel.Item class="flex basis-full flex-col pl-0">
+									<Card.Root class="ml-0 flex grow flex-col border-none shadow-none">
+										<Card.Content class="flex grow flex-col p-6 text-lg leading-relaxed">
+											<Card.Title
+												class="decoration-bc-slate-pine/20 font-display text-[22px] font-bold tracking-wide text-black/50 underline decoration-2 underline-offset-4"
+												>Your Address</Card.Title
+											>
+
+											<div class="grid max-h-full grow place-items-center overflow-auto">
+												<div class="flex w-full flex-col gap-10 px-1">
+													<div>
+														<Label class="text-black/50" for="address line 1">Line 1</Label>
+														<Input
+															class="mt-2 w-full py-2 !text-base focus:outline-none focus-visible:border-black focus-visible:ring-1"
+															placeholder="Line 1"
+															id="address line 1"
+															type="text"
+														/>
+													</div>
+
+													<div>
+														<Label class="text-black/50" for="address line 2">Line 2</Label>
+														<Input
+															class="mt-2 w-full py-2 !text-base focus:outline-none focus-visible:border-black focus-visible:ring-1"
+															placeholder="Line 2"
+															id="address line 2"
+															type="text"
+														/>
+													</div>
+
+													<div>
+														<Label class="text-black/50" for="Town/City">Town/City</Label>
+														<Input
+															class="mt-2 w-full py-2 !text-base focus:outline-none focus-visible:border-black focus-visible:ring-1"
+															placeholder="Town/City"
+															id="Town/City"
+															type="text"
+														/>
+													</div>
+
+													<div>
+														<Label class="text-black/50" for="Postcode">Postcode</Label>
+														<Input
+															class="mt-2 w-full py-2 !text-base focus:outline-none focus-visible:border-black focus-visible:ring-1"
+															placeholder="Postcode"
+															id="Postcode"
+															type="text"
+														/>
+													</div>
+												</div>
+											</div>
+										</Card.Content>
+									</Card.Root>
+								</Carousel.Item>
+
+								<Carousel.Item class="flex basis-full flex-col pl-0">
+									<Card.Root class="ml-0 flex grow flex-col border-none shadow-none">
+										<Card.Content class="flex grow flex-col p-6 text-lg leading-relaxed">
+											<Card.Title
 												class="decoration-bc-slate-pine/20 font-display text-[22px] font-bold tracking-wide text-black/50 underline decoration-2 underline-offset-4"
 												>Your Details</Card.Title
 											>
@@ -87,7 +300,7 @@
 														<Label class="text-black/50" for="full name">Full name</Label>
 														<Input
 															class="mt-2 w-full py-2 !text-base focus:outline-none focus-visible:border-black focus-visible:ring-1"
-															placeholder="Enter your full name"
+															placeholder="Your full name"
 															id="full name"
 															type="text"
 														/>
@@ -104,7 +317,7 @@
 														<Label class="text-black/50" for="email">Email address</Label>
 														<Input
 															class="mt-2 w-full py-2 !text-base focus:outline-none focus-visible:border-black focus-visible:ring-1"
-															placeholder="Enter your email address"
+															placeholder="Your email address"
 															id="email"
 															type="email"
 														/>
@@ -114,7 +327,7 @@
 														<Label class="text-black/50" for="phone">Phone number</Label>
 														<Input
 															class="mt-2 w-full py-2 !text-base focus:outline-none focus-visible:border-black focus-visible:ring-1"
-															placeholder="Enter your phone number"
+															placeholder="Your phone number"
 															id="phone"
 															type="tel"
 														/>
