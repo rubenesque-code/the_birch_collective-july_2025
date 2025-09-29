@@ -3,10 +3,11 @@
 
 	import { browser } from '$app/environment';
 
-	import { toggleBodyScroll } from '^helpers';
 	import { slides } from '^content/sign-up-form';
+	import { toggleBodyScroll } from '^helpers';
 
 	import { Card, Carousel } from '^components/ui';
+	import NextButton from './next-button.svelte';
 </script>
 
 <script lang="ts">
@@ -20,10 +21,13 @@
 	});
 
 	let activeSlide: 'intro' = 'intro';
-	let permitGoToNext = $derived.by(() => {
+
+	let permitGoNext = $derived.by(() => {
 		if (activeSlide === 'intro') {
 			return true;
 		}
+
+		return false;
 	});
 </script>
 
@@ -37,7 +41,7 @@
 		<div>
 			<div class="relative mx-2 overflow-visible shadow-xl">
 				<button
-					class="border-bc-sea-foam-teal bg-my-grey-1 absolute -top-[12px] right-0 z-10 -translate-y-full cursor-pointer rounded-full px-2 py-1 text-[15px] font-medium tracking-wide text-white md:-top-[16px] xl:-top-[24px]"
+					class="bg-my-grey-1 absolute -top-[12px] right-0 z-10 -translate-y-full cursor-pointer rounded-full px-2 py-1 text-[15px] font-medium tracking-wide text-white md:-top-[16px] xl:-top-[24px]"
 					onclick={onClickClose}
 					type="button"
 				>
@@ -48,10 +52,10 @@
 					class="flex h-[80vh] max-h-[800px] w-[95vw] max-w-[800px] flex-col rounded-sm bg-white px-4 py-3"
 				>
 					<div class="bg-my-grey-3/5 flex items-start justify-between p-3">
-						<h3 class="font-display text-bc-amber text-3xl font-bold">
+						<h3 class="font-display text-3xl font-bold">
 							<span class="text-black">The Birch Collective</span>
 						</h3>
-						<h2 class="font-display text-bc-amber text-3xl font-bold">Programme Signup</h2>
+						<h2 class="font-display text-bc-slate-pine text-3xl font-bold">Programme Signup</h2>
 					</div>
 
 					<div class="relative flex grow flex-col">
@@ -61,10 +65,43 @@
 								class="ml-0 w-full grow "
 							>
 								<Carousel.Item class="flex basis-full flex-col pl-0">
-									<Card.Root class="ml-0 grid grow place-items-center border-none shadow-none">
-										<Card.Content class="p-6 text-lg leading-relaxed">
-											<p class="font-medium">{slides.intro.title}</p>
-											<p class="mt-4">{slides.intro.text}</p>
+									<Card.Root class="ml-0 flex grow flex-col border-none shadow-none">
+										<Card.Content class="flex grow flex-col p-6 text-lg leading-relaxed">
+											<div class="grid grow place-items-center">
+												<div>
+													<Card.Title class="font-medium">{slides.intro.title}</Card.Title>
+
+													<p class="mt-8">{slides.intro.text}</p>
+												</div>
+											</div>
+										</Card.Content>
+									</Card.Root>
+								</Carousel.Item>
+
+								<Carousel.Item class="flex basis-full flex-col pl-0">
+									<Card.Root class="ml-0 flex grow flex-col border-none shadow-none">
+										<Card.Content class="flex grow flex-col p-6 text-lg leading-relaxed">
+											<Card.Title
+												class="decoration-bc-slate-pine/20 text-[15px] font-medium tracking-wide text-black/50 uppercase underline decoration-2 underline-offset-4"
+												>Confidentiality</Card.Title
+											>
+
+											<div class="grid grow place-items-center">
+												<div>
+													<p class="mt-8 leading-relaxed">
+														First up, we need you to read and understand our confidentiality
+														statement: Anything you talk about with one of our team is kept totally
+														private within Birch. We won't share what you tell us with anyone else.
+														But if there was an extreme situation, like if you or someone else was
+														at risk of being seriously hurt, then we would need to break
+														confidentiality to keep you safe. If this happened we would discuss it
+														with you first and do our best to make sure you were involved in any
+														decisions that have to be made. We know this can be scary and you might
+														not want us to share anything, but we will support you through the whole
+														thing.
+													</p>
+												</div>
+											</div>
 										</Card.Content>
 									</Card.Root>
 								</Carousel.Item>
@@ -75,9 +112,9 @@
 							>
 								<Carousel.Previous class="static translate-none" />
 
-								<button class="p-2" type="button">Start</button>
+								<NextButton bind:permitGoNext />
 
-								<Carousel.Next class="static translate-none" />
+								<Carousel.Next class="static translate-none cursor-pointer" />
 							</div>
 						</Carousel.Root>
 					</div>
