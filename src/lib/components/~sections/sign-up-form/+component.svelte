@@ -68,11 +68,72 @@
 					</div>
 
 					<div class="relative flex grow flex-col">
-						<Carousel.Root class="flex grow flex-col " opts={{ align: 'center' }}>
+						<Carousel.Root class="flex grow flex-col" opts={{ align: 'center' }}>
 							<Carousel.Content
 								hiddenParentClass="grow flex flex-col px-6"
 								class="ml-0 w-full grow "
 							>
+								<Carousel.Item class="flex basis-full flex-col pl-0">
+									<Card.Root class="ml-0 flex grow flex-col border-none shadow-none">
+										<Card.Content class="flex grow flex-col p-6 text-lg leading-relaxed">
+											<Card.Title
+												class="decoration-bc-slate-pine/20 font-display text-[22px] font-bold tracking-wide text-black/50 underline decoration-2 underline-offset-4"
+												>Medical Details</Card.Title
+											>
+
+											<div class="grid max-h-full grow place-items-center overflow-auto">
+												<div class="flex w-full flex-col gap-12 px-1">
+													<div>
+														<Label class="flex items-end gap-3" for="ethnicity"
+															><span class="text-lg font-normal"
+																>Do you consider yourself to have any physical health issues or
+																medical conditions, e.g ASD, Asthma or allergies?</span
+															>
+															<span
+																class="-translate-y-[2px] text-right text-sm text-black/60 italic"
+																>optional</span
+															>
+														</Label>
+														<p class="mt-2 text-[15px] text-black/70">
+															If yes, please provide us with some detail.
+														</p>
+
+														<Input
+															class="mt-4 w-full py-2 !text-base focus:outline-none focus-visible:border-black focus-visible:ring-1"
+															placeholder="Enter any health issues here"
+															id="ethnicity"
+															type="text"
+														/>
+													</div>
+
+													<div>
+														<Label class="flex items-end gap-3" for="ethnicity"
+															><span class="text-lg font-normal"
+																>Do you require any regular life saving medication, e.g inhalers,
+																epipen or other?</span
+															>
+															<span
+																class="-translate-y-[2px] text-right text-sm text-black/60 italic"
+																>required</span
+															>
+														</Label>
+														<p class="mt-2 text-[15px] text-black/70">
+															If yes, please provide us with some detail. If no, please type 'no'.
+														</p>
+
+														<Input
+															class="mt-4 w-full py-2 !text-base focus:outline-none focus-visible:border-black focus-visible:ring-1"
+															placeholder="Enter life saving medication here or type 'no'"
+															id="ethnicity"
+															type="text"
+														/>
+													</div>
+												</div>
+											</div>
+										</Card.Content>
+									</Card.Root>
+								</Carousel.Item>
+
 								<Carousel.Item class="flex basis-full flex-col pl-0">
 									<Card.Root class="ml-0 flex grow flex-col border-none shadow-none">
 										<Card.Content class="flex grow flex-col p-6 text-lg leading-relaxed">
