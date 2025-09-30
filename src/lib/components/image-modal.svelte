@@ -15,12 +15,14 @@
 		onClickClose,
 		isEnhanced,
 		src,
+		border = true,
 		children
 	} = $props<{
 		isOpen: boolean;
 		onClickClose: () => void;
 		isEnhanced?: boolean;
 		src: EnhandcedImg | 'string';
+		border?: boolean;
 		children?: Snippet<[]>;
 	}>();
 
@@ -44,7 +46,7 @@
 	>
 		<div>
 			<div
-				class="md/lg:border-[12px] border-bc-pale-sandstone relative mx-2 overflow-visible border-[8px] lg:border-[16px]"
+				class={`border-bc-pale-sandstone relative mx-2 overflow-visible ${border ? 'md/lg:border-[12px] border-[8px] lg:border-[16px]' : ''}`}
 			>
 				<button
 					class="md/lg:right-[-14px] md/lg:text-[24px] 3xl:text-[30px] absolute -top-[12px] right-[-10px] z-10 -translate-y-full cursor-pointer text-black/70 md:-top-[16px] md:right-[-12px] md:text-[20px] lg:-right-[20px] lg:text-[22px] xl:-top-[20px] xl:text-[26px] 2xl:text-[28px]"
@@ -57,9 +59,9 @@
 				</button>
 
 				{#if isEnhanced}
-					<enhanced:img class="w-full max-w-[1000px]" {src} alt="" />
+					<enhanced:img class="max-h-[80vh] w-[1000px] max-w-[80vw] object-contain" {src} alt="" />
 				{:else}
-					<img class="w-full max-w-[1000px]" {src} alt="" />
+					<img class="max-h-[90vh] w-full max-w-[1000px]" {src} alt="" />
 				{/if}
 			</div>
 

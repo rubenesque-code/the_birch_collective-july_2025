@@ -1,8 +1,9 @@
 <script lang="ts" module>
-	import { ArrowCircleRight, Clover, Square } from 'phosphor-svelte';
+	import { internalRoute } from '^constants';
 
 	import image from '^assets/image';
-	import { internalRoute } from '^constants';
+	import { group_photo as seeding_change } from '^assets/images/programmes/seeding-change';
+	import { group_photo as steering } from '^assets/images/programmes/steering-group';
 
 	import { Navigation } from '^components/~sections';
 	import { Tile } from '^pages/free-programmes';
@@ -45,6 +46,22 @@
 				imgSrc={image.placeholder.group_photo}
 				title="Fresh Air Thursdays"
 				text="A FREE weekly group for 16-25 year olds, just a 5-minute walk from St George's Park!"
+			/>
+
+			<Tile
+				link={internalRoute['seeding-change']}
+				imgAlt=""
+				imgSrc={seeding_change}
+				title="Seeding Change: Plant Your Future (Camp Birch)"
+				text="A 7-month journey with seasonal camps, evening meetups, and mentoring for 18–25s, supporting purpose, leadership, and community building."
+			/>
+
+			<Tile
+				link={internalRoute['youth-advisory-and-steering']}
+				imgAlt=""
+				imgSrc={steering}
+				title="Steering Group Workshops"
+				text="Three interactive workshops on Mental Health, Social Action & Nature — led by and for 18–25s."
 			/>
 		</div>
 	</section>

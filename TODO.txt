@@ -7,6 +7,7 @@
 - embedded map on each programme page for location.
 - click to expand location map.
 - warning on form close: not saved
+- seperate images for programme pages
 
 QUESTIONS
 ---------
