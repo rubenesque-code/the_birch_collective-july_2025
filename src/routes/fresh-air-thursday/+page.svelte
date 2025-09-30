@@ -1,5 +1,5 @@
 <script lang="ts" module>
-	import { ArrowUpRight, Circle } from 'phosphor-svelte';
+	import { ArrowUpRight } from 'phosphor-svelte';
 
 	import image from '^assets/image';
 	import {
@@ -17,7 +17,7 @@
 	} from '^assets/videos';
 	import { whatToExpectSection, whyJoinUsSection } from '^content/fresh-air-thursday';
 
-	import { VideoModal, ImageModal } from '^components';
+	import { ImageModal, VideoModal } from '^components';
 	import { Navigation, SignUpFormModal } from '^components/~sections';
 </script>
 
@@ -25,7 +25,7 @@
 	let playIntro = false;
 	let playTestimonial = false;
 	let showLocationMap = false;
-	let signUpFormIsOpen = true;
+	let signUpFormIsOpen = false;
 </script>
 
 <Navigation />
@@ -285,10 +285,9 @@
 				<div class="mt-4 flex items-center gap-8">
 					<button
 						class="font-display text-bc-amber cursor-pointer rounded-full px-5 py-3 text-4xl font-bold tracking-wide"
+						onclick={() => (signUpFormIsOpen = true)}
 						type="button">Sign Up Today</button
 					>
-
-					<!-- <p class="">(It takes around 3 minutes)</p> -->
 				</div>
 			</div>
 		</div>
