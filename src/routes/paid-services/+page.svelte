@@ -2,8 +2,6 @@
 	import { internalRoute } from '^constants';
 
 	import image from '^assets/image';
-	import { group_photo as seeding_change } from '^assets/images/programmes/seeding-change';
-	import { group_photo as steering } from '^assets/images/programmes/steering-group';
 
 	import { Navigation } from '^components/~sections';
 	import { Tile } from '^pages/free-programmes';

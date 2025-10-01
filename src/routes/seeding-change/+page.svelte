@@ -1,12 +1,5 @@
 <script lang="ts" module>
 	import image from '^assets/image';
-	import {
-		garden_shed_from_outside,
-		group_and_facilitators_sitting_round_fireplace,
-		indoor_workbench,
-		james_and_participants_peace_sign,
-		participant_woman_glasses
-	} from '^assets/images/programmes/fresh-air-thursday';
 	import { seeding_change_intro, seeding_change_intro_still } from '^assets/videos';
 	import {
 		benefits,
@@ -16,9 +9,6 @@
 		whyJoinUsSection
 	} from '^content/seeding-change';
 
-	import { VideoModal } from '^components';
-	import { Navigation, SignUpFormModal } from '^components/~sections';
-	import { Circle } from 'phosphor-svelte';
 	import {
 		photo_album_1,
 		photo_album_2,
@@ -29,6 +19,9 @@
 		photo_album_7,
 		photo_album_8
 	} from '^assets/images/programmes/seeding-change';
+	import { VideoModal } from '^components';
+	import { Navigation, SignUpFormModal } from '^components/~sections';
+	import { Circle } from 'phosphor-svelte';
 </script>
 
 <script lang="ts">
