@@ -51,4 +51,143 @@ const whyJoinUsSection = [
 	}
 ];
 
-export { whatToExpectSection, whyJoinUsSection, details, benefits };
+const payWhatYouCan = [
+	{
+		title: 'Full Cost',
+		cost: 750,
+		text: [
+			'I never struggle to meet my basic needs*',
+			'I own my home or property OR I rent a higher-end property',
+			'I own a car',
+			'I’m working OR I don’t need to work to meet my needs',
+			'I have access to savings',
+			'I have expendable income',
+			'I regularly buy new items',
+			'I can easily afford more than one holiday a year'
+		]
+	},
+	{
+		title: 'Reduced',
+		cost: 400,
+		text: [
+			'I comfortably able to meet my basic needs*',
+			'I might have some debt but it doesn’t stop me from meeting my basic needs*',
+			'I own a car',
+			'I own my home or property OR I rent a higher-end property',
+			'I am employed OR I don’t need to work to meet my needs',
+			'I have access to savings',
+			'I have expendable income',
+			'I buy new things regularly',
+			'I can afford an annual holiday, or to take time off work'
+		]
+	},
+	{
+		title: 'Subsidised',
+		cost: 150,
+		text: [
+			'Meeting my basic needs can be stressful but I still meet them most of the time*',
+			'I might have some debt but it doesn’t stop me from meeting my basic needs*',
+			'I rent a mid-level home or I have subsidised housing',
+			'I own or lease a car',
+			'I’m working',
+			'I might have access to some savings',
+			'I have expendable income',
+			'I can buy new or second hand items',
+			'I can afford to go on holiday every year or few years'
+		]
+	},
+	{
+		title: 'Bursary',
+		cost: 50,
+		text: [
+			'Meeting my basic needs is stressful and sometimes I struggle to*',
+			'I have debt that makes it hard for me to meet my basic needs sometimes',
+			'I rent a lower-end home or have unstable housing',
+			'I don’t have access to a car',
+			'I am unemployed or underemployed',
+			'I’m eligible for state benefits',
+			'I don’t have access to any savings',
+			'I don’t really have expendable income and rarely buy new things',
+			'I can’t afford to go away or take time off work without financial burden'
+		]
+	},
+	{
+		title: 'Free',
+		cost: 0,
+		text: [
+			'For those currently seeking asylum',
+			'For those for whom a bursary place would still be too much to manage'
+		]
+	}
+];
+
+export { whatToExpectSection, whyJoinUsSection, details, benefits, payWhatYouCan };
+/* {
+	full: {
+		title: 'Full Cost',
+		cost: 750,
+		text: [
+			'I never struggle to meet my basic needs*',
+			'I own my home or property OR I rent a higher-end property',
+			'I own a car',
+			'I’m working OR I don’t need to work to meet my needs',
+			'I have access to savings',
+			'I have expendable income',
+			'I regularly buy new items',
+			'I can easily afford more than one holiday a year'
+		]
+	},
+	reduced: {
+		title: 'Reduced',
+		cost: 400,
+		text: [
+			'I comfortably able to meet my basic needs*',
+			'I might have some debt but it doesn’t stop me from meeting my basic needs*',
+			'I own a car',
+			'I own my home or property OR I rent a higher-end property',
+			'I am employed OR I don’t need to work to meet my needs',
+			'I have access to savings',
+			'I have expendable income',
+			'I buy new things regularly',
+			'I can afford an annual holiday, or to take time off work'
+		]
+	},
+	subsidised: {
+		title: 'Subsidised',
+		cost: 150,
+		text: [
+			'Meeting my basic needs can be stressful but I still meet them most of the time*',
+			'I might have some debt but it doesn’t stop me from meeting my basic needs*',
+			'I rent a mid-level home or I have subsidised housing',
+			'I own or lease a car',
+			'I’m working',
+			'I might have access to some savings',
+			'I have expendable income',
+			'I can buy new or second hand items',
+			'I can afford to go on holiday every year or few years'
+		]
+	},
+	bursary: {
+		title: 'Bursary',
+		cost: 50,
+		text: [
+			'Meeting my basic needs is stressful and sometimes I struggle to*',
+			'I have debt that makes it hard for me to meet my basic needs sometimes',
+			'I rent a lower-end home or have unstable housing',
+			'I don’t have access to a car',
+			'I am unemployed or underemployed',
+			'I’m eligible for state benefits',
+			'I don’t have access to any savings',
+			'I don’t really have expendable income and rarely buy new things',
+			'I can’t afford to go away or take time off work without financial burden'
+		]
+	},
+	free: {
+		title: 'Free',
+		cost: 0,
+		text: [
+			'For those currently seeking asylum',
+			'For those for whom a bursary place would still be too much to manage'
+		]
+	}
+} */

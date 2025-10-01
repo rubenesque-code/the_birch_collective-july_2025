@@ -302,7 +302,7 @@
 						What Participants Say
 					</h4>
 
-					<div class="mt-8 flex flex-col gap-6">
+					<!-- <div class="mt-8 flex flex-col gap-6">
 						<p class="text-xl leading-relaxed">
 							"The time I got to spend with others on camp was so magical and beautiful I can’t
 							fully describe it. If you're struggling with mental health or socialising, please give
@@ -315,12 +315,13 @@
 						<p class="text-xl leading-relaxed">
 							"It gave me the confidence boost I needed and helped me feel more like myself."
 						</p>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>
 
-		<div class="mt-16 px-60">
+		<div class="mt-12 px-60">
+			<!-- <div class="mt-16 px-60"> -->
 			<div class=" flex justify-center">
 				<!-- svelte-ignore a11y_click_events_have_key_events -->
 				<!-- svelte-ignore a11y_no_static_element_interactions -->
@@ -347,29 +348,9 @@
 			</div>
 		</div>
 
-		<!-- <div class="mt-8 flex justify-center">
-					<div
-						class="relative cursor-pointer"
-						on:click={() => {
-							playTestimonial = true;
-						}}
-					>
-						<p class="text-right text-black/70">Participant Testimonial</p>
-						<enhanced:img
-							class="mt-2 w-[900px] rounded-md"
-							src={fresh_air_thursday_participant_testimonial_placeholder}
-							alt=""
-						/>
-
-						<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-							<enhanced:img class="w-[50px]" src={image.illustration.play_icon_white} alt="" />
-						</div>
-					</div>
-				</div> -->
-		<div class="mt-12 flex w-full justify-center px-60">
+		<!-- <div class="mt-12 flex w-full justify-center px-60">
 			<div class="w-full max-w-[768px]">
 				<div class="">
-					<!-- <h3 class="font-display text-bc-slate-pine text-5xl font-bold">What Referrers Say</h3> -->
 					<h4 class="text-bc-slate-pine font-display mt-4 text-[44px] font-bold">
 						What Referrers Say
 					</h4>
@@ -398,7 +379,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 	</section>
 </div>
 

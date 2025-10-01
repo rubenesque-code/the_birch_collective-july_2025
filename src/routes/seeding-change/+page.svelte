@@ -11,6 +11,7 @@
 	import {
 		benefits,
 		details,
+		payWhatYouCan,
 		whatToExpectSection,
 		whyJoinUsSection
 	} from '^content/seeding-change';
@@ -18,6 +19,16 @@
 	import { VideoModal } from '^components';
 	import { Navigation, SignUpFormModal } from '^components/~sections';
 	import { Circle } from 'phosphor-svelte';
+	import {
+		photo_album_1,
+		photo_album_2,
+		photo_album_3,
+		photo_album_4,
+		photo_album_5,
+		photo_album_6,
+		photo_album_7,
+		photo_album_8
+	} from '^assets/images/programmes/seeding-change';
 </script>
 
 <script lang="ts">
@@ -114,14 +125,14 @@
 					playIntro = true;
 				}}
 			>
-				<enhanced:img class="w-[900px] rounded-md" src={image.placeholder.banner_1} alt="" />
+				<enhanced:img class="w-[900px] rounded-md" src={seeding_change_intro_still} alt="" />
 
 				<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
 					<enhanced:img class="w-[50px]" src={image.illustration.play_icon_white} alt="" />
 				</div>
 
 				<div class="absolute top-2 right-2">
-					<p class="text-[17px] font-medium text-white">Fresh — An Intro</p>
+					<p class="text-[17px] font-medium text-white">Seeding Change — An Intro</p>
 				</div>
 			</div>
 		</div>
@@ -217,57 +228,103 @@
 	</section>
 
 	<section class="mt-24 flex justify-center px-60">
-		<div class="w-full max-w-[768px]">
-			<h2 class="text-my-grey-1 text-[16px] font-medium tracking-wide uppercase">The Costs</h2>
-			<h4 class="text-bc-slate-pine font-display mt-4 text-[44px] font-bold">
-				Pay what you can — How It Works
-			</h4>
+		<div class="w-full">
+			<div class="flex justify-center">
+				<div class="w-full max-w-[768px]">
+					<h2 class="text-my-grey-1 text-[16px] font-medium tracking-wide uppercase">The Costs</h2>
+					<h4 class="text-bc-slate-pine font-display mt-4 text-[44px] font-bold">
+						Pay what you can — How It Works
+					</h4>
+				</div>
+			</div>
 
 			<div class="mt-8">
-				<p class="text-lg leading-relaxed">
-					The true cost of a place on Seeding Change is £750 per person. The cost reflects:
-				</p>
-
-				<div class="mt-4 flex flex-col gap-4 text-lg leading-relaxed">
-					<div class="flex items-center gap-3">
-						<span class="text-bc-amber/30 text-[10px]">
-							<Circle weight="fill" />
-						</span>
-						<p>Four trained facilitators (1:3 ratio)</p>
-					</div>
-					<div class="flex items-center gap-2">
-						<span class="text-bc-amber/30 text-[10px]">
-							<Circle weight="fill" />
-						</span>
-						<p>A camp chef and all meals/snacks</p>
-					</div>
-					<div class="flex items-center gap-2">
-						<span class="text-bc-amber/30 text-[10px]">
-							<Circle weight="fill" />
-						</span>
-						<p>Return minibus travel from Bristol</p>
-					</div>
-					<div class="flex items-center gap-2">
-						<span class="text-bc-amber/30 text-[10px]">
-							<Circle weight="fill" />
-						</span>
-						<p>Access to all equipment and kit</p>
-					</div>
-					<div class="flex items-center gap-2">
-						<span class="text-bc-amber/30 text-[10px]">
-							<Circle weight="fill" />
-						</span>
-						<p>
-							27 acres of wild woodland at Botany Bay Activity Centre We’ve been generously funded
-							to make this programme free or affordable to anyone who needs it. But if you’re in a
-							position to contribute something, your donation helps us keep running camps in future
-							for people who might have a little less
+				<div class="flex justify-center">
+					<div class="max-w-[768px]">
+						<p class="w-full text-lg leading-relaxed">
+							The true cost of a place on Seeding Change is £750 per person. The cost reflects:
 						</p>
+
+						<div class="mt-4 flex flex-col gap-4 text-lg leading-relaxed">
+							<div class="flex items-center gap-3">
+								<span class="text-bc-amber/30 text-[10px]">
+									<Circle weight="fill" />
+								</span>
+								<p>Four trained facilitators (1:3 ratio)</p>
+							</div>
+							<div class="flex items-center gap-2">
+								<span class="text-bc-amber/30 text-[10px]">
+									<Circle weight="fill" />
+								</span>
+								<p>A camp chef and all meals/snacks</p>
+							</div>
+							<div class="flex items-center gap-2">
+								<span class="text-bc-amber/30 text-[10px]">
+									<Circle weight="fill" />
+								</span>
+								<p>Return minibus travel from Bristol</p>
+							</div>
+							<div class="flex items-center gap-2">
+								<span class="text-bc-amber/30 text-[10px]">
+									<Circle weight="fill" />
+								</span>
+								<p>Access to all equipment and kit</p>
+							</div>
+							<div class="flex items-center gap-2">
+								<span class="text-bc-amber/30 text-[10px]">
+									<Circle weight="fill" />
+								</span>
+								<p>
+									27 acres of wild woodland at Botany Bay Activity Centre We’ve been generously
+									funded to make this programme free or affordable to anyone who needs it. But if
+									you’re in a position to contribute something, your donation helps us keep running
+									camps in future for people who might have a little less
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="mt-6 flex justify-center">
+					<div class="flex max-w-[1400px] flex-wrap justify-center">
+						{#each payWhatYouCan as { title, cost, text }}
+							<div class="basis-1/3 rounded-xl p-12">
+								<div class="font-display text-bc-amber flex items-center gap-2 text-4xl font-bold">
+									<h4>{title}</h4>
+									-
+									<p>£{cost}</p>
+								</div>
+
+								<ul class="mt-4 list-disc text-lg">
+									{#each text as item}
+										<li class="mt-2">{item}</li>
+									{/each}
+								</ul>
+							</div>
+						{/each}
 					</div>
 				</div>
 			</div>
 
 			<div></div>
+		</div>
+	</section>
+
+	<section class="mt-24 flex justify-center px-60">
+		<div class="w-full max-w-[768px]">
+			<h2 class="text-my-grey-1 text-[16px] font-medium tracking-wide uppercase">Further info</h2>
+			<h4 class="text-bc-slate-pine font-display mt-4 text-[44px] font-bold">Find Out More</h4>
+
+			<div class="mt-8">
+				<ul class="mt-4 list-disc text-lg">
+					<li class="underline underline-offset-4">
+						<a
+							href="https://docs.google.com/document/d/1PkstZTgpsy9bWz6ZlaczwFOVMZZV9pgaMnzVDDampUI/export?format=docx"
+							target="_blank">Download information pack</a
+						>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</section>
 
@@ -280,39 +337,35 @@
 			<div class="mt-1 flex h-[300px] gap-3">
 				<div class="border-my-grey-3/40 aspect-[192/128] h-full">
 					<enhanced:img
-						class="h-full w-full"
-						src={image.placeholder.caregiver_with_partipant_face_to_face}
+						class="h-full w-full object-cover object-bottom"
+						src={photo_album_1}
 						alt=""
 					/>
 				</div>
 
 				<div class="border-my-grey-3/40 aspect-[256/320] h-full">
-					<enhanced:img class="h-full w-full" src={garden_shed_from_outside} alt="" />
+					<enhanced:img class="h-full w-full" src={photo_album_2} alt="" />
 				</div>
 				<div class="border-my-grey-3/40 aspect-[256/320] h-full">
-					<enhanced:img class="h-full w-full" src={participant_woman_glasses} alt="" />
+					<enhanced:img class="h-full w-full" src={photo_album_3} alt="" />
 				</div>
 				<div class="border-my-grey-3/40 aspect-[3200/2133] h-full">
-					<enhanced:img
-						class="h-full w-full"
-						src={group_and_facilitators_sitting_round_fireplace}
-						alt=""
-					/>
+					<enhanced:img class="h-full w-full" src={photo_album_4} alt="" />
 				</div>
 			</div>
 
 			<div class="mt-3 flex h-[300px] gap-3">
 				<div class="border-my-grey-3/40 aspect-[192/128] h-full">
-					<enhanced:img class="h-full w-full" src={image.placeholder.axe_chopping} alt="" />
+					<enhanced:img class="h-full w-full" src={photo_album_5} alt="" />
 				</div>
 				<div class="border-my-grey-3/40 aspect-[192/128] h-full">
-					<enhanced:img class="h-full w-full" src={image.placeholder.chillies} alt="" />
+					<enhanced:img class="h-full w-full" src={photo_album_6} alt="" />
 				</div>
 				<div class="border-my-grey-3/40 aspect-[256/320] h-full">
-					<enhanced:img class="h-full w-full" src={james_and_participants_peace_sign} alt="" />
+					<enhanced:img class="h-full w-full" src={photo_album_7} alt="" />
 				</div>
 				<div class="border-my-grey-3/40 aspect-[256/320] h-full">
-					<enhanced:img class="h-full w-full" src={indoor_workbench} alt="" />
+					<enhanced:img class="h-full w-full" src={photo_album_8} alt="" />
 				</div>
 			</div>
 		</div>
@@ -326,12 +379,12 @@
 			</p>
 
 			<div class="flex justify-center">
-				<div class="mt-4 flex items-center gap-8">
+				<div class="mt-4 flex flex-col items-center">
 					<button
-						class="font-display text-bc-amber cursor-pointer rounded-full px-5 py-3 text-4xl font-bold tracking-wide"
-						onclick={() => (signUpFormIsOpen = true)}
+						class="font-display text-bc-amber cursor-pointer rounded-full px-5 py-3 text-4xl font-bold tracking-wide opacity-50"
 						type="button">Sign Up Today</button
 					>
+					<p class="text-black/60">Applications now closed</p>
 				</div>
 			</div>
 		</div>
@@ -354,62 +407,19 @@
 						</p>
 						<p class="text-xl leading-relaxed">
 							"It was one of the best times of my life. I made friends, tested myself, and learned
-							more about the world and myself."
+							more about the world and myself. "
 						</p>
 						<p class="text-xl leading-relaxed">
-							"It gave me the confidence boost I needed and helped me feel more like myself."
+							"It gave me the confidence boost I needed and helped me feel more like myself "
 						</p>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<div class="mt-16 px-60">
-			<div class=" flex justify-center">
-				<!-- svelte-ignore a11y_click_events_have_key_events -->
-				<!-- svelte-ignore a11y_no_static_element_interactions -->
-				<div
-					class="relative cursor-pointer"
-					onclick={() => {
-						playTestimonial = true;
-					}}
-				>
-					<enhanced:img class="w-[900px] rounded-md" src={seeding_change_intro_still} alt="" />
-
-					<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-						<enhanced:img class="w-[50px]" src={image.illustration.play_icon_white} alt="" />
-					</div>
-
-					<div class="absolute top-2 right-2">
-						<p class="text-[17px] font-medium text-white">Participant Testimonial</p>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!-- <div class="mt-8 flex justify-center">
-					<div
-						class="relative cursor-pointer"
-						on:click={() => {
-							playTestimonial = true;
-						}}
-					>
-						<p class="text-right text-black/70">Participant Testimonial</p>
-						<enhanced:img
-							class="mt-2 w-[900px] rounded-md"
-							src={fresh_air_thursday_participant_testimonial_placeholder}
-							alt=""
-						/>
-
-						<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-							<enhanced:img class="w-[50px]" src={image.illustration.play_icon_white} alt="" />
-						</div>
-					</div>
-				</div> -->
 		<div class="mt-12 flex w-full justify-center px-60">
 			<div class="w-full max-w-[768px]">
 				<div class="">
-					<!-- <h3 class="font-display text-bc-slate-pine text-5xl font-bold">What Referrers Say</h3> -->
 					<h4 class="text-bc-slate-pine font-display mt-4 text-[44px] font-bold">
 						What Referrers Say
 					</h4>
