@@ -26,6 +26,8 @@
 	} from '^content/tfs';
 
 	import { ImageModal } from '^components';
+	import { PUBLIC_BIRCH_EMAIL } from '$env/static/public';
+	import { internalRoute } from '^constants';
 </script>
 
 <script lang="ts">
@@ -83,6 +85,24 @@
 					the beautiful Bristol location Stokes Park Woodland — where participants can explore,
 					create, and grow in safe, inclusive environments.
 				</p>
+
+				<div class="mt-10 text-xl leading-relaxed">
+					<h3 class="font-medium">For Enquiries</h3>
+					<p class="mt-4">If interested, please reach out to us:</p>
+
+					<div class="mt-4">
+						<div class="flex gap-2">
+							<p class="font-medium">Email —</p>
+							<a class="" href={`mailto:${PUBLIC_BIRCH_EMAIL}`} target="_blank"
+								>{PUBLIC_BIRCH_EMAIL}</a
+							>
+						</div>
+						<div class="mt-2 flex gap-2">
+							<p class="font-medium">Our online form —</p>
+							<a class="" href={internalRoute['get-in-touch']}>click here</a>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
