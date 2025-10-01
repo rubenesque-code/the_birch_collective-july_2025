@@ -1,30 +1,28 @@
 <script lang="ts" module>
-	import { ArrowUpRight } from 'phosphor-svelte';
-
 	import image from '^assets/image';
 	import {
 		garden_shed_from_outside,
 		group_and_facilitators_sitting_round_fireplace,
 		indoor_workbench,
 		james_and_participants_peace_sign,
-		location_map,
 		participant_woman_glasses
 	} from '^assets/images/programmes/fresh-air-thursday';
+	import { seeding_change_intro, seeding_change_intro_still } from '^assets/videos';
 	import {
-		fresh_air_thursday_introduction,
-		fresh_air_thursday_participant_testimonial,
-		fresh_air_thursday_participant_testimonial_placeholder
-	} from '^assets/videos';
-	import { whatToExpectSection, whyJoinUsSection } from '^content/fresh-air-thursday';
+		benefits,
+		details,
+		whatToExpectSection,
+		whyJoinUsSection
+	} from '^content/seeding-change';
 
-	import { ImageModal, VideoModal } from '^components';
+	import { VideoModal } from '^components';
 	import { Navigation, SignUpFormModal } from '^components/~sections';
+	import { Circle } from 'phosphor-svelte';
 </script>
 
 <script lang="ts">
 	let playIntro = false;
 	let playTestimonial = false;
-	let showLocationMap = false;
 	let signUpFormIsOpen = false;
 </script>
 
@@ -35,27 +33,8 @@
 <VideoModal
 	bind:isOpen={playIntro}
 	onClickClose={() => (playIntro = false)}
-	mp4Src={fresh_air_thursday_introduction}
+	mp4Src={seeding_change_intro}
 />
-
-<VideoModal
-	bind:isOpen={playTestimonial}
-	onClickClose={() => (playTestimonial = false)}
-	mp4Src={fresh_air_thursday_participant_testimonial}
-/>
-
-<ImageModal
-	bind:isOpen={showLocationMap}
-	onClickClose={() => (showLocationMap = false)}
-	src={location_map}
-	isEnhanced
->
-	<a
-		class="mt-2 flex items-center gap-2 text-lg text-black/90 decoration-transparent underline-offset-2 transition-colors duration-200 ease-linear hover:underline hover:decoration-black/30"
-		href="https://maps.app.goo.gl/32cRvbigC2fC3pPF9"
-		target="_blank"><span>See on Google maps</span><span><ArrowUpRight /></span></a
-	>
-</ImageModal>
 
 <div class="relative max-w-screen overflow-hidden pb-40">
 	<section class="relative flex justify-center overflow-visible px-80 pt-32 pb-40">
@@ -69,22 +48,24 @@
 			<div class="relative flex">
 				<div class="max-w-[600px] text-white">
 					<h1 class="font-display text-my-pale-yellow text-7xl font-bold tracking-wide">
-						Fresh Air Thursdays
+						Seeding Change: Plant your future
 					</h1>
 
 					<p class="mt-5 text-[21px] leading-relaxed font-medium">
-						A weekly group every Thursday. Currently running upto December 18th 2025
+						A FREE camp for 18–25-year-olds who are feeling low, unmotivated, or ready for a fresh
+						start — connect with nature, yourself, and others, just 35 minutes from Bristol.
 					</p>
-					<p class="mt-5 text-[21px] leading-relaxed">5 minutes from St George's Park, Bristol</p>
 				</div>
 			</div>
 
-			<div class="">
+			<div class="relative">
 				<button
-					class="shrink-0 cursor-pointer rounded-full bg-white/90 px-5 py-[10px] text-[20px] font-medium tracking-wide whitespace-nowrap text-black/70 uppercase"
-					onclick={() => (signUpFormIsOpen = true)}
+					class="shrink-0 cursor-pointer rounded-full bg-white/90 px-5 py-[10px] text-[20px] font-medium tracking-wide whitespace-nowrap text-black/70 uppercase opacity-70"
 					type="button">Sign Up</button
 				>
+				<p class="absolute -bottom-2 translate-y-full whitespace-nowrap text-white">
+					Applications now closed.
+				</p>
 			</div>
 		</div>
 	</section>
@@ -93,54 +74,30 @@
 		<div class="flex w-full justify-center">
 			<div class="max-w-[768px]">
 				<p class="text-xl leading-relaxed">
-					Fresh is our weekly group for 16-25 year olds. We offer a range of activities designed at
-					a pace to make learning accessible and to draw out your creativity. There is no fixed time
-					limit to attendance, attend all year round, once a month or just one off, totally up to
-					you. You can attend until your 26 birthday. If you are older the 26 or reach that age
-					there are opportunities to return as peer mentor to support others, if this is of interest
-					to you.
+					Seeding Change is a free or pay-what-you-can programme for 18–25-year-olds in Bristol who
+					want to feel more connected, confident, and inspired. Over 7 months, you’ll join two
+					seasonal camps and monthly evening sessions to explore nature, learn new skills, and
+					reflect on what matters to you. Whether you're feeling stuck, stressed, or simply ready
+					for a change, this is a chance to pause, grow, and discover your next steps—supported by a
+					warm and welcoming community.
 				</p>
 
 				<div class="mt-6 text-xl leading-relaxed">
 					<div class="flex flex-col gap-[5px]">
-						{#each [{ title: 'currently running from', text: 'February 20th 2025 - December 18th 2025' }, { title: 'Time', text: '1pm — 5pm' }, { title: 'Age Group', text: 'anyone 16 — 25 years old' }, { title: 'Cost', text: 'free but booking is essential!' }] as item}
+						<p class="flex gap-1">
+							<span class="font-display text-bc-amber text-[25px] font-bold">Dates</span>:
+							<span class="flex flex-col">
+								{#each ['First 2 night Camp: 5th - 7th September', 'Second 3 night Camp: 2nd - 5th April with 5 evening Meet-ups in Aug', 'Oct, Dec, Feb & March over 7 months.', ' Participation needed throughout.'] as item}
+									<span class="text-[19px] text-black/90 uppercase">{item}</span>
+								{/each}
+							</span>
+						</p>
+						{#each [{ title: 'Who for?', text: '18 - 25 year olds in Bristol' }, { title: 'Where', text: 'A beautiful location in wales 35 minutes from Bristol' }, { title: 'Cost', text: 'Ranges - free and pay what you can' }] as item}
 							<p class="flex items-center gap-1">
 								<span class="font-display text-bc-amber text-[25px] font-bold">{item.title}</span>:
 								<span class="text-[19px] text-black/90 uppercase">{item.text}</span>
 							</p>
 						{/each}
-
-						<div class="flex items-center gap-8">
-							<div class="flex items-center gap-1">
-								<p class="font-display text-bc-amber text-[25px] font-bold">Location</p>
-								:
-								<p class="relative text-[19px] text-black/90 uppercase">
-									<span class="uppercase">Strawberry Lane Community Gardens</span>
-
-									<a
-										class="absolute bottom-0 left-0 flex translate-y-full items-center gap-2 text-lg text-black/60 decoration-transparent underline-offset-2 transition-colors duration-200 ease-linear hover:underline hover:decoration-black/30"
-										href="https://maps.app.goo.gl/32cRvbigC2fC3pPF9"
-										target="_blank"><span>See on google maps</span><span><ArrowUpRight /></span></a
-									>
-								</p>
-							</div>
-
-							<div
-								class="border-my-grey-3/50 cursor-pointer border-[6px]"
-								role="button"
-								tabindex="0"
-								aria-label="Show location map"
-								onclick={() => (showLocationMap = true)}
-								onkeydown={(e) => {
-									if (e.key === 'Enter' || e.key === ' ') {
-										e.preventDefault();
-										showLocationMap = true;
-									}
-								}}
-							>
-								<enhanced:img class="w-[200px]" src={location_map} alt="" />
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -172,25 +129,19 @@
 
 	<section class="mt-24 flex justify-center px-60">
 		<div class="w-full max-w-[768px]">
-			<h2 class="text-my-grey-1 text-[16px] font-medium tracking-wide uppercase">What To Expect</h2>
+			<h2 class="text-my-grey-1 text-[16px] font-medium tracking-wide uppercase">Details</h2>
+			<h4 class="text-bc-slate-pine font-display mt-4 text-[44px] font-bold">
+				What is Seeding Change
+			</h4>
 
-			<div class="mt-[28px]">
-				<div class="flex flex-col gap-8">
-					{#each whatToExpectSection as { title, text, symbols }}
-						<div>
-							<!-- <p class="flex items-center gap-2 opacity-70">
-								{#each symbols as symbol}
-									<span>{symbol}</span>
-								{/each}
-							</p> -->
-
-							<div class="flex items-center gap-6">
-								<h4 class="text-bc-slate-pine font-display text-[40px] font-bold capitalize">
-									{title}
-								</h4>
-							</div>
-
-							<p class="mt-3 text-lg leading-relaxed">{text}</p>
+			<div class="mt-[20px]">
+				<div class="flex flex-col gap-3">
+					{#each details as text}
+						<div class="flex items-center gap-3">
+							<span class="text-bc-amber/30">
+								<Circle />
+							</span>
+							<p class="text-xl leading-relaxed">{text}</p>
 						</div>
 					{/each}
 				</div>
@@ -200,20 +151,58 @@
 
 	<section class="mt-24 flex justify-center px-60">
 		<div class="w-full max-w-[768px]">
-			<!-- <h2 class="font-display text-bc-amber text-[44px] font-bold">Who Is This Suitable For</h2> -->
+			<h2 class="text-my-grey-1 text-[16px] font-medium tracking-wide uppercase">Activities</h2>
+			<h4 class="text-bc-slate-pine font-display mt-4 text-[44px] font-bold">What to expect</h4>
+
+			<div class="mt-[20px]">
+				<div class="flex flex-col gap-3">
+					{#each whatToExpectSection as text}
+						<div class="flex items-center gap-3">
+							<span class="text-bc-amber/30">
+								<Circle />
+							</span>
+							<p class="text-xl leading-relaxed">{text}</p>
+						</div>
+					{/each}
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="mt-24 flex justify-center px-60">
+		<div class="w-full max-w-[768px]">
+			<h2 class="text-my-grey-1 text-[16px] font-medium tracking-wide uppercase">Benefits</h2>
+			<h4 class="text-bc-slate-pine font-display mt-4 text-[44px] font-bold">
+				What You’ll Get From This Journey
+			</h4>
+
+			<div class="mt-[20px]">
+				<div class="flex flex-col gap-3">
+					{#each benefits as text}
+						<div class="flex items-center gap-3">
+							<span class="text-bc-amber/30">
+								<Circle />
+							</span>
+							<p class="text-xl leading-relaxed">{text}</p>
+						</div>
+					{/each}
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="mt-24 flex justify-center px-60">
+		<div class="w-full max-w-[768px]">
 			<h2 class="text-my-grey-1 text-[16px] font-medium tracking-wide uppercase">Why join us</h2>
 			<h4 class="text-bc-slate-pine font-display mt-4 text-[44px] font-bold">
-				This Is Suitable For You If You're
+				This Is Suitable For You If You
 			</h4>
 
 			<div class="mt-8">
 				<div class="flex flex-col gap-3">
-					{#each whyJoinUsSection as { text, symbols }}
+					{#each whyJoinUsSection as { text, symbol }}
 						<p class="flex items-center gap-3">
-							<!-- <span class="text-black/40">
-								<Circle />
-							</span> -->
-							<span>{[symbols[0]]}</span>
+							<span>{symbol}</span>
 							<span
 								class="decoration-bc-amber/30 text-xl leading-[1.6em] text-black/90 underline-offset-2"
 							>
@@ -221,16 +210,71 @@
 							</span>
 						</p>
 					{/each}
-					<p class="mt-2 text-xl">Or for any other reason!</p>
+					<p class="mt-2 text-lg">And other reasons!</p>
 				</div>
 			</div>
 		</div>
 	</section>
 
 	<section class="mt-24 flex justify-center px-60">
+		<div class="w-full max-w-[768px]">
+			<h2 class="text-my-grey-1 text-[16px] font-medium tracking-wide uppercase">The Costs</h2>
+			<h4 class="text-bc-slate-pine font-display mt-4 text-[44px] font-bold">
+				Pay what you can — How It Works
+			</h4>
+
+			<div class="mt-8">
+				<p class="text-lg leading-relaxed">
+					The true cost of a place on Seeding Change is £750 per person. The cost reflects:
+				</p>
+
+				<div class="mt-4 flex flex-col gap-4 text-lg leading-relaxed">
+					<div class="flex items-center gap-3">
+						<span class="text-bc-amber/30 text-[10px]">
+							<Circle weight="fill" />
+						</span>
+						<p>Four trained facilitators (1:3 ratio)</p>
+					</div>
+					<div class="flex items-center gap-2">
+						<span class="text-bc-amber/30 text-[10px]">
+							<Circle weight="fill" />
+						</span>
+						<p>A camp chef and all meals/snacks</p>
+					</div>
+					<div class="flex items-center gap-2">
+						<span class="text-bc-amber/30 text-[10px]">
+							<Circle weight="fill" />
+						</span>
+						<p>Return minibus travel from Bristol</p>
+					</div>
+					<div class="flex items-center gap-2">
+						<span class="text-bc-amber/30 text-[10px]">
+							<Circle weight="fill" />
+						</span>
+						<p>Access to all equipment and kit</p>
+					</div>
+					<div class="flex items-center gap-2">
+						<span class="text-bc-amber/30 text-[10px]">
+							<Circle weight="fill" />
+						</span>
+						<p>
+							27 acres of wild woodland at Botany Bay Activity Centre We’ve been generously funded
+							to make this programme free or affordable to anyone who needs it. But if you’re in a
+							position to contribute something, your donation helps us keep running camps in future
+							for people who might have a little less
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div></div>
+		</div>
+	</section>
+
+	<section class="mt-24 flex justify-center px-60">
 		<div>
 			<p class="text-right text-black/70">
-				Images from <span class="text-bc-amber font-medium italic">Fresh</span>
+				Images from <span class="text-bc-amber font-medium italic">Seeding Change</span>
 			</p>
 
 			<div class="mt-1 flex h-[300px] gap-3">
@@ -330,11 +374,7 @@
 						playTestimonial = true;
 					}}
 				>
-					<enhanced:img
-						class="w-[900px] rounded-md"
-						src={fresh_air_thursday_participant_testimonial_placeholder}
-						alt=""
-					/>
+					<enhanced:img class="w-[900px] rounded-md" src={seeding_change_intro_still} alt="" />
 
 					<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
 						<enhanced:img class="w-[50px]" src={image.illustration.play_icon_white} alt="" />

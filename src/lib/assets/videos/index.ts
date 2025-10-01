@@ -6,6 +6,8 @@ import fresh_air_thursday_participant_testimonial from '../_files/videos/fresh-a
 import recoupe_intro from '../_files/videos/programmes/recoupe/recoupe-intro.mp4';
 import recoupe_participant_testimonial from '../_files/videos/programmes/recoupe/recoupe-participant-testimonial.mp4';
 import recoupe_participant_still from '../_files/videos/programmes/recoupe/participant-still.jpg?enhanced';
+import seeding_change_intro from '../_files/videos/programmes/seeding-change/seeding-change-intro.mp4';
+import seeding_change_intro_still from '../_files/videos/programmes/seeding-change/seeding-change-intro-still.jpg?enhanced';
 
 export {
 	bannerVideoMp4,
@@ -15,5 +17,7 @@ export {
 	fresh_air_thursday_participant_testimonial_placeholder,
 	recoupe_intro,
 	recoupe_participant_testimonial,
-	recoupe_participant_still
+	recoupe_participant_still,
+	seeding_change_intro,
+	seeding_change_intro_still
 };

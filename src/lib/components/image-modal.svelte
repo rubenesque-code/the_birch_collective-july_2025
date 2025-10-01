@@ -45,9 +45,7 @@
 		transition:scale={{ start: 0.9, opacity: 0, duration: 300 }}
 	>
 		<div>
-			<div
-				class={`border-bc-pale-sandstone relative mx-2 overflow-visible ${border ? 'md/lg:border-[12px] border-[8px] lg:border-[16px]' : ''}`}
-			>
+			<div class={`relative bg-white`}>
 				<button
 					class="md/lg:right-[-14px] md/lg:text-[24px] 3xl:text-[30px] absolute -top-[12px] right-[-10px] z-10 -translate-y-full cursor-pointer text-black/70 md:-top-[16px] md:right-[-12px] md:text-[20px] lg:-right-[20px] lg:text-[22px] xl:-top-[20px] xl:text-[26px] 2xl:text-[28px]"
 					onclick={() => {
@@ -59,9 +57,17 @@
 				</button>
 
 				{#if isEnhanced}
-					<enhanced:img class="max-h-[80vh] w-[1000px] max-w-[80vw] object-contain" {src} alt="" />
+					<enhanced:img
+						class={`border-bc-pale-sandstone relative mx-2 max-h-[80vh] w-[1000px] max-w-[80vw] overflow-visible object-contain ${border ? 'md/lg:border-[12px] border-[8px] lg:border-[16px]' : ''}`}
+						{src}
+						alt=""
+					/>
 				{:else}
-					<img class="max-h-[90vh] w-full max-w-[1000px]" {src} alt="" />
+					<img
+						class={`border-bc-pale-sandstone relative mx-2 max-h-[80vh] w-[1000px] max-w-[80vw] overflow-visible object-contain ${border ? 'md/lg:border-[12px] border-[8px] lg:border-[16px]' : ''}`}
+						{src}
+						alt=""
+					/>
 				{/if}
 			</div>
 

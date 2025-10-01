@@ -7,7 +7,7 @@ const internalRoute = {
 
 	recoupe: '/recoupe',
 	['fresh-air-thursday']: '/fresh-air-thursday',
-	['seeding-change']: '/seed-change',
+	['seeding-change']: '/seeding-change',
 	['youth-advisory-and-steering']: '/youth-advisory-and-steering',
 
 	['nature-based-mentoring']: '/nature-based-mentoring',

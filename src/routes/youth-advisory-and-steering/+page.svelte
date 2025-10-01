@@ -164,11 +164,16 @@
 
 			<div class="mt-[28px]">
 				<div class="flex flex-col gap-8">
-					{#each whatToExpectSection as { title, text }}
+					{#each whatToExpectSection as { title, text, symbol }}
 						<div>
 							<div class="flex items-center gap-6">
-								<h4 class="text-bc-slate-pine font-display text-[40px] font-bold capitalize">
-									{title}
+								<h4
+									class="text-bc-slate-pine font-display flex items-center gap-[6px] text-[40px] font-bold capitalize"
+								>
+									<span class="text-[28px]">{symbol}</span>
+									<span>
+										{title}
+									</span>
 								</h4>
 							</div>
 
