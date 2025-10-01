@@ -103,7 +103,7 @@
 	<div class="mt-12 flex flex-col gap-8">
 		<a class="font-display text-4xl font-bold" href="/">Home</a>
 		<a class="font-display text-4xl font-bold" href="free-programmes">Free Programmes</a>
-		<a class="font-display text-4xl font-bold" href="/">Partnerships</a>
+		<a class="font-display text-4xl font-bold" href="/">Paid Services</a>
 		<a class="font-display text-4xl font-bold" href="/about-us">About Us</a>
 		<a class="font-display text-4xl font-bold" href="/meet-the-team">Meet The Team</a>
 		<a class="font-display text-4xl font-bold" href="/practice-methodology">Practice Methodology</a>

@@ -183,7 +183,7 @@
 				/>
 
 				<WhatWeOffer
-					link={internalRoute['paid-for-services']}
+					link={internalRoute['paid-services']}
 					imgAlt=""
 					imgSrc={image.placeholder.banner_15}
 					text="For young people, organisations, schools, youth groups, and professionals who want to bring nature-based learning and wellbeing into their work."
