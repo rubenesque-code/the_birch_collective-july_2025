@@ -57,7 +57,7 @@
 <div class="max-w-screen overflow-hidden pb-40">
 	<section class="flex max-h-screen flex-col">
 		<div class="relative h-screen w-screen grow">
-			<video class="absolute top-0 left-0 h-full w-full object-cover" loop muted>
+			<video class="absolute top-0 left-0 h-full w-full object-cover" loop muted autoplay>
 				<source src={bannerVideoMp4} type="video/mp4" />
 				Your browser does not support the video tag.
 			</video>
@@ -233,8 +233,8 @@
 				Ways to Support Us
 			</h2>
 
-			<div class=" mt-6 grid w-full grid-cols-3 justify-between gap-12">
-				<div class="">
+			<div class=" mt-6 flex w-full justify-start gap-12">
+				<!-- <div class="">
 					<enhanced:img
 						class="aspect-video rounded-sm object-cover"
 						src={image.placeholder.caregiver_with_partipant_face_to_face}
@@ -247,9 +247,9 @@
 					<p class="mt-1 text-center text-lg leading-relaxed">
 						Help out by supporting us at one or more of our programmes
 					</p>
-				</div>
+				</div> -->
 
-				<div class="">
+				<div class="basis-1/3">
 					<enhanced:img
 						class="aspect-video rounded-sm object-cover"
 						src={image.placeholder.axe_chopping}
@@ -257,15 +257,15 @@
 					/>
 
 					<h3 class="font-display text-bc-amber mt-3 text-center text-[40px] font-bold">
-						Voluntary Role
+						Volunteer
 					</h3>
 
 					<p class="mt-1 text-center text-lg leading-relaxed">
-						These are longer term and can be excellent work experience!
+						Be a part of the team. It can be excellent work experience!
 					</p>
 				</div>
 
-				<div class="">
+				<div class="basis-1/3">
 					<enhanced:img
 						class="aspect-video rounded-sm object-cover"
 						src={image.placeholder.chillies}

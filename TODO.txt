@@ -25,3 +25,21 @@ MEETINGS
 NEED FROM BIRCH
 ---------------
 - tiktok link
+
+
+TODO
+----
+- re-do main navigation.
+  - correct pages. jazz up. some text as well as links.
+- donation page and functionality
+- meet the team 
+  - click on member for more info.
+- share this site/page?
+- main cta on landing - decide on text and link to.
+- consistent styling between article pages. e.g. theory of change.
+- put supporters and partners somewhere
+- careers page
+
+GOOD TO HAVE
+------------
+- change logo text colour with lightness/darkness of landing bg.
