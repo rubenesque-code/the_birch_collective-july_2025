@@ -71,9 +71,12 @@
 	<Tooltip.Provider>
 		<Tooltip.Root>
 			<Tooltip.Trigger>
-				<div class="cursor-pointer rounded-full border border-white p-2 text-2xl text-white">
+				<a
+					class="inline-block cursor-pointer rounded-full border border-white p-2 text-2xl text-white"
+					href={internalRoute.donate}
+				>
 					<HandHeart />
-				</div>
+				</a>
 			</Tooltip.Trigger>
 			<Tooltip.Content side="left">
 				<p class="text-base">Donate</p>

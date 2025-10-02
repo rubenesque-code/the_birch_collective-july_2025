@@ -39,6 +39,7 @@ TODO
 - consistent styling between article pages. e.g. theory of change.
 - put supporters and partners somewhere
 - careers page
+- notify sign up
 
 GOOD TO HAVE
 ------------

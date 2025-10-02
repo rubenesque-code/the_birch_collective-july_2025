@@ -5,6 +5,7 @@ const internalRoute = {
 	['get-in-touch']: 'get-in-touch',
 	['paid-services']: '/paid-services',
 	['practice-methodology']: '/practice-methodology',
+	donate: '/donate',
 
 	recoupe: '/recoupe',
 	['fresh-air-thursday']: '/fresh-air-thursday',

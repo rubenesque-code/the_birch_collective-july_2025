@@ -177,12 +177,6 @@
 					<enhanced:img class="h-full w-full" src={photo_album_4} alt="" />
 				</div>
 			</div>
-
-			<!-- <div class="mt-3 flex h-[300px] gap-3">
-				<div class="border-my-grey-3/40 aspect-[3/4] h-full">
-					<enhanced:img class="h-full w-full" src={photo_album_5} alt="" />
-				</div>
-			</div> -->
 		</div>
 	</section>
 
