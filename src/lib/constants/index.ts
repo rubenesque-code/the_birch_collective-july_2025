@@ -12,7 +12,8 @@ const internalRoute = {
 
 	['nature-based-mentoring']: '/nature-based-mentoring',
 	['therapeutic-forest-school']: '/therapeutic-forest-school',
-	['bespoke-nature-workshops']: '/bespoke-nature-workshops'
+	['bespoke-nature-workshops']: '/bespoke-nature-workshops',
+	['corporate-nature-team-days']: 'corporate-nature-team-days'
 };
 
 export { internalRoute };

@@ -1,4 +1,6 @@
 <script lang="ts" module>
+	import { Circle } from 'phosphor-svelte';
+
 	import image from '^assets/image';
 	import { seeding_change_intro, seeding_change_intro_still } from '^assets/videos';
 	import {
@@ -21,7 +23,6 @@
 	} from '^assets/images/programmes/seeding-change';
 	import { VideoModal } from '^components';
 	import { Navigation, SignUpFormModal } from '^components/~sections';
-	import { Circle } from 'phosphor-svelte';
 </script>
 
 <script lang="ts">

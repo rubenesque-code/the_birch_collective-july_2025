@@ -50,13 +50,23 @@
 				/>
 			</div>
 
-			<div class="flex basis-1/2 justify-center">
+			<div class="flex basis-1/2 justify-start">
 				<Tile
 					link={internalRoute['bespoke-nature-workshops']}
 					imgAlt=""
 					imgSrc={image.placeholder.lying_in_grass}
 					title="Bespoke Nature Workshops for Organisations"
 					text="Custom-designed sessions for schools, support services, or teams – ranging from team-building to therapeutic intervention."
+				/>
+			</div>
+
+			<div class="flex basis-1/2 justify-end">
+				<Tile
+					link={internalRoute['corporate-nature-team-days']}
+					imgAlt=""
+					imgSrc={image.placeholder.stay_calm_and_listen_to_nature}
+					title="Corporate Nature Team Days"
+					text="Team building, wellbeing, and making a real difference outdoors"
 				/>
 			</div>
 		</div>

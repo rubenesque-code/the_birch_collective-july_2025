@@ -2,16 +2,22 @@
 	import { Circle } from 'phosphor-svelte';
 
 	import image from '^assets/image';
+	import {
+		garden_shed_from_outside,
+		group_and_facilitators_sitting_round_fireplace,
+		indoor_workbench,
+		james_and_participants_peace_sign,
+		participant_woman_glasses
+	} from '^assets/images/programmes/fresh-air-thursday';
 
 	import { Navigation } from '^components/~sections';
 	import {
 		howItWorks,
 		menuOfSkillsAndActivities,
-		pricingGuide,
-		pastClients
+		pastClients,
+		pricingGuide
 	} from '^content/bespoke-workshops';
 
-	import { ImageModal } from '^components';
 	import { PUBLIC_BIRCH_EMAIL } from '$env/static/public';
 	import { internalRoute } from '^constants';
 </script>
@@ -157,6 +163,53 @@
 							<p class="text-lg leading-relaxed">{text}</p>
 						</div>
 					{/each}
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="mt-24 flex justify-center px-60">
+		<div>
+			<p class="text-right text-black/70">
+				Images from <span class="text-bc-amber font-medium italic">Birch</span>
+			</p>
+
+			<div class="mt-1 flex h-[300px] gap-3">
+				<div class="border-my-grey-3/40 aspect-[192/128] h-full">
+					<enhanced:img
+						class="h-full w-full"
+						src={image.placeholder.caregiver_with_partipant_face_to_face}
+						alt=""
+					/>
+				</div>
+
+				<div class="border-my-grey-3/40 aspect-[256/320] h-full">
+					<enhanced:img class="h-full w-full" src={garden_shed_from_outside} alt="" />
+				</div>
+				<div class="border-my-grey-3/40 aspect-[256/320] h-full">
+					<enhanced:img class="h-full w-full" src={participant_woman_glasses} alt="" />
+				</div>
+				<div class="border-my-grey-3/40 aspect-[3200/2133] h-full">
+					<enhanced:img
+						class="h-full w-full"
+						src={group_and_facilitators_sitting_round_fireplace}
+						alt=""
+					/>
+				</div>
+			</div>
+
+			<div class="mt-3 flex h-[300px] gap-3">
+				<div class="border-my-grey-3/40 aspect-[192/128] h-full">
+					<enhanced:img class="h-full w-full" src={image.placeholder.axe_chopping} alt="" />
+				</div>
+				<div class="border-my-grey-3/40 aspect-[192/128] h-full">
+					<enhanced:img class="h-full w-full" src={image.placeholder.chillies} alt="" />
+				</div>
+				<div class="border-my-grey-3/40 aspect-[256/320] h-full">
+					<enhanced:img class="h-full w-full" src={james_and_participants_peace_sign} alt="" />
+				</div>
+				<div class="border-my-grey-3/40 aspect-[256/320] h-full">
+					<enhanced:img class="h-full w-full" src={indoor_workbench} alt="" />
 				</div>
 			</div>
 		</div>
