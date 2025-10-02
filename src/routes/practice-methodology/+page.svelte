@@ -62,7 +62,11 @@
 			<h2 class="text-bc-slate-pine font-display mt-4 text-[44px] font-bold">Context</h2>
 
 			<div class="mt-[20px]">
-				<h3 class="font-medium">Bristol Deprivation</h3>
+				<h3
+					class="font-display decoration-bc-slate-pine/40 text-3xl font-bold underline decoration-2 underline-offset-4"
+				>
+					Bristol Deprivation
+				</h3>
 				<p class="mt-4">
 					Statistics from 2019 show that 15% of Bristol’s population lived in the most deprived 10%
 					of areas in England. 14% of the total population of Bristol were found to suffer from
@@ -82,12 +86,16 @@
 				</p>
 
 				<a
-					class="mt-4 inline-block text-blue-400 underline underline-offset-2"
+					class="mt-4 inline-block text-blue-500 underline underline-offset-2"
 					href="https://www.bristol.gov.uk/files/documents/1530-jsna-deprivation/file#:~:text=see%20fig%201).-,At%20ward%20level%2C%20the%20greatest%20levels%20of%20deprivation%20in%20Bristol,Whitchurch%20Park%20and%20Knowle%20West"
 					target="_blank">JSNA Health and Wellbeing Profile 2024/25</a
 				>
 
-				<h3 class="mt-8 font-medium">Wider Context</h3>
+				<h3
+					class="font-display decoration-bc-slate-pine/40 mt-8 text-3xl font-bold underline decoration-2 underline-offset-4"
+				>
+					Wider Context
+				</h3>
 
 				<p class="mt-4">
 					On a national level, research suggests that, regardless of individuals histories and
@@ -150,7 +158,7 @@
 					You can read more about the current wellbeing context for children and young people here:
 				</p>
 				<a
-					class="mt-4 inline-block text-blue-400 underline underline-offset-2"
+					class="mt-4 inline-block text-blue-500 underline underline-offset-2"
 					href="https://assets.publishing.service.gov.uk/media/63e11487d3bf7f172b673731/State_of_the_nation_2022_-_children_and_young_people_s_wellbeing.pdf"
 					target="_blank">State of the nation 2022: children and young people’s wellbeing</a
 				>
@@ -176,7 +184,7 @@
 					You can read more about the impact of exclusion on long-term outcomes here:
 				</p>
 				<a
-					class="mt-4 inline-block text-blue-400 underline underline-offset-2"
+					class="mt-4 inline-block text-blue-500 underline underline-offset-2"
 					href="https://excludedlives.education.ox.ac.uk/publication/the-impact-of-school-exclusion-in-childhood-on-health-outcomes-in-adulthood-estimating-causal-effects-using-inverse-probability-of-treatment-weighting/"
 					target="_blank"
 				>
@@ -322,6 +330,134 @@
 					racism where needed, educate ourselves and others about the impact this has on our
 					communities and seek representation at all levels of our organisation.
 				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="mt-16 flex justify-center px-60">
+		<div class="w-full max-w-[768px] leading-relaxed">
+			<h2 class="text-bc-slate-pine font-display mt-4 text-[44px] font-bold">Long-term support</h2>
+
+			<div class="mt-[20px]">
+				<p class="">
+					Another key element of our approach to mental health and wellbeing support for
+					participants is our commitment to providing long-term support. We value community, and the
+					strengths that come from the relationships we form within communities. To feel a deep
+					sense of belonging to a community takes time. Relationships are built on safety and trust,
+					and form a key part of our sense of belonging. Building these relationships takes time,
+					and therefore so does our sense of belonging within a community.
+				</p>
+
+				<p class="mt-4">
+					Because of this, the structure of our programmes intends to offer a long-term approach to
+					participant engagement. Our core programme, Fresh, runs every week, and participants can
+					attend from the age of 16 up until their 26th birthday, and are free to engage in the
+					programme for as long as they choose within this. In addition to Fresh weekly sessions,
+					participants can attend our annual Camp Birch, A safe and inclusive 5 day and 4 night camp
+					for 18-25 year olds to try something new, build confidence and skills, and have a moment
+					to pause and reflect on their transition into adulthood. Participants join a group of
+					other young adults from all walks of life to be inspired, to meet new like-minded people
+					and to live together in nature. Pre and post camp mentoring is offered to help
+					participants get the most out of the experience and help them decide what to do next,
+					including a 1:1 session post camp with one of our facilitators. Participants can then join
+					Fresh sessions, as a place to build on friendships made during the camp, create new ones,
+					and where skills and passions can be developed further outside of camp too. This model
+					ensures that long-term, weekly support is available to participants, with Camp Birch
+					annually to deepen relationships and further embed into the community.
+				</p>
+
+				<p class="mt-4">
+					Alongside this, we offer several opportunities for those seeking to step up into positions
+					of responsibility that extend beyond the age of 26, for example through acting as a
+					returning peer rep at Camp Birch, holding workshop space at Fresh sessions, or
+					participating in our steering group or shadow board. These opportunities ensure that
+					participants can retain their sense of belonging to the community if they wish to, whilst
+					contributing to the delivery of our programmes as well as further developing their own
+					skills.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="mt-16 flex justify-center px-60">
+		<div class="w-full max-w-[768px] leading-relaxed">
+			<h2 class="text-bc-slate-pine font-display mt-4 text-[44px] font-bold">
+				Trauma-informed practices
+			</h2>
+
+			<div class="mt-[20px]">
+				<h3
+					class="font-display decoration-bc-slate-pine/40 text-3xl font-bold underline decoration-2 underline-offset-4"
+				>
+					Key principles of trauma-informed practice
+				</h3>
+
+				<p class="mt-4">
+					There are 6 principles of trauma-informed practice that we incorporate in the ways we work
+					with our participants:
+				</p>
+
+				<ul class="mt-4 list-disc pl-4">
+					{#each [{ title: 'Safety', text: 'The physical, psychological and emotional safety of participants are prioritised' }, { title: 'Trustworthiness', text: 'Transparency exists in our policies and procedures, with the aim of building trust with our participants and the wider community' }, { title: 'Choice', text: 'Participants are supported in shared decision-making, choice and goal setting' }, { title: 'Collaboration', text: "The value of participants' experience is recognised in overcoming challenges and improving the system as a whole" }, { title: 'Empowerment', text: 'Efforts are made to share power and give participants a strong voice in decision-making, at both individual and organisational level' }, { title: 'Cultural consideration', text: 'Move past cultural stereotypes and biases based on, for example, gender, sexual orientation, age, religion, disability, geography, race or ethnicity' }] as item}
+						<li>
+							<span class="font-medium">{item.title}</span>: <span>{item.text}</span>
+						</li>
+					{/each}
+				</ul>
+
+				<h3
+					class="font-display decoration-bc-slate-pine/40 mt-8 text-3xl font-bold underline decoration-2 underline-offset-4"
+				>
+					How we do this at Birch
+				</h3>
+
+				<h4 class="mt-6 font-medium">Safety</h4>
+
+				<ul class="mt-4 list-disc pl-4">
+					{#each ['The site emergency procedures are displayed, signposted and discussed', 'Staff are trained in, and have access to: site emergency procedures, site risk assessments, emergency contact information for participants, emergency contact information for other staff', 'Staff are trained in safeguarding policies and practices, and our policies are kept up to date and reviewed annually', 'We prioritise psychological safety through our gentle therapeutic approaches to practise', 'We prioritise emotional safety through a gentle use of emotion coaching techniques (modelling emotional regulation, naming emotions, exploring emotional responses through reflective practices etc.)'] as item}
+						<li>{item}</li>
+					{/each}
+				</ul>
+
+				<h4 class="mt-6 font-medium">Trustworthiness</h4>
+
+				<ul class="mt-4 list-disc pl-4">
+					{#each ['We are transparent about our policies and practices with participants', 'We are transparent about our policies and practices with the wider community', 'We build trust through ensuring that our actions match our intention'] as item}
+						<li>{item}</li>
+					{/each}
+				</ul>
+
+				<h4 class="mt-6 font-medium">Choice</h4>
+
+				<ul class="mt-4 list-disc pl-4">
+					{#each ['Choice of activities each session - there is a range of options offered that include practical tasks that may include both more gentle and physically demanding tasks, creative activities, cookery and food prep, collective reflection and individual reflection', 'Participation in activities, social interactions, group reflection etc. is gently encouraged, but there is no pressure to participate - we are clear that participation is an individual choice', 'Participants are included in discussions around planning and prepping for different aspects of developing the garden space, for example which seeds we will sow and where, on a short term and longer term scale'] as item}
+						<li>{item}</li>
+					{/each}
+				</ul>
+
+				<h4 class="mt-6 font-medium">Collaboration</h4>
+
+				<ul class="mt-4 list-disc pl-4">
+					{#each ['Staff and participants work together on practical and creative tasks', 'Participants are gently encouraged to work together on practical and creative tasks, especially when these require teamwork', 'We seek feedback from participants from the steering group and the shadow board', 'We also seek feedback from participants through surveys, and spoken testimonials', '… and we listen to and act on feedback'] as item}
+						<li>{item}</li>
+					{/each}
+				</ul>
+
+				<h4 class="mt-6 font-medium">Empowerment</h4>
+
+				<ul class="mt-4 list-disc pl-4">
+					{#each ['Power and voice is encouraged and developed through our steering group, shadow board, and regular seeking of participant feedback', 'Power and voice is valued through adapting our practices based on feedback', 'Participants are encouraged to feel ownership over the physical space and activities which we do'] as item}
+						<li>{item}</li>
+					{/each}
+				</ul>
+
+				<h4 class="mt-6 font-medium">Cultural consideration</h4>
+
+				<ul class="mt-4 list-disc pl-4">
+					{#each ['Staff are trained on diversity awareness; equality and diversity policies are available and accessible to all staff', 'We remove financial barriers through offering a free weekly service, and securing funding to ensure Camp Birch is offered part-funded, on a pay-what-you-can scale', 'We openly discuss cultural considerations during sessions and encourage consideration of how one anothers difficulties affect us and how one might respond, with compassion for self and others.', 'Our referral pathways, our Therapeutic Forest School sessions with the ESOL department and partner work with OTR ensure that we reach minority ethnic groups.'] as item}
+						<li>{item}</li>
+					{/each}
+				</ul>
 			</div>
 		</div>
 	</section>
