@@ -28,7 +28,7 @@
 
 	<section class="mt-10 px-60">
 		<div class="flex w-full justify-center">
-			<div class="w-full max-w-[768px]">
+			<div class=" w-full max-w-[768px]">
 				<h2 class="text-bc-slate-pine font-display mt-4 text-[44px] font-bold">Donate Today</h2>
 			</div>
 		</div>
@@ -84,15 +84,23 @@
 		</div>
 	</section>
 
-	<section class="mt-10 px-60">
+	<section class="mt-16 px-60">
 		<div class="flex w-full justify-center">
-			<div class="max-w-[768px]">
-				<p class="mt-6 text-xl leading-relaxed text-black/70">
+			<div class="flex w-full max-w-[768px] justify-between gap-24">
+				<p class="text-xl leading-relaxed text-black/70">
 					Your donation will help us to continue to work alongside people to find ways to connect to
 					others, themselves and the natural world. In the difficult times we are living through,
 					your donation, however small or large will help us continue to develop and deepen
 					relationships with the natural world that are based on reciprocity and care.
 				</p>
+
+				<!-- <div class="shrink-0">
+					<enhanced:img
+						class="border-my-grey-3/30 w-[430px] rounded-xl border-[8px]"
+						src={image.placeholder.caregiver_with_partipant_face_to_face}
+						alt=""
+					/>
+				</div> -->
 			</div>
 		</div>
 	</section>
