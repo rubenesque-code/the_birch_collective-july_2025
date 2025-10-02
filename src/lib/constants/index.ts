@@ -4,6 +4,7 @@ const internalRoute = {
 	['free-programmes']: '/free-programmes',
 	['get-in-touch']: 'get-in-touch',
 	['paid-services']: '/paid-services',
+	['practice-methodology']: '/practice-methodology',
 
 	recoupe: '/recoupe',
 	['fresh-air-thursday']: '/fresh-air-thursday',
