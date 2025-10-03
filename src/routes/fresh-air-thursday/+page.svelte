@@ -25,7 +25,7 @@
 	let playIntro = false;
 	let playTestimonial = false;
 	let showLocationMap = false;
-	let signUpFormIsOpen = false;
+	let signUpFormIsOpen = true;
 </script>
 
 <Navigation />

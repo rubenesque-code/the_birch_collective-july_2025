@@ -78,6 +78,159 @@
 										<Card.Content class="flex grow flex-col p-6 text-lg leading-relaxed">
 											<Card.Title
 												class="decoration-bc-slate-pine/30 font-display text-[24px] font-bold tracking-wide text-black/50 underline decoration-2 underline-offset-4"
+												>Permissions</Card.Title
+											>
+
+											<div class="mt-8 grid max-h-full grow place-items-center overflow-y-scroll">
+												<div class="flex max-h-[400px] w-full flex-col gap-12 px-1 pr-4 pb-10">
+													<div>
+														<h3 class="text-[19px] font-medium text-black">
+															<span
+																>Would you like to be added to the Birch Collectives monthly
+																newsletter?</span
+															>
+														</h3>
+														<p class="mt-1 text-black/70">
+															We'll inform you about new programmes and services we're running.
+														</p>
+														<span class="mt-1 text-sm text-black/50 italic">(required)</span>
+
+														<div class="mt-6 flex flex-col gap-3">
+															<div class="flex items-center gap-4">
+																<Checkbox id="identity-working-class" />
+																<Label class="text-base font-normal" for="identity-working-class"
+																	>yes</Label
+																>
+															</div>
+
+															<div class="flex items-center gap-4">
+																<Checkbox id="identity-working-class" />
+																<Label class="text-base font-normal" for="identity-working-class"
+																	>no</Label
+																>
+															</div>
+														</div>
+													</div>
+
+													<div>
+														<h3 class="text-[19px] font-medium text-black">
+															Do you give The Birch Collective permission to take photographs or
+															videos of you with the intention to use in publicity materials?
+														</h3>
+														<p class="mt-1 text-black/70">
+															They'll be used in e.g. social media sites, website, reporting to
+															funders, newspapers and magazine articles. Images will not be given to
+															third parties.
+														</p>
+														<span class="mt-1 text-sm text-black/50 italic">(required)</span>
+
+														<div class="mt-6 flex flex-col gap-3">
+															<div class="flex items-center gap-4">
+																<Checkbox id="identity-working-class" />
+																<Label class="text-base font-normal" for="identity-working-class"
+																	>yes</Label
+																>
+															</div>
+
+															<div class="flex items-center gap-4">
+																<Checkbox id="identity-working-class" />
+																<Label class="text-base font-normal" for="identity-working-class"
+																	>no</Label
+																>
+															</div>
+														</div>
+													</div>
+
+													<div>
+														<h3 class="text-[19px] font-medium text-black">
+															Would you like to be added to a weekly text update/reminder telling
+															you what's going on at Fresh Air Thursday?
+														</h3>
+														<p class="mt-1 text-black/70">
+															You can be removed at anytime by simply replying STOP.
+														</p>
+														<span class="mt-1 text-sm text-black/50 italic">(required)</span>
+
+														<div class="mt-6 flex flex-col gap-3">
+															<div class="flex items-center gap-4">
+																<Checkbox id="identity-working-class" />
+																<Label class="text-base font-normal" for="identity-working-class"
+																	>yes</Label
+																>
+															</div>
+
+															<div class="flex items-center gap-4">
+																<Checkbox id="identity-working-class" />
+																<Label class="text-base font-normal" for="identity-working-class"
+																	>no</Label
+																>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</Card.Content>
+									</Card.Root>
+								</Carousel.Item>
+								<Carousel.Item class="flex basis-full flex-col pl-0">
+									<Card.Root class="ml-0 flex grow flex-col border-none shadow-none">
+										<Card.Content class="flex grow flex-col p-6 text-lg leading-relaxed">
+											<Card.Title
+												class="decoration-bc-slate-pine/30 font-display text-[24px] font-bold tracking-wide text-black/50 underline decoration-2 underline-offset-4"
+												>How you heard about us</Card.Title
+											>
+
+											<div class="mt-8 grid max-h-full grow place-items-center overflow-y-scroll">
+												<div class="flex max-h-[400px] w-full flex-col gap-12 px-1 pr-4 pb-10">
+													<div>
+														<h3 class="text-black">
+															<span>How did you hear about the Birch Collective?</span>
+														</h3>
+														<span class="text-sm text-black/50 italic">(optional)</span>
+														<p class="mt-2 text-[15px] text-black/70">
+															Tick all that apply to you.
+														</p>
+
+														<div class="mt-6 flex flex-col gap-3">
+															<div class="flex items-center gap-4">
+																<Checkbox id="identity-working-class" />
+																<Label class="text-base font-normal" for="identity-working-class"
+																	>working class</Label
+																>
+															</div>
+
+															<div class="flex items-center gap-4">
+																<Checkbox id="identity-working-class" />
+																<Label class="text-base font-normal" for="identity-working-class"
+																	>someone with a disability</Label
+																>
+															</div>
+
+															<div class="flex items-center gap-4">
+																<Checkbox id="identity-working-class" />
+																<Label class="text-base font-normal" for="identity-working-class"
+																	>male or male identifying</Label
+																>
+															</div>
+
+															<div class="flex items-center gap-4">
+																<Checkbox id="identity-working-class" />
+																<Label class="text-base font-normal" for="identity-working-class"
+																	>care experienced</Label
+																>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</Card.Content>
+									</Card.Root>
+								</Carousel.Item>
+								<Carousel.Item class="flex basis-full flex-col pl-0">
+									<Card.Root class="ml-0 flex grow flex-col border-none shadow-none">
+										<Card.Content class="flex grow flex-col p-6 text-lg leading-relaxed">
+											<Card.Title
+												class="decoration-bc-slate-pine/30 font-display text-[24px] font-bold tracking-wide text-black/50 underline decoration-2 underline-offset-4"
 												>For Referrals</Card.Title
 											>
 
@@ -158,46 +311,6 @@
 															id="ethnicity"
 														/>
 													</div>
-
-													<div>
-														<h3 class="text-black">
-															<span>Do you identify as any of the following?</span>
-														</h3>
-														<span class="text-sm text-black/50 italic">(required)</span>
-														<p class="mt-2 text-[15px] text-black/70">
-															Tick all that apply to you. Pick at least one.
-														</p>
-
-														<div class="mt-6 flex flex-col gap-3">
-															<div class="flex items-center gap-4">
-																<Checkbox id="identity-working-class" />
-																<Label class="text-base font-normal" for="identity-working-class"
-																	>working class</Label
-																>
-															</div>
-
-															<div class="flex items-center gap-4">
-																<Checkbox id="identity-working-class" />
-																<Label class="text-base font-normal" for="identity-working-class"
-																	>someone with a disability</Label
-																>
-															</div>
-
-															<div class="flex items-center gap-4">
-																<Checkbox id="identity-working-class" />
-																<Label class="text-base font-normal" for="identity-working-class"
-																	>male or male identifying</Label
-																>
-															</div>
-
-															<div class="flex items-center gap-4">
-																<Checkbox id="identity-working-class" />
-																<Label class="text-base font-normal" for="identity-working-class"
-																	>care experienced</Label
-																>
-															</div>
-														</div>
-													</div>
 												</div>
 											</div>
 										</Card.Content>
@@ -212,7 +325,7 @@
 											>
 
 											<div class="grid max-h-full grow place-items-center overflow-auto">
-												<div class="flex w-full flex-col gap-12 px-1">
+												<div class="flex w-full flex-col gap-24 px-1">
 													<div>
 														<Label class="flex items-end gap-3" for="ethnicity"
 															><span class="text-lg font-normal"
@@ -228,11 +341,10 @@
 															If yes, please provide us with some detail.
 														</p>
 
-														<Input
-															class="mt-4 w-full py-2 !text-base focus:outline-none focus-visible:border-black focus-visible:ring-1"
+														<Textarea
+															class="mt-4 h-[100px] w-full resize-none py-2 !text-base focus:outline-none focus-visible:border-black focus-visible:ring-1"
 															placeholder="Enter any health issues here"
 															id="ethnicity"
-															type="text"
 														/>
 													</div>
 
@@ -251,11 +363,10 @@
 															If yes, please provide us with some detail. If no, please type 'no'.
 														</p>
 
-														<Input
-															class="mt-4 w-full py-2 !text-base focus:outline-none focus-visible:border-black focus-visible:ring-1"
+														<Textarea
+															class="mt-4 h-[100px] w-full resize-none py-2 !text-base focus:outline-none focus-visible:border-black focus-visible:ring-1"
 															placeholder="Enter life saving medication here or type 'no'"
 															id="ethnicity"
-															type="text"
 														/>
 													</div>
 												</div>
