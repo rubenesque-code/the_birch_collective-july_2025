@@ -6,6 +6,7 @@ export { Checkbox } from './checkbox';
 export { Input } from './input';
 export { Label } from './label';
 export * as Popover from './popover';
+export * as RadioGroup from './radio-group';
 export * from './sonner';
 export { Textarea } from './textarea';
 export * as Tooltip from './tooltip';

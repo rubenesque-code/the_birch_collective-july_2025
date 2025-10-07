@@ -10,10 +10,15 @@
 	import { slides } from '^content/sign-up-form';
 	import { toggleBodyScroll } from '^helpers';
 
-	import { Card, Carousel, Checkbox, Input, Label, Textarea } from '^components/ui';
-	// import { Input } from '^components/ui/input';
+	import { Card, Carousel, Checkbox, Input, Label, RadioGroup, Textarea } from '^components/ui';
 	import NextButton from './next-button.svelte';
-	import DatePicker from './date-picker.svelte';
+	import DatePicker from './elements/date-picker.svelte';
+	import CarouselItem from './carousel-item.svelte';
+	import { Checkbox as MyCheckbox, Question } from './elements';
+
+	const formId = {
+		newsletterPermission: 'newsletter-permission'
+	};
 </script>
 
 <script lang="ts">
@@ -23,7 +28,7 @@
 	}>();
 
 	$effect(() => {
-		$: browser && toggleBodyScroll({ triggerDisableOn: isOpen });
+		if (browser) toggleBodyScroll({ triggerDisableOn: isOpen });
 	});
 
 	let activeSlide: 'intro' | 'terms' = 'intro';
@@ -35,6 +40,9 @@
 
 		return false;
 	});
+
+	let newsletterPermission = $state<'yes' | 'no' | ''>('');
+	$inspect('newsletterPermission', newsletterPermission);
 </script>
 
 {#if isOpen}
@@ -60,26 +68,78 @@
 				<div
 					class="flex h-[80vh] max-h-[800px] w-[95vw] max-w-[800px] flex-col rounded-sm bg-white px-4 py-3"
 				>
-					<div class="bg-my-grey-3/5 flex items-start justify-between p-3">
-						<h3 class="font-display text-3xl font-bold">
-							<span class="text-black">The Birch Collective</span>
-						</h3>
-						<h2 class="font-display text-bc-slate-pine text-3xl font-bold">Programme Signup</h2>
-					</div>
-
 					<div class="relative flex grow flex-col">
 						<Carousel.Root class="flex grow flex-col" opts={{ align: 'center' }}>
-							<Carousel.Content
-								hiddenParentClass="grow flex flex-col px-6"
-								class="ml-0 w-full grow "
-							>
+							<Carousel.Content hiddenParentClass="grow flex flex-col" class="ml-0 w-full grow">
+								<CarouselItem title="Newsletter & Permissions">
+									<Question
+										question="Would you like to be added to the Birch Collectives monthly newsletter?"
+										subtext="We'll inform you about new programmes and services we're running."
+										isRequired
+									>
+										<RadioGroup.Root bind:value={newsletterPermission}>
+											<div class="flex items-center space-x-3">
+												<RadioGroup.Item
+													value="yes"
+													id={'sign-up-form' + formId.newsletterPermission + 'yes'}
+												/>
+												<Label
+													class="text-base"
+													for={'sign-up-form' + formId.newsletterPermission + 'yes'}>Yes</Label
+												>
+											</div>
+											<div class="flex items-center space-x-3">
+												<RadioGroup.Item
+													value="no"
+													id={'sign-up-form' + formId.newsletterPermission + 'no'}
+												/>
+												<Label
+													class="text-base"
+													for={'sign-up-form' + formId.newsletterPermission + 'no'}>No</Label
+												>
+											</div>
+										</RadioGroup.Root>
+									</Question>
+
+									<!-- <Question
+										question="Do you give The Birch Collective permission to take photographs or videos of you with the intention to use in publicity materials?"
+										subtext="They'll be used in e.g. social media sites, website, reporting to funders, newspapers and magazine articles. Images will not be given to third parties."
+										isRequired
+									>
+										<div class="flex flex-col gap-3">
+											<MyCheckbox label="yes" />
+
+											<MyCheckbox label="no" />
+										</div>
+									</Question> -->
+
+									<!-- <Question
+										question="Would you like to be added to a weekly text update/reminder telling you what's going on at Fresh Air Thursday?"
+										subtext="You can be removed at anytime by simply replying STOP."
+										isRequired
+									>
+										<div class="flex flex-col gap-3">
+											<MyCheckbox label="yes" />
+											<MyCheckbox label="no" />
+										</div>
+									</Question> -->
+								</CarouselItem>
+
 								<Carousel.Item class="flex basis-full flex-col pl-0">
 									<Card.Root class="ml-0 flex grow flex-col border-none shadow-none">
-										<Card.Content class="flex grow flex-col p-6 text-lg leading-relaxed">
-											<Card.Title
-												class="decoration-bc-slate-pine/30 font-display text-[24px] font-bold tracking-wide text-black/50 underline decoration-2 underline-offset-4"
-												>Permissions</Card.Title
-											>
+										<Card.Content class="flex grow flex-col p-0 text-lg leading-relaxed">
+											<Card.Header class="bg-my-grey-3/5 flex items-center justify-between p-3">
+												<Card.Title
+													class="font-display text-[30px] font-bold tracking-wide text-black/70 uppercase"
+												>
+													Newsletter & Permissions</Card.Title
+												>
+												<div
+													class="font-display text-bc-slate-pine/70 text-2xl font-bold tracking-wide uppercase"
+												>
+													Programme Signup
+												</div>
+											</Card.Header>
 
 											<div class="mt-8 grid max-h-full grow place-items-center overflow-y-scroll">
 												<div class="flex max-h-[400px] w-full flex-col gap-12 px-1 pr-4 pb-10">
@@ -111,7 +171,6 @@
 															</div>
 														</div>
 													</div>
-
 													<div>
 														<h3 class="text-[19px] font-medium text-black">
 															Do you give The Birch Collective permission to take photographs or

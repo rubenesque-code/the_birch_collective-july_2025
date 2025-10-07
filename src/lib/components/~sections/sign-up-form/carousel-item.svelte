@@ -1,0 +1,36 @@
+<script lang="ts" module>
+	import type { Snippet } from 'svelte';
+
+	import { Card, Carousel } from '^components/ui';
+</script>
+
+<script lang="ts">
+	let { children, title } = $props<{
+		title: string;
+		children: Snippet<[]>;
+	}>();
+</script>
+
+<Carousel.Item class="flex basis-full flex-col pl-0">
+	<Card.Root class="ml-0 flex grow flex-col border-none shadow-none">
+		<Card.Content class="flex grow flex-col p-0 text-lg leading-relaxed">
+			<Card.Header class="bg-my-grey-3/5 flex items-center justify-between px-6 py-4">
+				<Card.Title
+					class="font-display text-[30px] leading-relaxed font-bold tracking-wide text-black/70 uppercase"
+					>{title}</Card.Title
+				>
+				<div
+					class="font-display text-bc-slate-pine/70 text-2xl leading-relaxed font-bold tracking-wide uppercase"
+				>
+					Programme Signup
+				</div>
+			</Card.Header>
+
+			<div class="grid max-h-full grow place-items-center overflow-y-scroll pr-4">
+				<div class="flex max-h-[400px] w-full flex-col gap-20 px-6 pr-6 pb-16">
+					{@render children?.()}
+				</div>
+			</div>
+		</Card.Content>
+	</Card.Root>
+</Carousel.Item>
