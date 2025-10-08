@@ -44,3 +44,8 @@ TODO
 GOOD TO HAVE
 ------------
 - change logo text colour with lightness/darkness of landing bg.
+
+CODE ADVANCEMENTS
+-----------------
+-use group with checkboxes
+  - https://svelte.dev/tutorial/svelte/group-inputs

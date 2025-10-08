@@ -12,14 +12,15 @@
 
 	import { Card, Carousel, Checkbox, Input, Label, RadioGroup, Textarea } from '^components/ui';
 	import CarouselItem from './carousel-item.svelte';
-	import { Question, RadioGroupItem } from './elements';
+	import { Question, RadioGroupItem, CheckboxGroup } from './elements';
 	import DatePicker from './elements/date-picker.svelte';
 	import NextButton from './next-button.svelte';
 
 	const formId = {
 		newsletterPermission: 'sign-up-form-newsletter-permission',
 		imagePermission: 'sign-up-form-image-permission',
-		textPermission: 'sign-up-form-text-permission'
+		textPermission: 'sign-up-form-text-permission',
+		referralSource: 'sign-up-form-referral-source'
 	};
 </script>
 
@@ -46,6 +47,10 @@
 	let newsletterPermission = $state<'yes' | 'no' | ''>('');
 	let imagePermission = $state<'yes' | 'no' | ''>('');
 	let textPermission = $state<'yes' | 'no' | ''>('');
+	let referralSources = $state<string[]>([]);
+	$inspect('referralSources', referralSources);
+	// const formatter = new Intl.ListFormat('en', { style: 'long', type: 'conjunction' });
+	// let myString = $derived(formatter.format(referralSources));
 </script>
 
 {#if isOpen}
@@ -74,6 +79,44 @@
 					<div class="relative flex grow flex-col">
 						<Carousel.Root class="flex grow flex-col" opts={{ align: 'center' }}>
 							<Carousel.Content hiddenParentClass="grow flex flex-col" class="ml-0 w-full grow">
+								<CarouselItem title="About Us">
+									<Question
+										question="How did you hear about the Birch Collective?"
+										required="Tick all that apply to you"
+									>
+										<CheckboxGroup
+											options={[
+												{ value: 'birch-social', label: 'The Birch Collective social media' },
+												{ value: 'other-social', label: 'Other social media' },
+												{ value: 'web-search', label: 'Web search' },
+												{ value: 'teacher', label: 'Teacher' },
+												{ value: 'gp', label: 'GP or other medical professional' },
+												{ value: 'friend', label: 'Friend' },
+												{ value: 'parent-carer', label: 'Parent or carer' },
+												{ value: 'other', label: 'Other' }
+											]}
+											bind:group={referralSources}
+											idPrefix={formId.referralSource}
+										/>
+										<!-- <div class="flex flex-col space-y-3">
+											{#each [{ value: 'birch-social', label: 'The Birch Collective social media' }, { value: 'other-social', label: 'Other social media' }, { value: 'web-search', label: 'Web search' }, { value: 'teacher', label: 'Teacher' }, { value: 'gp', label: 'GP or other medical professional' }, { value: 'friend', label: 'Friend' }, { value: 'parent-carer', label: 'Parent or carer' }, { value: 'other', label: 'Other' }] as option}
+												<MyCheckbox
+													id={formId.referralSource + option.value}
+													label={option.label}
+													checked={referralSources.includes(option.value)}
+													onCheckedChange={() => {
+														if (referralSources.includes(option.value)) {
+															referralSources = referralSources.filter((v) => v !== option.value);
+														} else {
+															referralSources = [...referralSources, option.value];
+														}
+													}}
+												/>
+											{/each}
+										</div> -->
+									</Question>
+								</CarouselItem>
+
 								<CarouselItem title="Newsletter & Permissions">
 									<Question
 										question="Do you give The Birch Collective permission to take photographs or videos of you with the intention to use in publicity materials?"
@@ -129,166 +172,6 @@
 									</Question>
 								</CarouselItem>
 
-								<Carousel.Item class="flex basis-full flex-col pl-0">
-									<Card.Root class="ml-0 flex grow flex-col border-none shadow-none">
-										<Card.Content class="flex grow flex-col p-0 text-lg leading-relaxed">
-											<Card.Header class="bg-my-grey-3/5 flex items-center justify-between p-3">
-												<Card.Title
-													class="font-display text-[30px] font-bold tracking-wide text-black/70 uppercase"
-												>
-													Newsletter & Permissions</Card.Title
-												>
-												<div
-													class="font-display text-bc-slate-pine/70 text-2xl font-bold tracking-wide uppercase"
-												>
-													Programme Signup
-												</div>
-											</Card.Header>
-
-											<div class="mt-8 grid max-h-full grow place-items-center overflow-y-scroll">
-												<div class="flex max-h-[400px] w-full flex-col gap-12 px-1 pr-4 pb-10">
-													<div>
-														<h3 class="text-[19px] font-medium text-black">
-															<span
-																>Would you like to be added to the Birch Collectives monthly
-																newsletter?</span
-															>
-														</h3>
-														<p class="mt-1 text-black/70">
-															We'll inform you about new programmes and services we're running.
-														</p>
-														<span class="mt-1 text-sm text-black/50 italic">(required)</span>
-
-														<div class="mt-6 flex flex-col gap-3">
-															<div class="flex items-center gap-4">
-																<Checkbox id="identity-working-class" />
-																<Label class="text-base font-normal" for="identity-working-class"
-																	>yes</Label
-																>
-															</div>
-
-															<div class="flex items-center gap-4">
-																<Checkbox id="identity-working-class" />
-																<Label class="text-base font-normal" for="identity-working-class"
-																	>no</Label
-																>
-															</div>
-														</div>
-													</div>
-													<div>
-														<h3 class="text-[19px] font-medium text-black">
-															Do you give The Birch Collective permission to take photographs or
-															videos of you with the intention to use in publicity materials?
-														</h3>
-														<p class="mt-1 text-black/70">
-															They'll be used in e.g. social media sites, website, reporting to
-															funders, newspapers and magazine articles. Images will not be given to
-															third parties.
-														</p>
-														<span class="mt-1 text-sm text-black/50 italic">(required)</span>
-
-														<div class="mt-6 flex flex-col gap-3">
-															<div class="flex items-center gap-4">
-																<Checkbox id="identity-working-class" />
-																<Label class="text-base font-normal" for="identity-working-class"
-																	>yes</Label
-																>
-															</div>
-
-															<div class="flex items-center gap-4">
-																<Checkbox id="identity-working-class" />
-																<Label class="text-base font-normal" for="identity-working-class"
-																	>no</Label
-																>
-															</div>
-														</div>
-													</div>
-
-													<div>
-														<h3 class="text-[19px] font-medium text-black">
-															Would you like to be added to a weekly text update/reminder telling
-															you what's going on at Fresh Air Thursday?
-														</h3>
-														<p class="mt-1 text-black/70">
-															You can be removed at anytime by simply replying STOP.
-														</p>
-														<span class="mt-1 text-sm text-black/50 italic">(required)</span>
-
-														<div class="mt-6 flex flex-col gap-3">
-															<div class="flex items-center gap-4">
-																<Checkbox id="identity-working-class" />
-																<Label class="text-base font-normal" for="identity-working-class"
-																	>yes</Label
-																>
-															</div>
-
-															<div class="flex items-center gap-4">
-																<Checkbox id="identity-working-class" />
-																<Label class="text-base font-normal" for="identity-working-class"
-																	>no</Label
-																>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</Card.Content>
-									</Card.Root>
-								</Carousel.Item>
-								<Carousel.Item class="flex basis-full flex-col pl-0">
-									<Card.Root class="ml-0 flex grow flex-col border-none shadow-none">
-										<Card.Content class="flex grow flex-col p-6 text-lg leading-relaxed">
-											<Card.Title
-												class="decoration-bc-slate-pine/30 font-display text-[24px] font-bold tracking-wide text-black/50 underline decoration-2 underline-offset-4"
-												>How you heard about us</Card.Title
-											>
-
-											<div class="mt-8 grid max-h-full grow place-items-center overflow-y-scroll">
-												<div class="flex max-h-[400px] w-full flex-col gap-12 px-1 pr-4 pb-10">
-													<div>
-														<h3 class="text-black">
-															<span>How did you hear about the Birch Collective?</span>
-														</h3>
-														<span class="text-sm text-black/50 italic">(optional)</span>
-														<p class="mt-2 text-[15px] text-black/70">
-															Tick all that apply to you.
-														</p>
-
-														<div class="mt-6 flex flex-col gap-3">
-															<div class="flex items-center gap-4">
-																<Checkbox id="identity-working-class" />
-																<Label class="text-base font-normal" for="identity-working-class"
-																	>working class</Label
-																>
-															</div>
-
-															<div class="flex items-center gap-4">
-																<Checkbox id="identity-working-class" />
-																<Label class="text-base font-normal" for="identity-working-class"
-																	>someone with a disability</Label
-																>
-															</div>
-
-															<div class="flex items-center gap-4">
-																<Checkbox id="identity-working-class" />
-																<Label class="text-base font-normal" for="identity-working-class"
-																	>male or male identifying</Label
-																>
-															</div>
-
-															<div class="flex items-center gap-4">
-																<Checkbox id="identity-working-class" />
-																<Label class="text-base font-normal" for="identity-working-class"
-																	>care experienced</Label
-																>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</Card.Content>
-									</Card.Root>
-								</Carousel.Item>
 								<Carousel.Item class="flex basis-full flex-col pl-0">
 									<Card.Root class="ml-0 flex grow flex-col border-none shadow-none">
 										<Card.Content class="flex grow flex-col p-6 text-lg leading-relaxed">

@@ -27,8 +27,10 @@
 			</Card.Header>
 
 			<div class="grid max-h-full grow place-items-center overflow-y-scroll pr-4">
-				<div class="flex max-h-[400px] w-full flex-col gap-20 px-6 pr-6 pb-16">
+				<div class="flex max-h-[400px] w-full flex-col gap-20 px-6 pr-6">
 					{@render children?.()}
+
+					<div class="-mt-12 h-[1px] shrink-0"></div>
 				</div>
 			</div>
 		</Card.Content>
