@@ -11,13 +11,15 @@
 	import { toggleBodyScroll } from '^helpers';
 
 	import { Card, Carousel, Checkbox, Input, Label, RadioGroup, Textarea } from '^components/ui';
-	import NextButton from './next-button.svelte';
-	import DatePicker from './elements/date-picker.svelte';
 	import CarouselItem from './carousel-item.svelte';
-	import { Checkbox as MyCheckbox, Question } from './elements';
+	import { Question, RadioGroupItem } from './elements';
+	import DatePicker from './elements/date-picker.svelte';
+	import NextButton from './next-button.svelte';
 
 	const formId = {
-		newsletterPermission: 'newsletter-permission'
+		newsletterPermission: 'sign-up-form-newsletter-permission',
+		imagePermission: 'sign-up-form-image-permission',
+		textPermission: 'sign-up-form-text-permission'
 	};
 </script>
 
@@ -42,7 +44,8 @@
 	});
 
 	let newsletterPermission = $state<'yes' | 'no' | ''>('');
-	$inspect('newsletterPermission', newsletterPermission);
+	let imagePermission = $state<'yes' | 'no' | ''>('');
+	let textPermission = $state<'yes' | 'no' | ''>('');
 </script>
 
 {#if isOpen}
@@ -73,56 +76,57 @@
 							<Carousel.Content hiddenParentClass="grow flex flex-col" class="ml-0 w-full grow">
 								<CarouselItem title="Newsletter & Permissions">
 									<Question
-										question="Would you like to be added to the Birch Collectives monthly newsletter?"
-										subtext="We'll inform you about new programmes and services we're running."
-										isRequired
+										question="Do you give The Birch Collective permission to take photographs or videos of you with the intention to use in publicity materials?"
+										subtext="They'll be used in e.g. social media sites, website, reporting to funders, newspapers and magazine articles. Images will not be given to third parties."
+										required="Please select a response"
 									>
-										<RadioGroup.Root bind:value={newsletterPermission}>
-											<div class="flex items-center space-x-3">
-												<RadioGroup.Item
-													value="yes"
-													id={'sign-up-form' + formId.newsletterPermission + 'yes'}
-												/>
-												<Label
-													class="text-base"
-													for={'sign-up-form' + formId.newsletterPermission + 'yes'}>Yes</Label
-												>
-											</div>
-											<div class="flex items-center space-x-3">
-												<RadioGroup.Item
-													value="no"
-													id={'sign-up-form' + formId.newsletterPermission + 'no'}
-												/>
-												<Label
-													class="text-base"
-													for={'sign-up-form' + formId.newsletterPermission + 'no'}>No</Label
-												>
-											</div>
+										<RadioGroup.Root bind:value={imagePermission}>
+											<RadioGroupItem
+												value="yes"
+												id={formId.imagePermission + 'yes'}
+												labelText="Yes"
+											/>
+											<RadioGroupItem
+												value="no"
+												id={formId.imagePermission + 'no'}
+												labelText="No"
+											/>
 										</RadioGroup.Root>
 									</Question>
 
-									<!-- <Question
-										question="Do you give The Birch Collective permission to take photographs or videos of you with the intention to use in publicity materials?"
-										subtext="They'll be used in e.g. social media sites, website, reporting to funders, newspapers and magazine articles. Images will not be given to third parties."
-										isRequired
+									<Question
+										question="Would you like to be added to the Birch Collectives monthly newsletter?"
+										subtext="We'll inform you about new programmes and services we're running."
+										required="Please select a response"
 									>
-										<div class="flex flex-col gap-3">
-											<MyCheckbox label="yes" />
+										<RadioGroup.Root bind:value={newsletterPermission}>
+											<RadioGroupItem
+												value="yes"
+												id={formId.newsletterPermission + 'yes'}
+												labelText="Yes"
+											/>
+											<RadioGroupItem
+												value="no"
+												id={formId.newsletterPermission + 'no'}
+												labelText="No"
+											/>
+										</RadioGroup.Root>
+									</Question>
 
-											<MyCheckbox label="no" />
-										</div>
-									</Question> -->
-
-									<!-- <Question
+									<Question
 										question="Would you like to be added to a weekly text update/reminder telling you what's going on at Fresh Air Thursday?"
 										subtext="You can be removed at anytime by simply replying STOP."
-										isRequired
+										required="Please select a response"
 									>
-										<div class="flex flex-col gap-3">
-											<MyCheckbox label="yes" />
-											<MyCheckbox label="no" />
-										</div>
-									</Question> -->
+										<RadioGroup.Root bind:value={textPermission}>
+											<RadioGroupItem
+												value="yes"
+												id={formId.textPermission + 'yes'}
+												labelText="Yes"
+											/>
+											<RadioGroupItem value="no" id={formId.textPermission + 'no'} labelText="No" />
+										</RadioGroup.Root>
+									</Question>
 								</CarouselItem>
 
 								<Carousel.Item class="flex basis-full flex-col pl-0">
