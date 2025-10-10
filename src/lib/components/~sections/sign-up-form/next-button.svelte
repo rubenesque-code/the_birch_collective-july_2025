@@ -3,15 +3,19 @@
 </script>
 
 <script lang="ts">
-	let { permitGoNext = $bindable() } = $props<{
-		permitGoNext: boolean;
-	}>();
+	let {
+		handleGoNext
+	}: {
+		handleGoNext: (arg0: { scrollNext: () => void }) => void;
+	} = $props();
 
 	const emblaCtx = getEmblaContext('<Carousel.Next/>');
 </script>
 
 <button
 	class="bg-bc-slate-pine cursor-pointer rounded-sm px-3 py-2 text-lg text-white"
-	onclick={emblaCtx.scrollNext}
+	onclick={() => {
+		handleGoNext({ scrollNext: emblaCtx.scrollNext });
+	}}
 	type="button">Next</button
 >

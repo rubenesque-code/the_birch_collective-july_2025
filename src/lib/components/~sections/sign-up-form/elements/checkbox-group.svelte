@@ -6,11 +6,13 @@
 	let {
 		options,
 		group = $bindable([]),
-		idPrefix = ''
+		idPrefix = '',
+		onCheckedChange
 	}: {
 		options: { value: string; label: string }[];
 		group: string[];
 		idPrefix?: string;
+		onCheckedChange: () => void;
 	} = $props();
 
 	function toggleValue(value: string, checked: boolean) {
@@ -28,7 +30,10 @@
 			id={idPrefix + option.value}
 			label={option.label}
 			checked={group.includes(option.value)}
-			onCheckedChange={(checked) => toggleValue(option.value, checked)}
+			onCheckedChange={(checked) => {
+				toggleValue(option.value, checked);
+				onCheckedChange();
+			}}
 		/>
 	{/each}
 </div>

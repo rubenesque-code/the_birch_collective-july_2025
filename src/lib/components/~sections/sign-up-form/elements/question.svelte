@@ -1,5 +1,7 @@
 <script lang="ts" module>
 	import type { Snippet } from 'svelte';
+	import { elasticIn } from 'svelte/easing';
+	import { fade } from 'svelte/transition';
 </script>
 
 <script lang="ts">
@@ -7,12 +9,14 @@
 		children,
 		required = 'required',
 		question,
-		subtext
+		subtext,
+		showError = $bindable()
 	} = $props<{
 		children: Snippet<[]>;
 		question: string;
 		subtext?: string;
 		required: string | false;
+		showError: boolean;
 	}>();
 </script>
 
@@ -36,4 +40,13 @@
 	<div class="mt-6 h-full">
 		{@render children?.()}
 	</div>
+
+	{#if showError}
+		<p
+			class="mt-6 text-base text-red-500"
+			transition:fade={{ duration: 100, delay: 50, easing: elasticIn }}
+		>
+			Please select at least one response
+		</p>
+	{/if}
 </div>

@@ -15,6 +15,7 @@
 	import { Question, RadioGroupItem, CheckboxGroup } from './elements';
 	import DatePicker from './elements/date-picker.svelte';
 	import NextButton from './next-button.svelte';
+	import { getEmblaContext } from '^components/ui/carousel/context';
 
 	const formId = {
 		newsletterPermission: 'sign-up-form-newsletter-permission',
@@ -36,23 +37,31 @@
 
 	let activeSlide: 'intro' | 'terms' | 'referralSources' = 'referralSources';
 
-	let newsletterPermission = $state<'yes' | 'no' | ''>('');
-	let imagePermission = $state<'yes' | 'no' | ''>('');
-	let textPermission = $state<'yes' | 'no' | ''>('');
 	let referralSources = $state<string[]>([]);
-	$inspect('referralSources', referralSources);
-	// const formatter = new Intl.ListFormat('en', { style: 'long', type: 'conjunction' });
-	// let myString = $derived(formatter.format(referralSources));
+	let showReferralSourcesError = $state(false);
+	$inspect('showReferralSourcesError', showReferralSourcesError);
 
-	let showReferralSourcesError = $state<boolean>(false);
+	let showSlideError = $state(false);
 
-	let onGoNext: boolean = $derived.by(() => {
+	function validateReferralSources() {
+		return Boolean(referralSources.length);
+	}
+
+	function handleNext({ scrollNext }: { scrollNext: () => void }) {
 		if (activeSlide === 'referralSources') {
-			return Boolean(referralSources.length);
+			if (!validateReferralSources()) {
+				showSlideError = true;
+				showReferralSourcesError = true;
+				return;
+			}
+			showSlideError = false;
+			showReferralSourcesError = false;
+			scrollNext();
+			return;
 		}
 
-		return false;
-	});
+		return true;
+	}
 </script>
 
 {#if isOpen}
@@ -81,7 +90,54 @@
 				>
 					<Carousel.Content hiddenParentClass="flex flex-col h-full" class="ml-0 h-full w-full">
 						<CarouselItem
-							title="About Us"
+							title="How did you find out about us?"
+							showError={showSlideError}
+							errorMessage="One or more questions need a response"
+						>
+							<Question
+								question="How did you hear about the Birch Collective?"
+								required="Tick all that apply to you"
+								bind:showError={showReferralSourcesError}
+							>
+								<CheckboxGroup
+									options={[
+										{ value: 'birch-social', label: 'The Birch Collective social media' },
+										{ value: 'other-social', label: 'Other social media' },
+										{ value: 'web-search', label: 'Web search' },
+										{ value: 'teacher', label: 'Teacher' },
+										{ value: 'gp', label: 'GP or other medical professional' },
+										{ value: 'friend', label: 'Friend' },
+										{ value: 'parent-carer', label: 'Parent or carer' },
+										{ value: 'other', label: 'Other' }
+									]}
+									onCheckedChange={() => {
+										showReferralSourcesError = false;
+										showSlideError = false;
+									}}
+									bind:group={referralSources}
+									idPrefix={formId.referralSource}
+								/>
+							</Question>
+						</CarouselItem>
+					</Carousel.Content>
+
+					<div
+						class="bg-my-grey-3/5 relative mt-4 flex w-full shrink-0 items-center justify-between p-3"
+					>
+						<Carousel.Previous class="static translate-none" />
+
+						<NextButton handleGoNext={handleNext} />
+
+						<Carousel.Next class="static translate-none cursor-pointer" />
+					</div>
+				</Carousel.Root>
+			</div>
+		</div>
+	</div>
+{/if}
+
+<!-- 						<CarouselItem
+							title="How did you find out about us?"
 							showError={showReferralSourcesError ? 'Please select at least one option' : false}
 						>
 							<Question
@@ -105,7 +161,10 @@
 							</Question>
 						</CarouselItem>
 
-						<CarouselItem title="Newsletter & Permissions">
+						<CarouselItem
+							title="Newsletter & Permissions"
+							showError={showReferralSourcesError ? 'Please choose at least one option' : false}
+						>
 							<Question
 								question="Do you give The Birch Collective permission to take photographs or videos of you with the intention to use in publicity materials?"
 								subtext="They'll be used in e.g. social media sites, website, reporting to funders, newspapers and magazine articles. Images will not be given to third parties."
@@ -643,19 +702,10 @@
 								</Card.Content>
 							</Card.Root>
 						</Carousel.Item>
-					</Carousel.Content>
+					 -->
 
-					<div
-						class="bg-my-grey-3/5 relative mt-4 flex w-full shrink-0 items-center justify-between p-3"
-					>
-						<Carousel.Previous class="static translate-none" />
+<!-- 	let activeSlide: 'intro' | 'terms' | 'referralSources' = 'referralSources';
 
-						<NextButton bind:permitGoNext={onGoNext} />
-
-						<Carousel.Next class="static translate-none cursor-pointer" />
-					</div>
-				</Carousel.Root>
-			</div>
-		</div>
-	</div>
-{/if}
+	let newsletterPermission = $state<'yes' | 'no' | ''>('');
+	let imagePermission = $state<'yes' | 'no' | ''>('');
+	let textPermission = $state<'yes' | 'no' | ''>(''); -->
