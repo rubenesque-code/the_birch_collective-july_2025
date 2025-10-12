@@ -1,4 +1,5 @@
 <script lang="ts" module>
+	import { Circle } from 'phosphor-svelte';
 	import type { Snippet } from 'svelte';
 	import { elasticIn } from 'svelte/easing';
 	import { fade } from 'svelte/transition';
@@ -21,9 +22,14 @@
 </script>
 
 <div class="flex h-full flex-col gap-1">
-	<h3 class="text-bc-amber font-display text-[30px] leading-relaxed font-bold tracking-[0.02em]">
-		{question}
-	</h3>
+	<div class="flex items-center gap-2">
+		<span class={`text-xs ${!showError ? 'text-bc-amber/50' : 'text-red-500'}`}>
+			<Circle weight="fill" />
+		</span>
+		<h3 class="text-bc-logo-black text-[20px] leading-relaxed font-medium">
+			{question}
+		</h3>
+	</div>
 
 	{#if subtext}
 		<p class="text-bc-logo-black/70 mt-2 leading-relaxed">{subtext}</p>

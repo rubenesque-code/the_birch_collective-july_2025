@@ -18,7 +18,7 @@
 	import NextButton from './next-button.svelte';
 	import { getEmblaContext } from '^components/ui/carousel/context';
 	import image from '^assets/image';
-	import { SignOut } from 'phosphor-svelte';
+	import { Circle, SignOut } from 'phosphor-svelte';
 
 	const formId = {
 		newsletterPermission: 'sign-up-form-newsletter-permission',
@@ -92,13 +92,45 @@
 					opts={{ align: 'center' }}
 				>
 					<Carousel.Content hiddenParentClass="flex flex-col h-full" class="ml-0 h-full w-full">
+						<CarouselItem
+							title="How did you find out about us?"
+							showError={showSlideError}
+							errorMessage="One or more questions need a response"
+							{onClickClose}
+						>
+							<Question
+								question="How did you hear about the Birch Collective?"
+								required="Tick all that apply to you"
+								bind:showError={showReferralSourcesError}
+							>
+								<CheckboxGroup
+									options={[
+										{ value: 'birch-social', label: 'The Birch Collective social media' },
+										{ value: 'other-social', label: 'Other social media' },
+										{ value: 'web-search', label: 'Web search' },
+										{ value: 'teacher', label: 'Teacher' },
+										{ value: 'gp', label: 'GP or other medical professional' },
+										{ value: 'friend', label: 'Friend' },
+										{ value: 'parent-carer', label: 'Parent or carer' },
+										{ value: 'other', label: 'Other' }
+									]}
+									onCheckedChange={() => {
+										showReferralSourcesError = false;
+										showSlideError = false;
+									}}
+									bind:group={referralSources}
+									idPrefix={formId.referralSource}
+								/>
+							</Question>
+						</CarouselItem>
+
 						<Carousel.Item class="flex h-full basis-full flex-col pl-0">
 							<Card.Root class="ml-0 flex h-full grow flex-col border-none shadow-none">
 								<Card.Content class="flex h-full grow flex-col  p-0 text-lg leading-relaxed">
 									<Card.Header class="flex justify-between px-10">
-										<div>
-											<h2 class="font-display text-bc-logo-black mt-12 text-4xl font-bold">
-												How did you find out about us?
+										<div class="mt-12 flex items-center gap-2">
+											<h2 class="font-display text-bc-logo-black/80 text-4xl font-bold">
+												How did you find out about us<span class="">?</span>
 											</h2>
 										</div>
 
@@ -169,7 +201,9 @@
 
 									<Card.Content class="mt-12 grow overflow-y-auto px-10">
 										<p class="">
-											First up, we need you to read and understand our confidentiality statement:
+											<span>
+												First up, we need you to read and understand our confidentiality statement:
+											</span>
 										</p>
 										<p class="border-my-grey-3 bg-my-grey-3/10 mt-6 rounded-md border p-8">
 											Anything you talk about with one of our team is kept totally private within
@@ -283,40 +317,9 @@
 								</Card.Content>
 							</Card.Root>
 						</Carousel.Item>
-
-						<CarouselItem
-							title="How did you find out about us?"
-							showError={showSlideError}
-							errorMessage="One or more questions need a response"
-						>
-							<Question
-								question="How did you hear about the Birch Collective?"
-								required="Tick all that apply to you"
-								bind:showError={showReferralSourcesError}
-							>
-								<CheckboxGroup
-									options={[
-										{ value: 'birch-social', label: 'The Birch Collective social media' },
-										{ value: 'other-social', label: 'Other social media' },
-										{ value: 'web-search', label: 'Web search' },
-										{ value: 'teacher', label: 'Teacher' },
-										{ value: 'gp', label: 'GP or other medical professional' },
-										{ value: 'friend', label: 'Friend' },
-										{ value: 'parent-carer', label: 'Parent or carer' },
-										{ value: 'other', label: 'Other' }
-									]}
-									onCheckedChange={() => {
-										showReferralSourcesError = false;
-										showSlideError = false;
-									}}
-									bind:group={referralSources}
-									idPrefix={formId.referralSource}
-								/>
-							</Question>
-						</CarouselItem>
 					</Carousel.Content>
 
-					<div class="relative mt-4 flex w-full shrink-0 items-center justify-between p-3">
+					<div class="relative flex w-full shrink-0 items-center justify-between p-3">
 						<div></div>
 
 						<div class="relative">
