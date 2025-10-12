@@ -13,9 +13,10 @@
 </script>
 
 <button
-	class="bg-bc-slate-pine cursor-pointer rounded-sm px-3 py-2 text-lg text-white"
+	class="bg-bc-amber cursor-pointer rounded-xl px-4 py-2 text-lg font-medium text-white"
 	onclick={() => {
-		handleGoNext({ scrollNext: emblaCtx.scrollNext });
+		// handleGoNext({ scrollNext: emblaCtx.scrollNext });
+		emblaCtx.scrollNext();
 	}}
 	type="button">Next</button
 >

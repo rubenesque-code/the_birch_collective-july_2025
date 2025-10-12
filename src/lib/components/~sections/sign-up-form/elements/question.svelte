@@ -21,15 +21,15 @@
 </script>
 
 <div class="flex h-full flex-col gap-1">
-	<h3 class="text-[19px] leading-relaxed font-medium text-black">
+	<h3 class="text-bc-amber font-display text-[30px] leading-relaxed font-bold tracking-[0.02em]">
 		{question}
 	</h3>
 
 	{#if subtext}
-		<p class="leading-relaxed text-black/70">{subtext}</p>
+		<p class="text-bc-logo-black/70 mt-2 leading-relaxed">{subtext}</p>
 	{/if}
 
-	<span class="text-[15px] leading-relaxed text-black/50 italic">
+	<span class="text-bc-logo-black/50 mt-2 text-[15px] leading-relaxed italic">
 		{#if required}
 			{required}
 		{:else}

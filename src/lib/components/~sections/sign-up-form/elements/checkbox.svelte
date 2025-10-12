@@ -23,6 +23,11 @@
 </script>
 
 <div class="flex items-center gap-4">
-	<Checkbox {id} bind:checked={checkedDerived} {onCheckedChange} />
-	<Label class="text-base font-normal" for={id}>{label}</Label>
+	<Checkbox
+		class="data-[state=checked]:text-bc-amber data-[state=checked]:border-white data-[state=checked]:bg-white"
+		{id}
+		bind:checked={checkedDerived}
+		{onCheckedChange}
+	/>
+	<Label class="text-[18px] font-normal" for={id}>{label}</Label>
 </div>

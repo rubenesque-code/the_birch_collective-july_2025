@@ -3,6 +3,7 @@
 
 	import { browser } from '$app/environment';
 	import {
+		PUBLIC_BIRCH_EMAIL,
 		PUBLIC_BIRCH_GDPR_CONTACT_EMAIL,
 		PUBLIC_BIRCH_GDPR_CONTACT_PHONE
 	} from '$env/static/public';
@@ -16,6 +17,8 @@
 	import DatePicker from './elements/date-picker.svelte';
 	import NextButton from './next-button.svelte';
 	import { getEmblaContext } from '^components/ui/carousel/context';
+	import image from '^assets/image';
+	import { SignOut } from 'phosphor-svelte';
 
 	const formId = {
 		newsletterPermission: 'sign-up-form-newsletter-permission',
@@ -76,19 +79,211 @@
 	>
 		<div>
 			<div class="relative mx-2 overflow-visible shadow-xl">
-				<button
+				<!-- <button
 					class="bg-my-grey-1 absolute -top-[12px] right-0 z-10 -translate-y-full cursor-pointer rounded-full px-2 py-1 text-[15px] font-medium tracking-wide text-white md:-top-[16px] xl:-top-[24px]"
 					onclick={onClickClose}
 					type="button"
 				>
 					Close
-				</button>
+				</button> -->
 
 				<Carousel.Root
 					class="relative flex h-[800px] max-h-[90vh] w-[95vw] max-w-[800px] flex-col rounded-lg bg-white px-4 py-3"
 					opts={{ align: 'center' }}
 				>
 					<Carousel.Content hiddenParentClass="flex flex-col h-full" class="ml-0 h-full w-full">
+						<Carousel.Item class="flex h-full basis-full flex-col pl-0">
+							<Card.Root class="ml-0 flex h-full grow flex-col border-none shadow-none">
+								<Card.Content class="flex h-full grow flex-col  p-0 text-lg leading-relaxed">
+									<Card.Header class="flex justify-between px-10">
+										<div>
+											<h2 class="font-display text-bc-logo-black mt-12 text-4xl font-bold">
+												How did you find out about us?
+											</h2>
+										</div>
+
+										<div
+											class="bg-bc-logo-black/80 flex items-center gap-2 rounded-full px-3 py-1 text-[15px]"
+										>
+											<button
+												class="rounded-full border border-white p-[6px] text-white"
+												onclick={onClickClose}
+												type="button"
+											>
+												<SignOut weight="fill" />
+											</button>
+										</div>
+									</Card.Header>
+
+									<Card.Content class="mt-16 grow overflow-y-auto px-10">
+										<Question
+											question="How did you hear about the Birch Collective?"
+											required="Tick all that apply to you"
+											bind:showError={showReferralSourcesError}
+										>
+											<CheckboxGroup
+												options={[
+													{ value: 'birch-social', label: 'The Birch Collective social media' },
+													{ value: 'other-social', label: 'Other social media' },
+													{ value: 'web-search', label: 'Web search' },
+													{ value: 'teacher', label: 'Teacher' },
+													{ value: 'gp', label: 'GP or other medical professional' },
+													{ value: 'friend', label: 'Friend' },
+													{ value: 'parent-carer', label: 'Parent or carer' },
+													{ value: 'other', label: 'Other' }
+												]}
+												onCheckedChange={() => {
+													showReferralSourcesError = false;
+													showSlideError = false;
+												}}
+												bind:group={referralSources}
+												idPrefix={formId.referralSource}
+											/>
+										</Question>
+									</Card.Content>
+								</Card.Content>
+							</Card.Root>
+						</Carousel.Item>
+						<Carousel.Item class="flex h-full basis-full flex-col pl-0">
+							<Card.Root class="ml-0 flex h-full grow flex-col border-none shadow-none">
+								<Card.Content class="flex h-full grow flex-col  p-0 text-lg leading-relaxed">
+									<Card.Header class="flex justify-between px-10">
+										<div>
+											<h2 class="font-display text-bc-logo-black mt-12 text-4xl font-bold">
+												Confidentiality
+											</h2>
+										</div>
+
+										<div
+											class="bg-bc-logo-black/80 flex items-center gap-2 rounded-full px-3 py-1 text-[15px]"
+										>
+											<button
+												class="rounded-full border border-white p-[6px] text-white"
+												onclick={onClickClose}
+												type="button"
+											>
+												<SignOut weight="fill" />
+											</button>
+										</div>
+									</Card.Header>
+
+									<Card.Content class="mt-12 grow overflow-y-auto px-10">
+										<p class="">
+											First up, we need you to read and understand our confidentiality statement:
+										</p>
+										<p class="border-my-grey-3 bg-my-grey-3/10 mt-6 rounded-md border p-8">
+											Anything you talk about with one of our team is kept totally private within
+											Birch. We won't share what you tell us with anyone else. But if there was an
+											extreme situation, like if you or someone else was at risk of being seriously
+											hurt, then we would need to break confidentiality to keep you safe. If this
+											happened we would discuss it with you first and do our best to make sure you
+											were involved in any decisions that have to be made. We know this can be scary
+											and you might not want us to share anything, but we will support you through
+											the whole thing.
+										</p>
+
+										<p class="mt-10">We also need you to read our GDPR statement:</p>
+										<p class="border-my-grey-3 bg-my-grey-3/10 mt-6 rounded-md border p-8">
+											<span>
+												By signing this form, you are giving us permission to contact you about
+												opportunities and events from the Birch Collective. In order to comply with
+												the General Data Protection Regulation, The Birch Collective is seeking your
+												consent to hold your information on our database. We are required by our
+												funders to gather information about the people who use our services. We will
+												not share your information with third parties other than those you have
+												agreed to. We use and store any information that you give us in accordance
+												with the Data Protection Act 2003. Information you provide will be
+												anonymised before being used in monitoring and evaluation reports for our
+												current funders, to support funding applications. Your data will be held for
+												a maximum of 2 years after your last engagement. For further details on our
+												data protection and information sharing policies or for any queries about
+												the data we hold, please get in touch:
+											</span>
+											<span class="mt-4 flex flex-col gap-2">
+												<span class="flex items-center gap-2">
+													<span>Email:</span>
+													<a
+														class="font-medium"
+														href={`mailto:${PUBLIC_BIRCH_GDPR_CONTACT_EMAIL}`}
+														target="_blank">{PUBLIC_BIRCH_GDPR_CONTACT_EMAIL}</a
+													>
+												</span>
+
+												<span class="flex items-center gap-2">
+													<span>Phone:</span>
+
+													<a
+														class="font-medium"
+														href={`tel:${PUBLIC_BIRCH_GDPR_CONTACT_PHONE}`}
+														target="_blank">{PUBLIC_BIRCH_GDPR_CONTACT_PHONE}</a
+													>
+												</span>
+											</span>
+										</p>
+									</Card.Content>
+								</Card.Content>
+							</Card.Root>
+						</Carousel.Item>
+						<Carousel.Item class="flex h-full basis-full flex-col pl-0">
+							<Card.Root class="ml-0 flex h-full grow flex-col border-none shadow-none">
+								<Card.Content class="flex h-full grow flex-col p-0 text-lg leading-relaxed">
+									<Card.Header class="flex justify-between px-10">
+										<div class="flex shrink-0 -translate-x-[10px]">
+											<div class="translate-x-[10px] translate-y-[21px]">
+												<enhanced:img class="w-[68px]" src={image.birch.logo.img_only} alt="" />
+											</div>
+
+											<a class="font-display relative flex flex-col text-4xl font-bold" href="/">
+												<span class="translate-x-[20px]">The</span>
+												<span class="translate-x-[40px] translate-y-[-10px] text-[66px]">Birch</span
+												>
+												<span class="translate-x-[0px] translate-y-[-20px]">Collective</span>
+											</a>
+										</div>
+										<div
+											class="bg-bc-logo-black/80 flex items-center gap-2 rounded-full px-3 py-1 text-[15px]"
+										>
+											<button
+												class="rounded-full border border-white p-[6px] text-white"
+												onclick={onClickClose}
+												type="button"
+											>
+												<SignOut weight="fill" />
+											</button>
+										</div>
+									</Card.Header>
+
+									<Card.Content class="grow px-10">
+										<h1 class="text-bc-amber/60 mt-8 font-medium">Sign Up</h1>
+										<h2 class="font-display text-bc-logo-black mt-2 text-4xl font-bold">
+											Welcome to The Birch Collective!
+										</h2>
+
+										<p class="mt-10">
+											The following questions help us get to know a bit about you. We need to take
+											some really basic info from you, such as your contact details. This means we
+											can get in touch with you so we can discuss getting started - so please
+											double-check the details you're giving us are correct!
+										</p>
+									</Card.Content>
+								</Card.Content>
+							</Card.Root>
+						</Carousel.Item>
+
+						<Carousel.Item class="flex basis-full flex-col pl-0">
+							<Card.Root class="ml-0 flex grow flex-col border-none shadow-none">
+								<Card.Content class="flex grow flex-col p-6 text-lg leading-relaxed">
+									<div class="grid grow place-items-center">
+										<div>
+											<Card.Title class="mt-10 font-medium">{slides.intro.title}</Card.Title>
+
+											<p class="mt-8">{slides.intro.text}</p>
+										</div>
+									</div>
+								</Card.Content>
+							</Card.Root>
+						</Carousel.Item>
+
 						<CarouselItem
 							title="How did you find out about us?"
 							showError={showSlideError}
@@ -121,14 +316,18 @@
 						</CarouselItem>
 					</Carousel.Content>
 
-					<div
-						class="bg-my-grey-3/5 relative mt-4 flex w-full shrink-0 items-center justify-between p-3"
-					>
-						<Carousel.Previous class="static translate-none" />
+					<div class="relative mt-4 flex w-full shrink-0 items-center justify-between p-3">
+						<div></div>
 
-						<NextButton handleGoNext={handleNext} />
+						<div class="relative">
+							<Carousel.Previous
+								class="absolute top-1/2 -left-6 size-7 !-translate-x-full !-translate-y-1/2 translate-none "
+							/>
+							<NextButton handleGoNext={handleNext} />
+						</div>
 
-						<Carousel.Next class="static translate-none cursor-pointer" />
+						<!-- <Carousel.Next class="static translate-none cursor-pointer" /> -->
+						<div></div>
 					</div>
 				</Carousel.Root>
 			</div>
