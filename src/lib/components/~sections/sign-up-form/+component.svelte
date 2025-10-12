@@ -23,7 +23,7 @@
 	const formId = {
 		newsletterPermission: 'sign-up-form-newsletter-permission',
 		imagePermission: 'sign-up-form-image-permission',
-		textPermission: 'sign-up-form-text-permission',
+		textUpdatePermission: 'sign-up-form-text-permission',
 		referralSource: 'sign-up-form-referral-source'
 	};
 </script>
@@ -38,20 +38,63 @@
 		if (browser) toggleBodyScroll({ triggerDisableOn: isOpen });
 	});
 
-	let activeSlide: 'intro' | 'terms' | 'referralSources' = 'referralSources';
+	let activeSlide:
+		| 'intro'
+		| 'terms'
+		| 'referral-sources'
+		| 'newsletter-and-permissions'
+		| 'referrals' = 'referrals';
+
+	let imagePermission = $state<string>('');
+	let showImagePermissionError = $state(false);
+
+	let newsletterPermission = $state<string>('');
+	let showNewsletterPermissionError = $state(false);
+
+	let textUpdatePermission = $state<string>('');
+	let showTextUpdatePermissionError = $state(false);
 
 	let referralSources = $state<string[]>([]);
 	let showReferralSourcesError = $state(false);
-	$inspect('showReferralSourcesError', showReferralSourcesError);
 
 	let showSlideError = $state(false);
 
 	function validateReferralSources() {
 		return Boolean(referralSources.length);
 	}
+	function validateRadioGroup(value: string) {
+		return Boolean(value.length);
+	}
 
 	function handleNext({ scrollNext }: { scrollNext: () => void }) {
-		if (activeSlide === 'referralSources') {
+		if (activeSlide === 'referrals') {
+			scrollNext();
+			activeSlide = 'newsletter-and-permissions';
+			return;
+		}
+
+		if (activeSlide === 'newsletter-and-permissions') {
+			if (
+				!validateRadioGroup(imagePermission) ||
+				!validateRadioGroup(newsletterPermission) ||
+				!validateRadioGroup(textUpdatePermission)
+			) {
+				showSlideError = true;
+
+				if (!validateRadioGroup(imagePermission)) showImagePermissionError = true;
+				if (!validateRadioGroup(newsletterPermission)) showNewsletterPermissionError = true;
+				if (!validateRadioGroup(textUpdatePermission)) showTextUpdatePermissionError = true;
+
+				return;
+			}
+			showSlideError = false;
+			showImagePermissionError = false;
+			scrollNext();
+			activeSlide = 'referral-sources';
+			return;
+		}
+
+		if (activeSlide === 'referral-sources') {
 			if (!validateReferralSources()) {
 				showSlideError = true;
 				showReferralSourcesError = true;
@@ -79,19 +122,103 @@
 	>
 		<div>
 			<div class="relative mx-2 overflow-visible shadow-xl">
-				<!-- <button
-					class="bg-my-grey-1 absolute -top-[12px] right-0 z-10 -translate-y-full cursor-pointer rounded-full px-2 py-1 text-[15px] font-medium tracking-wide text-white md:-top-[16px] xl:-top-[24px]"
-					onclick={onClickClose}
-					type="button"
-				>
-					Close
-				</button> -->
-
 				<Carousel.Root
 					class="relative flex h-[800px] max-h-[90vh] w-[95vw] max-w-[800px] flex-col rounded-lg bg-white px-4 py-3"
 					opts={{ align: 'center' }}
 				>
 					<Carousel.Content hiddenParentClass="flex flex-col h-full" class="ml-0 h-full w-full">
+						<CarouselItem
+							title="Referrals"
+							showError={showSlideError}
+							errorMessage=""
+							{onClickClose}
+						>
+							<Question
+								question="If you're a professional referring a client, is there any additional information you think is important to share about your client?"
+							>
+								<Textarea
+									class="border-bc-amber/70 focus-visible:border-bc-amber  mt-2 h-[120px] w-full resize-none py-2 !text-base focus:outline-none focus-visible:ring-0"
+									placeholder="Enter response here"
+									id="ethnicity"
+								/>
+							</Question>
+						</CarouselItem>
+
+						<CarouselItem
+							title="Newsletter & Permissions"
+							showError={showSlideError}
+							errorMessage="One or more questions need a response"
+							{onClickClose}
+						>
+							<Question
+								question="Do you give The Birch Collective permission to take photographs or videos of you with the intention to use in publicity materials?"
+								subtext="They'll be used in e.g. social media sites, website, reporting to funders, newspapers and magazine articles. Images will not be given to third parties."
+								required="Please select a response"
+								bind:showError={showImagePermissionError}
+								errorText="Please select a response"
+							>
+								<RadioGroup.Root
+									bind:value={imagePermission}
+									onValueChange={() => (showImagePermissionError = false)}
+								>
+									<RadioGroupItem value="yes" id={formId.imagePermission + 'yes'} labelText="Yes" />
+									<RadioGroupItem value="no" id={formId.imagePermission + 'no'} labelText="No" />
+								</RadioGroup.Root>
+							</Question>
+
+							<div class="border-bc-amber/30 border-b-2"></div>
+
+							<Question
+								question="Would you like to be added to the Birch Collectives monthly newsletter?"
+								subtext="We'll inform you about new programmes and services we're running."
+								required="Please select a response"
+								bind:showError={showNewsletterPermissionError}
+								errorText="Please select a response"
+							>
+								<RadioGroup.Root
+									bind:value={newsletterPermission}
+									onValueChange={() => (showNewsletterPermissionError = false)}
+								>
+									<RadioGroupItem
+										value="yes"
+										id={formId.newsletterPermission + 'yes'}
+										labelText="Yes"
+									/>
+									<RadioGroupItem
+										value="no"
+										id={formId.newsletterPermission + 'no'}
+										labelText="No"
+									/>
+								</RadioGroup.Root>
+							</Question>
+
+							<div class="border-bc-amber/30 border-b-2"></div>
+
+							<Question
+								question="Would you like to be added to a weekly text update/reminder telling you what's going on at Fresh Air Thursday?"
+								subtext="You can be removed at anytime by simply replying STOP."
+								required="Please select a response"
+								bind:showError={showTextUpdatePermissionError}
+								errorText="Please select a response"
+							>
+								<RadioGroup.Root
+									bind:value={textUpdatePermission}
+									onValueChange={() => (showTextUpdatePermissionError = false)}
+								>
+									<RadioGroupItem
+										value="yes"
+										id={formId.textUpdatePermission + 'yes'}
+										labelText="Yes"
+									/>
+									<RadioGroupItem
+										value="no"
+										id={formId.textUpdatePermission + 'no'}
+										labelText="No"
+									/>
+								</RadioGroup.Root>
+							</Question>
+						</CarouselItem>
+
 						<CarouselItem
 							title="How did you find out about us?"
 							showError={showSlideError}
@@ -102,6 +229,7 @@
 								question="How did you hear about the Birch Collective?"
 								required="Tick all that apply to you"
 								bind:showError={showReferralSourcesError}
+								errorText="Please select at least one response"
 							>
 								<CheckboxGroup
 									options={[
@@ -124,58 +252,6 @@
 							</Question>
 						</CarouselItem>
 
-						<Carousel.Item class="flex h-full basis-full flex-col pl-0">
-							<Card.Root class="ml-0 flex h-full grow flex-col border-none shadow-none">
-								<Card.Content class="flex h-full grow flex-col  p-0 text-lg leading-relaxed">
-									<Card.Header class="flex justify-between px-10">
-										<div class="mt-12 flex items-center gap-2">
-											<h2 class="font-display text-bc-logo-black/80 text-4xl font-bold">
-												How did you find out about us<span class="">?</span>
-											</h2>
-										</div>
-
-										<div
-											class="bg-bc-logo-black/80 flex items-center gap-2 rounded-full px-3 py-1 text-[15px]"
-										>
-											<button
-												class="rounded-full border border-white p-[6px] text-white"
-												onclick={onClickClose}
-												type="button"
-											>
-												<SignOut weight="fill" />
-											</button>
-										</div>
-									</Card.Header>
-
-									<Card.Content class="mt-16 grow overflow-y-auto px-10">
-										<Question
-											question="How did you hear about the Birch Collective?"
-											required="Tick all that apply to you"
-											bind:showError={showReferralSourcesError}
-										>
-											<CheckboxGroup
-												options={[
-													{ value: 'birch-social', label: 'The Birch Collective social media' },
-													{ value: 'other-social', label: 'Other social media' },
-													{ value: 'web-search', label: 'Web search' },
-													{ value: 'teacher', label: 'Teacher' },
-													{ value: 'gp', label: 'GP or other medical professional' },
-													{ value: 'friend', label: 'Friend' },
-													{ value: 'parent-carer', label: 'Parent or carer' },
-													{ value: 'other', label: 'Other' }
-												]}
-												onCheckedChange={() => {
-													showReferralSourcesError = false;
-													showSlideError = false;
-												}}
-												bind:group={referralSources}
-												idPrefix={formId.referralSource}
-											/>
-										</Question>
-									</Card.Content>
-								</Card.Content>
-							</Card.Root>
-						</Carousel.Item>
 						<Carousel.Item class="flex h-full basis-full flex-col pl-0">
 							<Card.Root class="ml-0 flex h-full grow flex-col border-none shadow-none">
 								<Card.Content class="flex h-full grow flex-col  p-0 text-lg leading-relaxed">
@@ -258,6 +334,7 @@
 								</Card.Content>
 							</Card.Root>
 						</Carousel.Item>
+
 						<Carousel.Item class="flex h-full basis-full flex-col pl-0">
 							<Card.Root class="ml-0 flex h-full grow flex-col border-none shadow-none">
 								<Card.Content class="flex h-full grow flex-col p-0 text-lg leading-relaxed">
@@ -324,7 +401,7 @@
 
 						<div class="relative">
 							<Carousel.Previous
-								class="absolute top-1/2 -left-6 size-7 !-translate-x-full !-translate-y-1/2 translate-none "
+								class="absolute top-1/2 -left-6 size-7 !-translate-x-full !-translate-y-1/2 translate-none !cursor-pointer "
 							/>
 							<NextButton handleGoNext={handleNext} />
 						</div>
@@ -338,76 +415,9 @@
 	</div>
 {/if}
 
-<!-- 						<CarouselItem
-							title="How did you find out about us?"
-							showError={showReferralSourcesError ? 'Please select at least one option' : false}
-						>
-							<Question
-								question="How did you hear about the Birch Collective?"
-								required="Tick all that apply to you"
-							>
-								<CheckboxGroup
-									options={[
-										{ value: 'birch-social', label: 'The Birch Collective social media' },
-										{ value: 'other-social', label: 'Other social media' },
-										{ value: 'web-search', label: 'Web search' },
-										{ value: 'teacher', label: 'Teacher' },
-										{ value: 'gp', label: 'GP or other medical professional' },
-										{ value: 'friend', label: 'Friend' },
-										{ value: 'parent-carer', label: 'Parent or carer' },
-										{ value: 'other', label: 'Other' }
-									]}
-									bind:group={referralSources}
-									idPrefix={formId.referralSource}
-								/>
-							</Question>
-						</CarouselItem>
+<!-- 						
 
-						<CarouselItem
-							title="Newsletter & Permissions"
-							showError={showReferralSourcesError ? 'Please choose at least one option' : false}
-						>
-							<Question
-								question="Do you give The Birch Collective permission to take photographs or videos of you with the intention to use in publicity materials?"
-								subtext="They'll be used in e.g. social media sites, website, reporting to funders, newspapers and magazine articles. Images will not be given to third parties."
-								required="Please select a response"
-							>
-								<RadioGroup.Root bind:value={imagePermission}>
-									<RadioGroupItem value="yes" id={formId.imagePermission + 'yes'} labelText="Yes" />
-									<RadioGroupItem value="no" id={formId.imagePermission + 'no'} labelText="No" />
-								</RadioGroup.Root>
-							</Question>
-
-							<Question
-								question="Would you like to be added to the Birch Collectives monthly newsletter?"
-								subtext="We'll inform you about new programmes and services we're running."
-								required="Please select a response"
-							>
-								<RadioGroup.Root bind:value={newsletterPermission}>
-									<RadioGroupItem
-										value="yes"
-										id={formId.newsletterPermission + 'yes'}
-										labelText="Yes"
-									/>
-									<RadioGroupItem
-										value="no"
-										id={formId.newsletterPermission + 'no'}
-										labelText="No"
-									/>
-								</RadioGroup.Root>
-							</Question>
-
-							<Question
-								question="Would you like to be added to a weekly text update/reminder telling you what's going on at Fresh Air Thursday?"
-								subtext="You can be removed at anytime by simply replying STOP."
-								required="Please select a response"
-							>
-								<RadioGroup.Root bind:value={textPermission}>
-									<RadioGroupItem value="yes" id={formId.textPermission + 'yes'} labelText="Yes" />
-									<RadioGroupItem value="no" id={formId.textPermission + 'no'} labelText="No" />
-								</RadioGroup.Root>
-							</Question>
-						</CarouselItem>
+						
 
 						<Carousel.Item class="flex basis-full flex-col pl-0">
 							<Card.Root class="ml-0 flex grow flex-col border-none shadow-none">

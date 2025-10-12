@@ -1,5 +1,4 @@
 <script lang="ts" module>
-	import { Circle } from 'phosphor-svelte';
 	import type { Snippet } from 'svelte';
 	import { elasticIn } from 'svelte/easing';
 	import { fade } from 'svelte/transition';
@@ -8,24 +7,23 @@
 <script lang="ts">
 	let {
 		children,
-		required = 'required',
+		required = 'Response optional',
 		question,
 		subtext,
-		showError = $bindable()
+		showError = $bindable(),
+		errorText
 	} = $props<{
 		children: Snippet<[]>;
 		question: string;
 		subtext?: string;
-		required: string | false;
-		showError: boolean;
+		required?: string | false;
+		showError?: boolean;
+		errorText?: string;
 	}>();
 </script>
 
-<div class="flex h-full flex-col gap-1">
-	<div class="flex items-center gap-2">
-		<span class={`text-xs ${!showError ? 'text-bc-amber/50' : 'text-red-500'}`}>
-			<Circle weight="fill" />
-		</span>
+<div class="flex flex-col gap-1">
+	<div class="flex items-center gap-3">
 		<h3 class="text-bc-logo-black text-[20px] leading-relaxed font-medium">
 			{question}
 		</h3>
@@ -36,23 +34,19 @@
 	{/if}
 
 	<span class="text-bc-logo-black/50 mt-2 text-[15px] leading-relaxed italic">
-		{#if required}
-			{required}
-		{:else}
-			optional
-		{/if}
+		{required}
 	</span>
 
-	<div class="mt-6 h-full">
+	<div class="mt-6">
 		{@render children?.()}
 	</div>
 
 	{#if showError}
 		<p
-			class="mt-6 text-base text-red-500"
+			class="mt-6 text-sm text-red-500"
 			transition:fade={{ duration: 100, delay: 50, easing: elasticIn }}
 		>
-			Please select at least one response
+			{errorText}
 		</p>
 	{/if}
 </div>
