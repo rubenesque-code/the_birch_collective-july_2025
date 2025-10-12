@@ -59,8 +59,8 @@
 
 	let showSlideError = $state(false);
 
-	function validateReferralSources() {
-		return Boolean(referralSources.length);
+	function validateCheckboxGroup(value: string[]) {
+		return Boolean(value.length);
 	}
 	function validateRadioGroup(value: string) {
 		return Boolean(value.length);
@@ -87,7 +87,6 @@
 
 				return;
 			}
-			showSlideError = false;
 			showImagePermissionError = false;
 			scrollNext();
 			activeSlide = 'referral-sources';
@@ -95,12 +94,11 @@
 		}
 
 		if (activeSlide === 'referral-sources') {
-			if (!validateReferralSources()) {
+			if (!validateCheckboxGroup(referralSources)) {
 				showSlideError = true;
 				showReferralSourcesError = true;
 				return;
 			}
-			showSlideError = false;
 			showReferralSourcesError = false;
 			scrollNext();
 			return;
@@ -159,7 +157,10 @@
 							>
 								<RadioGroup.Root
 									bind:value={imagePermission}
-									onValueChange={() => (showImagePermissionError = false)}
+									onValueChange={() => {
+										showImagePermissionError = false;
+										showSlideError = false;
+									}}
 								>
 									<RadioGroupItem value="yes" id={formId.imagePermission + 'yes'} labelText="Yes" />
 									<RadioGroupItem value="no" id={formId.imagePermission + 'no'} labelText="No" />
@@ -177,7 +178,10 @@
 							>
 								<RadioGroup.Root
 									bind:value={newsletterPermission}
-									onValueChange={() => (showNewsletterPermissionError = false)}
+									onValueChange={() => {
+										showNewsletterPermissionError = false;
+										showSlideError = false;
+									}}
 								>
 									<RadioGroupItem
 										value="yes"
@@ -203,7 +207,10 @@
 							>
 								<RadioGroup.Root
 									bind:value={textUpdatePermission}
-									onValueChange={() => (showTextUpdatePermissionError = false)}
+									onValueChange={() => {
+										showTextUpdatePermissionError = false;
+										showSlideError = false;
+									}}
 								>
 									<RadioGroupItem
 										value="yes"
