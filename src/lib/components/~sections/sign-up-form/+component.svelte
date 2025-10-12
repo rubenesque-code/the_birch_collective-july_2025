@@ -1,9 +1,9 @@
 <script lang="ts" module>
 	import { fade, scale } from 'svelte/transition';
+	import { SignOut } from 'phosphor-svelte';
 
 	import { browser } from '$app/environment';
 	import {
-		PUBLIC_BIRCH_EMAIL,
 		PUBLIC_BIRCH_GDPR_CONTACT_EMAIL,
 		PUBLIC_BIRCH_GDPR_CONTACT_PHONE
 	} from '$env/static/public';
@@ -11,14 +11,11 @@
 	import { slides } from '^content/sign-up-form';
 	import { toggleBodyScroll } from '^helpers';
 
-	import { Card, Carousel, Checkbox, Input, Label, RadioGroup, Textarea } from '^components/ui';
-	import CarouselItem from './carousel-item.svelte';
-	import { Question, RadioGroupItem, CheckboxGroup } from './elements';
-	import DatePicker from './elements/date-picker.svelte';
-	import NextButton from './next-button.svelte';
-	import { getEmblaContext } from '^components/ui/carousel/context';
 	import image from '^assets/image';
-	import { Circle, SignOut } from 'phosphor-svelte';
+	import { Card, Carousel, RadioGroup, Textarea } from '^components/ui';
+	import CarouselItem from './carousel-item.svelte';
+	import { CheckboxGroup, Question, RadioGroupItem } from './elements';
+	import NextButton from './next-button.svelte';
 
 	const formId = {
 		newsletterPermission: 'sign-up-form-newsletter-permission',
@@ -273,7 +270,7 @@
 											class="bg-bc-logo-black/80 flex items-center gap-2 rounded-full px-3 py-1 text-[15px]"
 										>
 											<button
-												class="rounded-full border border-white p-[6px] text-white"
+												class="!cursor-pointer rounded-full border border-white p-[6px] text-white"
 												onclick={onClickClose}
 												type="button"
 											>
@@ -387,20 +384,6 @@
 								</Card.Content>
 							</Card.Root>
 						</Carousel.Item>
-
-						<Carousel.Item class="flex basis-full flex-col pl-0">
-							<Card.Root class="ml-0 flex grow flex-col border-none shadow-none">
-								<Card.Content class="flex grow flex-col p-6 text-lg leading-relaxed">
-									<div class="grid grow place-items-center">
-										<div>
-											<Card.Title class="mt-10 font-medium">{slides.intro.title}</Card.Title>
-
-											<p class="mt-8">{slides.intro.text}</p>
-										</div>
-									</div>
-								</Card.Content>
-							</Card.Root>
-						</Carousel.Item>
 					</Carousel.Content>
 
 					<div class="relative flex w-full shrink-0 items-center justify-between p-3">
@@ -423,39 +406,6 @@
 {/if}
 
 <!-- 						
-
-						
-
-						<Carousel.Item class="flex basis-full flex-col pl-0">
-							<Card.Root class="ml-0 flex grow flex-col border-none shadow-none">
-								<Card.Content class="flex grow flex-col p-6 text-lg leading-relaxed">
-									<Card.Title
-										class="decoration-bc-slate-pine/30 font-display text-[24px] font-bold tracking-wide text-black/50 underline decoration-2 underline-offset-4"
-										>For Referrals</Card.Title
-									>
-
-									<div class="mt-8 grid max-h-full grow place-items-center overflow-y-scroll">
-										<div class="flex max-h-[400px] w-full flex-col gap-12 px-1 pr-4 pb-10">
-											<div>
-												<h3 class="text-black">
-													<span
-														>If you're a professional referreing a client, is there any additional
-														information you think is important to share about your client?</span
-													>
-												</h3>
-												<span class="text-sm text-black/50 italic">(optional)</span>
-
-												<Textarea
-													class="mt-2 h-[120px] w-full resize-none py-2 !text-base focus:outline-none focus-visible:border-black focus-visible:ring-1"
-													placeholder="Enter response here"
-													id="ethnicity"
-												/>
-											</div>
-										</div>
-									</div>
-								</Card.Content>
-							</Card.Root>
-						</Carousel.Item>
 						<Carousel.Item class="flex basis-full flex-col pl-0">
 							<Card.Root class="ml-0 flex grow flex-col border-none shadow-none">
 								<Card.Content class="flex grow flex-col p-6 text-lg leading-relaxed">
