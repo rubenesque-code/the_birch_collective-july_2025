@@ -9,13 +9,13 @@
 	let {
 		children,
 		required = 'Response optional',
-		question,
+		title,
 		subtext,
 		showError = $bindable(),
 		errorText
 	} = $props<{
 		children: Snippet<[]>;
-		question: string;
+		title: string;
 		subtext?: string;
 		required?: string | false;
 		showError?: boolean;
@@ -26,7 +26,7 @@
 <div class="flex flex-col gap-1">
 	<div class="flex items-center gap-3">
 		<h3 class="text-bc-logo-black text-[20px] leading-relaxed font-medium">
-			{question}
+			{title}
 		</h3>
 	</div>
 
@@ -36,7 +36,7 @@
 
 	<div class="mt-2 flex items-center gap-3">
 		<span class="text-bc-logo-black/50 text-[15px] leading-relaxed italic">
-			{required}
+			{required ? required : 'Response optional'}
 		</span>
 		{#if showError}
 			<span class="text-xs text-red-600">

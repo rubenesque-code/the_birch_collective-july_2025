@@ -44,6 +44,7 @@ TODO
 GOOD TO HAVE
 ------------
 - change logo text colour with lightness/darkness of landing bg.
+- minimise sign-up form 
 
 CODE ADVANCEMENTS
 -----------------

@@ -3,5 +3,6 @@ import CheckboxGroup from './checkbox-group.svelte';
 import DatePicker from './date-picker.svelte';
 import Question from './question.svelte';
 import RadioGroupItem from './radio-group-item.svelte';
+import Textarea from './text-area.svelte';
 
-export { Checkbox, Question, DatePicker, RadioGroupItem, CheckboxGroup };
+export { Checkbox, Question, DatePicker, RadioGroupItem, CheckboxGroup, Textarea };

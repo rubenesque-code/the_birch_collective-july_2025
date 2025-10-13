@@ -1,6 +1,6 @@
 <script lang="ts" module>
-	import { fade, scale } from 'svelte/transition';
 	import { SignOut } from 'phosphor-svelte';
+	import { fade, scale } from 'svelte/transition';
 
 	import { browser } from '$app/environment';
 	import {
@@ -8,20 +8,42 @@
 		PUBLIC_BIRCH_GDPR_CONTACT_PHONE
 	} from '$env/static/public';
 
-	import { slides } from '^content/sign-up-form';
 	import { toggleBodyScroll } from '^helpers';
 
 	import image from '^assets/image';
-	import { Card, Carousel, RadioGroup, Textarea } from '^components/ui';
+	import { Card, Carousel, RadioGroup } from '^components/ui';
 	import CarouselItem from './carousel-item.svelte';
-	import { CheckboxGroup, Question, RadioGroupItem } from './elements';
+	import { CheckboxGroup, Question, RadioGroupItem, Textarea } from './elements';
 	import NextButton from './next-button.svelte';
 
 	const formId = {
 		newsletterPermission: 'sign-up-form-newsletter-permission',
 		imagePermission: 'sign-up-form-image-permission',
 		textUpdatePermission: 'sign-up-form-text-permission',
-		referralSource: 'sign-up-form-referral-source'
+		referralSource: 'sign-up-form-referral-source',
+		programmesOfInterest: 'programmes-of-interest',
+		referralComment: 'referral-comment'
+	};
+
+	const slideContent = {
+		medicalDetails: {
+			title: 'Medical Details',
+			question: {
+				healthIssues: {
+					title:
+						'Do you consider yourself to have any physical health issues or medical conditions, e.g ASD, Asthma or allergies?',
+					subtext: 'If yes, please provide us with some detail.',
+					required: false as false,
+					id: 'health-issues'
+				},
+				lifeSavingMedication: {
+					title:
+						'Do you require any regular life saving medication, e.g inhalers, epipen or other?',
+					required: "If yes, please provide us with some detail. If no, please type 'no'.",
+					id: 'life-saving-medication'
+				}
+			}
+		}
 	};
 </script>
 
@@ -40,7 +62,30 @@
 		| 'terms'
 		| 'referral-sources'
 		| 'newsletter-and-permissions'
-		| 'referrals' = 'referrals';
+		| 'referrals'
+		| 'programmes-of-interest'
+		| 'participant-details'
+		| 'participant-address'
+		| 'emergency-contact-details'
+		| 'identity'
+		| 'medical-details' = 'medical-details';
+
+	let formValue = $state({
+		healthIssues: '',
+		lifeSavingMedication: ''
+	});
+
+	let showFormError = $state({
+		slide: false,
+
+		lifeSavingMedication: false
+	});
+
+	let programmesOfInterest = $state<string[]>([]);
+	let showProgrammesOfInterestError = $state(false);
+	let hopeToGet = $state<string>('');
+
+	let referralComment = $state<string>('');
 
 	let imagePermission = $state<string>('');
 	let showImagePermissionError = $state(false);
@@ -64,6 +109,18 @@
 	}
 
 	function handleNext({ scrollNext }: { scrollNext: () => void }) {
+		if (activeSlide === 'programmes-of-interest') {
+			if (!validateCheckboxGroup(programmesOfInterest)) {
+				showSlideError = true;
+				showProgrammesOfInterestError = true;
+				return;
+			}
+			showProgrammesOfInterestError = false;
+			scrollNext();
+			activeSlide = 'referrals';
+			return;
+		}
+
 		if (activeSlide === 'referrals') {
 			scrollNext();
 			activeSlide = 'newsletter-and-permissions';
@@ -123,30 +180,80 @@
 				>
 					<Carousel.Content hiddenParentClass="flex flex-col h-full" class="ml-0 h-full w-full">
 						<CarouselItem
-							title="Referrals"
-							showError={showSlideError}
-							errorMessage=""
+							title={slideContent.medicalDetails.title}
+							showError={showFormError.slide}
 							{onClickClose}
 						>
 							<Question
-								question="If you're a professional referring a client, is there any additional information you think is important to share about your client?"
+								title={slideContent.medicalDetails.question.healthIssues.title}
+								required={slideContent.medicalDetails.question.healthIssues.required}
 							>
-								<Textarea
-									class="border-bc-amber/70 focus-visible:border-bc-amber  mt-2 h-[120px] w-full resize-none py-2 !text-base focus:outline-none focus-visible:ring-0"
-									placeholder="Enter response here"
-									id="ethnicity"
+								<Textarea bind:value={formValue.healthIssues} />
+							</Question>
+
+							<div class="border-bc-amber/30 border-b-2"></div>
+
+							<Question
+								title={slideContent.medicalDetails.question.lifeSavingMedication.title}
+								showError={showFormError.lifeSavingMedication}
+								required={slideContent.medicalDetails.question.lifeSavingMedication.required}
+							>
+								<Textarea bind:value={formValue.lifeSavingMedication} />
+							</Question>
+						</CarouselItem>
+
+						<CarouselItem title="Programme interest" showError={showSlideError} {onClickClose}>
+							<Question
+								title="Which programmes are you interested in and would like some more information about?"
+								required="Tick all that apply to you. Pick at least one."
+								bind:showError={showProgrammesOfInterestError}
+								errorText="Please select at least one response"
+							>
+								<CheckboxGroup
+									options={[
+										{ value: '1-1-nature-based-mentoring', label: '1:1 Nature-Based Mentoring' },
+										{ value: 'fresh-air-thursdays', label: 'Fresh-Air-Thursdays' },
+										{ value: 'recoupe-working-woods', label: 'Recoupe: working Woods' },
+										{
+											value: 'seeding-change-plant-your-future',
+											label: 'Seeding Change: Plant your future'
+										},
+										{ value: 'steering-group-workshops', label: 'Steering Group Workshops' },
+										{ value: 'therapeutic-forest-school', label: 'Therapeutic forest school' }
+									]}
+									onCheckedChange={() => {
+										showProgrammesOfInterestError = false;
+										showSlideError = false;
+									}}
+									bind:group={programmesOfInterest}
+									idPrefix={formId.programmesOfInterest}
 								/>
+							</Question>
+
+							<div class="border-bc-amber/30 border-b-2"></div>
+
+							<Question
+								title="What do you hope to get out of going to The Birch Collective's sessions or programmes?"
+							>
+								<Textarea bind:value={hopeToGet} />
+							</Question>
+						</CarouselItem>
+
+						<CarouselItem title="Referrals" showError={showSlideError} {onClickClose}>
+							<Question
+								title="If you're a professional referring a client, is there any additional information you think is important to share about your client?"
+							>
+								<Textarea bind:value={referralComment} />
 							</Question>
 						</CarouselItem>
 
 						<CarouselItem
 							title="Newsletter & Permissions"
 							showError={showSlideError}
-							errorMessage="One or more questions need a response"
 							{onClickClose}
 						>
 							<Question
-								question="Do you give The Birch Collective permission to take photographs or videos of you with the intention to use in publicity materials?"
+								title="Do you give The Birch Collective permission to take photographs or videos of you with the intention to use in publicity materials?"
 								subtext="They'll be used in e.g. social media sites, website, reporting to funders, newspapers and magazine articles. Images will not be given to third parties."
 								required="Please select a response"
 								bind:showError={showImagePermissionError}
@@ -167,7 +274,7 @@
 							<div class="border-bc-amber/30 border-b-2"></div>
 
 							<Question
-								question="Would you like to be added to the Birch Collectives monthly newsletter?"
+								title="Would you like to be added to the Birch Collectives monthly newsletter?"
 								subtext="We'll inform you about new programmes and services we're running."
 								required="Please select a response"
 								bind:showError={showNewsletterPermissionError}
@@ -196,7 +303,7 @@
 							<div class="border-bc-amber/30 border-b-2"></div>
 
 							<Question
-								question="Would you like to be added to a weekly text update/reminder telling you what's going on at Fresh Air Thursday?"
+								title="Would you like to be added to a weekly text update/reminder telling you what's going on at Fresh Air Thursday?"
 								subtext="You can be removed at anytime by simply replying STOP."
 								required="Please select a response"
 								bind:showError={showTextUpdatePermissionError}
@@ -226,11 +333,10 @@
 						<CarouselItem
 							title="How did you find out about us?"
 							showError={showSlideError}
-							errorMessage="One or more questions need a response"
 							{onClickClose}
 						>
 							<Question
-								question="How did you hear about the Birch Collective?"
+								title="How did you hear about the Birch Collective?"
 								required="Tick all that apply to you"
 								bind:showError={showReferralSourcesError}
 								errorText="Please select at least one response"
@@ -405,66 +511,14 @@
 	</div>
 {/if}
 
+<!-- Medical Details
+Identity
+Emergency Contact Details
+Your Address
+Your Details -->
+
 <!-- 						
-						<Carousel.Item class="flex basis-full flex-col pl-0">
-							<Card.Root class="ml-0 flex grow flex-col border-none shadow-none">
-								<Card.Content class="flex grow flex-col p-6 text-lg leading-relaxed">
-									<Card.Title
-										class="decoration-bc-slate-pine/30 font-display text-[24px] font-bold tracking-wide text-black/50 underline decoration-2 underline-offset-4"
-										>Programme interest</Card.Title
-									>
-
-									<div class="mt-8 grid max-h-full grow place-items-center overflow-y-scroll">
-										<div class="flex max-h-[400px] w-full flex-col gap-12 px-1 pr-4 pb-10">
-											<div>
-												<h3 class="text-black">
-													<span
-														>Which programmes are you interested in and would like some more
-														information about?</span
-													>
-												</h3>
-												<span class="text-sm text-black/50 italic">(required)</span>
-												<p class="mt-2 text-[15px] text-black/70">
-													Tick all that apply to you. Pick at least one.
-												</p>
-
-												<div class="mt-6 flex flex-col gap-3">
-													<div class="flex items-center gap-4">
-														<Checkbox id="programme-recoupe" />
-														<Label class="text-base font-normal" for="programme-recoupe"
-															>Recoupe: Working</Label
-														>
-													</div>
-													<div class="flex items-center gap-4">
-														<Checkbox id="programme-recoupe" />
-														<Label class="text-base font-normal" for="programme-recoupe"
-															>Fresh Air Thursday</Label
-														>
-													</div>
-												</div>
-											</div>
-
-											<div>
-												<Label class="flex items-end gap-3" for="ethnicity"
-													><span class="text-lg font-normal"
-														>What do you hope to get out of going to The Birch Collective's sessions
-														or programmes?</span
-													>
-												</Label>
-
-												<span class="text-sm text-black/50 italic">optional</span>
-
-												<Textarea
-													class="mt-2 w-full py-2 !text-base focus:outline-none focus-visible:border-black focus-visible:ring-1"
-													placeholder="Enter response here"
-													id="ethnicity"
-												/>
-											</div>
-										</div>
-									</div>
-								</Card.Content>
-							</Card.Root>
-						</Carousel.Item>
+						
 						<Carousel.Item class="flex basis-full flex-col pl-0">
 							<Card.Root class="ml-0 flex grow flex-col border-none shadow-none">
 								<Card.Content class="flex grow flex-col p-6 text-lg leading-relaxed">
@@ -679,6 +733,7 @@
 								</Card.Content>
 							</Card.Root>
 						</Carousel.Item>
+
 						<Carousel.Item class="flex basis-full flex-col pl-0">
 							<Card.Root class="ml-0 flex grow flex-col border-none shadow-none">
 								<Card.Content class="flex grow flex-col p-6 text-lg leading-relaxed">
@@ -786,91 +841,11 @@
 							</Card.Root>
 						</Carousel.Item>
 
-						<Carousel.Item class="flex basis-full flex-col pl-0">
-							<Card.Root class="ml-0 flex grow flex-col border-none shadow-none">
-								<Card.Content class="flex grow flex-col p-6 text-lg leading-relaxed">
-									<div class="grid grow place-items-center">
-										<div>
-											<Card.Title class="font-medium">{slides.intro.title}</Card.Title>
+						
 
-											<p class="mt-8">{slides.intro.text}</p>
-										</div>
-									</div>
-								</Card.Content>
-							</Card.Root>
-						</Carousel.Item>
+						
 
-						<Carousel.Item class="flex basis-full flex-col pl-0">
-							<Card.Root class="ml-0 flex grow flex-col border-none shadow-none">
-								<Card.Content class="flex grow flex-col p-6 text-lg leading-relaxed">
-									<Card.Title
-										class="decoration-bc-slate-pine/20 font-display text-[22px] font-bold tracking-wide text-black/50 underline decoration-2 underline-offset-4"
-										>Confidentiality</Card.Title
-									>
-
-									<div class="grid max-h-full grow place-items-center overflow-auto">
-										<div>
-											<p class="mt-8 leading-relaxed">
-												First up, we need you to read and understand our confidentiality statement:
-												Anything you talk about with one of our team is kept totally private within
-												Birch. We won't share what you tell us with anyone else. But if there was an
-												extreme situation, like if you or someone else was at risk of being
-												seriously hurt, then we would need to break confidentiality to keep you
-												safe. If this happened we would discuss it with you first and do our best to
-												make sure you were involved in any decisions that have to be made. We know
-												this can be scary and you might not want us to share anything, but we will
-												support you through the whole thing.
-											</p>
-										</div>
-									</div>
-								</Card.Content>
-							</Card.Root>
-						</Carousel.Item>
-
-						<Carousel.Item class="flex basis-full flex-col pl-0">
-							<Card.Root class="ml-0 flex grow flex-col border-none shadow-none">
-								<Card.Content class="flex grow flex-col p-6 text-lg leading-relaxed">
-									<Card.Title
-										class="decoration-bc-slate-pine/20 font-display text-[22px] font-bold tracking-wide text-black/50 underline decoration-2 underline-offset-4"
-										>GDPR & GDPR Contacts</Card.Title
-									>
-
-									<div class="grid max-h-full grow place-items-center overflow-auto">
-										<div class="leading-relaxed">
-											<p class="mt-8 leading-relaxed">
-												By signing this form, you are giving us permission to contact you about
-												opportunities and events from the Birch Collective. In order to comply with
-												the General Data Protection Regulation, The Birch Collective is seeking your
-												consent to hold your information on our database. We are required by our
-												funders to gather information about the people who use our services. We will
-												not share your information with third parties other than those you have
-												agreed to. We use and store any information that you give us in accordance
-												with the Data Protection Act 2003. Information you provide will be
-												anonymised before being used in monitoring and evaluation reports for our
-												current funders, to support funding applications. Your data will be held for
-												a maximum of 2 years after your last engagement.
-											</p>
-											<p class="mt-4">
-												For further details on our data protection and information sharing policies
-												or for any queries about the data we hold, please get in touch:
-											</p>
-											<div class="mt-4 flex flex-col text-black/70">
-												<p class="flex gap-2">
-													<span class="font-medium">Email:</span><span
-														>{PUBLIC_BIRCH_GDPR_CONTACT_EMAIL}</span
-													>
-												</p>
-												<p class="flex gap-2">
-													<span class="font-medium">Phone:</span><span
-														>{PUBLIC_BIRCH_GDPR_CONTACT_PHONE}</span
-													>
-												</p>
-											</div>
-										</div>
-									</div>
-								</Card.Content>
-							</Card.Root>
-						</Carousel.Item>
+						
 					 -->
 
 <!-- 	let activeSlide: 'intro' | 'terms' | 'referralSources' = 'referralSources';
@@ -878,3 +853,27 @@
 	let newsletterPermission = $state<'yes' | 'no' | ''>('');
 	let imagePermission = $state<'yes' | 'no' | ''>('');
 	let textPermission = $state<'yes' | 'no' | ''>(''); -->
+
+<!-- 	working class
+someone with a disablity
+male or male identifying
+care experienced
+lgbtq+
+english as a second language
+black or a person of colours
+unemployed or not in education or training
+none of the above -->
+
+<!-- girl/woman/female
+boy/man/male
+non-binary
+queer
+other
+prefer not to say -->
+
+<!-- 1:1 Nature-Based Mentoring
+Fresh-Air-Thursdays
+Recoupe: working Woods
+Seeding Change: Plant your future
+Steering Group Workshops
+Therapeutic forest school -->
