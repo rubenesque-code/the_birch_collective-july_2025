@@ -4,7 +4,7 @@
 	import { toast } from 'svelte-sonner';
 	import { fade, slide } from 'svelte/transition';
 
-	import { isEmail } from '^helpers';
+	import { isValidEmail } from '^helpers';
 	import { enquiryFormHandler } from '^services';
 
 	import type { SvelteSubmitEvent } from '^types';
@@ -37,7 +37,7 @@
 	let isInput = $derived(Boolean(nameValue.length || emailValue.length || messageValue.length));
 
 	let nameIsValid = $derived(nameValue.length);
-	let emailIsValid = $derived(emailValue.length && isEmail(emailValue));
+	let emailIsValid = $derived(emailValue.length && isValidEmail(emailValue));
 	let messageIsValid = $derived(messageValue.length);
 
 	let showNameError = $state(false);

@@ -10,7 +10,7 @@ const toggleBodyScroll = ({ triggerDisableOn }: { triggerDisableOn: boolean }) =
 	}
 };
 
-const isEmail = (email: string) => {
+const isValidEmail = (email: string) => {
 	return String(email)
 		.toLowerCase()
 		.match(
@@ -18,4 +18,14 @@ const isEmail = (email: string) => {
 		);
 };
 
-export { emailToEmailHref, toggleBodyScroll, isEmail };
+function isValidUkPhoneNumber(phone: string): boolean {
+	const cleaned = phone.trim();
+
+	// Accepts +44 or 0 at the start, followed by 9–10 digits (allowing spaces, dashes, or parentheses)
+	const pattern =
+		/^(?:\+44\s?7\d{3}|\(?07\d{3}\)?)[\s.-]?\d{3}[\s.-]?\d{3,4}$|^(?:\+44\s?1\d{3}|\(?01\d{3}\)?)\s?\d{3}\s?\d{3,4}$/;
+
+	return pattern.test(cleaned);
+}
+
+export { emailToEmailHref, toggleBodyScroll, isValidEmail, isValidUkPhoneNumber };

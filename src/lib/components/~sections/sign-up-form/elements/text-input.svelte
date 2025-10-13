@@ -30,7 +30,7 @@
 		errorText?: string;
 		type?: 'tel' | 'text';
 		inputmode?: 'tel';
-		pattern?: '[0-9+\s()-]{7,}';
+		pattern?: string;
 		required?: string;
 	} = $props();
 </script>
@@ -56,6 +56,7 @@
 		{type}
 		{inputmode}
 		{pattern}
+		bind:value
 	/>
 
 	{#if showError}

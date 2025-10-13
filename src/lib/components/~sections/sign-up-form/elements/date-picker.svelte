@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="ts" module>
 	import CalendarIcon from '@lucide/svelte/icons/calendar';
 	import { DateFormatter, type DateValue, getLocalTimeZone, today } from '@internationalized/date';
 
@@ -6,12 +6,18 @@
 	import { buttonVariants } from '$lib/components/ui/button/index.js';
 	import { Calendar } from '$lib/components/ui/calendar/index.js';
 	import * as Popover from '$lib/components/ui/popover/index.js';
+</script>
+
+<script lang="ts">
+	let {
+		value = $bindable(),
+		onValueChange
+	}: { value: DateValue | undefined; onValueChange: () => void } = $props();
 
 	const df = new DateFormatter('en-US', {
 		dateStyle: 'long'
 	});
 
-	let value = $state<DateValue | undefined>();
 	let contentRef = $state<HTMLElement | null>(null);
 </script>
 
@@ -36,6 +42,7 @@
 			captionLayout="dropdown"
 			maxValue={today(getLocalTimeZone())}
 			bind:value
+			{onValueChange}
 		/>
 	</Popover.Content>
 </Popover.Root>

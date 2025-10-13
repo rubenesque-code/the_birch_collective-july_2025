@@ -8,13 +8,23 @@
 		PUBLIC_BIRCH_GDPR_CONTACT_PHONE
 	} from '$env/static/public';
 
-	import { toggleBodyScroll } from '^helpers';
+	import { isValidEmail, isValidUkPhoneNumber, toggleBodyScroll } from '^helpers';
 
 	import image from '^assets/image';
-	import { Card, Carousel, RadioGroup } from '^components/ui';
+
+	import { Card, Carousel, Label, RadioGroup } from '^components/ui';
 	import CarouselItem from './carousel-item.svelte';
-	import { CheckboxGroup, Question, RadioGroupItem, Textarea, TextInput } from './elements';
+	import {
+		CheckboxGroup,
+		DatePicker,
+		Question,
+		RadioGroupItem,
+		Textarea,
+		TextInput
+	} from './elements';
 	import NextButton from './next-button.svelte';
+	import { elasticIn } from 'svelte/easing';
+	import type { DateValue } from '@internationalized/date';
 
 	const formId = {
 		newsletterPermission: 'sign-up-form-newsletter-permission',
@@ -25,10 +35,39 @@
 		referralComment: 'referral-comment',
 		identity: 'identity',
 		emergencyContact: 'emergency-contact',
-		participantAddress: 'participant-address'
+		participantAddress: 'participant-address',
+		participantDetails: 'participant-details'
 	};
 
 	const slideContent = {
+		participantDetails: {
+			title: 'Your Details',
+			question: {
+				details: {
+					title: 'Your Details',
+					id: 'participant-details',
+					parts: {
+						name: {
+							label: 'Full name',
+							required: true
+						},
+						dob: {
+							label: 'Date of birth',
+							required: false
+						},
+						email: {
+							label: 'Email address',
+							required: true
+						},
+						phone: {
+							label: 'Phone number',
+							required: true
+						}
+					}
+				}
+			}
+		},
+
 		participantAddress: {
 			title: 'Your Address',
 			question: {
@@ -56,6 +95,7 @@
 				}
 			}
 		},
+
 		emergencyContactDetails: {
 			title: 'Emergency Contact',
 			question: {
@@ -150,7 +190,7 @@
 		| 'participant-address'
 		| 'emergency-contact-details'
 		| 'identity'
-		| 'medical-details' = 'participant-address';
+		| 'medical-details' = 'participant-details';
 
 	let formValue = $state({
 		healthIssues: '',
@@ -170,6 +210,13 @@
 			line2: '',
 			townOrCity: '',
 			postcode: ''
+		},
+
+		participantDetails: {
+			name: '',
+			dob: undefined as DateValue | undefined,
+			email: '',
+			phone: ''
 		}
 	});
 
@@ -191,6 +238,13 @@
 			line2: false,
 			townOrCity: false,
 			postcode: false
+		},
+
+		participantDetails: {
+			name: false,
+			dob: false,
+			email: false,
+			phone: false
 		}
 	});
 
@@ -222,6 +276,35 @@
 	}
 
 	function handleNext({ scrollNext }: { scrollNext: () => void }) {
+		if (activeSlide === 'participant-details') {
+			if (
+				!formValue.participantDetails.name.length ||
+				!formValue.participantDetails.dob ||
+				!isValidEmail(formValue.participantDetails.email) ||
+				!isValidUkPhoneNumber(formValue.participantDetails.phone)
+			) {
+				showFormError.slide = true;
+
+				showFormError.participantDetails.name = !formValue.participantDetails.name.length;
+				showFormError.participantDetails.dob = !formValue.participantDetails.dob;
+				showFormError.participantDetails.email = !isValidEmail(formValue.participantDetails.email);
+				showFormError.participantDetails.phone = !isValidUkPhoneNumber(
+					formValue.participantDetails.phone
+				);
+
+				return;
+			}
+
+			showFormError.participantDetails.name = false;
+			showFormError.participantDetails.dob = false;
+			showFormError.participantDetails.email = false;
+			showFormError.participantDetails.phone = false;
+
+			scrollNext();
+			activeSlide = 'participant-address';
+			return;
+		}
+
 		if (activeSlide === 'participant-address') {
 			if (
 				!formValue.participantAddress.line1.length ||
@@ -229,8 +312,6 @@
 				!formValue.participantAddress.postcode.length
 			) {
 				showFormError.slide = true;
-
-				console.log('formValue.participantAddress.line1', formValue.participantAddress.line1);
 
 				showFormError.participantAddress.line1 = !formValue.participantAddress.line1.length;
 				showFormError.participantAddress.townOrCity =
@@ -378,6 +459,85 @@
 				>
 					<Carousel.Content hiddenParentClass="flex flex-col h-full" class="ml-0 h-full w-full">
 						<CarouselItem
+							title={slideContent.participantDetails.title}
+							showError={showFormError.slide}
+							{onClickClose}
+						>
+							<Question
+								title={slideContent.participantDetails.question.details.title}
+								required={false}
+							>
+								<div class="flex flex-col gap-8">
+									<TextInput
+										label={slideContent.participantDetails.question.details.parts.name.label}
+										placeholder="Enter here"
+										bind:value={formValue.participantDetails.name}
+										id={formId.participantDetails + 'name'}
+										showError={showFormError.participantDetails.name}
+										errorText="Please enter your full name"
+										onkeyup={() => {
+											showFormError.slide = false;
+											showFormError.participantDetails.name = false;
+										}}
+									/>
+
+									<div>
+										<div class="mb-2 flex items-center gap-6">
+											<Label class="text-black/50" for={formId.participantDetails + 'dob'}
+												>{slideContent.participantDetails.question.details.parts.dob.label}</Label
+											>
+										</div>
+
+										<DatePicker
+											bind:value={formValue.participantDetails.dob}
+											onValueChange={() => {
+												showFormError.slide = false;
+												showFormError.participantDetails.dob = false;
+											}}
+										/>
+
+										{#if showFormError.participantDetails.dob}
+											<p
+												class="mt-6 text-sm text-red-500"
+												transition:fade={{ duration: 100, delay: 50, easing: elasticIn }}
+											>
+												Please pick a Date of Birth
+											</p>
+										{/if}
+									</div>
+
+									<TextInput
+										label={slideContent.participantDetails.question.details.parts.email.label}
+										placeholder="Enter here"
+										bind:value={formValue.participantDetails.email}
+										id={formId.participantDetails + 'email'}
+										showError={showFormError.participantDetails.email}
+										errorText="Please enter a valid email"
+										onkeyup={() => {
+											showFormError.slide = false;
+											showFormError.participantDetails.email = false;
+										}}
+									/>
+
+									<TextInput
+										label={slideContent.participantDetails.question.details.parts.phone.label}
+										bind:value={formValue.participantDetails.phone}
+										id={formId.participantDetails + 'phone'}
+										showError={showFormError.participantDetails.phone}
+										errorText="Please enter a valid UK phone number"
+										inputmode="tel"
+										placeholder="e.g. +44 7123 456789"
+										type="tel"
+										onkeyup={() => {
+											showFormError.slide = false;
+											showFormError.participantDetails.phone = false;
+										}}
+									/>
+								</div>
+							</Question>
+						</CarouselItem>
+
+						<CarouselItem
 							title={slideContent.participantAddress.title}
 							showError={showFormError.slide}
 							{onClickClose}
@@ -436,6 +596,7 @@
 								</div>
 							</Question>
 						</CarouselItem>
+
 						<CarouselItem
 							title={slideContent.emergencyContactDetails.title}
 							showError={showFormError.slide}
@@ -452,6 +613,11 @@
 										bind:value={formValue.emergencyContact.name}
 										id={formId.emergencyContact + 'name'}
 										showError={showFormError.emergencyContact.name}
+										errorText="Please enter a response"
+										onkeyup={() => {
+											showFormError.slide = false;
+											showFormError.emergencyContact.name = false;
+										}}
 									/>
 
 									<TextInput
@@ -462,6 +628,11 @@
 										id={formId.emergencyContact + 'phone'}
 										showError={showFormError.emergencyContact.phoneNumber}
 										type="tel"
+										errorText="Please enter a response"
+										onkeyup={() => {
+											showFormError.slide = false;
+											showFormError.emergencyContact.phoneNumber = false;
+										}}
 									/>
 
 									<TextInput
@@ -470,6 +641,11 @@
 										bind:value={formValue.emergencyContact.relationship}
 										id={formId.emergencyContact + 'relationship'}
 										showError={showFormError.emergencyContact.relationship}
+										errorText="Please enter a response"
+										onkeyup={() => {
+											showFormError.slide = false;
+											showFormError.emergencyContact.relationship = false;
+										}}
 									/>
 								</div>
 							</Question>
@@ -866,68 +1042,6 @@ Your Address
 Your Details -->
 
 <!-- 						
-						
-						
-
-						
-
-						
-
-						<Carousel.Item class="flex basis-full flex-col pl-0">
-							<Card.Root class="ml-0 flex grow flex-col border-none shadow-none">
-								<Card.Content class="flex grow flex-col p-6 text-lg leading-relaxed">
-									<Card.Title
-										class="decoration-bc-slate-pine/20 font-display text-[22px] font-bold tracking-wide text-black/50 underline decoration-2 underline-offset-4"
-										>Your Address</Card.Title
-									>
-
-									<div class="grid max-h-full grow place-items-center overflow-auto">
-										<div class="flex w-full flex-col gap-10 px-1">
-											<div>
-												<Label class="text-black/50" for="address line 1">Line 1</Label>
-												<Input
-													class="mt-2 w-full py-2 !text-base focus:outline-none focus-visible:border-black focus-visible:ring-1"
-													placeholder="Line 1"
-													id="address line 1"
-													type="text"
-												/>
-											</div>
-
-											<div>
-												<Label class="text-black/50" for="address line 2">Line 2</Label>
-												<Input
-													class="mt-2 w-full py-2 !text-base focus:outline-none focus-visible:border-black focus-visible:ring-1"
-													placeholder="Line 2"
-													id="address line 2"
-													type="text"
-												/>
-											</div>
-
-											<div>
-												<Label class="text-black/50" for="Town/City">Town/City</Label>
-												<Input
-													class="mt-2 w-full py-2 !text-base focus:outline-none focus-visible:border-black focus-visible:ring-1"
-													placeholder="Town/City"
-													id="Town/City"
-													type="text"
-												/>
-											</div>
-
-											<div>
-												<Label class="text-black/50" for="Postcode">Postcode</Label>
-												<Input
-													class="mt-2 w-full py-2 !text-base focus:outline-none focus-visible:border-black focus-visible:ring-1"
-													placeholder="Postcode"
-													id="Postcode"
-													type="text"
-												/>
-											</div>
-										</div>
-									</div>
-								</Card.Content>
-							</Card.Root>
-						</Carousel.Item>
-
 						<Carousel.Item class="flex basis-full flex-col pl-0">
 							<Card.Root class="ml-0 flex grow flex-col border-none shadow-none">
 								<Card.Content class="flex grow flex-col p-6 text-lg leading-relaxed">
