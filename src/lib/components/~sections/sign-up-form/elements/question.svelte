@@ -35,9 +35,11 @@
 	{/if}
 
 	<div class="mt-2 flex items-center gap-3">
-		<span class="text-bc-logo-black/50 text-[15px] leading-relaxed italic">
-			{required ? required : 'Response optional'}
-		</span>
+		{#if required}
+			<span class="text-bc-logo-black/50 text-[15px] leading-relaxed italic">
+				{required}
+			</span>
+		{/if}
 		{#if showError}
 			<span class="text-xs text-red-600">
 				<Circle weight="fill" />

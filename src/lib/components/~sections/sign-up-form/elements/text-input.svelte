@@ -1,0 +1,59 @@
+<script lang="ts" module>
+	import { fade } from 'svelte/transition';
+	import { elasticIn } from 'svelte/easing';
+
+	import type { WithElementRef } from '^lib/utils';
+
+	import { Input, Label } from '^components/ui';
+</script>
+
+<script lang="ts">
+	let {
+		value = $bindable(),
+		onkeyup,
+		placeholder = 'Enter response here',
+		label,
+		id,
+		showError,
+		errorText,
+		type,
+		inputmode,
+		pattern
+	}: {
+		value: string;
+		onkeyup?: WithElementRef<HTMLInputElement>['onkeyup'];
+		placeholder?: string;
+		label?: string;
+		id?: string;
+		showError?: boolean;
+		errorText?: string;
+		type?: 'tel' | 'text';
+		inputmode?: 'tel';
+		pattern?: '[0-9+\s()-]{7,}';
+	} = $props();
+</script>
+
+<div>
+	{#if label}
+		<Label class="text-black/50" for={id}>{label}</Label>
+	{/if}
+
+	<Input
+		class="mt-2 w-full !text-base focus:outline-none focus-visible:border-black focus-visible:ring-1"
+		{placeholder}
+		{onkeyup}
+		{id}
+		{type}
+		{inputmode}
+		{pattern}
+	/>
+
+	{#if showError}
+		<p
+			class="mt-6 text-sm text-red-500"
+			transition:fade={{ duration: 100, delay: 50, easing: elasticIn }}
+		>
+			{errorText}
+		</p>
+	{/if}
+</div>

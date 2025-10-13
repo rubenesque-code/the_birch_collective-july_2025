@@ -9,11 +9,11 @@
 <script lang="ts">
 	let {
 		value = $bindable(),
-		onchange,
+		onkeyup,
 		placeholder = 'Enter response here'
 	}: {
 		value: string;
-		onchange?: WithElementRef<HTMLTextareaAttributes>['onchange'];
+		onkeyup?: WithElementRef<HTMLTextareaAttributes>['onkeyup'];
 		placeholder?: string;
 	} = $props();
 </script>
@@ -22,5 +22,5 @@
 	class="focus-visible:border-bc-logo-black mt-2 h-[120px] w-full resize-none py-2 !text-base focus:outline-none focus-visible:ring-0 "
 	placeholder="Enter response here"
 	bind:value
-	{onchange}
+	{onkeyup}
 />

@@ -13,7 +13,7 @@
 	import image from '^assets/image';
 	import { Card, Carousel, RadioGroup } from '^components/ui';
 	import CarouselItem from './carousel-item.svelte';
-	import { CheckboxGroup, Question, RadioGroupItem, Textarea } from './elements';
+	import { CheckboxGroup, Question, RadioGroupItem, Textarea, TextInput } from './elements';
 	import NextButton from './next-button.svelte';
 
 	const formId = {
@@ -22,10 +22,35 @@
 		textUpdatePermission: 'sign-up-form-text-permission',
 		referralSource: 'sign-up-form-referral-source',
 		programmesOfInterest: 'programmes-of-interest',
-		referralComment: 'referral-comment'
+		referralComment: 'referral-comment',
+		identity: 'identity',
+		emergencyContact: 'emergency-contact'
 	};
 
 	const slideContent = {
+		emergencyContactDetails: {
+			title: 'Emergency Contact',
+			question: {
+				emergencyContact: {
+					title: 'Emergency Contact Details',
+					id: 'emergency-contact-details',
+					parts: {
+						name: {
+							label: 'name',
+							required: 'Please enter a response'
+						},
+						phone: {
+							label: 'phone number',
+							required: 'Please enter a response'
+						},
+						relationship: {
+							label: 'relationship',
+							required: 'Please enter a response'
+						}
+					}
+				}
+			}
+		},
 		medicalDetails: {
 			title: 'Medical Details',
 			question: {
@@ -33,14 +58,43 @@
 					title:
 						'Do you consider yourself to have any physical health issues or medical conditions, e.g ASD, Asthma or allergies?',
 					subtext: 'If yes, please provide us with some detail.',
-					required: false as false,
+					required: 'Response optional',
 					id: 'health-issues'
 				},
 				lifeSavingMedication: {
 					title:
 						'Do you require any regular life saving medication, e.g inhalers, epipen or other?',
 					required: "If yes, please provide us with some detail. If no, please type 'no'.",
+					errorText: 'Please enter a response',
 					id: 'life-saving-medication'
+				}
+			}
+		},
+		identity: {
+			title: 'Identity',
+			question: {
+				identity: {
+					title: 'Do you identify as any of the following?',
+					required: 'Tick all that apply to you. Pick at least one.',
+					errorText: 'Please select at least one option',
+					id: 'identity',
+					options: [
+						'Working class',
+						'Someone with a disability',
+						'Male or male identifying',
+						'Care experienced',
+						'LGBTQ+',
+						'English as a second language',
+						'Black or a person of colour',
+						'Unemployed or not in education or training',
+						'None of the above'
+					]
+				},
+				ethnicity: {
+					title: 'Your ethnicity',
+					required: 'Please enter a response',
+					errorText: 'Please enter a response',
+					id: 'ethnicity'
 				}
 			}
 		}
@@ -68,17 +122,34 @@
 		| 'participant-address'
 		| 'emergency-contact-details'
 		| 'identity'
-		| 'medical-details' = 'medical-details';
+		| 'medical-details' = 'identity';
 
 	let formValue = $state({
 		healthIssues: '',
-		lifeSavingMedication: ''
+		lifeSavingMedication: '',
+
+		identity: [] as string[],
+		ethnicity: '',
+
+		emergencyContact: {
+			name: '',
+			phone: '',
+			relationship: ''
+		}
 	});
 
 	let showFormError = $state({
 		slide: false,
 
-		lifeSavingMedication: false
+		lifeSavingMedication: false,
+		identity: false,
+		ethnicity: false,
+
+		emergencyContact: {
+			name: false,
+			phoneNumber: false,
+			relationship: false
+		}
 	});
 
 	let programmesOfInterest = $state<string[]>([]);
@@ -109,6 +180,39 @@
 	}
 
 	function handleNext({ scrollNext }: { scrollNext: () => void }) {
+		if (activeSlide === 'identity') {
+			if (!formValue.identity.length || !formValue.ethnicity.length) {
+				showFormError.slide = true;
+
+				if (!formValue.identity.length) showFormError.identity = true;
+				else showFormError.identity = false;
+
+				if (!formValue.ethnicity.length) showFormError.ethnicity = true;
+				else showFormError.ethnicity = false;
+
+				return;
+			}
+
+			showFormError.identity = false;
+			showFormError.ethnicity = false;
+
+			scrollNext();
+			activeSlide = 'medical-details';
+			return;
+		}
+
+		if (activeSlide === 'medical-details') {
+			if (!formValue.lifeSavingMedication.length) {
+				showFormError.slide = true;
+				showFormError.lifeSavingMedication = true;
+				return;
+			}
+			showFormError.lifeSavingMedication = false;
+			scrollNext();
+			activeSlide = 'programmes-of-interest';
+			return;
+		}
+
 		if (activeSlide === 'programmes-of-interest') {
 			if (!validateCheckboxGroup(programmesOfInterest)) {
 				showSlideError = true;
@@ -180,6 +284,90 @@
 				>
 					<Carousel.Content hiddenParentClass="flex flex-col h-full" class="ml-0 h-full w-full">
 						<CarouselItem
+							title={slideContent.emergencyContactDetails.title}
+							showError={showFormError.slide}
+							{onClickClose}
+						>
+							<Question
+								title={slideContent.emergencyContactDetails.question.emergencyContact.title}
+								required={false}
+							>
+								<div class="flex flex-col gap-8">
+									<TextInput
+										label="Name"
+										placeholder="Enter here"
+										bind:value={formValue.emergencyContact.name}
+										id={formId.emergencyContact + 'name'}
+										showError={showFormError.emergencyContact.name}
+									/>
+
+									<TextInput
+										label="Phone number"
+										inputmode="tel"
+										placeholder="e.g. +44 7123 456789"
+										bind:value={formValue.emergencyContact.phone}
+										id={formId.emergencyContact + 'phone'}
+										showError={showFormError.emergencyContact.phoneNumber}
+										type="tel"
+									/>
+
+									<TextInput
+										label="Relationship"
+										placeholder="Enter here"
+										bind:value={formValue.emergencyContact.relationship}
+										id={formId.emergencyContact + 'relationship'}
+										showError={showFormError.emergencyContact.relationship}
+									/>
+								</div>
+							</Question>
+						</CarouselItem>
+
+						<CarouselItem
+							title={slideContent.identity.title}
+							showError={showFormError.slide}
+							{onClickClose}
+						>
+							<Question
+								title={slideContent.identity.question.identity.title}
+								required={slideContent.identity.question.identity.required}
+								showError={showFormError.identity}
+								errorText={slideContent.identity.question.identity.errorText}
+							>
+								<CheckboxGroup
+									options={slideContent.identity.question.identity.options.map((option) => ({
+										value: option
+											.toLowerCase()
+											.replace(/\s+/g, '-')
+											.replace(/[^\w+-]+/g, ''),
+										label: option
+									}))}
+									onCheckedChange={() => {
+										showFormError.slide = false;
+										showFormError.identity = false;
+									}}
+									bind:group={formValue.identity}
+									idPrefix={formId.identity}
+								/>
+							</Question>
+
+							<div class="border-bc-amber/30 border-b-2"></div>
+
+							<Question
+								title={slideContent.identity.question.ethnicity.title}
+								required={slideContent.identity.question.ethnicity.required}
+								showError={showFormError.ethnicity}
+								errorText={slideContent.medicalDetails.question.lifeSavingMedication.errorText}
+							>
+								<TextInput
+									bind:value={formValue.lifeSavingMedication}
+									onkeyup={() => {
+										showFormError.slide = false;
+										showFormError.lifeSavingMedication = false;
+									}}
+								/>
+							</Question>
+						</CarouselItem>
+						<CarouselItem
 							title={slideContent.medicalDetails.title}
 							showError={showFormError.slide}
 							{onClickClose}
@@ -195,10 +383,17 @@
 
 							<Question
 								title={slideContent.medicalDetails.question.lifeSavingMedication.title}
-								showError={showFormError.lifeSavingMedication}
 								required={slideContent.medicalDetails.question.lifeSavingMedication.required}
+								showError={showFormError.lifeSavingMedication}
+								errorText={slideContent.medicalDetails.question.lifeSavingMedication.errorText}
 							>
-								<Textarea bind:value={formValue.lifeSavingMedication} />
+								<Textarea
+									bind:value={formValue.lifeSavingMedication}
+									onkeyup={() => {
+										showFormError.slide = false;
+										showFormError.lifeSavingMedication = false;
+									}}
+								/>
 							</Question>
 						</CarouselItem>
 
@@ -207,19 +402,19 @@
 								title="Which programmes are you interested in and would like some more information about?"
 								required="Tick all that apply to you. Pick at least one."
 								bind:showError={showProgrammesOfInterestError}
-								errorText="Please select at least one response"
+								errorText="Please select at least one option"
 							>
 								<CheckboxGroup
 									options={[
 										{ value: '1-1-nature-based-mentoring', label: '1:1 Nature-Based Mentoring' },
-										{ value: 'fresh-air-thursdays', label: 'Fresh-Air-Thursdays' },
-										{ value: 'recoupe-working-woods', label: 'Recoupe: working Woods' },
+										{ value: 'fresh-air-thursdays', label: 'Fresh Air Thursdays' },
+										{ value: 'recoupe-working-woods', label: 'Recoupe: Working Woods' },
 										{
 											value: 'seeding-change-plant-your-future',
-											label: 'Seeding Change: Plant your future'
+											label: 'Seeding Change: Plant Your Future'
 										},
 										{ value: 'steering-group-workshops', label: 'Steering Group Workshops' },
-										{ value: 'therapeutic-forest-school', label: 'Therapeutic forest school' }
+										{ value: 'therapeutic-forest-school', label: 'Therapeutic Forest School' }
 									]}
 									onCheckedChange={() => {
 										showProgrammesOfInterestError = false;
@@ -519,172 +714,9 @@ Your Details -->
 
 <!-- 						
 						
-						<Carousel.Item class="flex basis-full flex-col pl-0">
-							<Card.Root class="ml-0 flex grow flex-col border-none shadow-none">
-								<Card.Content class="flex grow flex-col p-6 text-lg leading-relaxed">
-									<Card.Title
-										class="decoration-bc-slate-pine/20 font-display text-[22px] font-bold tracking-wide text-black/50 underline decoration-2 underline-offset-4"
-										>Medical Details</Card.Title
-									>
+						
 
-									<div class="grid max-h-full grow place-items-center overflow-auto">
-										<div class="flex w-full flex-col gap-24 px-1">
-											<div>
-												<Label class="flex items-end gap-3" for="ethnicity"
-													><span class="text-lg font-normal"
-														>Do you consider yourself to have any physical health issues or medical
-														conditions, e.g ASD, Asthma or allergies?</span
-													>
-													<span class="-translate-y-[2px] text-right text-sm text-black/60 italic"
-														>optional</span
-													>
-												</Label>
-												<p class="mt-2 text-[15px] text-black/70">
-													If yes, please provide us with some detail.
-												</p>
-
-												<Textarea
-													class="mt-4 h-[100px] w-full resize-none py-2 !text-base focus:outline-none focus-visible:border-black focus-visible:ring-1"
-													placeholder="Enter any health issues here"
-													id="ethnicity"
-												/>
-											</div>
-
-											<div>
-												<Label class="flex items-end gap-3" for="ethnicity"
-													><span class="text-lg font-normal"
-														>Do you require any regular life saving medication, e.g inhalers, epipen
-														or other?</span
-													>
-													<span class="-translate-y-[2px] text-right text-sm text-black/60 italic"
-														>required</span
-													>
-												</Label>
-												<p class="mt-2 text-[15px] text-black/70">
-													If yes, please provide us with some detail. If no, please type 'no'.
-												</p>
-
-												<Textarea
-													class="mt-4 h-[100px] w-full resize-none py-2 !text-base focus:outline-none focus-visible:border-black focus-visible:ring-1"
-													placeholder="Enter life saving medication here or type 'no'"
-													id="ethnicity"
-												/>
-											</div>
-										</div>
-									</div>
-								</Card.Content>
-							</Card.Root>
-						</Carousel.Item>
-
-						<Carousel.Item class="flex basis-full flex-col pl-0">
-							<Card.Root class="ml-0 flex grow flex-col border-none shadow-none">
-								<Card.Content class="flex grow flex-col p-6 text-lg leading-relaxed">
-									<Card.Title
-										class="decoration-bc-slate-pine/30 font-display text-[24px] font-bold tracking-wide text-black/50 underline decoration-2 underline-offset-4"
-										>Identity</Card.Title
-									>
-
-									<div class="mt-8 grid max-h-full grow place-items-center overflow-y-scroll">
-										<div class="flex max-h-[400px] w-full flex-col gap-12 px-1 pr-4 pb-10">
-											<div>
-												<h3 class="text-black">
-													<span>Do you identify as any of the following?</span>
-												</h3>
-												<span class="text-sm text-black/50 italic">(required)</span>
-												<p class="mt-2 text-[15px] text-black/70">
-													Tick all that apply to you. Pick at least one.
-												</p>
-
-												<div class="mt-6 flex flex-col gap-3">
-													<div class="flex items-center gap-4">
-														<Checkbox id="identity-working-class" />
-														<Label class="text-base font-normal" for="identity-working-class"
-															>working class</Label
-														>
-													</div>
-
-													<div class="flex items-center gap-4">
-														<Checkbox id="identity-working-class" />
-														<Label class="text-base font-normal" for="identity-working-class"
-															>someone with a disability</Label
-														>
-													</div>
-
-													<div class="flex items-center gap-4">
-														<Checkbox id="identity-working-class" />
-														<Label class="text-base font-normal" for="identity-working-class"
-															>male or male identifying</Label
-														>
-													</div>
-
-													<div class="flex items-center gap-4">
-														<Checkbox id="identity-working-class" />
-														<Label class="text-base font-normal" for="identity-working-class"
-															>care experienced</Label
-														>
-													</div>
-												</div>
-											</div>
-
-											<div>
-												<Label class="flex items-end gap-3" for="ethnicity"
-													><span class="text-lg font-normal">Your ethnicity</span>
-													<span class="-translate-y-[2px] text-right text-sm text-black/60 italic"
-														>required</span
-													>
-												</Label>
-												<Input
-													class="mt-2 w-full py-2 !text-base focus:outline-none focus-visible:border-black focus-visible:ring-1"
-													placeholder="Enter your ethnicity here"
-													id="ethnicity"
-													type="text"
-												/>
-											</div>
-
-											<div>
-												<h3 class="text-black">
-													<span>Do you identify as any of the following?</span>
-												</h3>
-												<span class="text-sm text-black/50 italic">(required)</span>
-												<p class="mt-2 text-[15px] text-black/70">
-													Tick all that apply to you. Pick at least one.
-												</p>
-
-												<div class="mt-6 flex flex-col gap-3">
-													<div class="flex items-center gap-4">
-														<Checkbox id="identity-working-class" />
-														<Label class="text-base font-normal" for="identity-working-class"
-															>working class</Label
-														>
-													</div>
-
-													<div class="flex items-center gap-4">
-														<Checkbox id="identity-working-class" />
-														<Label class="text-base font-normal" for="identity-working-class"
-															>someone with a disability</Label
-														>
-													</div>
-
-													<div class="flex items-center gap-4">
-														<Checkbox id="identity-working-class" />
-														<Label class="text-base font-normal" for="identity-working-class"
-															>male or male identifying</Label
-														>
-													</div>
-
-													<div class="flex items-center gap-4">
-														<Checkbox id="identity-working-class" />
-														<Label class="text-base font-normal" for="identity-working-class"
-															>care experienced</Label
-														>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</Card.Content>
-							</Card.Root>
-						</Carousel.Item>
+						
 
 						<Carousel.Item class="flex basis-full flex-col pl-0">
 							<Card.Root class="ml-0 flex grow flex-col border-none shadow-none">
@@ -854,7 +886,8 @@ Your Details -->
 	let imagePermission = $state<'yes' | 'no' | ''>('');
 	let textPermission = $state<'yes' | 'no' | ''>(''); -->
 
-<!-- 	working class
+<!-- 	
+	working class
 someone with a disablity
 male or male identifying
 care experienced
@@ -862,7 +895,8 @@ lgbtq+
 english as a second language
 black or a person of colours
 unemployed or not in education or training
-none of the above -->
+none of the above 
+-->
 
 <!-- girl/woman/female
 boy/man/male
