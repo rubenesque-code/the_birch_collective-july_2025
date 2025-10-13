@@ -1,8 +1,7 @@
 <script lang="ts" module>
 	import type { Snippet } from 'svelte';
-	import { fade } from 'svelte/transition';
 	import { linear } from 'svelte/easing';
-	import { SignOut } from 'phosphor-svelte';
+	import { fade } from 'svelte/transition';
 
 	import { Card, Carousel } from '^components/ui';
 </script>
@@ -11,13 +10,11 @@
 	let {
 		children,
 		title,
-		showError = $bindable(),
-		onClickClose
+		showError = $bindable()
 	}: {
 		title: string;
 		children: Snippet<[]>;
 		showError?: boolean;
-		onClickClose: () => void;
 	} = $props();
 
 	function preventTabNavigation(e: KeyboardEvent) {
@@ -33,16 +30,6 @@
 			<Card.Title class="font-display text-bc-logo-black/80 mt-12 text-4xl font-bold">
 				{title}
 			</Card.Title>
-
-			<div class="bg-bc-logo-black/80 flex items-center gap-2 rounded-full px-3 py-1 text-[15px]">
-				<button
-					class="rounded-full border border-white p-[6px] text-white"
-					onclick={onClickClose}
-					type="button"
-				>
-					<SignOut weight="fill" />
-				</button>
-			</div>
 		</Card.Header>
 
 		<Card.Content class="mt-16 flex grow flex-col gap-10 overflow-y-auto px-10">
