@@ -24,10 +24,38 @@
 		programmesOfInterest: 'programmes-of-interest',
 		referralComment: 'referral-comment',
 		identity: 'identity',
-		emergencyContact: 'emergency-contact'
+		emergencyContact: 'emergency-contact',
+		participantAddress: 'participant-address'
 	};
 
 	const slideContent = {
+		participantAddress: {
+			title: 'Your Address',
+			question: {
+				address: {
+					title: 'Your Address',
+					id: 'your-address',
+					parts: {
+						line1: {
+							label: 'Address line 1',
+							required: true
+						},
+						line2: {
+							label: 'Address line 2',
+							required: false
+						},
+						townOrCity: {
+							label: 'Town/City',
+							required: true
+						},
+						postcode: {
+							label: 'Postcode',
+							required: true
+						}
+					}
+				}
+			}
+		},
 		emergencyContactDetails: {
 			title: 'Emergency Contact',
 			question: {
@@ -122,7 +150,7 @@
 		| 'participant-address'
 		| 'emergency-contact-details'
 		| 'identity'
-		| 'medical-details' = 'identity';
+		| 'medical-details' = 'participant-address';
 
 	let formValue = $state({
 		healthIssues: '',
@@ -135,6 +163,13 @@
 			name: '',
 			phone: '',
 			relationship: ''
+		},
+
+		participantAddress: {
+			line1: '',
+			line2: '',
+			townOrCity: '',
+			postcode: ''
 		}
 	});
 
@@ -149,6 +184,13 @@
 			name: false,
 			phoneNumber: false,
 			relationship: false
+		},
+
+		participantAddress: {
+			line1: false,
+			line2: false,
+			townOrCity: false,
+			postcode: false
 		}
 	});
 
@@ -180,6 +222,58 @@
 	}
 
 	function handleNext({ scrollNext }: { scrollNext: () => void }) {
+		if (activeSlide === 'participant-address') {
+			if (
+				!formValue.participantAddress.line1.length ||
+				!formValue.participantAddress.townOrCity.length ||
+				!formValue.participantAddress.postcode.length
+			) {
+				showFormError.slide = true;
+
+				console.log('formValue.participantAddress.line1', formValue.participantAddress.line1);
+
+				showFormError.participantAddress.line1 = !formValue.participantAddress.line1.length;
+				showFormError.participantAddress.townOrCity =
+					!formValue.participantAddress.townOrCity.length;
+				showFormError.participantAddress.postcode = !formValue.participantAddress.postcode.length;
+
+				return;
+			}
+
+			showFormError.participantAddress.line1 = false;
+			showFormError.participantAddress.townOrCity = false;
+			showFormError.participantAddress.postcode = false;
+
+			scrollNext();
+			activeSlide = 'emergency-contact-details';
+			return;
+		}
+
+		if (activeSlide === 'emergency-contact-details') {
+			if (
+				!formValue.emergencyContact.name ||
+				!formValue.emergencyContact.phone ||
+				!formValue.emergencyContact.relationship
+			) {
+				showFormError.slide = true;
+
+				showFormError.emergencyContact.name = !formValue.emergencyContact.name.length;
+				showFormError.emergencyContact.phoneNumber = !formValue.emergencyContact.phone.length;
+				showFormError.emergencyContact.relationship =
+					!formValue.emergencyContact.relationship.length;
+
+				return;
+			}
+
+			showFormError.participantAddress.line1 = false;
+			showFormError.participantAddress.townOrCity = false;
+			showFormError.participantAddress.postcode = false;
+
+			scrollNext();
+			activeSlide = 'emergency-contact-details';
+			return;
+		}
+
 		if (activeSlide === 'identity') {
 			if (!formValue.identity.length || !formValue.ethnicity.length) {
 				showFormError.slide = true;
@@ -284,6 +378,65 @@
 				>
 					<Carousel.Content hiddenParentClass="flex flex-col h-full" class="ml-0 h-full w-full">
 						<CarouselItem
+							title={slideContent.participantAddress.title}
+							showError={showFormError.slide}
+							{onClickClose}
+						>
+							<Question
+								title={slideContent.participantAddress.question.address.title}
+								required={false}
+							>
+								<div class="flex flex-col gap-8">
+									<TextInput
+										label={slideContent.participantAddress.question.address.parts.line1.label}
+										placeholder="Enter here"
+										bind:value={formValue.participantAddress.line1}
+										id={formId.participantAddress + 'line1'}
+										showError={showFormError.participantAddress.line1}
+										errorText="Please enter a response"
+										onkeyup={() => {
+											showFormError.slide = false;
+											showFormError.participantAddress.line1 = false;
+										}}
+									/>
+
+									<TextInput
+										label={slideContent.participantAddress.question.address.parts.line2.label}
+										placeholder="Enter here"
+										bind:value={formValue.participantAddress.line2}
+										id={formId.participantAddress + 'line2'}
+										required="optional"
+									/>
+
+									<TextInput
+										label={slideContent.participantAddress.question.address.parts.townOrCity.label}
+										placeholder="Enter here"
+										bind:value={formValue.participantAddress.townOrCity}
+										id={formId.participantAddress + 'town-or-city'}
+										showError={showFormError.participantAddress.townOrCity}
+										errorText="Please enter a response"
+										onkeyup={() => {
+											showFormError.slide = false;
+											showFormError.participantAddress.townOrCity = false;
+										}}
+									/>
+
+									<TextInput
+										label={slideContent.participantAddress.question.address.parts.postcode.label}
+										placeholder="Enter here"
+										bind:value={formValue.participantAddress.postcode}
+										id={formId.participantAddress + 'postcode'}
+										showError={showFormError.participantAddress.postcode}
+										errorText="Please enter a response"
+										onkeyup={() => {
+											showFormError.slide = false;
+											showFormError.participantAddress.postcode = false;
+										}}
+									/>
+								</div>
+							</Question>
+						</CarouselItem>
+						<CarouselItem
 							title={slideContent.emergencyContactDetails.title}
 							showError={showFormError.slide}
 							{onClickClose}
@@ -313,7 +466,7 @@
 
 									<TextInput
 										label="Relationship"
-										placeholder="Enter here"
+										placeholder="e.g. mother, friend"
 										bind:value={formValue.emergencyContact.relationship}
 										id={formId.emergencyContact + 'relationship'}
 										showError={showFormError.emergencyContact.relationship}
@@ -718,53 +871,7 @@ Your Details -->
 
 						
 
-						<Carousel.Item class="flex basis-full flex-col pl-0">
-							<Card.Root class="ml-0 flex grow flex-col border-none shadow-none">
-								<Card.Content class="flex grow flex-col p-6 text-lg leading-relaxed">
-									<Card.Title
-										class="decoration-bc-slate-pine/20 font-display text-[22px] font-bold tracking-wide text-black/50 underline decoration-2 underline-offset-4"
-										>Emergency Contact Details</Card.Title
-									>
-
-									<div class="grid max-h-full grow place-items-center overflow-auto">
-										<div class="flex w-full flex-col gap-6 px-1">
-											<div>
-												<Label class="text-black/50" for="emergency full name">Full name</Label>
-												<Input
-													class="mt-2 w-full py-2 !text-base focus:outline-none focus-visible:border-black focus-visible:ring-1"
-													placeholder="Contact full name"
-													id="emergency full name"
-													type="text"
-												/>
-												<p class="mt-1 text-right text-sm text-black/60 italic">required</p>
-											</div>
-
-											<div>
-												<Label class="text-black/50" for="emergency phone">Phone number</Label>
-												<Input
-													class="mt-2 w-full py-2 !text-base focus:outline-none focus-visible:border-black focus-visible:ring-1"
-													placeholder="Contact phone number"
-													id="phone"
-													type="tel"
-												/>
-												<p class="mt-1 text-right text-sm text-black/60 italic">required</p>
-											</div>
-
-											<div>
-												<Label class="text-black/50" for="relationship">Relationship</Label>
-												<Input
-													class="mt-2 w-full py-2 !text-base focus:outline-none focus-visible:border-black focus-visible:ring-1"
-													placeholder="Contact relationship"
-													id="relationship"
-													type="text"
-												/>
-												<p class="mt-1 text-right text-sm text-black/60 italic">required</p>
-											</div>
-										</div>
-									</div>
-								</Card.Content>
-							</Card.Root>
-						</Carousel.Item>
+						
 
 						<Carousel.Item class="flex basis-full flex-col pl-0">
 							<Card.Root class="ml-0 flex grow flex-col border-none shadow-none">

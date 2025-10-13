@@ -19,9 +19,15 @@
 		showError?: boolean;
 		onClickClose: () => void;
 	} = $props();
+
+	function preventTabNavigation(e: KeyboardEvent) {
+		if (e.key === 'Tab') {
+			e.stopPropagation();
+		}
+	}
 </script>
 
-<Carousel.Item class="flex h-full basis-full flex-col pl-0">
+<Carousel.Item class="flex h-full basis-full flex-col pl-0" onkeydown={preventTabNavigation}>
 	<Card.Root class="ml-0 flex h-full grow flex-col border-none shadow-none">
 		<Card.Header class="flex justify-between px-10">
 			<Card.Title class="font-display text-bc-logo-black/80 mt-12 text-4xl font-bold">

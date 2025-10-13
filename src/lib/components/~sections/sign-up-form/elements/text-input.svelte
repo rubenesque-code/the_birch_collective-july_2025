@@ -16,9 +16,10 @@
 		id,
 		showError,
 		errorText,
-		type,
+		type = 'text',
 		inputmode,
-		pattern
+		pattern,
+		required
 	}: {
 		value: string;
 		onkeyup?: WithElementRef<HTMLInputElement>['onkeyup'];
@@ -30,13 +31,22 @@
 		type?: 'tel' | 'text';
 		inputmode?: 'tel';
 		pattern?: '[0-9+\s()-]{7,}';
+		required?: string;
 	} = $props();
 </script>
 
 <div>
-	{#if label}
-		<Label class="text-black/50" for={id}>{label}</Label>
-	{/if}
+	<div class="flex items-center gap-6">
+		{#if label}
+			<Label class="text-black/50" for={id}>{label}</Label>
+		{/if}
+
+		{#if required}
+			<p class="text-bc-logo-black/40 text-[13px] leading-relaxed italic">
+				{required}
+			</p>
+		{/if}
+	</div>
 
 	<Input
 		class="mt-2 w-full !text-base focus:outline-none focus-visible:border-black focus-visible:ring-1"
