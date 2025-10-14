@@ -1,3 +1,5 @@
+export * from './sign-up';
+
 function emailToEmailHref(email: string, subject: string = 'Enquiry') {
 	return `mailto:${email}?subject=${subject}`;
 }

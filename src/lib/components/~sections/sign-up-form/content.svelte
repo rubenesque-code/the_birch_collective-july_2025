@@ -9,7 +9,12 @@
 		PUBLIC_BIRCH_GDPR_CONTACT_PHONE
 	} from '$env/static/public';
 
-	import { isValidEmail, isValidUkPhoneNumber, strToLowercaseHyphenated } from '^helpers';
+	import {
+		addSignUpToGoogleSheet,
+		isValidEmail,
+		isValidUkPhoneNumber,
+		strToLowercaseHyphenated
+	} from '^helpers';
 
 	import image from '^assets/image';
 
@@ -296,11 +301,44 @@
 				return;
 			}
 			showFormError.referralSources = false;
+
 			emblaCtx.scrollNext();
+			activeSlideIndex = 11;
 			return;
 		}
+	}
 
-		return true;
+	async function handleSubmit() {
+		console.log('FORM DATA', formValue);
+
+		return;
+
+		const dummyData = {
+			full_name: 'TEST BO',
+			date_of_birth: '1 sept 09',
+			email: '',
+			phone_number: '',
+			address: 'abc',
+			emergency_contact: '',
+			identities: '',
+			ethnicity: '',
+			genders: '',
+			health_issues: '',
+			life_saving_medications: '',
+			programmes_of_interest: '',
+			hope_to_get: '',
+			professional_referral_info: '',
+			sources: '',
+			newsletter_opt_in: '',
+			image_opt_in: '',
+			fresh_air_thursday_text_opt_in: ''
+		};
+
+		try {
+			addSignUpToGoogleSheet({ programmeName: 'fresh air thursdays', formValues: dummyData });
+		} catch (error) {
+			console.error(error);
+		}
 	}
 
 	function onSelect() {
@@ -329,44 +367,6 @@
 </div>
 
 <Carousel.Content hiddenParentClass="flex flex-col h-full relative" class=" ml-0 h-full w-full">
-	<Carousel.Item class="flex h-full basis-full flex-col pl-0">
-		<Card.Root class="ml-0 flex h-full grow flex-col border-none shadow-none">
-			<Card.Content class="flex h-full grow flex-col p-0 text-lg leading-relaxed">
-				<Card.Header class="flex justify-between px-10">
-					<div class="flex shrink-0 -translate-x-[10px]">
-						<div class="translate-x-[10px] translate-y-[21px]">
-							<enhanced:img class="w-[68px]" src={image.birch.logo.img_only} alt="" />
-						</div>
-
-						<a class="font-display relative flex flex-col text-4xl font-bold" href="/">
-							<span class="translate-x-[20px]">The</span>
-							<span class="translate-x-[40px] translate-y-[-10px] text-[66px]">Birch</span>
-							<span class="translate-x-[0px] translate-y-[-20px]">Collective</span>
-						</a>
-					</div>
-				</Card.Header>
-
-				<Card.Content class="mt-16 grow px-10">
-					<p class="font-display text-bc-amber mt-4 text-center text-4xl font-bold">
-						Thanks for taking the time to complete our sign-up form.
-					</p>
-					<div class="flex flex-col items-center">
-						<p class="mt-8">To finish, click submit at the bottom of the page</p>
-					</div>
-
-					<div
-						class="text-bc-logo-black/70 bg-my-grey-3/10 border-my-grey-2 mt-24 flex flex-col rounded-lg border p-4"
-					>
-						<h3 class="font-medium">What happens next?</h3>
-						<p class="mt-2 leading-relaxed">
-							One of the Birch team will be in touch with you shortly about the next steps in
-							joining our programmes.
-						</p>
-					</div>
-				</Card.Content>
-			</Card.Content>
-		</Card.Root>
-	</Carousel.Item>
 	<Carousel.Item class="flex h-full basis-full flex-col pl-0" id={signUpFormId.intro}>
 		<Card.Root class="ml-0 flex h-full grow flex-col border-none shadow-none">
 			<Card.Content class="flex h-full grow flex-col p-0 text-lg leading-relaxed">
@@ -657,10 +657,10 @@
 			errorText={slides.medicalDetails.question.lifeSavingMedication.errorText}
 		>
 			<Textarea
-				bind:value={formValue.lifeSavingMedication}
+				bind:value={formValue.ethnicity}
 				onkeyup={() => {
 					showFormError.slide = false;
-					showFormError.lifeSavingMedication = false;
+					showFormError.ethnicity = false;
 				}}
 			/>
 		</Question>
@@ -847,6 +847,45 @@
 			/>
 		</Question>
 	</CarouselItem>
+
+	<Carousel.Item class="flex h-full basis-full flex-col pl-0">
+		<Card.Root class="ml-0 flex h-full grow flex-col border-none shadow-none">
+			<Card.Content class="flex h-full grow flex-col p-0 text-lg leading-relaxed">
+				<Card.Header class="flex justify-between px-10">
+					<div class="flex shrink-0 -translate-x-[10px]">
+						<div class="translate-x-[10px] translate-y-[21px]">
+							<enhanced:img class="w-[68px]" src={image.birch.logo.img_only} alt="" />
+						</div>
+
+						<a class="font-display relative flex flex-col text-4xl font-bold" href="/">
+							<span class="translate-x-[20px]">The</span>
+							<span class="translate-x-[40px] translate-y-[-10px] text-[66px]">Birch</span>
+							<span class="translate-x-[0px] translate-y-[-20px]">Collective</span>
+						</a>
+					</div>
+				</Card.Header>
+
+				<Card.Content class="mt-16 grow px-10">
+					<p class="font-display text-bc-amber mt-4 text-center text-4xl font-bold">
+						Thanks for taking the time to complete our sign-up form.
+					</p>
+					<div class="flex flex-col items-center">
+						<p class="mt-8">To finish, click submit at the bottom of the page</p>
+					</div>
+
+					<div
+						class="text-bc-logo-black/70 bg-my-grey-3/10 border-my-grey-2 mt-24 flex flex-col rounded-lg border p-4"
+					>
+						<h3 class="font-medium">What happens next?</h3>
+						<p class="mt-2 leading-relaxed">
+							One of the Birch team will be in touch with you shortly about the next steps in
+							joining our programmes.
+						</p>
+					</div>
+				</Card.Content>
+			</Card.Content>
+		</Card.Root>
+	</Carousel.Item>
 </Carousel.Content>
 
 <div class="relative flex w-full shrink-0 items-center justify-center p-3">
@@ -856,8 +895,14 @@
 		/>
 		<button
 			class="bg-bc-amber cursor-pointer rounded-xl px-4 py-2 text-lg font-medium text-white"
-			onclick={emblaCtx.scrollNext}
-			type="button">Next</button
+			onclick={activeSlideIndex < 11 ? handleNext : handleSubmit}
+			type="button"
 		>
+			{#if activeSlideIndex !== 11}
+				Next
+			{:else}
+				Submit
+			{/if}
+		</button>
 	</div>
 </div>
