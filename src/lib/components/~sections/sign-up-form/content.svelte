@@ -126,13 +126,11 @@
 	function handleNext() {
 		if (activeSlideIndex === 0) {
 			emblaCtx.scrollNext();
-			activeSlideIndex = 1;
 			return;
 		}
 
 		if (activeSlideIndex === 1) {
 			emblaCtx.scrollNext();
-			activeSlideIndex = 2;
 			return;
 		}
 
@@ -161,7 +159,6 @@
 			showFormError.participantDetails.phone = false;
 
 			emblaCtx.scrollNext();
-			activeSlideIndex = 3;
 			return;
 		}
 
@@ -186,32 +183,32 @@
 			showFormError.participantAddress.postcode = false;
 
 			emblaCtx.scrollNext();
-			activeSlideIndex = 4;
 			return;
 		}
 
 		if (activeSlideIndex === 4) {
 			if (
-				!formValue.emergencyContact.name ||
-				!formValue.emergencyContact.phone ||
-				!formValue.emergencyContact.relationship
+				!formValue.emergencyContact.name.length ||
+				!isValidUkPhoneNumber(formValue.emergencyContact.phone) ||
+				!formValue.emergencyContact.relationship.length
 			) {
 				showFormError.slide = true;
 
 				showFormError.emergencyContact.name = !formValue.emergencyContact.name.length;
-				showFormError.emergencyContact.phoneNumber = !formValue.emergencyContact.phone.length;
+				showFormError.emergencyContact.phoneNumber = !isValidUkPhoneNumber(
+					formValue.emergencyContact.phone
+				);
 				showFormError.emergencyContact.relationship =
 					!formValue.emergencyContact.relationship.length;
 
 				return;
 			}
 
-			showFormError.participantAddress.line1 = false;
-			showFormError.participantAddress.townOrCity = false;
-			showFormError.participantAddress.postcode = false;
+			showFormError.emergencyContact.name = false;
+			showFormError.emergencyContact.phoneNumber = false;
+			showFormError.emergencyContact.relationship = false;
 
 			emblaCtx.scrollNext();
-			activeSlideIndex = 5;
 			return;
 		}
 
@@ -232,9 +229,9 @@
 
 			showFormError.identity1 = false;
 			showFormError.ethnicity = false;
+			showFormError.identity2 = false;
 
 			emblaCtx.scrollNext();
-			activeSlideIndex = 6;
 			return;
 		}
 
@@ -246,7 +243,6 @@
 			}
 			showFormError.lifeSavingMedication = false;
 			emblaCtx.scrollNext();
-			activeSlideIndex = 7;
 			return;
 		}
 
@@ -258,17 +254,27 @@
 			}
 			showFormError.programmesOfInterest = false;
 			emblaCtx.scrollNext();
-			activeSlideIndex = 8;
 			return;
 		}
 
 		if (activeSlideIndex === 8) {
 			emblaCtx.scrollNext();
-			activeSlideIndex = 9;
 			return;
 		}
 
 		if (activeSlideIndex === 9) {
+			if (!validateCheckboxGroup(formValue.referralSources)) {
+				showFormError.slideError = true;
+				showFormError.referralSources = true;
+				return;
+			}
+			showFormError.referralSources = false;
+
+			emblaCtx.scrollNext();
+			return;
+		}
+
+		if (activeSlideIndex === 10) {
 			if (
 				!validateRadioGroup(formValue.imagePermission) ||
 				!validateRadioGroup(formValue.newsletterPermission) ||
@@ -290,21 +296,6 @@
 			showFormError.textUpdatePermission = false;
 
 			emblaCtx.scrollNext();
-			activeSlideIndex = 10;
-			return;
-		}
-
-		if (activeSlideIndex === 10) {
-			if (!validateCheckboxGroup(formValue.referralSources)) {
-				showFormError.slideError = true;
-				showFormError.referralSources = true;
-				return;
-			}
-			showFormError.referralSources = false;
-
-			emblaCtx.scrollNext();
-			activeSlideIndex = 11;
-			return;
 		}
 	}
 
@@ -604,7 +595,7 @@
 					id={signUpFormId.emergencyContact + 'phone'}
 					showError={showFormError.emergencyContact.phoneNumber}
 					type="tel"
-					errorText="Please enter a response"
+					errorText="Please enter a valid UK phone number"
 					onkeyup={() => {
 						showFormError.slide = false;
 						showFormError.emergencyContact.phoneNumber = false;
@@ -654,7 +645,7 @@
 			title={slides.identity.question.ethnicity.title}
 			required={slides.identity.question.ethnicity.required}
 			showError={showFormError.ethnicity}
-			errorText={slides.medicalDetails.question.lifeSavingMedication.errorText}
+			errorText={slides.identity.question.ethnicity.errorText}
 		>
 			<Textarea
 				bind:value={formValue.ethnicity}
@@ -670,7 +661,7 @@
 		<Question
 			title={slides.identity.question.identity2.title}
 			required={slides.identity.question.identity2.required}
-			showError={showFormError.identity1}
+			showError={showFormError.identity2}
 			errorText={slides.identity.question.identity2.errorText}
 		>
 			<CheckboxGroup
@@ -745,6 +736,28 @@
 	<CarouselItem title={slides.referrals.title} showError={showFormError.slideError}>
 		<Question title={slides.referrals.question.referralComment.title}>
 			<Textarea bind:value={formValue.referralComment} />
+		</Question>
+	</CarouselItem>
+
+	<CarouselItem title={slides.referralSources.title} showError={showFormError.slideError}>
+		<Question
+			title={slides.referralSources.question.referralSources.title}
+			required={slides.referralSources.question.referralSources.required}
+			bind:showError={showFormError.referralSources}
+			errorText={slides.referralSources.question.referralSources.errorText}
+		>
+			<CheckboxGroup
+				options={slides.referralSources.question.referralSources.options.map((label) => ({
+					value: strToLowercaseHyphenated(label),
+					label
+				}))}
+				onCheckedChange={() => {
+					showFormError.referralSources = false;
+					showFormError.slideError = false;
+				}}
+				bind:group={formValue.referralSources}
+				idPrefix={signUpFormId.referralSource}
+			/>
 		</Question>
 	</CarouselItem>
 
@@ -823,28 +836,6 @@
 					/>
 				{/each}
 			</RadioGroup.Root>
-		</Question>
-	</CarouselItem>
-
-	<CarouselItem title={slides.referralSources.title} showError={showFormError.slideError}>
-		<Question
-			title={slides.referralSources.question.referralSources.title}
-			required={slides.referralSources.question.referralSources.required}
-			bind:showError={showFormError.referralSources}
-			errorText={slides.referralSources.question.referralSources.errorText}
-		>
-			<CheckboxGroup
-				options={slides.referralSources.question.referralSources.options.map((label) => ({
-					value: strToLowercaseHyphenated(label),
-					label
-				}))}
-				onCheckedChange={() => {
-					showFormError.referralSources = false;
-					showFormError.slideError = false;
-				}}
-				bind:group={formValue.referralSources}
-				idPrefix={signUpFormId.referralSource}
-			/>
 		</Question>
 	</CarouselItem>
 
