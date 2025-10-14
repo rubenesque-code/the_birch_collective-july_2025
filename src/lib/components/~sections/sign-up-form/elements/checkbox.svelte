@@ -29,5 +29,5 @@
 		bind:checked={checkedDerived}
 		{onCheckedChange}
 	/>
-	<Label class="text-[18px] font-normal" for={id}>{label}</Label>
+	<Label class="text-[16px] font-normal" for={id}>{label}</Label>
 </div>

@@ -13,6 +13,7 @@
 		addSignUpToGoogleSheet,
 		isValidEmail,
 		isValidUkPhoneNumber,
+		strHyphenatedToSpaced,
 		strToLowercaseHyphenated
 	} from '^helpers';
 
@@ -31,6 +32,8 @@
 	} from './elements';
 	import { slides } from '^content/sign-up-form';
 	import { signUpFormId } from '^constants';
+
+	// TODO: notify birch employee on sign-up
 </script>
 
 <script lang="ts">
@@ -329,31 +332,12 @@
 			dateStyle: 'long'
 		}).format(dob!.toDate(getLocalTimeZone()));
 		const addressFormatted = `${participantAddress.line1}, ${participantAddress.line2}, ${participantAddress.townOrCity}, ${participantAddress.postcode}`;
-		const identity1Formatted = formatArr.format(identity1);
-		const identity2Formatted = formatArr.format(identity2);
-		const programmesOfInterestFormatted = formatArr.format(programmesOfInterest);
-		const referralSourcesFormatted = formatArr.format(referralSources);
-
-		const dummyData = {
-			full_name: 'TEST BO',
-			date_of_birth: '1 sept 09',
-			email: '',
-			phone_number: '',
-			address: 'abc',
-			emergency_contact: '',
-			identities: '',
-			ethnicity: '',
-			genders: '',
-			health_issues: '',
-			life_saving_medications: '',
-			programmes_of_interest: '',
-			hope_to_get: '',
-			professional_referral_info: '',
-			sources: '',
-			newsletter_opt_in: '',
-			image_opt_in: '',
-			fresh_air_thursday_text_opt_in: ''
-		};
+		const identity1Formatted = formatArr.format(identity1.map(strHyphenatedToSpaced));
+		const identity2Formatted = formatArr.format(identity2.map(strHyphenatedToSpaced));
+		const programmesOfInterestFormatted = formatArr.format(
+			programmesOfInterest.map(strHyphenatedToSpaced)
+		);
+		const referralSourcesFormatted = formatArr.format(referralSources.map(strHyphenatedToSpaced));
 
 		try {
 			addSignUpToGoogleSheet({
