@@ -1,5 +1,5 @@
 <script lang="ts" module>
-	import type { DateValue } from '@internationalized/date';
+	import { DateFormatter, getLocalTimeZone, type DateValue } from '@internationalized/date';
 	import { SignOut } from 'phosphor-svelte';
 	import { elasticIn } from 'svelte/easing';
 	import { fade } from 'svelte/transition';
@@ -238,10 +238,14 @@
 		if (activeSlideIndex === 6) {
 			if (!formValue.lifeSavingMedication.length) {
 				showFormError.slide = true;
+
 				showFormError.lifeSavingMedication = true;
+
 				return;
 			}
+
 			showFormError.lifeSavingMedication = false;
+
 			emblaCtx.scrollNext();
 			return;
 		}
@@ -302,7 +306,33 @@
 	async function handleSubmit() {
 		console.log('FORM DATA', formValue);
 
-		return;
+		const {
+			participantDetails: { dob, ...restParticipantDetails },
+			participantAddress,
+			identity1,
+			identity2,
+			programmesOfInterest,
+			referralSources,
+			emergencyContact,
+			ethnicity,
+			healthIssues,
+			lifeSavingMedication,
+			hopeToGet,
+			newsletterPermission,
+			imagePermission,
+			textUpdatePermission
+		} = formValue;
+
+		const formatArr = new Intl.ListFormat('en', { style: 'long', type: 'conjunction' });
+
+		const dobFormatted = new DateFormatter('en-UK', {
+			dateStyle: 'long'
+		}).format(dob!.toDate(getLocalTimeZone()));
+		const addressFormatted = `${participantAddress.line1}, ${participantAddress.line2}, ${participantAddress.townOrCity}, ${participantAddress.postcode}`;
+		const identity1Formatted = formatArr.format(identity1);
+		const identity2Formatted = formatArr.format(identity2);
+		const programmesOfInterestFormatted = formatArr.format(programmesOfInterest);
+		const referralSourcesFormatted = formatArr.format(referralSources);
 
 		const dummyData = {
 			full_name: 'TEST BO',
@@ -326,7 +356,29 @@
 		};
 
 		try {
-			addSignUpToGoogleSheet({ programmeName: 'fresh air thursdays', formValues: dummyData });
+			addSignUpToGoogleSheet({
+				programmeName: 'fresh air thursdays',
+				formValues: {
+					full_name: restParticipantDetails.name,
+					date_of_birth: dobFormatted,
+					email: restParticipantDetails.email,
+					phone_number: restParticipantDetails.phone,
+					address: addressFormatted,
+					emergency_contact: `Name: ${emergencyContact.name} | Phone number: ${emergencyContact.phone} | Relationship: ${emergencyContact.relationship}`,
+					identities: identity1Formatted,
+					ethnicity: ethnicity,
+					genders: identity2Formatted,
+					health_issues: healthIssues,
+					life_saving_medications: lifeSavingMedication,
+					programmes_of_interest: programmesOfInterestFormatted,
+					hope_to_get: hopeToGet,
+					professional_referral_info: '',
+					sources: referralSourcesFormatted,
+					newsletter_opt_in: newsletterPermission,
+					image_opt_in: imagePermission,
+					fresh_air_thursday_text_opt_in: textUpdatePermission
+				}
+			});
 		} catch (error) {
 			console.error(error);
 		}
