@@ -1,6 +1,6 @@
 <script lang="ts" module>
+	import { onMount } from 'svelte';
 	import { fade, scale } from 'svelte/transition';
-	import type { EmblaCarouselType } from 'embla-carousel';
 
 	import { browser } from '$app/environment';
 
@@ -11,18 +11,28 @@
 </script>
 
 <script lang="ts">
-	import type { EmblaCarouselSvelteType } from 'embla-carousel-svelte';
-
 	let { isOpen = $bindable(), onClickClose } = $props<{
 		isOpen: boolean;
 		onClickClose: () => void;
 	}>();
 
-	$effect(() => {
-		if (browser) toggleBodyScroll({ triggerDisableOn: isOpen });
-	});
+	$effect(() => toggleBodyScroll({ triggerDisableOn: isOpen }));
 
-	let a: EmblaCarouselSvelteType;
+	onMount(() => {
+		if (!browser) {
+			return;
+		}
+
+		function onkeydown(e: KeyboardEvent) {
+			if (e.key === 'Tab') {
+				e.preventDefault();
+			}
+		}
+
+		document.addEventListener('keydown', onkeydown);
+
+		() => document.removeEventListener('keydown', onkeydown);
+	});
 </script>
 
 {#if isOpen}
@@ -39,9 +49,9 @@
 			<div class="relative mx-2 overflow-visible shadow-xl">
 				<Carousel.Root
 					class="relative flex h-[800px] max-h-[90vh] w-[95vw] max-w-[800px] flex-col rounded-lg bg-white px-4 py-3"
-					opts={{ align: 'center' }}
+					opts={{ align: 'center', watchDrag: false }}
 				>
-					<Content bind:isOpen {onClickClose} />
+					<Content {onClickClose} />
 				</Carousel.Root>
 			</div>
 		</div>

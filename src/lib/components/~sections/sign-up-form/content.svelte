@@ -4,17 +4,17 @@
 	import { elasticIn } from 'svelte/easing';
 	import { fade } from 'svelte/transition';
 
-	import { browser } from '$app/environment';
 	import {
 		PUBLIC_BIRCH_GDPR_CONTACT_EMAIL,
 		PUBLIC_BIRCH_GDPR_CONTACT_PHONE
 	} from '$env/static/public';
 
-	import { isValidEmail, isValidUkPhoneNumber, toggleBodyScroll } from '^helpers';
+	import { isValidEmail, isValidUkPhoneNumber } from '^helpers';
 
 	import image from '^assets/image';
 
 	import { Card, Carousel, Label, RadioGroup } from '^components/ui';
+	import { getEmblaContext } from '^components/ui/carousel/context';
 	import CarouselItem from './carousel-item.svelte';
 	import {
 		CheckboxGroup,
@@ -25,8 +25,6 @@
 		TextInput
 	} from './elements';
 	import NextButton from './next-button.svelte';
-	import { getEmblaContext } from '^components/ui/carousel/context';
-	import { onMount } from 'svelte';
 
 	const formId = {
 		intro: 'intro',
@@ -44,6 +42,26 @@
 	};
 
 	const slideContent = {
+		intro: {
+			title: 'Programme Sign Up',
+			subtitle: 'Welcome to The Birch Collective!',
+			text: "The following questions help us get to know a bit about you. We need to take some really basic info from you, such as your contact details. This means we can get in touch with you so we can discuss getting started - so please double-check the details you're giving us are correct!"
+		},
+
+		confidentiality: {
+			title: 'Confidentiality',
+
+			confidentiality: {
+				intro: 'First up, we need you to read and understand our confidentiality statement:',
+				text: "Anything you talk about with one of our team is kept totally private within Birch. We won't share what you tell us with anyone else. But if there was an extreme situation, like if you or someone else was at risk of being seriously hurt, then we would need to break confidentiality to keep you safe. If this happened we would discuss it with you first and do our best to make sure you were involved in any decisions that have to be made. We know this can be scary and you might not want us to share anything, but we will support you through the whole thing."
+			},
+
+			gdpr: {
+				intro: 'We also need you to read our GDPR statement:',
+				text: 'By signing this form, you are giving us permission to contact you about opportunities and events from the Birch Collective. In order to comply with the General Data Protection Regulation, The Birch Collective is seeking your consent to hold your information on our database. We are required by our funders to gather information about the people who use our services. We will not share your information with third parties other than those you have agreed to. We use and store any information that you give us in accordance with the Data Protection Act 2003. Information you provide will be anonymised before being used in monitoring and evaluation reports for our current funders, to support funding applications. Your data will be held for a maximum of 2 years after your last engagement. For further details on our data protection and information sharing policies or for any queries about the data we hold, please get in touch:'
+			}
+		},
+
 		participantDetails: {
 			title: 'Your Details',
 			question: {
@@ -187,45 +205,16 @@
 			}
 		}
 	};
-
-	type Slide =
-		| 'intro'
-		| 'terms'
-		| 'referral-sources'
-		| 'newsletter-and-permissions'
-		| 'referrals'
-		| 'programmes-of-interest'
-		| 'participant-details'
-		| 'participant-address'
-		| 'emergency-contact-details'
-		| 'identity'
-		| 'medical-details';
 </script>
 
 <script lang="ts">
-	let { isOpen = $bindable(), onClickClose } = $props<{
-		isOpen: boolean;
+	let { onClickClose } = $props<{
 		onClickClose: () => void;
 	}>();
 
-	$effect(() => {
-		if (browser) toggleBodyScroll({ triggerDisableOn: isOpen });
-	});
+	const emblaCtx = getEmblaContext();
 
-	const emblaCtx = getEmblaContext('<Carousel.Next/>');
-
-	let activeSlide:
-		| 'intro'
-		| 'confidentiality'
-		| 'participant-details'
-		| 'participant-address'
-		| 'emergency-contact-details'
-		| 'identity'
-		| 'referral-sources'
-		| 'newsletter-and-permissions'
-		| 'referrals'
-		| 'programmes-of-interest'
-		| 'medical-details' = 'intro';
+	let activeSlideIndex = $state(0);
 
 	let formValue = $state({
 		healthIssues: '',
@@ -253,7 +242,15 @@
 			dob: undefined as DateValue | undefined,
 			email: '',
 			phone: ''
-		}
+		},
+
+		programmesOfInterest: [] as string[],
+		hopeToGet: '',
+		referralComment: '',
+		imagePermission: '',
+		newsletterPermission: '',
+		textUpdatePermission: '',
+		referralSources: [] as string[]
 	});
 
 	let showFormError = $state({
@@ -283,28 +280,15 @@
 			dob: false,
 			email: false,
 			phone: false
-		}
+		},
+
+		programmesOfInterest: false,
+		imagePermission: false,
+		newsletterPermission: false,
+		textUpdatePermission: false,
+		referralSources: false,
+		slideError: false
 	});
-
-	let programmesOfInterest = $state<string[]>([]);
-	let showProgrammesOfInterestError = $state(false);
-	let hopeToGet = $state<string>('');
-
-	let referralComment = $state<string>('');
-
-	let imagePermission = $state<string>('');
-	let showImagePermissionError = $state(false);
-
-	let newsletterPermission = $state<string>('');
-	let showNewsletterPermissionError = $state(false);
-
-	let textUpdatePermission = $state<string>('');
-	let showTextUpdatePermissionError = $state(false);
-
-	let referralSources = $state<string[]>([]);
-	let showReferralSourcesError = $state(false);
-
-	let showSlideError = $state(false);
 
 	function validateCheckboxGroup(value: string[]) {
 		return Boolean(value.length);
@@ -318,19 +302,19 @@
 	}
 
 	function handleNext() {
-		if (activeSlide === 'intro') {
+		if (activeSlideIndex === 0) {
 			scrollNext();
-			activeSlide = 'confidentiality';
+			activeSlideIndex = 1;
 			return;
 		}
 
-		if (activeSlide === 'confidentiality') {
+		if (activeSlideIndex === 1) {
 			scrollNext();
-			activeSlide = 'participant-details';
+			activeSlideIndex = 2;
 			return;
 		}
 
-		if (activeSlide === 'participant-details') {
+		if (activeSlideIndex === 2) {
 			if (
 				!formValue.participantDetails.name.length ||
 				!formValue.participantDetails.dob ||
@@ -355,11 +339,11 @@
 			showFormError.participantDetails.phone = false;
 
 			scrollNext();
-			activeSlide = 'participant-address';
+			activeSlideIndex = 3;
 			return;
 		}
 
-		if (activeSlide === 'participant-address') {
+		if (activeSlideIndex === 3) {
 			if (
 				!formValue.participantAddress.line1.length ||
 				!formValue.participantAddress.townOrCity.length ||
@@ -380,11 +364,11 @@
 			showFormError.participantAddress.postcode = false;
 
 			scrollNext();
-			activeSlide = 'emergency-contact-details';
+			activeSlideIndex = 4;
 			return;
 		}
 
-		if (activeSlide === 'emergency-contact-details') {
+		if (activeSlideIndex === 4) {
 			if (
 				!formValue.emergencyContact.name ||
 				!formValue.emergencyContact.phone ||
@@ -405,11 +389,11 @@
 			showFormError.participantAddress.postcode = false;
 
 			scrollNext();
-			activeSlide = 'identity';
+			activeSlideIndex = 5;
 			return;
 		}
 
-		if (activeSlide === 'identity') {
+		if (activeSlideIndex === 5) {
 			if (
 				!formValue.identity1.length ||
 				!formValue.ethnicity.length ||
@@ -428,11 +412,11 @@
 			showFormError.ethnicity = false;
 
 			scrollNext();
-			activeSlide = 'medical-details';
+			activeSlideIndex = 6;
 			return;
 		}
 
-		if (activeSlide === 'medical-details') {
+		if (activeSlideIndex === 6) {
 			if (!formValue.lifeSavingMedication.length) {
 				showFormError.slide = true;
 				showFormError.lifeSavingMedication = true;
@@ -440,55 +424,61 @@
 			}
 			showFormError.lifeSavingMedication = false;
 			scrollNext();
-			activeSlide = 'programmes-of-interest';
+			activeSlideIndex = 7;
 			return;
 		}
 
-		if (activeSlide === 'programmes-of-interest') {
-			if (!validateCheckboxGroup(programmesOfInterest)) {
-				showSlideError = true;
-				showProgrammesOfInterestError = true;
+		if (activeSlideIndex === 7) {
+			if (!validateCheckboxGroup(formValue.programmesOfInterest)) {
+				showFormError.slideError = true;
+				showFormError.programmesOfInterest = true;
 				return;
 			}
-			showProgrammesOfInterestError = false;
+			showFormError.programmesOfInterest = false;
 			scrollNext();
-			activeSlide = 'referrals';
+			activeSlideIndex = 8;
 			return;
 		}
 
-		if (activeSlide === 'referrals') {
+		if (activeSlideIndex === 8) {
 			scrollNext();
-			activeSlide = 'newsletter-and-permissions';
+			activeSlideIndex = 9;
 			return;
 		}
 
-		if (activeSlide === 'newsletter-and-permissions') {
+		if (activeSlideIndex === 9) {
 			if (
-				!validateRadioGroup(imagePermission) ||
-				!validateRadioGroup(newsletterPermission) ||
-				!validateRadioGroup(textUpdatePermission)
+				!validateRadioGroup(formValue.imagePermission) ||
+				!validateRadioGroup(formValue.newsletterPermission) ||
+				!validateRadioGroup(formValue.textUpdatePermission)
 			) {
-				showSlideError = true;
+				showFormError.slideError = true;
 
-				if (!validateRadioGroup(imagePermission)) showImagePermissionError = true;
-				if (!validateRadioGroup(newsletterPermission)) showNewsletterPermissionError = true;
-				if (!validateRadioGroup(textUpdatePermission)) showTextUpdatePermissionError = true;
+				if (!validateRadioGroup(formValue.imagePermission)) showFormError.imagePermission = true;
+				if (!validateRadioGroup(formValue.newsletterPermission))
+					showFormError.newsletterPermission = true;
+				if (!validateRadioGroup(formValue.textUpdatePermission))
+					showFormError.textUpdatePermission = true;
 
 				return;
 			}
-			showImagePermissionError = false;
+
+			showFormError.imagePermission = false;
+			showFormError.newsletterPermission = false;
+			showFormError.textUpdatePermission = false;
+
 			scrollNext();
-			activeSlide = 'referral-sources';
+			activeSlideIndex = 10;
 			return;
 		}
 
-		if (activeSlide === 'referral-sources') {
-			if (!validateCheckboxGroup(referralSources)) {
-				showSlideError = true;
-				showReferralSourcesError = true;
+		if (activeSlideIndex === 10) {
+			if (!validateCheckboxGroup(formValue.referralSources)) {
+				showFormError.slideError = true;
+				showFormError.referralSources = true;
 				return;
 			}
-			showReferralSourcesError = false;
+			showFormError.referralSources = false;
 			scrollNext();
 			return;
 		}
@@ -497,12 +487,15 @@
 	}
 
 	function onSelect() {
-		const activeIndex = emblaCtx.selectedIndex;
-		console.log('activeIndex:', activeIndex);
+		activeSlideIndex = emblaCtx.selectedIndex;
 	}
 
 	$effect(() => {
-		emblaCtx.api?.on('select', onSelect);
+		if (!emblaCtx.api) {
+			return;
+		}
+
+		emblaCtx.api.on('select', onSelect);
 	});
 </script>
 
@@ -537,17 +530,14 @@
 				</Card.Header>
 
 				<Card.Content class="mt-10 grow px-10">
-					<h1 class="text-bc-amber/70 font-display mt-8 text-2xl font-bold">Programme Sign Up</h1>
+					<h1 class="text-bc-amber/70 font-display mt-8 text-2xl font-bold">
+						{slideContent.intro.title}
+					</h1>
 					<h2 class="font-display text-bc-logo-black mt-4 text-4xl font-bold">
-						Welcome to The Birch Collective!
+						{slideContent.intro.subtitle}
 					</h2>
 
-					<p class="mt-10 leading-relaxed">
-						The following questions help us get to know a bit about you. We need to take some really
-						basic info from you, such as your contact details. This means we can get in touch with
-						you so we can discuss getting started - so please double-check the details you're giving
-						us are correct!
-					</p>
+					<p class="mt-10 leading-relaxed">{slideContent.intro.text}</p>
 				</Card.Content>
 			</Card.Content>
 		</Card.Root>
@@ -559,7 +549,7 @@
 				<Card.Header class="flex justify-between px-10">
 					<div>
 						<h2 class="font-display text-bc-logo-black mt-12 text-4xl font-bold">
-							Confidentiality
+							{slideContent.confidentiality.title}
 						</h2>
 					</div>
 				</Card.Header>
@@ -567,34 +557,19 @@
 				<Card.Content class="mt-12 grow overflow-y-auto px-10">
 					<p class="">
 						<span>
-							First up, we need you to read and understand our confidentiality statement:
+							{slideContent.confidentiality.confidentiality.intro}
 						</span>
 					</p>
 					<p class="border-my-grey-3 bg-my-grey-3/10 mt-6 rounded-md border p-8">
-						Anything you talk about with one of our team is kept totally private within Birch. We
-						won't share what you tell us with anyone else. But if there was an extreme situation,
-						like if you or someone else was at risk of being seriously hurt, then we would need to
-						break confidentiality to keep you safe. If this happened we would discuss it with you
-						first and do our best to make sure you were involved in any decisions that have to be
-						made. We know this can be scary and you might not want us to share anything, but we will
-						support you through the whole thing.
+						{slideContent.confidentiality.confidentiality.text}
 					</p>
 
-					<p class="mt-10">We also need you to read our GDPR statement:</p>
+					<p class="mt-10">
+						{slideContent.confidentiality.gdpr.intro}
+					</p>
 					<p class="border-my-grey-3 bg-my-grey-3/10 mt-6 rounded-md border p-8">
 						<span>
-							By signing this form, you are giving us permission to contact you about opportunities
-							and events from the Birch Collective. In order to comply with the General Data
-							Protection Regulation, The Birch Collective is seeking your consent to hold your
-							information on our database. We are required by our funders to gather information
-							about the people who use our services. We will not share your information with third
-							parties other than those you have agreed to. We use and store any information that you
-							give us in accordance with the Data Protection Act 2003. Information you provide will
-							be anonymised before being used in monitoring and evaluation reports for our current
-							funders, to support funding applications. Your data will be held for a maximum of 2
-							years after your last engagement. For further details on our data protection and
-							information sharing policies or for any queries about the data we hold, please get in
-							touch:
+							{slideContent.confidentiality.gdpr.text}
 						</span>
 						<span class="mt-4 flex flex-col gap-2">
 							<span class="flex items-center gap-2">
@@ -865,11 +840,11 @@
 		</Question>
 	</CarouselItem>
 
-	<CarouselItem title="Programme interest" showError={showSlideError}>
+	<CarouselItem title="Programme interest" showError={showFormError.slideError}>
 		<Question
 			title="Which programmes are you interested in and would like some more information about?"
 			required="Tick all that apply to you. Pick at least one."
-			bind:showError={showProgrammesOfInterestError}
+			bind:showError={showFormError.programmesOfInterest}
 			errorText="Please select at least one option"
 		>
 			<CheckboxGroup
@@ -885,10 +860,10 @@
 					{ value: 'therapeutic-forest-school', label: 'Therapeutic Forest School' }
 				]}
 				onCheckedChange={() => {
-					showProgrammesOfInterestError = false;
-					showSlideError = false;
+					showFormError.programmesOfInterest = false;
+					showFormError.slideError = false;
 				}}
-				bind:group={programmesOfInterest}
+				bind:group={formValue.programmesOfInterest}
 				idPrefix={formId.programmesOfInterest}
 			/>
 		</Question>
@@ -898,31 +873,31 @@
 		<Question
 			title="What do you hope to get out of going to The Birch Collective's sessions or programmes?"
 		>
-			<Textarea bind:value={hopeToGet} />
+			<Textarea bind:value={formValue.hopeToGet} />
 		</Question>
 	</CarouselItem>
 
-	<CarouselItem title="Referrals" showError={showSlideError}>
+	<CarouselItem title="Referrals" showError={showFormError.slideError}>
 		<Question
 			title="If you're a professional referring a client, is there any additional information you think is important to share about your client?"
 		>
-			<Textarea bind:value={referralComment} />
+			<Textarea bind:value={formValue.referralComment} />
 		</Question>
 	</CarouselItem>
 
-	<CarouselItem title="Newsletter & Permissions" showError={showSlideError}>
+	<CarouselItem title="Newsletter & Permissions" showError={showFormError.slideError}>
 		<Question
 			title="Do you give The Birch Collective permission to take photographs or videos of you with the intention to use in publicity materials?"
 			subtext="They'll be used in e.g. social media sites, website, reporting to funders, newspapers and magazine articles. Images will not be given to third parties."
 			required="Please select a response"
-			bind:showError={showImagePermissionError}
+			bind:showError={showFormError.imagePermission}
 			errorText="Please select a response"
 		>
 			<RadioGroup.Root
-				bind:value={imagePermission}
+				bind:value={formValue.imagePermission}
 				onValueChange={() => {
-					showImagePermissionError = false;
-					showSlideError = false;
+					showFormError.imagePermission = false;
+					showFormError.slideError = false;
 				}}
 			>
 				<RadioGroupItem value="yes" id={formId.imagePermission + 'yes'} labelText="Yes" />
@@ -936,14 +911,14 @@
 			title="Would you like to be added to the Birch Collectives monthly newsletter?"
 			subtext="We'll inform you about new programmes and services we're running."
 			required="Please select a response"
-			bind:showError={showNewsletterPermissionError}
+			bind:showError={showFormError.newsletterPermission}
 			errorText="Please select a response"
 		>
 			<RadioGroup.Root
-				bind:value={newsletterPermission}
+				bind:value={formValue.newsletterPermission}
 				onValueChange={() => {
-					showNewsletterPermissionError = false;
-					showSlideError = false;
+					showFormError.newsletterPermission = false;
+					showFormError.slideError = false;
 				}}
 			>
 				<RadioGroupItem value="yes" id={formId.newsletterPermission + 'yes'} labelText="Yes" />
@@ -957,14 +932,14 @@
 			title="Would you like to be added to a weekly text update/reminder telling you what's going on at Fresh Air Thursday?"
 			subtext="You can be removed at anytime by simply replying STOP."
 			required="Please select a response"
-			bind:showError={showTextUpdatePermissionError}
+			bind:showError={showFormError.textUpdatePermission}
 			errorText="Please select a response"
 		>
 			<RadioGroup.Root
-				bind:value={textUpdatePermission}
+				bind:value={formValue.textUpdatePermission}
 				onValueChange={() => {
-					showTextUpdatePermissionError = false;
-					showSlideError = false;
+					showFormError.textUpdatePermission = false;
+					showFormError.slideError = false;
 				}}
 			>
 				<RadioGroupItem value="yes" id={formId.textUpdatePermission + 'yes'} labelText="Yes" />
@@ -973,11 +948,11 @@
 		</Question>
 	</CarouselItem>
 
-	<CarouselItem title="How did you find out about us?" showError={showSlideError}>
+	<CarouselItem title="How did you find out about us?" showError={showFormError.slideError}>
 		<Question
 			title="How did you hear about the Birch Collective?"
 			required="Tick all that apply to you"
-			bind:showError={showReferralSourcesError}
+			bind:showError={showFormError.referralSources}
 			errorText="Please select at least one response"
 		>
 			<CheckboxGroup
@@ -992,10 +967,10 @@
 					{ value: 'other', label: 'Other' }
 				]}
 				onCheckedChange={() => {
-					showReferralSourcesError = false;
-					showSlideError = false;
+					showFormError.referralSources = false;
+					showFormError.slideError = false;
 				}}
-				bind:group={referralSources}
+				bind:group={formValue.referralSources}
 				idPrefix={formId.referralSource}
 			/>
 		</Question>
