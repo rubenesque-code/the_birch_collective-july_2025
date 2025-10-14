@@ -9,7 +9,7 @@
 		PUBLIC_BIRCH_GDPR_CONTACT_PHONE
 	} from '$env/static/public';
 
-	import { isValidEmail, isValidUkPhoneNumber } from '^helpers';
+	import { isValidEmail, isValidUkPhoneNumber, strToLowercaseHyphenated } from '^helpers';
 
 	import image from '^assets/image';
 
@@ -24,187 +24,8 @@
 		Textarea,
 		TextInput
 	} from './elements';
-	import NextButton from './next-button.svelte';
-
-	const formId = {
-		intro: 'intro',
-		newsletterPermission: 'sign-up-form-newsletter-permission',
-		imagePermission: 'sign-up-form-image-permission',
-		textUpdatePermission: 'sign-up-form-text-permission',
-		referralSource: 'sign-up-form-referral-source',
-		programmesOfInterest: 'programmes-of-interest',
-		referralComment: 'referral-comment',
-		participantAddress: 'participant-address',
-		participantDetails: 'participant-details',
-		emergencyContact: 'emergency-contact',
-		identity: 'identity',
-		medical: 'medical'
-	};
-
-	const slideContent = {
-		intro: {
-			title: 'Programme Sign Up',
-			subtitle: 'Welcome to The Birch Collective!',
-			text: "The following questions help us get to know a bit about you. We need to take some really basic info from you, such as your contact details. This means we can get in touch with you so we can discuss getting started - so please double-check the details you're giving us are correct!"
-		},
-
-		confidentiality: {
-			title: 'Confidentiality',
-
-			confidentiality: {
-				intro: 'First up, we need you to read and understand our confidentiality statement:',
-				text: "Anything you talk about with one of our team is kept totally private within Birch. We won't share what you tell us with anyone else. But if there was an extreme situation, like if you or someone else was at risk of being seriously hurt, then we would need to break confidentiality to keep you safe. If this happened we would discuss it with you first and do our best to make sure you were involved in any decisions that have to be made. We know this can be scary and you might not want us to share anything, but we will support you through the whole thing."
-			},
-
-			gdpr: {
-				intro: 'We also need you to read our GDPR statement:',
-				text: 'By signing this form, you are giving us permission to contact you about opportunities and events from the Birch Collective. In order to comply with the General Data Protection Regulation, The Birch Collective is seeking your consent to hold your information on our database. We are required by our funders to gather information about the people who use our services. We will not share your information with third parties other than those you have agreed to. We use and store any information that you give us in accordance with the Data Protection Act 2003. Information you provide will be anonymised before being used in monitoring and evaluation reports for our current funders, to support funding applications. Your data will be held for a maximum of 2 years after your last engagement. For further details on our data protection and information sharing policies or for any queries about the data we hold, please get in touch:'
-			}
-		},
-
-		participantDetails: {
-			title: 'Your Details',
-			question: {
-				details: {
-					title: 'Your Details',
-					id: 'participant-details',
-					parts: {
-						name: {
-							label: 'Full name',
-							required: true
-						},
-						dob: {
-							label: 'Date of birth',
-							required: false
-						},
-						email: {
-							label: 'Email address',
-							required: true
-						},
-						phone: {
-							label: 'Phone number',
-							required: true
-						}
-					}
-				}
-			}
-		},
-
-		participantAddress: {
-			title: 'Your Address',
-			question: {
-				address: {
-					title: 'Your Address',
-					id: 'your-address',
-					parts: {
-						line1: {
-							label: 'Address line 1',
-							required: true
-						},
-						line2: {
-							label: 'Address line 2',
-							required: false
-						},
-						townOrCity: {
-							label: 'Town/City',
-							required: true
-						},
-						postcode: {
-							label: 'Postcode',
-							required: true
-						}
-					}
-				}
-			}
-		},
-
-		emergencyContactDetails: {
-			title: 'Emergency Contact',
-			question: {
-				emergencyContact: {
-					title: 'Emergency Contact Details',
-					id: 'emergency-contact-details',
-					parts: {
-						name: {
-							label: 'name',
-							required: 'Please enter a response'
-						},
-						phone: {
-							label: 'phone number',
-							required: 'Please enter a response'
-						},
-						relationship: {
-							label: 'relationship',
-							required: 'Please enter a response'
-						}
-					}
-				}
-			}
-		},
-
-		identity: {
-			title: 'Identity',
-			question: {
-				identity1: {
-					title: 'Do you identify as any of the following?',
-					required: 'Tick all that apply to you. Pick at least one.',
-					errorText: 'Please select at least one option',
-					id: 'identity-1',
-					options: [
-						'Working class',
-						'Someone with a disability',
-						'Male or male identifying',
-						'Care experienced',
-						'LGBTQ+',
-						'English as a second language',
-						'Black or a person of colour',
-						'Unemployed or not in education or training',
-						'None of the above'
-					]
-				},
-				ethnicity: {
-					title: 'Your ethnicity',
-					required: 'Please enter a response',
-					errorText: 'Please enter a response',
-					id: 'ethnicity'
-				},
-				identity2: {
-					title: 'Do you identify as any of the following?',
-					required: 'Tick all that apply to you. Pick at least one.',
-					errorText: 'Please select at least one option',
-					id: 'identity-2',
-					options: [
-						'girl/woman/female',
-						'boy/man/male',
-						'non-binary',
-						'queer',
-						'other',
-						'prefer not to say'
-					]
-				}
-			}
-		},
-
-		medicalDetails: {
-			title: 'Medical Details',
-			question: {
-				healthIssues: {
-					title:
-						'Do you consider yourself to have any physical health issues or medical conditions, e.g ASD, Asthma or allergies?',
-					subtext: 'If yes, please provide us with some detail.',
-					required: 'Response optional',
-					id: 'health-issues'
-				},
-				lifeSavingMedication: {
-					title:
-						'Do you require any regular life saving medication, e.g inhalers, epipen or other?',
-					required: "If yes, please provide us with some detail. If no, please type 'no'.",
-					errorText: 'Please enter a response',
-					id: 'life-saving-medication'
-				}
-			}
-		}
-	};
+	import { slides } from '^content/sign-up-form';
+	import { signUpFormId } from '^constants';
 </script>
 
 <script lang="ts">
@@ -297,19 +118,15 @@
 		return Boolean(value.length);
 	}
 
-	function scrollNext() {
-		emblaCtx.scrollNext();
-	}
-
 	function handleNext() {
 		if (activeSlideIndex === 0) {
-			scrollNext();
+			emblaCtx.scrollNext();
 			activeSlideIndex = 1;
 			return;
 		}
 
 		if (activeSlideIndex === 1) {
-			scrollNext();
+			emblaCtx.scrollNext();
 			activeSlideIndex = 2;
 			return;
 		}
@@ -338,7 +155,7 @@
 			showFormError.participantDetails.email = false;
 			showFormError.participantDetails.phone = false;
 
-			scrollNext();
+			emblaCtx.scrollNext();
 			activeSlideIndex = 3;
 			return;
 		}
@@ -363,7 +180,7 @@
 			showFormError.participantAddress.townOrCity = false;
 			showFormError.participantAddress.postcode = false;
 
-			scrollNext();
+			emblaCtx.scrollNext();
 			activeSlideIndex = 4;
 			return;
 		}
@@ -388,7 +205,7 @@
 			showFormError.participantAddress.townOrCity = false;
 			showFormError.participantAddress.postcode = false;
 
-			scrollNext();
+			emblaCtx.scrollNext();
 			activeSlideIndex = 5;
 			return;
 		}
@@ -411,7 +228,7 @@
 			showFormError.identity1 = false;
 			showFormError.ethnicity = false;
 
-			scrollNext();
+			emblaCtx.scrollNext();
 			activeSlideIndex = 6;
 			return;
 		}
@@ -423,7 +240,7 @@
 				return;
 			}
 			showFormError.lifeSavingMedication = false;
-			scrollNext();
+			emblaCtx.scrollNext();
 			activeSlideIndex = 7;
 			return;
 		}
@@ -435,13 +252,13 @@
 				return;
 			}
 			showFormError.programmesOfInterest = false;
-			scrollNext();
+			emblaCtx.scrollNext();
 			activeSlideIndex = 8;
 			return;
 		}
 
 		if (activeSlideIndex === 8) {
-			scrollNext();
+			emblaCtx.scrollNext();
 			activeSlideIndex = 9;
 			return;
 		}
@@ -467,7 +284,7 @@
 			showFormError.newsletterPermission = false;
 			showFormError.textUpdatePermission = false;
 
-			scrollNext();
+			emblaCtx.scrollNext();
 			activeSlideIndex = 10;
 			return;
 		}
@@ -479,7 +296,7 @@
 				return;
 			}
 			showFormError.referralSources = false;
-			scrollNext();
+			emblaCtx.scrollNext();
 			return;
 		}
 
@@ -512,7 +329,45 @@
 </div>
 
 <Carousel.Content hiddenParentClass="flex flex-col h-full relative" class=" ml-0 h-full w-full">
-	<Carousel.Item class="flex h-full basis-full flex-col pl-0" id={formId.intro}>
+	<Carousel.Item class="flex h-full basis-full flex-col pl-0">
+		<Card.Root class="ml-0 flex h-full grow flex-col border-none shadow-none">
+			<Card.Content class="flex h-full grow flex-col p-0 text-lg leading-relaxed">
+				<Card.Header class="flex justify-between px-10">
+					<div class="flex shrink-0 -translate-x-[10px]">
+						<div class="translate-x-[10px] translate-y-[21px]">
+							<enhanced:img class="w-[68px]" src={image.birch.logo.img_only} alt="" />
+						</div>
+
+						<a class="font-display relative flex flex-col text-4xl font-bold" href="/">
+							<span class="translate-x-[20px]">The</span>
+							<span class="translate-x-[40px] translate-y-[-10px] text-[66px]">Birch</span>
+							<span class="translate-x-[0px] translate-y-[-20px]">Collective</span>
+						</a>
+					</div>
+				</Card.Header>
+
+				<Card.Content class="mt-16 grow px-10">
+					<p class="font-display text-bc-amber mt-4 text-center text-4xl font-bold">
+						Thanks for taking the time to complete our sign-up form.
+					</p>
+					<div class="flex flex-col items-center">
+						<p class="mt-8">To finish, click submit at the bottom of the page</p>
+					</div>
+
+					<div
+						class="text-bc-logo-black/70 bg-my-grey-3/10 border-my-grey-2 mt-24 flex flex-col rounded-lg border p-4"
+					>
+						<h3 class="font-medium">What happens next?</h3>
+						<p class="mt-2 leading-relaxed">
+							One of the Birch team will be in touch with you shortly about the next steps in
+							joining our programmes.
+						</p>
+					</div>
+				</Card.Content>
+			</Card.Content>
+		</Card.Root>
+	</Carousel.Item>
+	<Carousel.Item class="flex h-full basis-full flex-col pl-0" id={signUpFormId.intro}>
 		<Card.Root class="ml-0 flex h-full grow flex-col border-none shadow-none">
 			<Card.Content class="flex h-full grow flex-col p-0 text-lg leading-relaxed">
 				<Card.Header class="flex justify-between px-10">
@@ -531,13 +386,13 @@
 
 				<Card.Content class="mt-10 grow px-10">
 					<h1 class="text-bc-amber/70 font-display mt-8 text-2xl font-bold">
-						{slideContent.intro.title}
+						{slides.intro.title}
 					</h1>
 					<h2 class="font-display text-bc-logo-black mt-4 text-4xl font-bold">
-						{slideContent.intro.subtitle}
+						{slides.intro.subtitle}
 					</h2>
 
-					<p class="mt-10 leading-relaxed">{slideContent.intro.text}</p>
+					<p class="mt-10 leading-relaxed">{slides.intro.text}</p>
 				</Card.Content>
 			</Card.Content>
 		</Card.Root>
@@ -549,7 +404,7 @@
 				<Card.Header class="flex justify-between px-10">
 					<div>
 						<h2 class="font-display text-bc-logo-black mt-12 text-4xl font-bold">
-							{slideContent.confidentiality.title}
+							{slides.confidentiality.title}
 						</h2>
 					</div>
 				</Card.Header>
@@ -557,19 +412,19 @@
 				<Card.Content class="mt-12 grow overflow-y-auto px-10">
 					<p class="">
 						<span>
-							{slideContent.confidentiality.confidentiality.intro}
+							{slides.confidentiality.confidentiality.intro}
 						</span>
 					</p>
 					<p class="border-my-grey-3 bg-my-grey-3/10 mt-6 rounded-md border p-8">
-						{slideContent.confidentiality.confidentiality.text}
+						{slides.confidentiality.confidentiality.text}
 					</p>
 
 					<p class="mt-10">
-						{slideContent.confidentiality.gdpr.intro}
+						{slides.confidentiality.gdpr.intro}
 					</p>
 					<p class="border-my-grey-3 bg-my-grey-3/10 mt-6 rounded-md border p-8">
 						<span>
-							{slideContent.confidentiality.gdpr.text}
+							{slides.confidentiality.gdpr.text}
 						</span>
 						<span class="mt-4 flex flex-col gap-2">
 							<span class="flex items-center gap-2">
@@ -597,14 +452,14 @@
 		</Card.Root>
 	</Carousel.Item>
 
-	<CarouselItem title={slideContent.participantDetails.title} showError={showFormError.slide}>
-		<Question title={slideContent.participantDetails.question.details.title} required={false}>
+	<CarouselItem title={slides.participantDetails.title} showError={showFormError.slide}>
+		<Question title={slides.participantDetails.question.details.title} required={false}>
 			<div class="flex flex-col gap-8">
 				<TextInput
-					label={slideContent.participantDetails.question.details.parts.name.label}
+					label={slides.participantDetails.question.details.parts.name.label}
 					placeholder="Enter here"
 					bind:value={formValue.participantDetails.name}
-					id={formId.participantDetails + 'name'}
+					id={signUpFormId.participantDetails + 'name'}
 					showError={showFormError.participantDetails.name}
 					errorText="Please enter your full name"
 					onkeyup={() => {
@@ -615,8 +470,8 @@
 
 				<div>
 					<div class="mb-2 flex items-center gap-6">
-						<Label class="text-black/50" for={formId.participantDetails + 'dob'}
-							>{slideContent.participantDetails.question.details.parts.dob.label}</Label
+						<Label class="text-black/50" for={signUpFormId.participantDetails + 'dob'}
+							>{slides.participantDetails.question.details.parts.dob.label}</Label
 						>
 					</div>
 
@@ -639,10 +494,10 @@
 				</div>
 
 				<TextInput
-					label={slideContent.participantDetails.question.details.parts.email.label}
+					label={slides.participantDetails.question.details.parts.email.label}
 					placeholder="Enter here"
 					bind:value={formValue.participantDetails.email}
-					id={formId.participantDetails + 'email'}
+					id={signUpFormId.participantDetails + 'email'}
 					showError={showFormError.participantDetails.email}
 					errorText="Please enter a valid email"
 					onkeyup={() => {
@@ -652,9 +507,9 @@
 				/>
 
 				<TextInput
-					label={slideContent.participantDetails.question.details.parts.phone.label}
+					label={slides.participantDetails.question.details.parts.phone.label}
 					bind:value={formValue.participantDetails.phone}
-					id={formId.participantDetails + 'phone'}
+					id={signUpFormId.participantDetails + 'phone'}
 					showError={showFormError.participantDetails.phone}
 					errorText="Please enter a valid UK phone number"
 					inputmode="tel"
@@ -669,14 +524,14 @@
 		</Question>
 	</CarouselItem>
 
-	<CarouselItem title={slideContent.participantAddress.title} showError={showFormError.slide}>
-		<Question title={slideContent.participantAddress.question.address.title} required={false}>
+	<CarouselItem title={slides.participantAddress.title} showError={showFormError.slide}>
+		<Question title={slides.participantAddress.question.address.title} required={false}>
 			<div class="flex flex-col gap-8">
 				<TextInput
-					label={slideContent.participantAddress.question.address.parts.line1.label}
+					label={slides.participantAddress.question.address.parts.line1.label}
 					placeholder="Enter here"
 					bind:value={formValue.participantAddress.line1}
-					id={formId.participantAddress + 'line1'}
+					id={signUpFormId.participantAddress + 'line1'}
 					showError={showFormError.participantAddress.line1}
 					errorText="Please enter a response"
 					onkeyup={() => {
@@ -686,18 +541,18 @@
 				/>
 
 				<TextInput
-					label={slideContent.participantAddress.question.address.parts.line2.label}
+					label={slides.participantAddress.question.address.parts.line2.label}
 					placeholder="Enter here"
 					bind:value={formValue.participantAddress.line2}
-					id={formId.participantAddress + 'line2'}
+					id={signUpFormId.participantAddress + 'line2'}
 					required="optional"
 				/>
 
 				<TextInput
-					label={slideContent.participantAddress.question.address.parts.townOrCity.label}
+					label={slides.participantAddress.question.address.parts.townOrCity.label}
 					placeholder="Enter here"
 					bind:value={formValue.participantAddress.townOrCity}
-					id={formId.participantAddress + 'town-or-city'}
+					id={signUpFormId.participantAddress + 'town-or-city'}
 					showError={showFormError.participantAddress.townOrCity}
 					errorText="Please enter a response"
 					onkeyup={() => {
@@ -707,10 +562,10 @@
 				/>
 
 				<TextInput
-					label={slideContent.participantAddress.question.address.parts.postcode.label}
+					label={slides.participantAddress.question.address.parts.postcode.label}
 					placeholder="Enter here"
 					bind:value={formValue.participantAddress.postcode}
-					id={formId.participantAddress + 'postcode'}
+					id={signUpFormId.participantAddress + 'postcode'}
 					showError={showFormError.participantAddress.postcode}
 					errorText="Please enter a response"
 					onkeyup={() => {
@@ -722,9 +577,9 @@
 		</Question>
 	</CarouselItem>
 
-	<CarouselItem title={slideContent.emergencyContactDetails.title} showError={showFormError.slide}>
+	<CarouselItem title={slides.emergencyContactDetails.title} showError={showFormError.slide}>
 		<Question
-			title={slideContent.emergencyContactDetails.question.emergencyContact.title}
+			title={slides.emergencyContactDetails.question.emergencyContact.title}
 			required={false}
 		>
 			<div class="flex flex-col gap-8">
@@ -732,7 +587,7 @@
 					label="Name"
 					placeholder="Enter here"
 					bind:value={formValue.emergencyContact.name}
-					id={formId.emergencyContact + 'name'}
+					id={signUpFormId.emergencyContact + 'name'}
 					showError={showFormError.emergencyContact.name}
 					errorText="Please enter a response"
 					onkeyup={() => {
@@ -746,7 +601,7 @@
 					inputmode="tel"
 					placeholder="e.g. +44 7123 456789"
 					bind:value={formValue.emergencyContact.phone}
-					id={formId.emergencyContact + 'phone'}
+					id={signUpFormId.emergencyContact + 'phone'}
 					showError={showFormError.emergencyContact.phoneNumber}
 					type="tel"
 					errorText="Please enter a response"
@@ -760,7 +615,7 @@
 					label="Relationship"
 					placeholder="e.g. mother, friend"
 					bind:value={formValue.emergencyContact.relationship}
-					id={formId.emergencyContact + 'relationship'}
+					id={signUpFormId.emergencyContact + 'relationship'}
 					showError={showFormError.emergencyContact.relationship}
 					errorText="Please enter a response"
 					onkeyup={() => {
@@ -772,19 +627,16 @@
 		</Question>
 	</CarouselItem>
 
-	<CarouselItem title={slideContent.identity.title} showError={showFormError.slide}>
+	<CarouselItem title={slides.identity.title} showError={showFormError.slide}>
 		<Question
-			title={slideContent.identity.question.identity1.title}
-			required={slideContent.identity.question.identity1.required}
+			title={slides.identity.question.identity1.title}
+			required={slides.identity.question.identity1.required}
 			showError={showFormError.identity1}
-			errorText={slideContent.identity.question.identity1.errorText}
+			errorText={slides.identity.question.identity1.errorText}
 		>
 			<CheckboxGroup
-				options={slideContent.identity.question.identity1.options.map((option) => ({
-					value: option
-						.toLowerCase()
-						.replace(/\s+/g, '-')
-						.replace(/[^\w+-]+/g, ''),
+				options={slides.identity.question.identity1.options.map((option) => ({
+					value: strToLowercaseHyphenated(option),
 					label: option
 				}))}
 				onCheckedChange={() => {
@@ -792,19 +644,19 @@
 					showFormError.identity1 = false;
 				}}
 				bind:group={formValue.identity1}
-				idPrefix={formId.identity}
+				idPrefix={signUpFormId.identity}
 			/>
 		</Question>
 
 		<div class="border-bc-amber/30 border-b-2"></div>
 
 		<Question
-			title={slideContent.identity.question.ethnicity.title}
-			required={slideContent.identity.question.ethnicity.required}
+			title={slides.identity.question.ethnicity.title}
+			required={slides.identity.question.ethnicity.required}
 			showError={showFormError.ethnicity}
-			errorText={slideContent.medicalDetails.question.lifeSavingMedication.errorText}
+			errorText={slides.medicalDetails.question.lifeSavingMedication.errorText}
 		>
-			<TextInput
+			<Textarea
 				bind:value={formValue.lifeSavingMedication}
 				onkeyup={() => {
 					showFormError.slide = false;
@@ -812,12 +664,34 @@
 				}}
 			/>
 		</Question>
+
+		<div class="border-bc-amber/30 mt-4 border-b-2"></div>
+
+		<Question
+			title={slides.identity.question.identity2.title}
+			required={slides.identity.question.identity2.required}
+			showError={showFormError.identity1}
+			errorText={slides.identity.question.identity2.errorText}
+		>
+			<CheckboxGroup
+				options={slides.identity.question.identity2.options.map((option) => ({
+					value: strToLowercaseHyphenated(option),
+					label: option
+				}))}
+				onCheckedChange={() => {
+					showFormError.slide = false;
+					showFormError.identity2 = false;
+				}}
+				bind:group={formValue.identity2}
+				idPrefix={signUpFormId.identity}
+			/>
+		</Question>
 	</CarouselItem>
 
-	<CarouselItem title={slideContent.medicalDetails.title} showError={showFormError.slide}>
+	<CarouselItem title={slides.medicalDetails.title} showError={showFormError.slide}>
 		<Question
-			title={slideContent.medicalDetails.question.healthIssues.title}
-			required={slideContent.medicalDetails.question.healthIssues.required}
+			title={slides.medicalDetails.question.healthIssues.title}
+			required={slides.medicalDetails.question.healthIssues.required}
 		>
 			<Textarea bind:value={formValue.healthIssues} />
 		</Question>
@@ -825,10 +699,10 @@
 		<div class="border-bc-amber/30 border-b-2"></div>
 
 		<Question
-			title={slideContent.medicalDetails.question.lifeSavingMedication.title}
-			required={slideContent.medicalDetails.question.lifeSavingMedication.required}
+			title={slides.medicalDetails.question.lifeSavingMedication.title}
+			required={slides.medicalDetails.question.lifeSavingMedication.required}
 			showError={showFormError.lifeSavingMedication}
-			errorText={slideContent.medicalDetails.question.lifeSavingMedication.errorText}
+			errorText={slides.medicalDetails.question.lifeSavingMedication.errorText}
 		>
 			<Textarea
 				bind:value={formValue.lifeSavingMedication}
@@ -840,58 +714,47 @@
 		</Question>
 	</CarouselItem>
 
-	<CarouselItem title="Programme interest" showError={showFormError.slideError}>
+	<CarouselItem title={slides.programmeInterest.title} showError={showFormError.slideError}>
 		<Question
-			title="Which programmes are you interested in and would like some more information about?"
-			required="Tick all that apply to you. Pick at least one."
+			title={slides.programmeInterest.question.programmesOfInterest.title}
+			required={slides.programmeInterest.question.programmesOfInterest.required}
 			bind:showError={showFormError.programmesOfInterest}
-			errorText="Please select at least one option"
+			errorText={slides.programmeInterest.question.programmesOfInterest.errorText}
 		>
 			<CheckboxGroup
-				options={[
-					{ value: '1-1-nature-based-mentoring', label: '1:1 Nature-Based Mentoring' },
-					{ value: 'fresh-air-thursdays', label: 'Fresh Air Thursdays' },
-					{ value: 'recoupe-working-woods', label: 'Recoupe: Working Woods' },
-					{
-						value: 'seeding-change-plant-your-future',
-						label: 'Seeding Change: Plant Your Future'
-					},
-					{ value: 'steering-group-workshops', label: 'Steering Group Workshops' },
-					{ value: 'therapeutic-forest-school', label: 'Therapeutic Forest School' }
-				]}
+				options={slides.programmeInterest.question.programmesOfInterest.options.map((label) => ({
+					value: strToLowercaseHyphenated(label),
+					label
+				}))}
 				onCheckedChange={() => {
 					showFormError.programmesOfInterest = false;
 					showFormError.slideError = false;
 				}}
 				bind:group={formValue.programmesOfInterest}
-				idPrefix={formId.programmesOfInterest}
+				idPrefix={signUpFormId.programmesOfInterest}
 			/>
 		</Question>
 
 		<div class="border-bc-amber/30 border-b-2"></div>
 
-		<Question
-			title="What do you hope to get out of going to The Birch Collective's sessions or programmes?"
-		>
+		<Question title={slides.programmeInterest.question.hopeToGet.title}>
 			<Textarea bind:value={formValue.hopeToGet} />
 		</Question>
 	</CarouselItem>
 
-	<CarouselItem title="Referrals" showError={showFormError.slideError}>
-		<Question
-			title="If you're a professional referring a client, is there any additional information you think is important to share about your client?"
-		>
+	<CarouselItem title={slides.referrals.title} showError={showFormError.slideError}>
+		<Question title={slides.referrals.question.referralComment.title}>
 			<Textarea bind:value={formValue.referralComment} />
 		</Question>
 	</CarouselItem>
 
-	<CarouselItem title="Newsletter & Permissions" showError={showFormError.slideError}>
+	<CarouselItem title={slides.newsletterPermissions.title} showError={showFormError.slideError}>
 		<Question
-			title="Do you give The Birch Collective permission to take photographs or videos of you with the intention to use in publicity materials?"
-			subtext="They'll be used in e.g. social media sites, website, reporting to funders, newspapers and magazine articles. Images will not be given to third parties."
-			required="Please select a response"
+			title={slides.newsletterPermissions.question.imagePermission.title}
+			subtext={slides.newsletterPermissions.question.imagePermission.subtext}
+			required={slides.newsletterPermissions.question.imagePermission.required}
 			bind:showError={showFormError.imagePermission}
-			errorText="Please select a response"
+			errorText={slides.newsletterPermissions.question.imagePermission.errorText}
 		>
 			<RadioGroup.Root
 				bind:value={formValue.imagePermission}
@@ -900,19 +763,24 @@
 					showFormError.slideError = false;
 				}}
 			>
-				<RadioGroupItem value="yes" id={formId.imagePermission + 'yes'} labelText="Yes" />
-				<RadioGroupItem value="no" id={formId.imagePermission + 'no'} labelText="No" />
+				{#each slides.newsletterPermissions.question.imagePermission.options as option}
+					<RadioGroupItem
+						value={option}
+						id={signUpFormId.imagePermission + option}
+						labelText={option.charAt(0).toUpperCase() + option.slice(1)}
+					/>
+				{/each}
 			</RadioGroup.Root>
 		</Question>
 
 		<div class="border-bc-amber/30 border-b-2"></div>
 
 		<Question
-			title="Would you like to be added to the Birch Collectives monthly newsletter?"
-			subtext="We'll inform you about new programmes and services we're running."
-			required="Please select a response"
+			title={slides.newsletterPermissions.question.newsletterPermission.title}
+			subtext={slides.newsletterPermissions.question.newsletterPermission.subtext}
+			required={slides.newsletterPermissions.question.newsletterPermission.required}
 			bind:showError={showFormError.newsletterPermission}
-			errorText="Please select a response"
+			errorText={slides.newsletterPermissions.question.newsletterPermission.errorText}
 		>
 			<RadioGroup.Root
 				bind:value={formValue.newsletterPermission}
@@ -921,19 +789,24 @@
 					showFormError.slideError = false;
 				}}
 			>
-				<RadioGroupItem value="yes" id={formId.newsletterPermission + 'yes'} labelText="Yes" />
-				<RadioGroupItem value="no" id={formId.newsletterPermission + 'no'} labelText="No" />
+				{#each slides.newsletterPermissions.question.newsletterPermission.options as option}
+					<RadioGroupItem
+						value={option}
+						id={signUpFormId.newsletterPermission + option}
+						labelText={option.charAt(0).toUpperCase() + option.slice(1)}
+					/>
+				{/each}
 			</RadioGroup.Root>
 		</Question>
 
 		<div class="border-bc-amber/30 border-b-2"></div>
 
 		<Question
-			title="Would you like to be added to a weekly text update/reminder telling you what's going on at Fresh Air Thursday?"
-			subtext="You can be removed at anytime by simply replying STOP."
-			required="Please select a response"
+			title={slides.newsletterPermissions.question.textUpdatePermission.title}
+			subtext={slides.newsletterPermissions.question.textUpdatePermission.subtext}
+			required={slides.newsletterPermissions.question.textUpdatePermission.required}
 			bind:showError={showFormError.textUpdatePermission}
-			errorText="Please select a response"
+			errorText={slides.newsletterPermissions.question.textUpdatePermission.errorText}
 		>
 			<RadioGroup.Root
 				bind:value={formValue.textUpdatePermission}
@@ -942,36 +815,35 @@
 					showFormError.slideError = false;
 				}}
 			>
-				<RadioGroupItem value="yes" id={formId.textUpdatePermission + 'yes'} labelText="Yes" />
-				<RadioGroupItem value="no" id={formId.textUpdatePermission + 'no'} labelText="No" />
+				{#each slides.newsletterPermissions.question.textUpdatePermission.options as option}
+					<RadioGroupItem
+						value={option}
+						id={signUpFormId.textUpdatePermission + option}
+						labelText={option.charAt(0).toUpperCase() + option.slice(1)}
+					/>
+				{/each}
 			</RadioGroup.Root>
 		</Question>
 	</CarouselItem>
 
-	<CarouselItem title="How did you find out about us?" showError={showFormError.slideError}>
+	<CarouselItem title={slides.referralSources.title} showError={showFormError.slideError}>
 		<Question
-			title="How did you hear about the Birch Collective?"
-			required="Tick all that apply to you"
+			title={slides.referralSources.question.referralSources.title}
+			required={slides.referralSources.question.referralSources.required}
 			bind:showError={showFormError.referralSources}
-			errorText="Please select at least one response"
+			errorText={slides.referralSources.question.referralSources.errorText}
 		>
 			<CheckboxGroup
-				options={[
-					{ value: 'birch-social', label: 'The Birch Collective social media' },
-					{ value: 'other-social', label: 'Other social media' },
-					{ value: 'web-search', label: 'Web search' },
-					{ value: 'teacher', label: 'Teacher' },
-					{ value: 'gp', label: 'GP or other medical professional' },
-					{ value: 'friend', label: 'Friend' },
-					{ value: 'parent-carer', label: 'Parent or carer' },
-					{ value: 'other', label: 'Other' }
-				]}
+				options={slides.referralSources.question.referralSources.options.map((label) => ({
+					value: strToLowercaseHyphenated(label),
+					label
+				}))}
 				onCheckedChange={() => {
 					showFormError.referralSources = false;
 					showFormError.slideError = false;
 				}}
 				bind:group={formValue.referralSources}
-				idPrefix={formId.referralSource}
+				idPrefix={signUpFormId.referralSource}
 			/>
 		</Question>
 	</CarouselItem>
@@ -982,6 +854,10 @@
 		<Carousel.Previous
 			class="absolute top-1/2 -left-6 size-7 !-translate-x-full !-translate-y-1/2 translate-none !cursor-pointer "
 		/>
-		<NextButton handleGoNext={handleNext} />
+		<button
+			class="bg-bc-amber cursor-pointer rounded-xl px-4 py-2 text-lg font-medium text-white"
+			onclick={emblaCtx.scrollNext}
+			type="button">Next</button
+		>
 	</div>
 </div>

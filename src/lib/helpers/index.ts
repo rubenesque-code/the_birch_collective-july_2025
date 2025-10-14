@@ -28,4 +28,17 @@ function isValidUkPhoneNumber(phone: string): boolean {
 	return pattern.test(cleaned);
 }
 
-export { emailToEmailHref, toggleBodyScroll, isValidEmail, isValidUkPhoneNumber };
+function strToLowercaseHyphenated(str: string) {
+	return str
+		.toLowerCase()
+		.replace(/\s+/g, '-')
+		.replace(/[^\w+-]+/g, '');
+}
+
+export {
+	emailToEmailHref,
+	toggleBodyScroll,
+	isValidEmail,
+	isValidUkPhoneNumber,
+	strToLowercaseHyphenated
+};

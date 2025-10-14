@@ -6,7 +6,7 @@
 		"comments": false,
 		"strings": true
 	},
-	"workbench.statusBar.visible": false,
+	"workbench.statusBar.visible": true,
 	"workbench.editor.showTabs": "none",
 	"editor.snippetSuggestions": "top",
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
