@@ -1,10 +1,11 @@
 <script lang="ts" module>
 	import { DateFormatter, getLocalTimeZone, type DateValue } from '@internationalized/date';
-	import { SignOut } from 'phosphor-svelte';
+	import { Check, CheckSquare, SignOut } from 'phosphor-svelte';
 	import { elasticIn } from 'svelte/easing';
-	import { fade } from 'svelte/transition';
+	import { fade, scale } from 'svelte/transition';
 
 	import {
+		PUBLIC_BIRCH_EMAIL,
 		PUBLIC_BIRCH_GDPR_CONTACT_EMAIL,
 		PUBLIC_BIRCH_GDPR_CONTACT_PHONE
 	} from '$env/static/public';
@@ -19,8 +20,11 @@
 
 	import image from '^assets/image';
 
-	import { Card, Carousel, Label, RadioGroup } from '^components/ui';
+	import { signUpFormId } from '^constants';
+
+	import { Card, Carousel, Label, RadioGroup, Tooltip } from '^components/ui';
 	import { getEmblaContext } from '^components/ui/carousel/context';
+	import { slides } from '^content/sign-up-form';
 	import CarouselItem from './carousel-item.svelte';
 	import {
 		CheckboxGroup,
@@ -30,10 +34,7 @@
 		Textarea,
 		TextInput
 	} from './elements';
-	import { slides } from '^content/sign-up-form';
-	import { signUpFormId } from '^constants';
-
-	// TODO: notify birch employee on sign-up
+	import { toast } from 'svelte-sonner';
 </script>
 
 <script lang="ts">
@@ -306,47 +307,50 @@
 		}
 	}
 
+	let submitStatus: 'idle' | 'pending' | 'error' | 'success' = $state('idle');
+	$inspect('submitStatus', submitStatus);
+
 	async function handleSubmit() {
-		console.log('FORM DATA', formValue);
-
-		const {
-			participantDetails: { dob, ...restParticipantDetails },
-			participantAddress,
-			identity1,
-			identity2,
-			programmesOfInterest,
-			referralSources,
-			emergencyContact,
-			ethnicity,
-			healthIssues,
-			lifeSavingMedication,
-			hopeToGet,
-			newsletterPermission,
-			imagePermission,
-			textUpdatePermission
-		} = formValue;
-
-		const formatArr = new Intl.ListFormat('en', { style: 'long', type: 'conjunction' });
-
-		const dobFormatted = new DateFormatter('en-UK', {
-			dateStyle: 'long'
-		}).format(dob!.toDate(getLocalTimeZone()));
-		const addressFormatted = `${participantAddress.line1}, ${participantAddress.line2}, ${participantAddress.townOrCity}, ${participantAddress.postcode}`;
-		const identity1Formatted = formatArr.format(identity1.map(strHyphenatedToSpaced));
-		const identity2Formatted = formatArr.format(identity2.map(strHyphenatedToSpaced));
-		const programmesOfInterestFormatted = formatArr.format(
-			programmesOfInterest.map(strHyphenatedToSpaced)
-		);
-		const referralSourcesFormatted = formatArr.format(referralSources.map(strHyphenatedToSpaced));
-
 		try {
-			addSignUpToGoogleSheet({
+			submitStatus = 'pending';
+
+			const {
+				participantDetails,
+				participantAddress,
+				identity1,
+				identity2,
+				programmesOfInterest,
+				referralSources,
+				emergencyContact,
+				ethnicity,
+				healthIssues,
+				lifeSavingMedication,
+				hopeToGet,
+				newsletterPermission,
+				imagePermission,
+				textUpdatePermission
+			} = formValue;
+
+			const formatArr = new Intl.ListFormat('en', { style: 'long', type: 'conjunction' });
+
+			const dobFormatted = new DateFormatter('en-UK', {
+				dateStyle: 'long'
+			}).format(participantDetails.dob!.toDate(getLocalTimeZone()));
+			const addressFormatted = `${participantAddress.line1}, ${participantAddress.line2}, ${participantAddress.townOrCity}, ${participantAddress.postcode}`;
+			const identity1Formatted = formatArr.format(identity1.map(strHyphenatedToSpaced));
+			const identity2Formatted = formatArr.format(identity2.map(strHyphenatedToSpaced));
+			const programmesOfInterestFormatted = formatArr.format(
+				programmesOfInterest.map(strHyphenatedToSpaced)
+			);
+			const referralSourcesFormatted = formatArr.format(referralSources.map(strHyphenatedToSpaced));
+
+			await addSignUpToGoogleSheet({
 				programmeName: 'fresh air thursdays',
 				formValues: {
-					full_name: restParticipantDetails.name,
+					full_name: participantDetails.name,
 					date_of_birth: dobFormatted,
-					email: restParticipantDetails.email,
-					phone_number: restParticipantDetails.phone,
+					email: participantDetails.email,
+					phone_number: participantDetails.phone,
 					address: addressFormatted,
 					emergency_contact: `Name: ${emergencyContact.name} | Phone number: ${emergencyContact.phone} | Relationship: ${emergencyContact.relationship}`,
 					identities: identity1Formatted,
@@ -363,7 +367,14 @@
 					fresh_air_thursday_text_opt_in: textUpdatePermission
 				}
 			});
+
+			toast.success('Form sent');
 		} catch (error) {
+			submitStatus = 'error';
+			toast.error(
+				`Sign up form send error - contact ${PUBLIC_BIRCH_EMAIL} if the problem persists`
+			);
+
 			console.error(error);
 		}
 	}
@@ -372,28 +383,112 @@
 		activeSlideIndex = emblaCtx.selectedIndex;
 	}
 
+	let isSettled = $state(true);
+
 	$effect(() => {
 		if (!emblaCtx.api) {
 			return;
 		}
 
 		emblaCtx.api.on('select', onSelect);
+
+		emblaCtx.api.on('scroll', () => (isSettled = false));
+		emblaCtx.api.on('settle', () => (isSettled = true));
 	});
 </script>
 
 <div
-	class="bg-bc-logo-black/80 absolute top-8 right-10 z-50 flex items-center gap-2 rounded-full px-3 py-1 text-[15px]"
+	class="bg-bc-logo-black/80 absolute top-8 right-10 z-40 flex items-center gap-2 overflow-visible rounded-full px-3 py-1 text-[15px]"
 >
-	<button
-		class="cursor-pointer rounded-full border border-white p-[6px] text-white"
-		onclick={onClickClose}
-		type="button"
-	>
-		<SignOut weight="fill" />
-	</button>
+	<Tooltip.Provider>
+		<Tooltip.Root>
+			<Tooltip.Trigger>
+				<button
+					class="cursor-pointer rounded-full border border-white p-[6px] text-white"
+					onclick={onClickClose}
+					type="button"
+				>
+					<SignOut weight="fill" />
+				</button>
+			</Tooltip.Trigger>
+			<Tooltip.Content side="left">
+				<p class="text-base">Exit form</p>
+			</Tooltip.Content>
+		</Tooltip.Root>
+	</Tooltip.Provider>
 </div>
 
-<Carousel.Content hiddenParentClass="flex flex-col h-full relative" class=" ml-0 h-full w-full">
+{#if submitStatus !== 'idle'}
+	<div
+		class="absolute inset-0 z-30 grid place-items-center bg-white/90"
+		transition:scale={{ opacity: 0.9, start: 0.9 }}
+	>
+		<div class="max-w-[600px]">
+			{#if submitStatus === 'pending'}
+				<div class="flex items-center gap-3">
+					<svg
+						class="mr-3 -ml-1 size-5 animate-spin"
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						><circle
+							class="opacity-25"
+							cx="12"
+							cy="12"
+							r="10"
+							stroke="currentColor"
+							stroke-width="4"
+						></circle><path
+							class="opacity-75"
+							fill="currentColor"
+							d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+						></path></svg
+					>
+					<p class="text-lg">Sending...</p>
+				</div>
+			{:else if submitStatus === 'error'}
+				<div>
+					<p class="text-lg leading-relaxed">
+						Something went wrong sending the form. If the problem persists, please contact: <a
+							class="font-medium"
+							href={`mailto:${PUBLIC_BIRCH_EMAIL}`}
+							target="_blank">{PUBLIC_BIRCH_EMAIL}</a
+						>
+					</p>
+
+					<button
+						class="bg-bc-amber mt-6 cursor-pointer rounded-md border px-2 py-1 text-lg text-white"
+						onclick={() => {
+							submitStatus = 'pending';
+
+							setTimeout(() => {
+								handleSubmit();
+							}, 700);
+						}}
+						type="button">Try again</button
+					>
+				</div>
+			{:else}
+				<p class="flex items-center gap-2 text-lg leading-relaxed">
+					<span>Form received.</span>
+					<span class="text-2xl text-green-600">
+						<CheckSquare weight="fill" />
+					</span>
+				</p>
+				<p class="mt-2 text-lg leading-relaxed">
+					A member of the Birch team will contact you shortly.
+				</p>
+				<button
+					class="bg-bc-amber mt-4 cursor-pointer rounded-md border px-2 py-1 text-lg text-white"
+					onclick={onClickClose}
+					type="button">Exit</button
+				>
+			{/if}
+		</div>
+	</div>
+{/if}
+
+<Carousel.Content hiddenParentClass="flex flex-col h-full  relative" class=" ml-0 h-full w-full">
 	<Carousel.Item class="flex h-full basis-full flex-col pl-0" id={signUpFormId.intro}>
 		<Card.Root class="ml-0 flex h-full grow flex-col border-none shadow-none">
 			<Card.Content class="flex h-full grow flex-col p-0 text-lg leading-relaxed">
@@ -921,8 +1016,15 @@
 			class="absolute top-1/2 -left-6 size-7 !-translate-x-full !-translate-y-1/2 translate-none !cursor-pointer "
 		/>
 		<button
-			class="bg-bc-amber cursor-pointer rounded-xl px-4 py-2 text-lg font-medium text-white"
-			onclick={activeSlideIndex < 11 ? handleNext : handleSubmit}
+			class={`bg-bc-amber  rounded-xl px-4 py-2 text-lg font-medium text-white ${isSettled ? 'cursor-pointer' : 'cursor-auto opacity-70'}`}
+			onclick={() => {
+				if (!isSettled) {
+					return;
+				}
+
+				if (activeSlideIndex < 11) handleNext();
+				else handleSubmit();
+			}}
 			type="button"
 		>
 			{#if activeSlideIndex !== 11}

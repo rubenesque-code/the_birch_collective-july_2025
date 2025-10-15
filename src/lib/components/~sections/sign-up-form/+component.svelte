@@ -18,15 +18,15 @@
 
 	$effect(() => toggleBodyScroll({ triggerDisableOn: isOpen }));
 
+	function onkeydown(e: KeyboardEvent) {
+		if (e.key === 'Tab') {
+			e.preventDefault();
+		}
+	}
+
 	onMount(() => {
 		if (!browser) {
 			return;
-		}
-
-		function onkeydown(e: KeyboardEvent) {
-			if (e.key === 'Tab') {
-				e.preventDefault();
-			}
 		}
 
 		document.addEventListener('keydown', onkeydown);

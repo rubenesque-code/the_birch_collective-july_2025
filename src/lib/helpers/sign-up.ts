@@ -36,7 +36,7 @@ async function addSignUpToGoogleSheet(input: {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({
-				pageName: input.programmeName,
+				// pageName: input.programmeName,
 				sheetValues: {
 					entry_date: dateNow,
 					first_name: nameParts[0],
