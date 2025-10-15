@@ -35,6 +35,7 @@
 		TextInput
 	} from './elements';
 	import { toast } from 'svelte-sonner';
+	import { notifySignUp } from '^lib/services';
 </script>
 
 <script lang="ts">
@@ -368,6 +369,7 @@
 				}
 			});
 
+			submitStatus = 'success';
 			toast.success('Form sent');
 		} catch (error) {
 			submitStatus = 'error';
@@ -376,6 +378,10 @@
 			);
 
 			console.error(error);
+		}
+
+		if (submitStatus === 'success') {
+			await notifySignUp({ emails: [], subject: 'New sign up for Fresh Air Thursdays' });
 		}
 	}
 

@@ -51,3 +51,7 @@ CODE ADVANCEMENTS
 -----------------
 -use group with checkboxes
   - https://svelte.dev/tutorial/svelte/group-inputs
+
+JAMES
+-----
+- name and email for newsletter
