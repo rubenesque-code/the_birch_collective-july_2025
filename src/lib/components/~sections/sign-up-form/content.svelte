@@ -417,7 +417,7 @@
 					<SignOut weight="fill" />
 				</button>
 			</Tooltip.Trigger>
-			<Tooltip.Content side="left">
+			<Tooltip.Content class="z-[100] mr-2" side="left">
 				<p class="text-base">Exit form</p>
 			</Tooltip.Content>
 		</Tooltip.Root>
