@@ -1,8 +1,7 @@
 <script lang="ts" module>
 	import { DateFormatter, getLocalTimeZone, type DateValue } from '@internationalized/date';
-	import { Check, CheckSquare, SignOut } from 'phosphor-svelte';
-	import { elasticIn } from 'svelte/easing';
-	import { fade, scale } from 'svelte/transition';
+	import { CheckSquare, SignOut } from 'phosphor-svelte';
+	import { scale } from 'svelte/transition';
 
 	import {
 		PUBLIC_BIRCH_EMAIL,
@@ -22,9 +21,11 @@
 
 	import { signUpFormId } from '^constants';
 
-	import { Card, Carousel, Label, RadioGroup, Tooltip } from '^components/ui';
+	import { Card, Carousel, RadioGroup, Tooltip } from '^components/ui';
 	import { getEmblaContext } from '^components/ui/carousel/context';
 	import { slides } from '^content/sign-up-form';
+	import { notifySignUp } from '^lib/services';
+	import { toast } from 'svelte-sonner';
 	import CarouselItem from './carousel-item.svelte';
 	import {
 		CheckboxGroup,
@@ -34,8 +35,6 @@
 		Textarea,
 		TextInput
 	} from './elements';
-	import { toast } from 'svelte-sonner';
-	import { notifySignUp } from '^lib/services';
 </script>
 
 <script lang="ts">
@@ -157,11 +156,6 @@
 
 				return;
 			}
-
-			showFormError.participantDetails.name = false;
-			showFormError.participantDetails.dob = false;
-			showFormError.participantDetails.email = false;
-			showFormError.participantDetails.phone = false;
 
 			emblaCtx.scrollNext();
 			return;
@@ -596,30 +590,17 @@
 					}}
 				/>
 
-				<div>
-					<div class="mb-2 flex items-center gap-6">
-						<Label class="text-black/50" for={signUpFormId.participantDetails + 'dob'}
-							>{slides.participantDetails.question.details.parts.dob.label}</Label
-						>
-					</div>
-
-					<DatePicker
-						bind:value={formValue.participantDetails.dob}
-						onValueChange={() => {
-							showFormError.slide = false;
-							showFormError.participantDetails.dob = false;
-						}}
-					/>
-
-					{#if showFormError.participantDetails.dob}
-						<p
-							class="mt-6 text-sm text-red-500"
-							transition:fade={{ duration: 100, delay: 50, easing: elasticIn }}
-						>
-							Please pick a Date of Birth
-						</p>
-					{/if}
-				</div>
+				<DatePicker
+					bind:value={formValue.participantDetails.dob}
+					onValueChange={() => {
+						showFormError.slide = false;
+						showFormError.participantDetails.dob = false;
+					}}
+					label="Date of birth"
+					id={signUpFormId.participantDetails + 'dob'}
+					showError={showFormError.participantDetails.dob}
+					errorText="Please pick a date of birth"
+				/>
 
 				<TextInput
 					label={slides.participantDetails.question.details.parts.email.label}
