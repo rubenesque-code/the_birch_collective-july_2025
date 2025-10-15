@@ -303,7 +303,6 @@
 	}
 
 	let submitStatus: 'idle' | 'pending' | 'error' | 'success' = $state('idle');
-	$inspect('submitStatus', submitStatus);
 
 	async function handleSubmit() {
 		try {
@@ -686,11 +685,8 @@
 		</Question>
 	</CarouselItem>
 
-	<CarouselItem title={slides.emergencyContactDetails.title} showError={showFormError.slide}>
-		<Question
-			title={slides.emergencyContactDetails.question.emergencyContact.title}
-			required={false}
-		>
+	<CarouselItem title={slides.emergencyContact.title} showError={showFormError.slide}>
+		<Question title={slides.emergencyContact.question.emergencyContact.title} required={false}>
 			<div class="flex flex-col gap-8">
 				<TextInput
 					label="Name"

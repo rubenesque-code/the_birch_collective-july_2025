@@ -75,7 +75,7 @@ const slides = {
 		}
 	},
 
-	emergencyContactDetails: {
+	emergencyContact: {
 		title: 'Emergency Contact',
 		question: {
 			emergencyContact: {
