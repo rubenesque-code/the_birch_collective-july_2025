@@ -30,7 +30,7 @@
 
 	const isNonEmpty = (v: string) => v.trim().length > 0;
 	const hasSelection = (v: string[]) => v.length > 0;
-	const isValidDate = (v?: DateValue) => v !== null;
+	const isValidDate = (v?: DateValue | null) => Boolean(v);
 </script>
 
 <script lang="ts">
@@ -54,7 +54,7 @@
 
 	let showSlideError = $state(false);
 
-	const formState = {
+	const formState = $state({
 		participantName: { value: '', isError: false, showError: false },
 		participantDob: {
 			value: undefined as DateValue | undefined,
@@ -87,7 +87,9 @@
 		newsletterPermission: { value: '', isError: false, showError: false },
 		textUpdatePermission: { value: '', isError: false, showError: false },
 		referralSources: { value: [] as string[], isError: false, showError: false }
-	};
+	});
+
+	$inspect('formState', formState);
 
 	type QuestionId = keyof typeof formState;
 
@@ -141,23 +143,31 @@
 		2: ['participantName', 'participantDob', 'participantEmail', 'participantPhone']
 	};
 
-	function validateQuestions(questionIds: QuestionId[]) {
+	function validateAnswers(questionIds: QuestionId[]) {
+		console.log('questionIds:', questionIds);
+		let answersAreValid = true;
+
 		for (let i = 0; i < questionIds.length; i++) {
-			const isValid = questionValidation.get(questionIds[i])!();
-			if (!isValid) return false;
+			const questionId = questionIds[i];
+
+			const answerIsValid = questionValidation.get(questionId)!();
+
+			formState[questionId].showError = !answerIsValid;
+
+			if (!answerIsValid) answersAreValid = false;
 		}
 
-		return true;
+		return answersAreValid;
 	}
 
 	function handleValidateSlide(index: number) {
 		if (!slideIndexToQuestionIds[index]) return;
 
-		const isValid = validateQuestions(slideIndexToQuestionIds[index]);
+		const slideIsValid = validateAnswers(slideIndexToQuestionIds[index]);
 
-		showSlideError = isValid;
+		showSlideError = !slideIsValid;
 
-		return isValid;
+		return slideIsValid;
 	}
 
 	function handleNext() {
@@ -165,12 +175,16 @@
 			return;
 		}
 
+		console.log('1');
+
 		const noValidationSlides = [0, 1, 8];
 
 		if (noValidationSlides.includes(activeSlideIndex)) {
 			emblaCtx.scrollNext();
 			return;
 		}
+
+		console.log('2');
 
 		const slideIsValid = handleValidateSlide(activeSlideIndex);
 
@@ -274,6 +288,91 @@
 {/if}
 
 <Carousel.Content hiddenParentClass="flex flex-col h-full  relative" class=" ml-0 h-full w-full">
+	<Carousel.Item class="flex h-full basis-full flex-col pl-0" id={signUpFormId.intro}>
+		<Card.Root class="ml-0 flex h-full grow flex-col border-none shadow-none">
+			<Card.Content class="flex h-full grow flex-col p-0 text-lg leading-relaxed">
+				<Card.Header class="flex justify-between px-10">
+					<div class="flex shrink-0 -translate-x-[10px]">
+						<div class="translate-x-[10px] translate-y-[21px]">
+							<enhanced:img class="w-[68px]" src={image.birch.logo.img_only} alt="" />
+						</div>
+
+						<a class="font-display relative flex flex-col text-4xl font-bold" href="/">
+							<span class="translate-x-[20px]">The</span>
+							<span class="translate-x-[40px] translate-y-[-10px] text-[66px]">Birch</span>
+							<span class="translate-x-[0px] translate-y-[-20px]">Collective</span>
+						</a>
+					</div>
+				</Card.Header>
+
+				<Card.Content class="mt-10 grow px-10">
+					<h1 class="text-bc-amber/70 font-display mt-8 text-2xl font-bold">
+						{slides.intro.title}
+					</h1>
+					<h2 class="font-display text-bc-logo-black mt-4 text-4xl font-bold">
+						{slides.intro.subtitle}
+					</h2>
+
+					<p class="mt-10 leading-relaxed">{slides.intro.text}</p>
+				</Card.Content>
+			</Card.Content>
+		</Card.Root>
+	</Carousel.Item>
+
+	<Carousel.Item class="flex h-full basis-full flex-col pl-0">
+		<Card.Root class="ml-0 flex h-full grow flex-col border-none shadow-none">
+			<Card.Content class="flex h-full grow flex-col  p-0 text-lg leading-relaxed">
+				<Card.Header class="flex justify-between px-10">
+					<div>
+						<h2 class="font-display text-bc-logo-black mt-12 text-4xl font-bold">
+							{slides.confidentiality.title}
+						</h2>
+					</div>
+				</Card.Header>
+
+				<Card.Content class="mt-12 grow overflow-y-auto px-10">
+					<p class="">
+						<span>
+							{slides.confidentiality.confidentiality.intro}
+						</span>
+					</p>
+					<p class="border-my-grey-3 bg-my-grey-3/10 mt-6 rounded-md border p-8">
+						{slides.confidentiality.confidentiality.text}
+					</p>
+
+					<p class="mt-10">
+						{slides.confidentiality.gdpr.intro}
+					</p>
+					<p class="border-my-grey-3 bg-my-grey-3/10 mt-6 rounded-md border p-8">
+						<span>
+							{slides.confidentiality.gdpr.text}
+						</span>
+						<span class="mt-4 flex flex-col gap-2">
+							<span class="flex items-center gap-2">
+								<span>Email:</span>
+								<a
+									class="font-medium"
+									href={`mailto:${PUBLIC_BIRCH_GDPR_CONTACT_EMAIL}`}
+									target="_blank">{PUBLIC_BIRCH_GDPR_CONTACT_EMAIL}</a
+								>
+							</span>
+
+							<span class="flex items-center gap-2">
+								<span>Phone:</span>
+
+								<a
+									class="font-medium"
+									href={`tel:${PUBLIC_BIRCH_GDPR_CONTACT_PHONE}`}
+									target="_blank">{PUBLIC_BIRCH_GDPR_CONTACT_PHONE}</a
+								>
+							</span>
+						</span>
+					</p>
+				</Card.Content>
+			</Card.Content>
+		</Card.Root>
+	</Carousel.Item>
+
 	<CarouselItem title={slides.participantDetails.title} showError={showSlideError}>
 		<Question title={slides.participantDetails.question.details.title} required={false}>
 			<div class="flex flex-col gap-8">

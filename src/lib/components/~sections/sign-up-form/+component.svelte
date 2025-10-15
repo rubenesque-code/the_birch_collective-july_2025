@@ -7,7 +7,7 @@
 	import { toggleBodyScroll } from '^helpers';
 
 	import { Carousel } from '^components/ui';
-	import Content from './content.svelte';
+	import Content from './content-refactored.svelte';
 </script>
 
 <script lang="ts">
