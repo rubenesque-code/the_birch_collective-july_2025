@@ -1,13 +1,15 @@
 <script lang="ts" module>
 	import {
-		CalendarDate,
 		DateFormatter,
 		getLocalTimeZone,
+		parseDate,
 		type DateValue
 	} from '@internationalized/date';
 	import { CheckSquare, SignOut } from 'phosphor-svelte';
 	import { scale } from 'svelte/transition';
+	import { toast } from 'svelte-sonner';
 
+	import { dev } from '$app/environment';
 	import {
 		PUBLIC_BIRCH_EMAIL,
 		PUBLIC_BIRCH_GDPR_CONTACT_EMAIL,
@@ -16,6 +18,9 @@
 
 	import {
 		addSignUpToGoogleSheet,
+		hasSelection,
+		isNonEmpty,
+		isValidDate,
 		isValidEmail,
 		isValidUkPhoneNumber,
 		strHyphenatedToSpaced,
@@ -29,8 +34,6 @@
 	import { Card, Carousel, RadioGroup, Tooltip } from '^components/ui';
 	import { getEmblaContext } from '^components/ui/carousel/context';
 	import { slides } from '^content/sign-up-form';
-	import { notifySignUp } from '^lib/services';
-	import { toast } from 'svelte-sonner';
 	import CarouselItem from './carousel-item.svelte';
 	import {
 		CheckboxGroup,
@@ -40,11 +43,13 @@
 		Textarea,
 		TextInput
 	} from './elements';
-	import { dev } from '$app/environment';
+
+	// TODO
+	// - gp or other medical... dropdown textarea when clicked on referral source slide
 </script>
 
 <script lang="ts">
-	let { onClickClose } = $props<{
+	let { onClickClose: closeModal } = $props<{
 		onClickClose: () => void;
 	}>();
 
@@ -52,355 +57,329 @@
 
 	let activeSlideIndex = $state(0);
 
-	let formValue = $state({
-		healthIssues: '',
-		lifeSavingMedication: '',
+	let isSettled = $state(true);
 
-		identity1: [] as string[],
-		ethnicity: '',
-		identity2: [] as string[],
+	$effect(() => {
+		if (!emblaCtx.api) return;
 
-		emergencyContact: {
-			name: '',
-			phone: '',
-			relationship: ''
-		},
-
-		participantAddress: {
-			line1: '',
-			line2: '',
-			townOrCity: '',
-			postcode: ''
-		},
-
-		participantDetails: {
-			name: '',
-			dob: undefined as DateValue | undefined,
-			email: '',
-			phone: ''
-		},
-
-		programmesOfInterest: [] as string[],
-		hopeToGet: '',
-		referralComment: '',
-		imagePermission: '',
-		newsletterPermission: '',
-		textUpdatePermission: '',
-		referralSources: [] as string[]
+		emblaCtx.api.on('select', () => (activeSlideIndex = emblaCtx.selectedIndex));
+		emblaCtx.api.on('scroll', () => (isSettled = false));
+		emblaCtx.api.on('settle', () => (isSettled = true));
 	});
+
+	let showSlideError = $state(false);
+
+	const formState = $state({
+		participantName: { value: '', isError: false, showError: false },
+		participantDob: {
+			value: undefined as DateValue | undefined,
+			isError: false,
+			showError: false
+		},
+		participantEmail: { value: '', isError: false, showError: false },
+		participantPhone: { value: '', isError: false, showError: false },
+
+		participantAddressLine1: { value: '', isError: false, showError: false },
+		participantAddressLine2: { value: '', isError: false, showError: false },
+		participantAddressTownOrCity: { value: '', isError: false, showError: false },
+		participantAddressPostcode: { value: '', isError: false, showError: false },
+
+		emergencyContactName: { value: '', isError: false, showError: false },
+		emergencyContactPhone: { value: '', isError: false, showError: false },
+		emergencyContactRelationship: { value: '', isError: false, showError: false },
+
+		healthIssues: { value: '', isError: false, showError: false },
+		lifeSavingMedication: { value: '', isError: false, showError: false },
+
+		identity1: { value: [] as string[], isError: false, showError: false },
+		ethnicity: { value: '', isError: false, showError: false },
+		identity2: { value: [] as string[], isError: false, showError: false },
+
+		programmesOfInterest: { value: [] as string[], isError: false, showError: false },
+		hopeToGet: { value: '', isError: false, showError: false },
+		referralComment: { value: '', isError: false, showError: false },
+		imagePermission: { value: '', isError: false, showError: false },
+		newsletterPermission: { value: '', isError: false, showError: false },
+		freshAirThursdayTextPermission: { value: '', isError: false, showError: false },
+		referralSources: { value: [] as string[], isError: false, showError: false }
+	});
+
+	function resetFormState() {
+		for (const key in formState) {
+			const field = formState[key as keyof typeof formState];
+
+			if (!field || typeof field !== 'object') continue;
+
+			field.isError = false;
+			field.showError = false;
+
+			if (Array.isArray(field.value)) {
+				field.value = [];
+			} else if (field.value instanceof Date || typeof field.value === 'object') {
+				field.value = undefined;
+			} else {
+				field.value = '';
+			}
+		}
+	}
+
+	function hasUserInput() {
+		for (const key in formState) {
+			const field = formState[key as keyof typeof formState];
+			if (!field || typeof field !== 'object') continue;
+
+			const value = field.value;
+
+			if (typeof value === 'string') {
+				if (value.trim() !== '') return true;
+			} else if (Array.isArray(value)) {
+				if (value.length > 0) return true;
+			} else if (value !== undefined && value !== null) {
+				// For DateValue or other objects
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	function onCloseForm() {
+		if (hasUserInput()) {
+			const confirmed = window.confirm(
+				'Are you sure you want to close the form? You will lose your progress.'
+			);
+
+			if (!confirmed) {
+				return;
+			}
+		}
+
+		resetFormState();
+		closeModal();
+	}
 
 	function addMockData() {
-		formValue = {
-			healthIssues: 'Asthma, controlled with regular medication',
-			lifeSavingMedication: 'Ventolin inhaler - blue inhaler for emergency use',
-			identity1: ['non-binary', 'genderfluid'],
-			ethnicity: 'Mixed - White and Asian',
-			identity2: ['bisexual', 'prefer-not-to-say'],
-			emergencyContact: {
-				name: 'Sarah Johnson',
-				phone: '07700 900123',
-				relationship: 'Mother'
-			},
-			participantAddress: {
-				line1: '42 Maple Avenue',
-				line2: 'Flat 3B',
-				townOrCity: 'Manchester',
-				postcode: 'M14 5TY'
-			},
-			participantDetails: {
-				name: 'Alex Thompson',
-				dob: new CalendarDate(2005, 3, 15), // Adjust based on your DateValue implementation
-				email: 'alex.thompson@email.com',
-				phone: '07700 900456'
-			},
-			programmesOfInterest: ['youth-leadership', 'arts-creative', 'sports-fitness'],
-			hopeToGet:
-				'I hope to build confidence in public speaking, meet new people who share similar interests, and develop leadership skills that will help me in my future career.',
-			referralComment:
-				'Alex is enthusiastic and would benefit greatly from the youth leadership programme',
-			imagePermission: 'yes',
-			newsletterPermission: 'yes',
-			textUpdatePermission: 'no',
-			referralSources: ['school', 'social-media']
-		};
+		if (!dev) {
+			return;
+		}
+
+		formState.participantName.value = 'Alex Greenwood';
+		formState.participantDob.value = parseDate('1990-05-14');
+		formState.participantEmail.value = 'alex.greenwood@example.com';
+		formState.participantPhone.value = '07123 456789';
+
+		formState.participantAddressLine1.value = '12 Willow Road';
+		formState.participantAddressLine2.value = 'Flat 3B';
+		formState.participantAddressTownOrCity.value = 'London';
+		formState.participantAddressPostcode.value = 'NW1 8QP';
+
+		formState.emergencyContactName.value = 'Jordan Smith';
+		formState.emergencyContactPhone.value = '07987 654321';
+		formState.emergencyContactRelationship.value = 'Partner';
+
+		formState.healthIssues.value = 'Asthma';
+		formState.lifeSavingMedication.value = 'Inhaler (Salbutamol)';
+
+		formState.identity1.value = ['lgbtq+', 'disabled'];
+		formState.ethnicity.value = 'White British';
+		formState.identity2.value = ['non-binary'];
+
+		formState.programmesOfInterest.value = ['fresh-air-thursdays', 'creative-nature-workshops'];
+		formState.hopeToGet.value = 'Meet new people and improve wellbeing outdoors';
+		formState.referralComment.value = 'Referred via community centre poster.';
+		formState.imagePermission.value = 'Yes';
+		formState.newsletterPermission.value = 'Yes';
+		formState.freshAirThursdayTextPermission.value = 'Yes';
+		formState.referralSources.value = ['poster', 'friend'];
 	}
 
-	let showFormError = $state({
-		slide: false,
+	type QuestionId = keyof typeof formState;
 
-		lifeSavingMedication: false,
+	const questionValidation = new Map<QuestionId, () => boolean>([
+		// Participant details
+		['participantName', () => isNonEmpty(formState.participantName.value)],
+		['participantDob', () => isValidDate(formState.participantDob.value)],
+		['participantEmail', () => isValidEmail(formState.participantEmail.value)],
+		['participantPhone', () => isValidUkPhoneNumber(formState.participantPhone.value)],
 
-		identity1: false,
-		ethnicity: false,
-		identity2: false,
+		// Participant address
+		['participantAddressLine1', () => isNonEmpty(formState.participantAddressLine1.value)],
+		['participantAddressLine2', () => true], // Optional
+		[
+			'participantAddressTownOrCity',
+			() => isNonEmpty(formState.participantAddressTownOrCity.value)
+		],
+		['participantAddressPostcode', () => isNonEmpty(formState.participantAddressPostcode.value)],
 
-		emergencyContact: {
-			name: false,
-			phoneNumber: false,
-			relationship: false
-		},
+		// Emergency contact
+		['emergencyContactName', () => isNonEmpty(formState.emergencyContactName.value)],
+		['emergencyContactPhone', () => isValidUkPhoneNumber(formState.emergencyContactPhone.value)],
+		[
+			'emergencyContactRelationship',
+			() => isNonEmpty(formState.emergencyContactRelationship.value)
+		],
 
-		participantAddress: {
-			line1: false,
-			line2: false,
-			townOrCity: false,
-			postcode: false
-		},
+		// Health info
+		['healthIssues', () => true], // Optional text
+		['lifeSavingMedication', () => true], // Optional text
 
-		participantDetails: {
-			name: false,
-			dob: false,
-			email: false,
-			phone: false
-		},
+		// Identity
+		['identity1', () => hasSelection(formState.identity1.value)],
+		['ethnicity', () => isNonEmpty(formState.ethnicity.value)],
+		['identity2', () => hasSelection(formState.identity2.value)],
 
-		programmesOfInterest: false,
-		imagePermission: false,
-		newsletterPermission: false,
-		textUpdatePermission: false,
-		referralSources: false,
-		slideError: false
-	});
+		// Programme info
+		['programmesOfInterest', () => hasSelection(formState.programmesOfInterest.value)],
+		['hopeToGet', () => isNonEmpty(formState.hopeToGet.value)],
 
-	function validateCheckboxGroup(value: string[]) {
-		return Boolean(value.length);
+		['referralComment', () => true], // Optional
+
+		['imagePermission', () => isNonEmpty(formState.imagePermission.value)],
+		['newsletterPermission', () => isNonEmpty(formState.newsletterPermission.value)],
+		[
+			'freshAirThursdayTextPermission',
+			() => isNonEmpty(formState.freshAirThursdayTextPermission.value)
+		],
+
+		['referralSources', () => hasSelection(formState.referralSources.value)]
+	]);
+
+	const slideIndexToQuestionIds: Record<number, QuestionId[]> = {
+		2: ['participantName', 'participantDob', 'participantEmail', 'participantPhone'],
+		3: ['participantAddressLine1', 'participantAddressTownOrCity', 'participantAddressPostcode'],
+		4: ['emergencyContactName', 'emergencyContactPhone', 'emergencyContactRelationship'],
+		5: ['identity1', 'ethnicity', 'identity2'],
+		7: ['programmesOfInterest', 'hopeToGet'],
+		9: ['referralSources'],
+		10: ['imagePermission', 'newsletterPermission', 'freshAirThursdayTextPermission']
+	};
+
+	function validateAnswers(questionIds: QuestionId[]) {
+		let answersAreValid = true;
+
+		for (let i = 0; i < questionIds.length; i++) {
+			const questionId = questionIds[i];
+
+			const answerIsValid = questionValidation.get(questionId)!();
+
+			formState[questionId].showError = !answerIsValid;
+
+			if (!answerIsValid) answersAreValid = false;
+		}
+
+		return answersAreValid;
 	}
-	function validateRadioGroup(value: string) {
-		return Boolean(value.length);
+
+	function handleValidateSlide(index: number) {
+		if (!slideIndexToQuestionIds[index]) return;
+
+		const slideIsValid = validateAnswers(slideIndexToQuestionIds[index]);
+
+		showSlideError = !slideIsValid;
+
+		return slideIsValid;
 	}
 
 	function handleNext() {
-		if (activeSlideIndex === 0) {
+		if (!isSettled) {
+			return;
+		}
+
+		const noValidationSlides = [0, 1, 8];
+
+		if (noValidationSlides.includes(activeSlideIndex)) {
 			emblaCtx.scrollNext();
 			return;
 		}
 
-		if (activeSlideIndex === 1) {
-			emblaCtx.scrollNext();
-			return;
-		}
-
-		if (activeSlideIndex === 2) {
-			if (
-				!formValue.participantDetails.name.length ||
-				!formValue.participantDetails.dob ||
-				!isValidEmail(formValue.participantDetails.email) ||
-				!isValidUkPhoneNumber(formValue.participantDetails.phone)
-			) {
-				showFormError.slide = true;
-
-				showFormError.participantDetails.name = !formValue.participantDetails.name.length;
-				showFormError.participantDetails.dob = !formValue.participantDetails.dob;
-				showFormError.participantDetails.email = !isValidEmail(formValue.participantDetails.email);
-				showFormError.participantDetails.phone = !isValidUkPhoneNumber(
-					formValue.participantDetails.phone
-				);
-
-				return;
-			}
-
-			emblaCtx.scrollNext();
-			return;
-		}
-
-		if (activeSlideIndex === 3) {
-			if (
-				!formValue.participantAddress.line1.length ||
-				!formValue.participantAddress.townOrCity.length ||
-				!formValue.participantAddress.postcode.length
-			) {
-				showFormError.slide = true;
-
-				showFormError.participantAddress.line1 = !formValue.participantAddress.line1.length;
-				showFormError.participantAddress.townOrCity =
-					!formValue.participantAddress.townOrCity.length;
-				showFormError.participantAddress.postcode = !formValue.participantAddress.postcode.length;
-
-				return;
-			}
-
-			showFormError.participantAddress.line1 = false;
-			showFormError.participantAddress.townOrCity = false;
-			showFormError.participantAddress.postcode = false;
-
-			emblaCtx.scrollNext();
-			return;
-		}
-
-		if (activeSlideIndex === 4) {
-			if (
-				!formValue.emergencyContact.name.length ||
-				!isValidUkPhoneNumber(formValue.emergencyContact.phone) ||
-				!formValue.emergencyContact.relationship.length
-			) {
-				showFormError.slide = true;
-
-				showFormError.emergencyContact.name = !formValue.emergencyContact.name.length;
-				showFormError.emergencyContact.phoneNumber = !isValidUkPhoneNumber(
-					formValue.emergencyContact.phone
-				);
-				showFormError.emergencyContact.relationship =
-					!formValue.emergencyContact.relationship.length;
-
-				return;
-			}
-
-			showFormError.emergencyContact.name = false;
-			showFormError.emergencyContact.phoneNumber = false;
-			showFormError.emergencyContact.relationship = false;
-
-			emblaCtx.scrollNext();
-			return;
-		}
-
-		if (activeSlideIndex === 5) {
-			if (
-				!formValue.identity1.length ||
-				!formValue.ethnicity.length ||
-				!formValue.identity2.length
-			) {
-				showFormError.slide = true;
-
-				showFormError.identity1 = !formValue.identity1.length;
-				showFormError.ethnicity = !formValue.ethnicity.length;
-				showFormError.identity2 = !formValue.identity2.length;
-
-				return;
-			}
-
-			showFormError.identity1 = false;
-			showFormError.ethnicity = false;
-			showFormError.identity2 = false;
-
-			emblaCtx.scrollNext();
-			return;
-		}
-
-		if (activeSlideIndex === 6) {
-			if (!formValue.lifeSavingMedication.length) {
-				showFormError.slide = true;
-
-				showFormError.lifeSavingMedication = true;
-
-				return;
-			}
-
-			showFormError.lifeSavingMedication = false;
-
-			emblaCtx.scrollNext();
-			return;
-		}
-
-		if (activeSlideIndex === 7) {
-			if (!validateCheckboxGroup(formValue.programmesOfInterest)) {
-				showFormError.slideError = true;
-				showFormError.programmesOfInterest = true;
-				return;
-			}
-			showFormError.programmesOfInterest = false;
-			emblaCtx.scrollNext();
-			return;
-		}
-
-		if (activeSlideIndex === 8) {
-			emblaCtx.scrollNext();
-			return;
-		}
-
-		if (activeSlideIndex === 9) {
-			if (!validateCheckboxGroup(formValue.referralSources)) {
-				showFormError.slideError = true;
-				showFormError.referralSources = true;
-				return;
-			}
-			showFormError.referralSources = false;
-
-			emblaCtx.scrollNext();
-			return;
-		}
-
-		if (activeSlideIndex === 10) {
-			if (
-				!validateRadioGroup(formValue.imagePermission) ||
-				!validateRadioGroup(formValue.newsletterPermission) ||
-				!validateRadioGroup(formValue.textUpdatePermission)
-			) {
-				showFormError.slideError = true;
-
-				if (!validateRadioGroup(formValue.imagePermission)) showFormError.imagePermission = true;
-				if (!validateRadioGroup(formValue.newsletterPermission))
-					showFormError.newsletterPermission = true;
-				if (!validateRadioGroup(formValue.textUpdatePermission))
-					showFormError.textUpdatePermission = true;
-
-				return;
-			}
-
-			showFormError.imagePermission = false;
-			showFormError.newsletterPermission = false;
-			showFormError.textUpdatePermission = false;
-
+		if (handleValidateSlide(activeSlideIndex)) {
 			emblaCtx.scrollNext();
 		}
 	}
 
 	let submitStatus: 'idle' | 'pending' | 'error' | 'success' = $state('idle');
 
+	function extractValues<T extends Record<string, { value: any }>>(state: T) {
+		return Object.fromEntries(Object.entries(state).map(([key, field]) => [key, field.value])) as {
+			[K in keyof T]: T[K]['value'];
+		};
+	}
+
 	async function handleSubmit() {
 		try {
 			submitStatus = 'pending';
 
 			const {
-				participantDetails,
-				participantAddress,
+				participantName,
+				participantDob,
+				participantEmail,
+				participantPhone,
+				participantAddressLine1,
+				participantAddressLine2,
+				participantAddressTownOrCity,
+				participantAddressPostcode,
 				identity1,
+				ethnicity,
 				identity2,
 				programmesOfInterest,
 				referralSources,
-				emergencyContact,
-				ethnicity,
+				emergencyContactName,
+				emergencyContactPhone,
+				emergencyContactRelationship,
 				healthIssues,
 				lifeSavingMedication,
 				hopeToGet,
+				referralComment,
 				newsletterPermission,
 				imagePermission,
-				textUpdatePermission
-			} = formValue;
+				freshAirThursdayTextPermission
+			} = extractValues(formState);
 
-			const formatArr = new Intl.ListFormat('en', { style: 'long', type: 'conjunction' });
+			const participantNameParts = participantName.split(/\s+(.*)/).filter(Boolean);
 
-			const dobFormatted = new DateFormatter('en-UK', {
-				dateStyle: 'long'
-			}).format(participantDetails.dob!.toDate(getLocalTimeZone()));
-			const addressFormatted = `${participantAddress.line1}, ${participantAddress.line2}, ${participantAddress.townOrCity}, ${participantAddress.postcode}`;
-			const identity1Formatted = formatArr.format(identity1.map(strHyphenatedToSpaced));
-			const identity2Formatted = formatArr.format(identity2.map(strHyphenatedToSpaced));
-			const programmesOfInterestFormatted = formatArr.format(
-				programmesOfInterest.map(strHyphenatedToSpaced)
-			);
-			const referralSourcesFormatted = formatArr.format(referralSources.map(strHyphenatedToSpaced));
+			const formatList = new Intl.ListFormat('en', { style: 'long', type: 'conjunction' });
+			const formatHyphenList = (arr: string[]) => formatList.format(arr.map(strHyphenatedToSpaced));
+
+			const dobFormatted = participantDob
+				? new DateFormatter('en-UK', { dateStyle: 'long' }).format(
+						participantDob.toDate(getLocalTimeZone())
+					)
+				: '';
+
+			const participantAddressFormatted = [
+				participantAddressLine1,
+				participantAddressLine2,
+				participantAddressTownOrCity,
+				participantAddressPostcode
+			]
+				.filter(Boolean)
+				.join(', ');
+
+			const dateNow = new Date().toUTCString();
 
 			await addSignUpToGoogleSheet({
 				programmeName: 'fresh air thursdays',
-				formValues: {
-					full_name: participantDetails.name,
-					date_of_birth: dobFormatted,
-					email: participantDetails.email,
-					phone_number: participantDetails.phone,
-					address: addressFormatted,
-					emergency_contact: `Name: ${emergencyContact.name} | Phone number: ${emergencyContact.phone} | Relationship: ${emergencyContact.relationship}`,
-					identities: identity1Formatted,
-					ethnicity: ethnicity,
-					genders: identity2Formatted,
-					health_issues: healthIssues,
-					life_saving_medications: lifeSavingMedication,
-					programmes_of_interest: programmesOfInterestFormatted,
-					hope_to_get: hopeToGet,
-					professional_referral_info: '',
-					sources: referralSourcesFormatted,
-					newsletter_opt_in: newsletterPermission,
-					image_opt_in: imagePermission,
-					fresh_air_thursday_text_opt_in: textUpdatePermission
+				values: {
+					entryDate: dateNow,
+					firstName: participantNameParts[0],
+					secondName: participantNameParts[1] ?? '',
+					participantDob: dobFormatted,
+					participantEmail,
+					participantPhone,
+					participantAddress: participantAddressFormatted,
+					emergencyContactDetails: `Name: ${emergencyContactName} | Phone: ${emergencyContactPhone} | Relationship: ${emergencyContactRelationship}`,
+					identity1: formatHyphenList(identity1),
+					ethnicity,
+					identity2: formatHyphenList(identity2),
+					healthIssues,
+					lifeSavingMedication,
+					programmesOfInterest: formatHyphenList(programmesOfInterest),
+					hopeToGet,
+					referralComment,
+					referralSources: formatHyphenList(referralSources),
+					newsletterPermission,
+					imagePermission,
+					freshAirThursdayTextPermission
 				}
 			});
 
@@ -409,33 +388,11 @@
 		} catch (error) {
 			submitStatus = 'error';
 			toast.error(
-				`Sign up form send error - contact ${PUBLIC_BIRCH_EMAIL} if the problem persists`
+				`Sign-up form send error — contact ${PUBLIC_BIRCH_EMAIL} if the problem persists`
 			);
-
 			console.error(error);
 		}
-
-		if (submitStatus === 'success') {
-			await notifySignUp({ emails: [], subject: 'New sign up for Fresh Air Thursdays' });
-		}
 	}
-
-	function onSelect() {
-		activeSlideIndex = emblaCtx.selectedIndex;
-	}
-
-	let isSettled = $state(true);
-
-	$effect(() => {
-		if (!emblaCtx.api) {
-			return;
-		}
-
-		emblaCtx.api.on('select', onSelect);
-
-		emblaCtx.api.on('scroll', () => (isSettled = false));
-		emblaCtx.api.on('settle', () => (isSettled = true));
-	});
 </script>
 
 <div
@@ -446,7 +403,7 @@
 			<Tooltip.Trigger>
 				<button
 					class="cursor-pointer rounded-full border border-white p-[6px] text-white"
-					onclick={onClickClose}
+					onclick={onCloseForm}
 					type="button"
 				>
 					<SignOut weight="fill" />
@@ -503,7 +460,7 @@
 							submitStatus = 'pending';
 
 							setTimeout(() => {
-								handleSubmit();
+								// handleSubmit();
 							}, 700);
 						}}
 						type="button">Try again</button
@@ -521,7 +478,7 @@
 				</p>
 				<button
 					class="bg-bc-amber mt-4 cursor-pointer rounded-md border px-2 py-1 text-lg text-white"
-					onclick={onClickClose}
+					onclick={closeModal}
 					type="button">Exit</button
 				>
 			{/if}
@@ -628,85 +585,85 @@
 		</Card.Root>
 	</Carousel.Item>
 
-	<CarouselItem title={slides.participantDetails.title} showError={showFormError.slide}>
+	<CarouselItem title={slides.participantDetails.title} showError={showSlideError}>
 		<Question title={slides.participantDetails.question.details.title} required={false}>
 			<div class="flex flex-col gap-8">
 				<TextInput
 					label={slides.participantDetails.question.details.parts.name.label}
 					placeholder="Enter here"
-					bind:value={formValue.participantDetails.name}
+					bind:value={formState.participantName.value}
 					id={signUpFormId.participantDetails + 'name'}
-					showError={showFormError.participantDetails.name}
+					showError={formState.participantName.showError}
 					errorText="Please enter your full name"
 					onkeyup={() => {
-						showFormError.slide = false;
-						showFormError.participantDetails.name = false;
+						showSlideError = false;
+						formState.participantName.showError = false;
 					}}
 				/>
 
 				<DatePicker
-					bind:value={formValue.participantDetails.dob}
+					bind:value={formState.participantDob.value}
 					onValueChange={() => {
-						showFormError.slide = false;
-						showFormError.participantDetails.dob = false;
+						showSlideError = false;
+						formState.participantDob.showError = false;
 					}}
 					label="Date of birth"
 					id={signUpFormId.participantDetails + 'dob'}
-					showError={showFormError.participantDetails.dob}
+					showError={formState.participantDob.showError}
 					errorText="Please pick a date of birth"
 				/>
 
 				<TextInput
 					label={slides.participantDetails.question.details.parts.email.label}
 					placeholder="Enter here"
-					bind:value={formValue.participantDetails.email}
+					bind:value={formState.participantEmail.value}
 					id={signUpFormId.participantDetails + 'email'}
-					showError={showFormError.participantDetails.email}
+					showError={formState.participantEmail.showError}
 					errorText="Please enter a valid email"
 					onkeyup={() => {
-						showFormError.slide = false;
-						showFormError.participantDetails.email = false;
+						showSlideError = false;
+						formState.participantEmail.showError = false;
 					}}
 				/>
 
 				<TextInput
 					label={slides.participantDetails.question.details.parts.phone.label}
-					bind:value={formValue.participantDetails.phone}
+					bind:value={formState.participantPhone.value}
 					id={signUpFormId.participantDetails + 'phone'}
-					showError={showFormError.participantDetails.phone}
+					showError={formState.participantPhone.showError}
 					errorText="Please enter a valid UK phone number"
 					inputmode="tel"
 					placeholder="e.g. +44 7123 456789"
 					type="tel"
 					onkeyup={() => {
-						showFormError.slide = false;
-						showFormError.participantDetails.phone = false;
+						showSlideError = false;
+						formState.participantPhone.showError = false;
 					}}
 				/>
 			</div>
 		</Question>
 	</CarouselItem>
 
-	<CarouselItem title={slides.participantAddress.title} showError={showFormError.slide}>
+	<CarouselItem title={slides.participantAddress.title} showError={showSlideError}>
 		<Question title={slides.participantAddress.question.address.title} required={false}>
 			<div class="flex flex-col gap-8">
 				<TextInput
 					label={slides.participantAddress.question.address.parts.line1.label}
 					placeholder="Enter here"
-					bind:value={formValue.participantAddress.line1}
+					bind:value={formState.participantAddressLine1.value}
 					id={signUpFormId.participantAddress + 'line1'}
-					showError={showFormError.participantAddress.line1}
+					showError={formState.participantAddressLine1.showError}
 					errorText="Please enter a response"
 					onkeyup={() => {
-						showFormError.slide = false;
-						showFormError.participantAddress.line1 = false;
+						showSlideError = false;
+						formState.participantAddressLine1.showError = false;
 					}}
 				/>
 
 				<TextInput
 					label={slides.participantAddress.question.address.parts.line2.label}
 					placeholder="Enter here"
-					bind:value={formValue.participantAddress.line2}
+					bind:value={formState.participantAddressLine2.value}
 					id={signUpFormId.participantAddress + 'line2'}
 					required="optional"
 				/>
@@ -714,45 +671,45 @@
 				<TextInput
 					label={slides.participantAddress.question.address.parts.townOrCity.label}
 					placeholder="Enter here"
-					bind:value={formValue.participantAddress.townOrCity}
+					bind:value={formState.participantAddressTownOrCity.value}
 					id={signUpFormId.participantAddress + 'town-or-city'}
-					showError={showFormError.participantAddress.townOrCity}
+					showError={formState.participantAddressTownOrCity.showError}
 					errorText="Please enter a response"
 					onkeyup={() => {
-						showFormError.slide = false;
-						showFormError.participantAddress.townOrCity = false;
+						showSlideError = false;
+						formState.participantAddressTownOrCity.showError = false;
 					}}
 				/>
 
 				<TextInput
 					label={slides.participantAddress.question.address.parts.postcode.label}
 					placeholder="Enter here"
-					bind:value={formValue.participantAddress.postcode}
+					bind:value={formState.participantAddressPostcode.value}
 					id={signUpFormId.participantAddress + 'postcode'}
-					showError={showFormError.participantAddress.postcode}
+					showError={formState.participantAddressPostcode.showError}
 					errorText="Please enter a response"
 					onkeyup={() => {
-						showFormError.slide = false;
-						showFormError.participantAddress.postcode = false;
+						showSlideError = false;
+						formState.participantAddressPostcode.showError = false;
 					}}
 				/>
 			</div>
 		</Question>
 	</CarouselItem>
 
-	<CarouselItem title={slides.emergencyContact.title} showError={showFormError.slide}>
+	<CarouselItem title={slides.emergencyContact.title} showError={showSlideError}>
 		<Question title={slides.emergencyContact.question.emergencyContact.title} required={false}>
 			<div class="flex flex-col gap-8">
 				<TextInput
 					label="Name"
 					placeholder="Enter here"
-					bind:value={formValue.emergencyContact.name}
+					bind:value={formState.emergencyContactName.value}
 					id={signUpFormId.emergencyContact + 'name'}
-					showError={showFormError.emergencyContact.name}
+					showError={formState.emergencyContactName.showError}
 					errorText="Please enter a response"
 					onkeyup={() => {
-						showFormError.slide = false;
-						showFormError.emergencyContact.name = false;
+						showSlideError = false;
+						formState.emergencyContactName.showError = false;
 					}}
 				/>
 
@@ -760,38 +717,38 @@
 					label="Phone number"
 					inputmode="tel"
 					placeholder="e.g. +44 7123 456789"
-					bind:value={formValue.emergencyContact.phone}
+					bind:value={formState.emergencyContactPhone.value}
 					id={signUpFormId.emergencyContact + 'phone'}
-					showError={showFormError.emergencyContact.phoneNumber}
+					showError={formState.emergencyContactPhone.showError}
 					type="tel"
 					errorText="Please enter a valid UK phone number"
 					onkeyup={() => {
-						showFormError.slide = false;
-						showFormError.emergencyContact.phoneNumber = false;
+						showSlideError = false;
+						formState.emergencyContactPhone.showError = false;
 					}}
 				/>
 
 				<TextInput
 					label="Relationship"
 					placeholder="e.g. mother, friend"
-					bind:value={formValue.emergencyContact.relationship}
+					bind:value={formState.emergencyContactRelationship.value}
 					id={signUpFormId.emergencyContact + 'relationship'}
-					showError={showFormError.emergencyContact.relationship}
+					showError={formState.emergencyContactRelationship.showError}
 					errorText="Please enter a response"
 					onkeyup={() => {
-						showFormError.slide = false;
-						showFormError.emergencyContact.relationship = false;
+						showSlideError = false;
+						formState.emergencyContactRelationship.showError = false;
 					}}
 				/>
 			</div>
 		</Question>
 	</CarouselItem>
 
-	<CarouselItem title={slides.identity.title} showError={showFormError.slide}>
+	<CarouselItem title={slides.identity.title} showError={showSlideError}>
 		<Question
 			title={slides.identity.question.identity1.title}
 			required={slides.identity.question.identity1.required}
-			showError={showFormError.identity1}
+			showError={formState.identity1.showError}
 			errorText={slides.identity.question.identity1.errorText}
 		>
 			<CheckboxGroup
@@ -800,10 +757,10 @@
 					label: option
 				}))}
 				onCheckedChange={() => {
-					showFormError.slide = false;
-					showFormError.identity1 = false;
+					showSlideError = false;
+					formState.identity1.showError = false;
 				}}
-				bind:group={formValue.identity1}
+				bind:group={formState.identity1.value}
 				idPrefix={signUpFormId.identity}
 			/>
 		</Question>
@@ -813,14 +770,14 @@
 		<Question
 			title={slides.identity.question.ethnicity.title}
 			required={slides.identity.question.ethnicity.required}
-			showError={showFormError.ethnicity}
+			showError={formState.ethnicity.showError}
 			errorText={slides.identity.question.ethnicity.errorText}
 		>
 			<Textarea
-				bind:value={formValue.ethnicity}
+				bind:value={formState.ethnicity.value}
 				onkeyup={() => {
-					showFormError.slide = false;
-					showFormError.ethnicity = false;
+					showSlideError = false;
+					formState.ethnicity.showError = false;
 				}}
 			/>
 		</Question>
@@ -830,7 +787,7 @@
 		<Question
 			title={slides.identity.question.identity2.title}
 			required={slides.identity.question.identity2.required}
-			showError={showFormError.identity2}
+			showError={formState.identity2.showError}
 			errorText={slides.identity.question.identity2.errorText}
 		>
 			<CheckboxGroup
@@ -839,21 +796,21 @@
 					label: option
 				}))}
 				onCheckedChange={() => {
-					showFormError.slide = false;
-					showFormError.identity2 = false;
+					showSlideError = false;
+					formState.identity2.showError = false;
 				}}
-				bind:group={formValue.identity2}
+				bind:group={formState.identity2.value}
 				idPrefix={signUpFormId.identity}
 			/>
 		</Question>
 	</CarouselItem>
 
-	<CarouselItem title={slides.medicalDetails.title} showError={showFormError.slide}>
+	<CarouselItem title={slides.medicalDetails.title} showError={showSlideError}>
 		<Question
 			title={slides.medicalDetails.question.healthIssues.title}
 			required={slides.medicalDetails.question.healthIssues.required}
 		>
-			<Textarea bind:value={formValue.healthIssues} />
+			<Textarea bind:value={formState.healthIssues.value} />
 		</Question>
 
 		<div class="border-bc-amber/30 border-b-2"></div>
@@ -861,24 +818,24 @@
 		<Question
 			title={slides.medicalDetails.question.lifeSavingMedication.title}
 			required={slides.medicalDetails.question.lifeSavingMedication.required}
-			showError={showFormError.lifeSavingMedication}
+			showError={formState.lifeSavingMedication.showError}
 			errorText={slides.medicalDetails.question.lifeSavingMedication.errorText}
 		>
 			<Textarea
-				bind:value={formValue.lifeSavingMedication}
+				bind:value={formState.lifeSavingMedication.value}
 				onkeyup={() => {
-					showFormError.slide = false;
-					showFormError.lifeSavingMedication = false;
+					showSlideError = false;
+					formState.lifeSavingMedication.showError = false;
 				}}
 			/>
 		</Question>
 	</CarouselItem>
 
-	<CarouselItem title={slides.programmeInterest.title} showError={showFormError.slideError}>
+	<CarouselItem title={slides.programmeInterest.title} showError={showSlideError}>
 		<Question
 			title={slides.programmeInterest.question.programmesOfInterest.title}
 			required={slides.programmeInterest.question.programmesOfInterest.required}
-			bind:showError={showFormError.programmesOfInterest}
+			bind:showError={formState.programmesOfInterest.showError}
 			errorText={slides.programmeInterest.question.programmesOfInterest.errorText}
 		>
 			<CheckboxGroup
@@ -887,10 +844,10 @@
 					label
 				}))}
 				onCheckedChange={() => {
-					showFormError.programmesOfInterest = false;
-					showFormError.slideError = false;
+					formState.programmesOfInterest.showError = false;
+					showSlideError = false;
 				}}
-				bind:group={formValue.programmesOfInterest}
+				bind:group={formState.programmesOfInterest.value}
 				idPrefix={signUpFormId.programmesOfInterest}
 			/>
 		</Question>
@@ -898,21 +855,21 @@
 		<div class="border-bc-amber/30 border-b-2"></div>
 
 		<Question title={slides.programmeInterest.question.hopeToGet.title}>
-			<Textarea bind:value={formValue.hopeToGet} />
+			<Textarea bind:value={formState.hopeToGet.value} />
 		</Question>
 	</CarouselItem>
 
-	<CarouselItem title={slides.referrals.title} showError={showFormError.slideError}>
+	<CarouselItem title={slides.referrals.title} showError={showSlideError}>
 		<Question title={slides.referrals.question.referralComment.title}>
-			<Textarea bind:value={formValue.referralComment} />
+			<Textarea bind:value={formState.referralComment.value} />
 		</Question>
 	</CarouselItem>
 
-	<CarouselItem title={slides.referralSources.title} showError={showFormError.slideError}>
+	<CarouselItem title={slides.referralSources.title} showError={showSlideError}>
 		<Question
 			title={slides.referralSources.question.referralSources.title}
 			required={slides.referralSources.question.referralSources.required}
-			bind:showError={showFormError.referralSources}
+			bind:showError={formState.referralSources.showError}
 			errorText={slides.referralSources.question.referralSources.errorText}
 		>
 			<CheckboxGroup
@@ -921,28 +878,28 @@
 					label
 				}))}
 				onCheckedChange={() => {
-					showFormError.referralSources = false;
-					showFormError.slideError = false;
+					formState.referralSources.showError = false;
+					showSlideError = false;
 				}}
-				bind:group={formValue.referralSources}
+				bind:group={formState.referralSources.value}
 				idPrefix={signUpFormId.referralSource}
 			/>
 		</Question>
 	</CarouselItem>
 
-	<CarouselItem title={slides.newsletterPermissions.title} showError={showFormError.slideError}>
+	<CarouselItem title={slides.newsletterPermissions.title} showError={showSlideError}>
 		<Question
 			title={slides.newsletterPermissions.question.imagePermission.title}
 			subtext={slides.newsletterPermissions.question.imagePermission.subtext}
 			required={slides.newsletterPermissions.question.imagePermission.required}
-			bind:showError={showFormError.imagePermission}
+			bind:showError={formState.imagePermission.showError}
 			errorText={slides.newsletterPermissions.question.imagePermission.errorText}
 		>
 			<RadioGroup.Root
-				bind:value={formValue.imagePermission}
+				bind:value={formState.imagePermission.value}
 				onValueChange={() => {
-					showFormError.imagePermission = false;
-					showFormError.slideError = false;
+					formState.imagePermission.showError = false;
+					showSlideError = false;
 				}}
 			>
 				{#each slides.newsletterPermissions.question.imagePermission.options as option}
@@ -961,14 +918,14 @@
 			title={slides.newsletterPermissions.question.newsletterPermission.title}
 			subtext={slides.newsletterPermissions.question.newsletterPermission.subtext}
 			required={slides.newsletterPermissions.question.newsletterPermission.required}
-			bind:showError={showFormError.newsletterPermission}
+			bind:showError={formState.newsletterPermission.showError}
 			errorText={slides.newsletterPermissions.question.newsletterPermission.errorText}
 		>
 			<RadioGroup.Root
-				bind:value={formValue.newsletterPermission}
+				bind:value={formState.newsletterPermission.value}
 				onValueChange={() => {
-					showFormError.newsletterPermission = false;
-					showFormError.slideError = false;
+					formState.newsletterPermission.showError = false;
+					showSlideError = false;
 				}}
 			>
 				{#each slides.newsletterPermissions.question.newsletterPermission.options as option}
@@ -987,14 +944,14 @@
 			title={slides.newsletterPermissions.question.textUpdatePermission.title}
 			subtext={slides.newsletterPermissions.question.textUpdatePermission.subtext}
 			required={slides.newsletterPermissions.question.textUpdatePermission.required}
-			bind:showError={showFormError.textUpdatePermission}
+			bind:showError={formState.freshAirThursdayTextPermission.showError}
 			errorText={slides.newsletterPermissions.question.textUpdatePermission.errorText}
 		>
 			<RadioGroup.Root
-				bind:value={formValue.textUpdatePermission}
+				bind:value={formState.freshAirThursdayTextPermission.value}
 				onValueChange={() => {
-					showFormError.textUpdatePermission = false;
-					showFormError.slideError = false;
+					formState.freshAirThursdayTextPermission.showError = false;
+					showSlideError = false;
 				}}
 			>
 				{#each slides.newsletterPermissions.question.textUpdatePermission.options as option}
@@ -1007,45 +964,6 @@
 			</RadioGroup.Root>
 		</Question>
 	</CarouselItem>
-
-	<Carousel.Item class="flex h-full basis-full flex-col pl-0">
-		<Card.Root class="ml-0 flex h-full grow flex-col border-none shadow-none">
-			<Card.Content class="flex h-full grow flex-col p-0 text-lg leading-relaxed">
-				<Card.Header class="flex justify-between px-10">
-					<div class="flex shrink-0 -translate-x-[10px]">
-						<div class="translate-x-[10px] translate-y-[21px]">
-							<enhanced:img class="w-[68px]" src={image.birch.logo.img_only} alt="" />
-						</div>
-
-						<a class="font-display relative flex flex-col text-4xl font-bold" href="/">
-							<span class="translate-x-[20px]">The</span>
-							<span class="translate-x-[40px] translate-y-[-10px] text-[66px]">Birch</span>
-							<span class="translate-x-[0px] translate-y-[-20px]">Collective</span>
-						</a>
-					</div>
-				</Card.Header>
-
-				<Card.Content class="mt-16 grow px-10">
-					<p class="font-display text-bc-amber mt-4 text-center text-4xl font-bold">
-						Thanks for taking the time to complete our sign-up form.
-					</p>
-					<div class="flex flex-col items-center">
-						<p class="mt-8">To finish, click submit at the bottom of the page</p>
-					</div>
-
-					<div
-						class="text-bc-logo-black/70 bg-my-grey-3/10 border-my-grey-2 mt-24 flex flex-col rounded-lg border p-4"
-					>
-						<h3 class="font-medium">What happens next?</h3>
-						<p class="mt-2 leading-relaxed">
-							One of the Birch team will be in touch with you shortly about the next steps in
-							joining our programmes.
-						</p>
-					</div>
-				</Card.Content>
-			</Card.Content>
-		</Card.Root>
-	</Carousel.Item>
 </Carousel.Content>
 
 <div class="relative flex w-full shrink-0 items-center justify-center p-3">

@@ -1,54 +1,16 @@
 import type { DateValue } from '@internationalized/date';
 
-import type { ProgrammeName } from '^lib/types';
+import type { NewSignUpEntryProps } from '^types';
 
 const isNonEmpty = (v: string) => v.trim().length > 0;
 const hasSelection = (v: string[]) => v.length > 0;
 const isValidDate = (v?: DateValue | null) => Boolean(v);
 
-type FormValues = {
-	full_name: string;
-	date_of_birth: string;
-	email: string;
-	phone_number: string;
-	address: string;
-	emergency_contact: string;
-	identities: string;
-	ethnicity: string;
-	genders: string;
-	health_issues: string;
-	life_saving_medications: string;
-	programmes_of_interest: string;
-	hope_to_get: string;
-	professional_referral_info: string;
-	sources: string;
-	newsletter_opt_in: string;
-	image_opt_in: string;
-	fresh_air_thursday_text_opt_in: string;
-};
-
-async function addSignUpToGoogleSheet(input: {
-	programmeName: ProgrammeName;
-	formValues: FormValues;
-}) {
-	const dateNow = new Date().toUTCString();
-
-	const { full_name, ...restFormValues } = input.formValues;
-
-	const nameParts = full_name.split(/\s+(.*)/).filter(Boolean);
-
+async function addSignUpToGoogleSheet(props: NewSignUpEntryProps) {
 	const res = await fetch('/api/sign-up', {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
-		body: JSON.stringify({
-			pageName: input.programmeName,
-			sheetValues: {
-				entry_date: dateNow,
-				first_name: nameParts[0],
-				second_name: nameParts[1],
-				...restFormValues
-			}
-		})
+		body: JSON.stringify(props)
 	});
 
 	if (!res.ok) {
@@ -60,4 +22,4 @@ async function addSignUpToGoogleSheet(input: {
 	return { success: true };
 }
 
-export { addSignUpToGoogleSheet, isNonEmpty, hasSelection, isValidDate };
+export { addSignUpToGoogleSheet, hasSelection, isNonEmpty, isValidDate };
