@@ -61,6 +61,7 @@ export const POST: RequestHandler = async ({ request }) => {
 		return new Response(null, { status: 200 });
 	} catch (error) {
 		const errorMessage = error instanceof Error ? error.message : 'Internal server error';
+
 		return new Response(JSON.stringify({ statusCode: 500, message: errorMessage }), {
 			status: 500,
 			headers: { 'Content-Type': 'application/json' }

@@ -9,7 +9,14 @@
 		PUBLIC_BIRCH_GDPR_CONTACT_PHONE
 	} from '$env/static/public';
 
-	import { isValidEmail, isValidUkPhoneNumber, strToLowercaseHyphenated } from '^helpers';
+	import {
+		hasSelection,
+		isNonEmpty,
+		isValidDate,
+		isValidEmail,
+		isValidUkPhoneNumber,
+		strToLowercaseHyphenated
+	} from '^helpers';
 
 	import image from '^assets/image';
 
@@ -27,10 +34,10 @@
 		Textarea,
 		TextInput
 	} from './elements';
+	import { forms } from 'googleapis/build/src/apis/forms';
 
-	const isNonEmpty = (v: string) => v.trim().length > 0;
-	const hasSelection = (v: string[]) => v.length > 0;
-	const isValidDate = (v?: DateValue | null) => Boolean(v);
+	// TODO
+	// - gp or other medical... dropdown textarea when clicked on referral source slide
 </script>
 
 <script lang="ts">
@@ -89,8 +96,6 @@
 		referralSources: { value: [] as string[], isError: false, showError: false }
 	});
 
-	$inspect('formState', formState);
-
 	type QuestionId = keyof typeof formState;
 
 	const questionValidation = new Map<QuestionId, () => boolean>([
@@ -140,11 +145,16 @@
 	]);
 
 	const slideIndexToQuestionIds: Record<number, QuestionId[]> = {
-		2: ['participantName', 'participantDob', 'participantEmail', 'participantPhone']
+		2: ['participantName', 'participantDob', 'participantEmail', 'participantPhone'],
+		3: ['participantAddressLine1', 'participantAddressTownOrCity', 'participantAddressPostcode'],
+		4: ['emergencyContactName', 'emergencyContactPhone', 'emergencyContactRelationship'],
+		5: ['identity1', 'ethnicity', 'identity2'],
+		7: ['programmesOfInterest', 'hopeToGet'],
+		9: ['referralSources'],
+		10: ['imagePermission', 'newsletterPermission', 'textUpdatePermission']
 	};
 
 	function validateAnswers(questionIds: QuestionId[]) {
-		console.log('questionIds:', questionIds);
 		let answersAreValid = true;
 
 		for (let i = 0; i < questionIds.length; i++) {
@@ -175,8 +185,6 @@
 			return;
 		}
 
-		console.log('1');
-
 		const noValidationSlides = [0, 1, 8];
 
 		if (noValidationSlides.includes(activeSlideIndex)) {
@@ -184,16 +192,97 @@
 			return;
 		}
 
-		console.log('2');
-
-		const slideIsValid = handleValidateSlide(activeSlideIndex);
-
-		if (slideIsValid) {
+		if (handleValidateSlide(activeSlideIndex)) {
 			emblaCtx.scrollNext();
 		}
 	}
 
 	let submitStatus: 'idle' | 'pending' | 'error' | 'success' = $state('idle');
+
+	function extractValues<T extends Record<string, { value: any }>>(state: T) {
+		return Object.fromEntries(Object.entries(state).map(([key, field]) => [key, field.value])) as {
+			[K in keyof T]: T[K]['value'];
+		};
+	}
+
+	async function handleSubmit() {
+		try {
+			submitStatus = 'pending';
+
+			const {
+				participantName,
+				participantDob,
+				participantEmail,
+				participantAddressLine1,
+				participantAddressLine2,
+				participantAddressTownOrCity,
+				participantAddressPostcode,
+				identity1,
+				ethnicity,
+				identity2,
+				programmesOfInterest,
+				referralSources,
+				emergencyContactName,
+				emergencyContactPhone,
+				emergencyContactRelationship,
+				healthIssues,
+				lifeSavingMedication,
+				hopeToGet,
+				newsletterPermission,
+				imagePermission,
+				textUpdatePermission
+			} = extractValues(formState);
+
+			const formatList = new Intl.ListFormat('en', { style: 'long', type: 'conjunction' });
+			const formatHyphenList = (arr: string[]) => formatList.format(arr.map(strHyphenatedToSpaced));
+
+			const dobFormatted = new DateFormatter('en-UK', {
+				dateStyle: 'long'
+			}).format(participantDetails.dob!.toDate(getLocalTimeZone()));
+
+			const addressFormatted = [
+				participantAddress.line1,
+				participantAddress.line2,
+				participantAddress.townOrCity,
+				participantAddress.postcode
+			]
+				.filter(Boolean)
+				.join(', ');
+
+			await addSignUpToGoogleSheet({
+				programmeName: 'fresh air thursdays',
+				formValues: {
+					fullName: participantDetails.name,
+					dateOfBirth: dobFormatted,
+					email: participantDetails.email,
+					phoneNumber: participantDetails.phone,
+					address: addressFormatted,
+					emergencyContact: `Name: ${emergencyContact.name} | Phone: ${emergencyContact.phone} | Relationship: ${emergencyContact.relationship}`,
+					identities: formatHyphenList(identity1),
+					ethnicity,
+					genders: formatHyphenList(identity2),
+					healthIssues,
+					lifeSavingMedications: lifeSavingMedication,
+					programmesOfInterest: formatHyphenList(programmesOfInterest),
+					hopeToGet,
+					professionalReferralInfo: '',
+					sources: formatHyphenList(referralSources),
+					newsletterOptIn: newsletterPermission,
+					imageOptIn: imagePermission,
+					freshAirThursdayTextOptIn: textUpdatePermission
+				}
+			});
+
+			submitStatus = 'success';
+			toast.success('Form sent');
+		} catch (error) {
+			submitStatus = 'error';
+			toast.error(
+				`Sign-up form send error — contact ${PUBLIC_BIRCH_EMAIL} if the problem persists`
+			);
+			console.error(error);
+		}
+	}
 </script>
 
 <div
@@ -767,7 +856,7 @@
 				}
 
 				if (activeSlideIndex < 11) handleNext();
-				// else handleSubmit();
+				else handleSubmit();
 			}}
 			type="button"
 		>

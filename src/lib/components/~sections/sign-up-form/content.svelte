@@ -1,5 +1,10 @@
 <script lang="ts" module>
-	import { DateFormatter, getLocalTimeZone, type DateValue } from '@internationalized/date';
+	import {
+		CalendarDate,
+		DateFormatter,
+		getLocalTimeZone,
+		type DateValue
+	} from '@internationalized/date';
 	import { CheckSquare, SignOut } from 'phosphor-svelte';
 	import { scale } from 'svelte/transition';
 
@@ -35,6 +40,7 @@
 		Textarea,
 		TextInput
 	} from './elements';
+	import { dev } from '$app/environment';
 </script>
 
 <script lang="ts">
@@ -82,6 +88,42 @@
 		textUpdatePermission: '',
 		referralSources: [] as string[]
 	});
+
+	function addMockData() {
+		formValue = {
+			healthIssues: 'Asthma, controlled with regular medication',
+			lifeSavingMedication: 'Ventolin inhaler - blue inhaler for emergency use',
+			identity1: ['non-binary', 'genderfluid'],
+			ethnicity: 'Mixed - White and Asian',
+			identity2: ['bisexual', 'prefer-not-to-say'],
+			emergencyContact: {
+				name: 'Sarah Johnson',
+				phone: '07700 900123',
+				relationship: 'Mother'
+			},
+			participantAddress: {
+				line1: '42 Maple Avenue',
+				line2: 'Flat 3B',
+				townOrCity: 'Manchester',
+				postcode: 'M14 5TY'
+			},
+			participantDetails: {
+				name: 'Alex Thompson',
+				dob: new CalendarDate(2005, 3, 15), // Adjust based on your DateValue implementation
+				email: 'alex.thompson@email.com',
+				phone: '07700 900456'
+			},
+			programmesOfInterest: ['youth-leadership', 'arts-creative', 'sports-fitness'],
+			hopeToGet:
+				'I hope to build confidence in public speaking, meet new people who share similar interests, and develop leadership skills that will help me in my future career.',
+			referralComment:
+				'Alex is enthusiastic and would benefit greatly from the youth leadership programme',
+			imagePermission: 'yes',
+			newsletterPermission: 'yes',
+			textUpdatePermission: 'no',
+			referralSources: ['school', 'social-media']
+		};
+	}
 
 	let showFormError = $state({
 		slide: false,
@@ -514,6 +556,19 @@
 					</h2>
 
 					<p class="mt-10 leading-relaxed">{slides.intro.text}</p>
+
+					{#if dev}
+						<button
+							class="mt-8 cursor-pointer rounded-md font-mono"
+							onclick={addMockData}
+							type="button">Add mock data</button
+						>
+						<button
+							class="mt-8 block cursor-pointer rounded-md font-mono"
+							onclick={handleSubmit}
+							type="button">SUBMIT</button
+						>
+					{/if}
 				</Card.Content>
 			</Card.Content>
 		</Card.Root>

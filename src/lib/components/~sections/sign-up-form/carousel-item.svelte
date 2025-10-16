@@ -33,7 +33,7 @@
 		<div class="flex shrink-0 grow flex-col justify-end px-10 pt-4">
 			{#if showError}
 				<p class="text-[16px] text-black/60" transition:fade={{ duration: 50, easing: linear }}>
-					One or more questions need a valid response
+					Please complete all required fields before continuing.
 				</p>
 			{/if}
 		</div>

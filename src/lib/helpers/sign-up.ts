@@ -1,4 +1,10 @@
+import type { DateValue } from '@internationalized/date';
+
 import type { ProgrammeName } from '^lib/types';
+
+const isNonEmpty = (v: string) => v.trim().length > 0;
+const hasSelection = (v: string[]) => v.length > 0;
+const isValidDate = (v?: DateValue | null) => Boolean(v);
 
 type FormValues = {
 	full_name: string;
@@ -25,37 +31,33 @@ async function addSignUpToGoogleSheet(input: {
 	programmeName: ProgrammeName;
 	formValues: FormValues;
 }) {
-	try {
-		const dateNow = new Date().toUTCString();
+	const dateNow = new Date().toUTCString();
 
-		const { full_name, ...restFormValues } = input.formValues;
+	const { full_name, ...restFormValues } = input.formValues;
 
-		const nameParts = full_name.split(/\s+(.*)/).filter(Boolean);
+	const nameParts = full_name.split(/\s+(.*)/).filter(Boolean);
 
-		const res = await fetch('/api/sign-up', {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({
-				// pageName: input.programmeName,
-				sheetValues: {
-					entry_date: dateNow,
-					first_name: nameParts[0],
-					second_name: nameParts[1],
-					...restFormValues
-				}
-			})
-		});
+	const res = await fetch('/api/sign-up', {
+		method: 'POST',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify({
+			pageName: input.programmeName,
+			sheetValues: {
+				entry_date: dateNow,
+				first_name: nameParts[0],
+				second_name: nameParts[1],
+				...restFormValues
+			}
+		})
+	});
 
-		if (!res.ok) {
-			const error = await res.json();
-			console.error('Server error:', error);
-			return;
-		}
-
-		console.log('Form submitted successfully!');
-	} catch (err) {
-		console.error('Network error:', err);
+	if (!res.ok) {
+		const error = await res.json();
+		console.error('Server error:', error);
+		throw new Error(error.message || 'Failed to submit sign-up to Google Sheet');
 	}
+
+	return { success: true };
 }
 
-export { addSignUpToGoogleSheet };
+export { addSignUpToGoogleSheet, isNonEmpty, hasSelection, isValidDate };
