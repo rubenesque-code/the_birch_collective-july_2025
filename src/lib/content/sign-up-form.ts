@@ -247,7 +247,7 @@ const slides = {
 					'Friend',
 					'Parent or carer',
 					'Other'
-				]
+				] as const
 			}
 		}
 	}

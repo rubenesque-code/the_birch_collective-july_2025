@@ -46,6 +46,8 @@
 
 	// TODO
 	// - gp or other medical... dropdown textarea when clicked on referral source slide
+	// Please give name, organisation and email address if you can.
+	// other: Please give any details you can.
 </script>
 
 <script lang="ts">
@@ -97,11 +99,16 @@
 
 		programmesOfInterest: { value: [] as string[], isError: false, showError: false },
 		hopeToGet: { value: '', isError: false, showError: false },
+
 		referralComment: { value: '', isError: false, showError: false },
+
+		referralSources: { value: [] as string[], isError: false, showError: false },
+		referralSourcesGpDetails: { value: '', isError: false, showError: false },
+		referralSourcesOtherDetails: { value: '', isError: false, showError: false },
+
 		imagePermission: { value: '', isError: false, showError: false },
 		newsletterPermission: { value: '', isError: false, showError: false },
-		freshAirThursdayTextPermission: { value: '', isError: false, showError: false },
-		referralSources: { value: [] as string[], isError: false, showError: false }
+		freshAirThursdayTextPermission: { value: '', isError: false, showError: false }
 	});
 
 	function resetFormState() {
@@ -230,7 +237,7 @@
 
 		// Programme info
 		['programmesOfInterest', () => hasSelection(formState.programmesOfInterest.value)],
-		['hopeToGet', () => isNonEmpty(formState.hopeToGet.value)],
+		['hopeToGet', () => true],
 
 		['referralComment', () => true], // Optional
 
@@ -249,6 +256,7 @@
 		3: ['participantAddressLine1', 'participantAddressTownOrCity', 'participantAddressPostcode'],
 		4: ['emergencyContactName', 'emergencyContactPhone', 'emergencyContactRelationship'],
 		5: ['identity1', 'ethnicity', 'identity2'],
+		6: ['healthIssues', 'lifeSavingMedication'],
 		7: ['programmesOfInterest', 'hopeToGet'],
 		9: ['referralSources'],
 		10: ['imagePermission', 'newsletterPermission', 'freshAirThursdayTextPermission']
@@ -271,9 +279,13 @@
 	}
 
 	function handleValidateSlide(index: number) {
+		console.log('index:', index);
 		if (!slideIndexToQuestionIds[index]) return;
 
 		const slideIsValid = validateAnswers(slideIndexToQuestionIds[index]);
+
+		console.log('slideIsValid:', slideIsValid);
+		console.log(formState);
 
 		showSlideError = !slideIsValid;
 
@@ -292,9 +304,7 @@
 			return;
 		}
 
-		if (handleValidateSlide(activeSlideIndex)) {
-			emblaCtx.scrollNext();
-		}
+		if (handleValidateSlide(activeSlideIndex)) emblaCtx.scrollNext();
 	}
 
 	let submitStatus: 'idle' | 'pending' | 'error' | 'success' = $state('idle');
@@ -323,6 +333,8 @@
 				identity2,
 				programmesOfInterest,
 				referralSources,
+				referralSourcesGpDetails,
+				referralSourcesOtherDetails,
 				emergencyContactName,
 				emergencyContactPhone,
 				emergencyContactRelationship,
@@ -376,7 +388,10 @@
 					programmesOfInterest: formatHyphenList(programmesOfInterest),
 					hopeToGet,
 					referralComment,
-					referralSources: formatHyphenList(referralSources),
+					referralSources:
+						formatHyphenList(referralSources) +
+						`${!referralSourcesGpDetails.length ? '' : `GP details: ${referralSourcesGpDetails}`}` +
+						`${!referralSourcesOtherDetails.length ? '' : `Other details: ${referralSourcesOtherDetails}`}`,
 					newsletterPermission,
 					imagePermission,
 					freshAirThursdayTextPermission
@@ -883,7 +898,26 @@
 				}}
 				bind:group={formState.referralSources.value}
 				idPrefix={signUpFormId.referralSource}
-			/>
+			>
+				{#snippet children(option)}
+					{#if option.value === 'gp-or-other-medical-professional' && formState.referralSources.value.includes('gp-or-other-medical-professional')}
+						<p class="mb-2 text-black/50">
+							Please give name, organisation and email address if you can
+						</p>
+						<Textarea
+							bind:value={formState.referralSourcesGpDetails.value}
+							placeholder="GP referral details"
+						/>
+					{/if}
+					{#if option.value === 'other' && formState.referralSources.value.includes('other')}
+						<p class="mb-2 text-black/50">Please give details if you can</p>
+						<Textarea
+							bind:value={formState.referralSourcesOtherDetails.value}
+							placeholder="How you found about us"
+						/>
+					{/if}
+				{/snippet}
+			</CheckboxGroup>
 		</Question>
 	</CarouselItem>
 

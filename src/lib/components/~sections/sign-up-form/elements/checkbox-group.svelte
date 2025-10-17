@@ -1,4 +1,5 @@
 <script lang="ts" module>
+	import type { Snippet } from 'svelte';
 	import Checkbox from './checkbox.svelte';
 </script>
 
@@ -7,12 +8,14 @@
 		options,
 		group = $bindable([]),
 		idPrefix = '',
-		onCheckedChange
+		onCheckedChange,
+		children
 	}: {
 		options: { value: string; label: string }[];
 		group: string[];
 		idPrefix?: string;
 		onCheckedChange: () => void;
+		children?: Snippet<[option: { value: string; label: string }]>;
 	} = $props();
 
 	function toggleValue(value: string, checked: boolean) {
@@ -35,5 +38,7 @@
 				onCheckedChange();
 			}}
 		/>
+
+		{@render children?.(option)}
 	{/each}
 </div>
