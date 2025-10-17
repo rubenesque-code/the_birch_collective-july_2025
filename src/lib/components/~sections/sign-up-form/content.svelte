@@ -475,7 +475,7 @@
 							submitStatus = 'pending';
 
 							setTimeout(() => {
-								// handleSubmit();
+								handleSubmit();
 							}, 700);
 						}}
 						type="button">Try again</button

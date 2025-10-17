@@ -23,8 +23,12 @@
 	});
 </script>
 
-<header class="absolute top-0 left-0 z-10 flex w-full items-start justify-between p-4">
-	<div class="flex shrink-0">
+<header class="absolute top-0 left-0 z-10 flex w-full items-start justify-between p-3 sm:p-4">
+	<div>
+		<enhanced:img class="w-[58px]" src={image.birch.logo.img_only} alt="" />
+	</div>
+
+	<div class="hidden shrink-0 md:flex">
 		<div class="translate-x-[10px] translate-y-[21px]">
 			<enhanced:img class="w-[68px]" src={image.birch.logo.img_only} alt="" />
 		</div>
@@ -38,10 +42,10 @@
 </header>
 
 <nav
-	class="bg-bc-logo-black/50 fixed top-4 right-4 z-40 flex flex-col items-center gap-4 rounded-full p-4"
+	class="bg-bc-logo-black/50 fixed top-4 right-4 z-40 flex flex-row-reverse items-center gap-3 rounded-full p-2 sm:gap-4 md:flex-col md:p-4"
 >
 	<button
-		class="cursor-pointer rounded-full border border-white p-2 text-2xl text-white"
+		class="cursor-pointer rounded-full border border-white p-2 text-lg text-white sm:p-2 md:text-2xl"
 		onclick={() => (isOpen = !isOpen)}
 		type="button"
 	>
@@ -52,37 +56,37 @@
 		{/if}
 	</button>
 
-	<Tooltip.Provider>
-		<Tooltip.Root>
-			<Tooltip.Trigger>
-				<a
-					class="inline-block cursor-pointer rounded-full border border-white p-2 text-2xl text-white"
-					href={internalRoute['get-in-touch']}
-				>
+	<a
+		class="grid cursor-pointer place-items-center rounded-full border border-white p-2 text-lg text-white md:text-2xl"
+		href={internalRoute['get-in-touch']}
+	>
+		<Tooltip.Provider>
+			<Tooltip.Root>
+				<Tooltip.Trigger>
 					<ChatCircle />
-				</a>
-			</Tooltip.Trigger>
-			<Tooltip.Content side="left">
-				<p class="text-base">Get in touch</p>
-			</Tooltip.Content>
-		</Tooltip.Root>
-	</Tooltip.Provider>
+				</Tooltip.Trigger>
+				<Tooltip.Content side="left">
+					<p class="text-base">Get in touch</p>
+				</Tooltip.Content>
+			</Tooltip.Root>
+		</Tooltip.Provider>
+	</a>
 
-	<Tooltip.Provider>
-		<Tooltip.Root>
-			<Tooltip.Trigger>
-				<a
-					class="inline-block cursor-pointer rounded-full border border-white p-2 text-2xl text-white"
-					href={internalRoute.donate}
-				>
+	<a
+		class="grid cursor-pointer place-items-center rounded-full border border-white p-2 text-lg text-white md:text-2xl"
+		href={internalRoute.donate}
+	>
+		<Tooltip.Provider>
+			<Tooltip.Root>
+				<Tooltip.Trigger>
 					<HandHeart />
-				</a>
-			</Tooltip.Trigger>
-			<Tooltip.Content side="left">
-				<p class="text-base">Donate</p>
-			</Tooltip.Content>
-		</Tooltip.Root>
-	</Tooltip.Provider>
+				</Tooltip.Trigger>
+				<Tooltip.Content side="left">
+					<p class="text-base">Donate</p>
+				</Tooltip.Content>
+			</Tooltip.Root>
+		</Tooltip.Provider>
+	</a>
 </nav>
 
 <!-- svelte-ignore a11y_click_events_have_key_events -->

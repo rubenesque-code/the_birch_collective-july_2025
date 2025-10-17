@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-	import { ArrowRight } from 'phosphor-svelte';
+	import { ArrowRight, Circle } from 'phosphor-svelte';
 
 	import image from '^assets/image';
 
@@ -55,7 +55,7 @@
 />
 
 <div class="max-w-screen overflow-hidden pb-40">
-	<section class="flex max-h-screen flex-col">
+	<section class="flex h-screen flex-col md:max-h-screen">
 		<div class="relative h-screen w-screen grow">
 			<video class="absolute top-0 left-0 h-full w-full object-cover" loop muted>
 				<source src={bannerVideoMp4} type="video/mp4" />
@@ -63,10 +63,10 @@
 			</video>
 
 			<div
-				class="from-bc-slate-pine absolute bottom-0 left-0 z-10 h-1/2 w-full bg-gradient-to-t to-transparent"
+				class="from-bc-slate-pine absolute bottom-0 left-0 z-10 h-3/4 w-full bg-gradient-to-t to-transparent sm:h-1/2"
 			></div>
 
-			<div class="absolute bottom-[100px] left-[150px] z-20 w-full">
+			<div class="absolute bottom-[40px] z-20 w-full p-4 md:bottom-[100px] md:left-[150px]">
 				<h2 class="font-display flex flex-col text-7xl font-semibold tracking-wide text-white">
 					Connect Through Nature
 				</h2>
@@ -200,12 +200,11 @@
 			</h2>
 
 			<p class="mt-3 text-xl leading-relaxed">
-				What participants feed back to us is very important and we're constantly striving to improve
-				our programmes.
+				Of the 192 unique participants we worked with in 2024:
 			</p>
 
 			<div class="mt-5 flex flex-col gap-3">
-				{#each ['70% of participants report an increase in wellbeing', '80% have improved behaviour for learning', '90% have improved social interaction'] as text}
+				{#each ['96% gained confidence and practical skills through our nature-based programmes.', '91% reported improved mental and physical wellbeing after taking part.', '90% strengthened their social connections — with many moving on into education, training, or employment.'] as text}
 					<IntroductoryBullet>
 						{text}
 					</IntroductoryBullet>
