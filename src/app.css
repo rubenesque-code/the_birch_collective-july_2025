@@ -112,7 +112,7 @@
 }
 
 body {
-	@apply bg-white text-black;
+	@apply text-bc-logo-black bg-white;
 }
 
 /* @layer base {
@@ -206,4 +206,18 @@ body {
 	--color-my-grey-1: #777578;
 	--color-my-grey-2: #bdbec0;
 	--color-my-grey-3: #cacaca;
+
+	--breakpoint-*: initial;
+	--breakpoint-xxs: 360px;
+	--breakpoint-xs: 410px;
+	--breakpoint-xs-sm: 525px;
+	--breakpoint-sm: 640px;
+	--breakpoint-sm-md: 704px;
+	--breakpoint-md: 768px;
+	--breakpoint-md-lg: 896px;
+	--breakpoint-lg: 1024px;
+	--breakpoint-xl: 1280px;
+	--breakpoint-2xl: 1536px;
+	--breakpoint-3xl: 1800px;
+	--breakpoint-4xl: 2250px;
 }

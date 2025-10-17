@@ -23,7 +23,7 @@
 	});
 </script>
 
-<header class="absolute top-0 left-0 z-10 flex w-full items-start justify-between p-3 sm:p-4">
+<header class="z-10 flex w-full items-start justify-between">
 	<div>
 		<enhanced:img class="w-[58px]" src={image.birch.logo.img_only} alt="" />
 	</div>
@@ -42,7 +42,7 @@
 </header>
 
 <nav
-	class="bg-bc-logo-black/50 fixed top-4 right-4 z-40 flex flex-row-reverse items-center gap-3 rounded-full p-2 sm:gap-4 md:flex-col md:p-4"
+	class="bg-bc-logo-black/50 flex flex-row-reverse items-center gap-3 rounded-full p-2 sm:gap-4 md:flex-col md:p-4"
 >
 	<button
 		class="cursor-pointer rounded-full border border-white p-2 text-lg text-white sm:p-2 md:text-2xl"

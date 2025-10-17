@@ -11,7 +11,7 @@
 	}: { imgSrc: EnhandcedImg; imgAlt: string; title: string; text: string; link: string } = $props();
 </script>
 
-<a class="group/tile relative block w-[700px]" href={link}>
+<a class="group/tile relative block md:w-[700px]" href={link}>
 	<div class="relative">
 		<enhanced:img class="aspect-video rounded-sm object-cover" src={imgSrc} alt={imgAlt} />
 

@@ -8,7 +8,7 @@
 	import { updateSiteState } from '^state';
 
 	import { IntroductoryBullet, WhatWeOffer } from '^pages/landing';
-	import { Navigation, OurMissionModal } from '^components/~sections';
+	import { OurMissionModal } from '^components/~sections';
 
 	// programmes (for individuals to sign up to); 1:1 mentoring; tailored programs for groups; youth advisory board
 	// for young people: group based nature programmes; 1:1 mentoring; youth advisory board; non-official volunteering (as mentor or something like that)?
@@ -45,8 +45,6 @@
 		'We offer you the chance to be part of an inclusive community where you can explore'
 	];
 </script>
-
-<Navigation />
 
 <OurMissionModal
 	onClickCloseShowreel={() => {
@@ -90,18 +88,20 @@
 		</div>
 	</section>
 
-	<section class="relative mt-32 flex justify-center px-40">
+	<section class="xs:px-6 relative mt-14 flex justify-center px-4 md:mt-32 lg:px-40">
 		<div
 			class="bg-my-pale-yellow absolute -top-1/2 -right-1/2 -z-10 aspect-square w-[80%] -translate-y-1/2 rounded-full"
 		></div>
 
-		<div class="flex w-full justify-between">
-			<div class="w-[600px]">
-				<h2 class="font-display text-my-light-orangey-brown text-6xl font-bold">
+		<div class="flex w-full flex-col justify-between gap-y-12 md:flex-row">
+			<div class="w-[600px] max-w-full">
+				<h2
+					class="font-display text-my-light-orangey-brown text-[52px] leading-[1.15em] font-bold sm:text-6xl"
+				>
 					Welcome to <span class="">The Birch Collective</span>
 				</h2>
 				<div class="mt-8">
-					<span class="text-xl leading-[1.45em]">
+					<span class="text-bc-logo-black text-xl leading-[1.45em]">
 						The Birch Collective believes in the power of nature, community, and connection. We’re a
 						social enterprise dedicated to helping people aged 16-25 in Bristol and the surrounding
 						areas who might be feeling isolated, overwhelmed, or unsure of their place in the world.
@@ -109,23 +109,18 @@
 						we’re here to walk alongside you.
 					</span>
 				</div>
-
-				<!-- <p class="mt-12 inline-flex items-center gap-2 rounded-md text-black/30">
-					<span>Read more about us</span>
-					<span><ArrowRight /></span>
-				</p> -->
 			</div>
 
 			<!-- svelte-ignore a11y_click_events_have_key_events -->
 			<!-- svelte-ignore a11y_no_static_element_interactions -->
 			<div
-				class="relative cursor-pointer"
+				class="relative aspect-square cursor-pointer md:aspect-video"
 				on:click={() => {
 					updateSiteState.showreel.setIsOpen(true);
 				}}
 			>
 				<enhanced:img
-					class="w-[700px] rounded-md"
+					class="h-full w-full max-w-full rounded-md object-cover object-left md:w-[700px]"
 					src={image.placeholder.mission_vid_placeholder}
 					alt=""
 				/>
@@ -141,9 +136,9 @@
 		</div>
 	</section>
 
-	<section class="relative mt-36 flex justify-center px-40">
+	<section class="relative mt-20 flex justify-center px-4 md:mt-36 lg:px-40">
 		<div class=" max-w-[680px]">
-			<h2 class="font-display text-bc-slate-pine text-[52px] leading-[1.25em] font-bold">
+			<h2 class="font-display text-bc-slate-pine text-[52px] leading-[1.15em] font-bold">
 				Cultivating Purpose, Belonging & Resilience
 			</h2>
 
@@ -167,13 +162,13 @@
 		</div>
 	</section>
 
-	<section class="relative mt-36 flex justify-center px-40">
+	<section class="relative mt-20 flex justify-center px-4 md:mt-36 lg:px-40">
 		<div>
 			<h2 class="font-display text-bc-slate-pine text-[52px] leading-[1.25em] font-bold">
 				What We Offer
 			</h2>
 
-			<div class=" mt-6 flex w-full justify-between gap-40">
+			<div class=" mt-6 flex w-full flex-col justify-between gap-x-40 gap-y-16 md:flex-row">
 				<WhatWeOffer
 					link={internalRoute['free-programmes']}
 					imgAlt=""
@@ -193,7 +188,7 @@
 		</div>
 	</section>
 
-	<section class="relative mt-36 flex justify-center px-40">
+	<section class="relative mt-20 flex justify-center px-4 md:mt-36 lg:px-40">
 		<div class="max-w-[680px]">
 			<h2 class="font-display text-bc-slate-pine text-[52px] leading-[1.25em] font-bold">
 				Our Impact
@@ -223,7 +218,7 @@
 		</div>
 	</section>
 
-	<section class="relative mt-36 flex justify-center px-40">
+	<section class="relative mt-20 flex justify-center px-4 md:mt-36 lg:px-40">
 		<div>
 			<!-- <h2 class="font-display text-3xl font-bold tracking-wide text-black/70">
 				Ways to Support Us
@@ -232,7 +227,7 @@
 				Ways to Support Us
 			</h2>
 
-			<div class=" mt-6 flex w-full justify-start gap-12">
+			<div class=" mt-6 flex w-full flex-col justify-start gap-12 md:flex-row">
 				<!-- <div class="">
 					<enhanced:img
 						class="aspect-video rounded-sm object-cover"
