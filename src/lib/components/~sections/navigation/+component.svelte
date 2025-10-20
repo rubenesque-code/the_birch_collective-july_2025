@@ -24,32 +24,35 @@
 </script>
 
 <header class="z-10 flex w-full items-start justify-between">
-	<a class="font-display xs-sm:hidden relative flex flex-col text-3xl font-bold" href="/">
+	<a
+		class="font-display md-lg:hidden sm-md:text-4xl relative flex flex-col text-3xl font-bold"
+		href="/"
+	>
 		<span class="translate-x-[20px]">The</span>
-		<span class="translate-x-[40px] translate-y-[-10px] text-[42px]">Birch</span>
+		<span class="sm-md:text-[54px] translate-x-[40px] translate-y-[-10px] text-[42px]">Birch</span>
 		<span class="translate-x-[0px] translate-y-[-20px]">Collective</span>
 	</a>
 
-	<div class="xs-sm:flex hidden shrink-0">
-		<div class="hidden translate-x-[10px] translate-y-[21px] md:block">
+	<div class="md-lg:flex hidden shrink-0">
+		<div class="hidden translate-x-[10px] translate-y-[21px] lg:block">
 			<enhanced:img class="w-[68px]" src={image.birch.logo.img_only} alt="" />
 		</div>
 
 		<a
-			class="font-display flex flex-col text-[34px] leading-[1.6em] font-bold md:text-4xl"
+			class="font-display flex flex-col text-[34px] leading-[1.6em] font-bold lg:text-4xl"
 			href="/"
 		>
 			<span class="translate-x-[20px]">The</span>
-			<span class="translate-x-[40px] translate-y-[-10px] text-[58px] md:text-[66px]">Birch</span>
+			<span class="translate-x-[40px] translate-y-[-10px] text-[58px] lg:text-[66px]">Birch</span>
 			<span class="translate-x-[0px] translate-y-[-20px]">Collective</span>
 		</a>
 	</div>
 
 	<nav
-		class="bg-bc-logo-black/50 xs:p-2 xs:gap-3 flex flex-col items-center gap-[10px] rounded-full p-[7px] sm:gap-3 md:p-4"
+		class="bg-bc-logo-black/50 xs:p-2 xs:gap-3 flex flex-col items-center gap-[10px] rounded-full p-[7px] sm:gap-3 lg:p-4"
 	>
 		<button
-			class="xs:text-lg xs:p-2 xs-sm:text-xl cursor-pointer rounded-full border border-white p-[6px] text-white sm:text-[22px] md:text-2xl"
+			class="xs:text-lg xs:p-2 xs-sm:text-xl cursor-pointer rounded-full border border-white p-[6px] text-white sm:text-[22px] lg:text-2xl"
 			onclick={() => (isOpen = !isOpen)}
 			type="button"
 		>
@@ -61,7 +64,7 @@
 		</button>
 
 		<a
-			class="xs:text-lg xs:p-2 grid cursor-pointer place-items-center rounded-full border border-white p-[6px] text-white sm:text-[22px] md:text-2xl"
+			class="xs:text-lg xs:p-2 grid cursor-pointer place-items-center rounded-full border border-white p-[6px] text-white sm:text-[22px] lg:text-2xl"
 			href={internalRoute['get-in-touch']}
 		>
 			<Tooltip.Provider>
@@ -77,7 +80,7 @@
 		</a>
 
 		<a
-			class="xs:text-lg xs:p-2 grid cursor-pointer place-items-center rounded-full border border-white p-[6px] text-white sm:text-[22px] md:text-2xl"
+			class="xs:text-lg xs:p-2 grid cursor-pointer place-items-center rounded-full border border-white p-[6px] text-white sm:text-[22px] lg:text-2xl"
 			href={internalRoute.donate}
 		>
 			<Tooltip.Provider>
