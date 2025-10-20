@@ -335,31 +335,33 @@
 			</div>
 
 			<div class="mt-8 flex w-full flex-col justify-between gap-x-40 gap-y-16 md:flex-row">
-				{#each support as item}
+				{#each support as offer}
 					<a
 						class="group/tile focus:ring-bc-amber relative block focus:ring-2 focus:outline-none md:w-[700px]"
-						href={item.link}
-						aria-label={item.title}
+						href={offer.link}
+						aria-label={offer.title}
 					>
 						<div class="relative">
 							<enhanced:img
 								class="aspect-square rounded-sm object-cover"
-								src={item.imgSrc}
-								alt={item.imgAlt}
+								src={offer.imgSrc}
+								alt={offer.imgAlt}
 							/>
 
 							<div
-								class="from-bc-slate-pine/80 absolute bottom-0 left-0 z-10 flex h-1/2 w-full flex-col items-center justify-end rounded-b-sm bg-gradient-to-t to-transparent p-3 pb-8 tracking-wide"
+								class="from-bc-slate-pine/80 absolute bottom-0 left-0 z-10 flex h-1/2 w-full flex-col items-start justify-end rounded-b-sm bg-gradient-to-t to-transparent p-4 pb-6 tracking-wide"
 							>
-								<h3
-									class="font-display xs:text-[32px] mt-[14px] text-center text-[40px] font-bold text-white md:text-[36px] lg:text-[42px]"
-								>
-									{item.title}
-								</h3>
+								<div class="flex w-full items-center justify-between gap-4">
+									<h3
+										class="font-display xs:text-[32px] text-center text-[40px] font-bold text-white md:text-[36px] lg:text-[42px]"
+									>
+										{offer.title}
+									</h3>
 
-								<p class="mt-3 text-center leading-relaxed text-white">
-									{item.text}
-								</p>
+									<span class="text-2xl text-white">
+										<ArrowRight weight="bold" />
+									</span>
+								</div>
 							</div>
 
 							<div
@@ -369,6 +371,12 @@
 									<ArrowCircleRight weight="fill" />
 								</span>
 							</div>
+						</div>
+
+						<div class="xs:mt-2 mt-3 pr-4 pl-2">
+							<p class="leading-relaxed">
+								{offer.text}
+							</p>
 						</div>
 					</a>
 				{/each}
