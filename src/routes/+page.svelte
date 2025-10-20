@@ -100,17 +100,21 @@
 			</video>
 
 			<div
-				class="from-bc-slate-pine absolute bottom-0 left-0 z-10 h-3/4 w-full bg-gradient-to-t to-transparent lg:h-2/3"
+				class="from-bc-slate-pine absolute bottom-0 left-0 z-10 h-3/4 w-full bg-gradient-to-t to-transparent 2xl:h-2/3"
 			></div>
 
-			<div class="absolute bottom-[40px] z-20 w-full p-4 lg:bottom-[100px] lg:left-[150px]">
+			<div
+				class="absolute bottom-[40px] z-20 w-full p-4 lg:px-8 2xl:bottom-[100px] 2xl:left-[150px]"
+			>
 				<h2
 					class="font-display xs-sm:text-[62px] xxs:text-6xl flex flex-col text-[56px] leading-[1.1em] font-semibold tracking-wide text-white sm:max-w-[450px] lg:text-7xl"
 				>
 					Connect Through Nature
 				</h2>
 
-				<p class="mt-6 font-medium text-white sm:mt-8 lg:mt-16">Start today in Bristol!</p>
+				<p class="mt-6 font-medium text-white sm:mt-8 lg:mt-10 2xl:mt-16">
+					Start today in Bristol!
+				</p>
 				<p class="mt-4 max-w-[600px] leading-[1.5em] font-medium text-white">
 					Join in through one of our programmes! They're both free and paid, and range from one-day
 					drop-ins to longer adventures.
@@ -129,12 +133,14 @@
 		</div>
 	</section>
 
-	<section class="xs-sm:px-6 xs-sm:mt-14 relative mt-10 flex justify-center px-4 lg:mt-32 lg:px-40">
+	<section
+		class="xs-sm:px-6 xs-sm:mt-14 relative mt-10 flex justify-center px-4 lg:px-8 2xl:mt-32 2xl:px-40"
+	>
 		<div
-			class="bg-my-pale-yellow absolute top-0 right-0 -z-10 aspect-square w-[80%] translate-x-1/2 -translate-y-1/2 rounded-full lg:-top-1/2 lg:-right-1/2 lg:-translate-y-1/2"
+			class="bg-my-pale-yellow absolute top-0 right-0 -z-10 aspect-square w-[80%] translate-x-1/2 -translate-y-1/2 rounded-full 2xl:-top-1/2 2xl:-right-1/2 2xl:-translate-y-1/2"
 		></div>
 
-		<div class="flex w-full flex-col justify-between gap-y-12 lg:flex-row">
+		<div class="flex w-full flex-col justify-between gap-y-12 2xl:flex-row">
 			<div class="w-full max-w-[550px]">
 				<h2
 					class="font-display text-bc-amber xs-sm:text-[52px] text-[48px] leading-[1.15em] font-bold sm:text-6xl"
@@ -161,7 +167,7 @@
 				}}
 			>
 				<enhanced:img
-					class="h-full w-full max-w-full rounded-md object-cover object-left lg:w-[700px]"
+					class="h-full w-full max-w-full rounded-md object-cover object-left 2xl:w-[700px]"
 					src={image.placeholder.mission_vid_placeholder}
 					alt=""
 				/>
@@ -177,7 +183,9 @@
 		</div>
 	</section>
 
-	<section class="xs-sm:mt-20 relative mt-16 flex justify-center px-4 md:px-6 lg:mt-36 lg:px-40">
+	<section
+		class="xs-sm:mt-20 relative mt-16 flex justify-center px-4 md:px-6 lg:px-8 2xl:mt-36 2xl:px-40"
+	>
 		<div class="w-full">
 			<h2
 				class="text-bc-slate-pine font-display xs-sm:text-[50px] text-[46px] leading-[1.15em] font-bold md:text-center"
@@ -216,7 +224,9 @@
 		</div>
 	</section>
 
-	<section class="xs-sm:mt-20 relative mt-16 flex justify-center px-4 md:px-6 lg:mt-36 lg:px-40">
+	<section
+		class="xs-sm:mt-20 relative mt-16 flex justify-center px-4 md:px-6 lg:px-8 2xl:mt-36 2xl:px-40"
+	>
 		<div>
 			<div class="relative inline-block flex-col items-start">
 				<h2 class="section-title">What We Offer</h2>
@@ -227,16 +237,16 @@
 				/>
 			</div>
 
-			<div class="mt-8 flex w-full flex-col justify-between gap-x-40 gap-y-16 lg:flex-row">
+			<div class="mt-8 flex w-full flex-col justify-between gap-x-40 gap-y-16 2xl:flex-row">
 				{#each offers as offer}
 					<a
-						class="group/tile focus:ring-bc-amber relative block focus:ring-2 focus:outline-none lg:w-[700px]"
+						class="group/tile focus:ring-bc-amber relative block focus:ring-2 focus:outline-none 2xl:w-[700px]"
 						href={offer.link}
 						aria-label={offer.title}
 					>
 						<div class="relative">
 							<enhanced:img
-								class="xs-sm:aspect-[4/3] md-lg:aspect-video aspect-square rounded-sm object-cover md:aspect-[5/3]"
+								class="xs-sm:aspect-[4/3] md-:aspect-video aspect-square rounded-sm object-cover md:aspect-[5/3]"
 								src={offer.imgSrc}
 								alt={offer.imgAlt}
 							/>
@@ -267,7 +277,9 @@
 		</div>
 	</section>
 
-	<section class="xs-sm:mt-20 relative mt-16 flex justify-center px-4 md:px-6 lg:mt-36 lg:px-40">
+	<section
+		class="xs-sm:mt-20 relative mt-16 flex justify-center px-4 md:px-6 lg:px-8 2xl:mt-36 2xl:px-40"
+	>
 		<div class="w-full">
 			<div class="relative inline-block flex-col items-start md:items-center">
 				<h2 class="section-title">Our Impact</h2>
@@ -278,7 +290,7 @@
 				/>
 			</div>
 
-			<p class="mt-3 leading-relaxed sm:mt-4">
+			<p class="md-lg:mt-5 mt-3 leading-relaxed sm:mt-4">
 				Of the 192 unique participants we worked with in 2024:
 			</p>
 
@@ -313,7 +325,9 @@
 		</div>
 	</section>
 
-	<section class="xs-sm:px-6 xs-sm:mt-14 relative mt-10 flex justify-center px-4 lg:mt-32 lg:px-40">
+	<section
+		class="xs-sm:px-6 xs-sm:mt-14 relative mt-10 flex justify-center px-4 lg:px-8 2xl:mt-32 2xl:px-40"
+	>
 		<div>
 			<div class="relative inline-block flex-col items-start">
 				<h2 class="section-title">Support Us</h2>
@@ -324,10 +338,10 @@
 				/>
 			</div>
 
-			<div class="mt-8 flex w-full flex-col justify-between gap-x-40 gap-y-16 lg:flex-row">
+			<div class="mt-8 flex w-full flex-col justify-between gap-x-40 gap-y-16 2xl:flex-row">
 				{#each support as item}
 					<a
-						class="group/tile focus:ring-bc-amber relative block focus:ring-2 focus:outline-none lg:w-[700px]"
+						class="group/tile focus:ring-bc-amber relative block focus:ring-2 focus:outline-none 2xl:w-[700px]"
 						href={item.link}
 						aria-label={item.title}
 					>

@@ -34,7 +34,7 @@
 	</a>
 
 	<div class="md-lg:flex hidden shrink-0">
-		<div class="hidden translate-x-[10px] translate-y-[21px] lg:block">
+		<div class="hidden translate-x-[10px] translate-y-[21px]">
 			<enhanced:img class="w-[68px]" src={image.birch.logo.img_only} alt="" />
 		</div>
 
