@@ -1,9 +1,10 @@
 <script lang="ts" module>
 	import '../app.css';
 
-	import { Navbar, NavbarVisibility } from '^components/~sections';
-	import { Toaster } from '^components/ui';
 	import { fly } from 'svelte/transition';
+
+	import { Footer, Navbar, NavbarVisibility } from '^components/~sections';
+	import { Toaster } from '^components/ui';
 </script>
 
 <script lang="ts">
@@ -24,6 +25,8 @@
 </div>
 
 {@render children()}
+
+<Footer />
 
 <NavbarVisibility bind:hideHeader />
 

@@ -19,7 +19,7 @@
 	import { whatToExpectSection, whyJoinUsSection } from '^content/recoupe';
 
 	import { ImageModal, VideoModal } from '^components';
-	import { Navigation, SignUpFormModal } from '^components/~sections';
+	import { SignUpFormModal } from '^components/~sections';
 </script>
 
 <script lang="ts">
@@ -28,8 +28,6 @@
 	let showLocationMap = false;
 	let signUpFormIsOpen = false;
 </script>
-
-<Navigation />
 
 <SignUpFormModal bind:isOpen={signUpFormIsOpen} onClickClose={() => (signUpFormIsOpen = false)} />
 

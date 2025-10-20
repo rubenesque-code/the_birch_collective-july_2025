@@ -5,3 +5,4 @@ export { OurMissionModal, PartnersAndSupportersCarousel };
 
 export * from './sign-up-form';
 export * from './navigation';
+export * from './footer';

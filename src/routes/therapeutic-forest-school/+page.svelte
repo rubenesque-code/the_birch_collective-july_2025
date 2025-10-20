@@ -11,7 +11,6 @@
 		// photo_album_5
 	} from '^assets/images/programmes/tfs';
 
-	import { Navigation } from '^components/~sections';
 	import {
 		activities,
 		cancellationPolicy,
@@ -33,8 +32,6 @@
 <script lang="ts">
 	let showPoster = false;
 </script>
-
-<Navigation />
 
 <ImageModal
 	bind:isOpen={showPoster}

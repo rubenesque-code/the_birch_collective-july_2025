@@ -8,15 +8,12 @@
 	import { whatToExpectSection } from '^content/steering-group';
 
 	import { ImageModal } from '^components';
-	import { Navigation } from '^components/~sections';
 </script>
 
 <script lang="ts">
 	let showLocationMap = false;
 	let showPoster = false;
 </script>
-
-<Navigation />
 
 <ImageModal
 	bind:isOpen={showLocationMap}

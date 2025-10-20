@@ -3,7 +3,6 @@
 
 	import image from '^assets/image';
 
-	import { Navigation } from '^components/~sections';
 	import {
 		caseStudies,
 		howItWorks,
@@ -11,8 +10,6 @@
 		whoItsFor
 	} from '^content/one-to-one-mentoring';
 </script>
-
-<Navigation />
 
 <div class="relative max-w-screen overflow-hidden pb-40">
 	<section class="relative flex justify-center overflow-visible px-80 pt-32 pb-40">

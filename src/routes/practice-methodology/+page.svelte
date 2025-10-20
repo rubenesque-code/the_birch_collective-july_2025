@@ -1,10 +1,6 @@
 <script lang="ts" module>
 	import image from '^assets/image';
-
-	import { Navigation } from '^components/~sections';
 </script>
-
-<Navigation />
 
 <div class="relative max-w-screen overflow-hidden pb-40 text-xl leading-relaxed">
 	<section class="relative flex justify-center overflow-visible px-80 pt-32 pb-40">

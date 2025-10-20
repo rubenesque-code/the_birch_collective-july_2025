@@ -3,7 +3,6 @@
 
 	import image from '^assets/image';
 
-	import { Navigation } from '^components/~sections';
 	import {
 		activities,
 		bookingTerms,
@@ -16,8 +15,6 @@
 	import { PUBLIC_BIRCH_JAMES_EMAIL } from '$env/static/public';
 	import { internalRoute } from '^constants';
 </script>
-
-<Navigation />
 
 <div class="relative max-w-screen overflow-hidden pb-40">
 	<section class="relative flex justify-center overflow-visible px-80 pt-32 pb-40">

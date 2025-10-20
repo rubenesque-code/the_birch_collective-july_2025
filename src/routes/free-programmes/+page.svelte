@@ -5,11 +5,8 @@
 	import { group_photo as seeding_change } from '^assets/images/programmes/seeding-change';
 	import { group_photo as steering } from '^assets/images/programmes/steering-group';
 
-	import { Navigation } from '^components/~sections';
 	import { Tile } from '^pages/free-programmes';
 </script>
-
-<Navigation />
 
 <div class="relative max-w-screen overflow-hidden pb-40">
 	<section class="relative flex justify-center overflow-visible px-60 pt-32 pb-40">

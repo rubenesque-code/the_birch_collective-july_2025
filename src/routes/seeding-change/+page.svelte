@@ -22,7 +22,7 @@
 		photo_album_8
 	} from '^assets/images/programmes/seeding-change';
 	import { VideoModal } from '^components';
-	import { Navigation, SignUpFormModal } from '^components/~sections';
+	import { SignUpFormModal } from '^components/~sections';
 </script>
 
 <script lang="ts">
@@ -30,8 +30,6 @@
 	let playTestimonial = false;
 	let signUpFormIsOpen = false;
 </script>
-
-<Navigation />
 
 <SignUpFormModal bind:isOpen={signUpFormIsOpen} onClickClose={() => (signUpFormIsOpen = false)} />
 

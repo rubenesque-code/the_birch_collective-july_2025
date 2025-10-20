@@ -3,11 +3,8 @@
 
 	import image from '^assets/image';
 
-	import { Navigation } from '^components/~sections';
 	import { Tile } from '^pages/free-programmes';
 </script>
-
-<Navigation />
 
 <div class="relative max-w-screen overflow-hidden pb-40">
 	<section class="relative flex justify-center overflow-visible px-60 pt-32 pb-40">

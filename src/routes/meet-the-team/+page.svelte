@@ -7,7 +7,6 @@
 		fresh_air_thursday_participant_testimonial,
 		fresh_air_thursday_participant_testimonial_placeholder
 	} from '^assets/videos';
-	import { Navigation } from '^components/~sections';
 	import { VideoModal } from '^components';
 	import { amy, james, ro, tim } from '^assets';
 </script>
@@ -16,8 +15,6 @@
 	let playIntro = false;
 	let playTestimonial = false;
 </script>
-
-<Navigation />
 
 <VideoModal
 	bind:isOpen={playIntro}
