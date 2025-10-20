@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-	import { ArrowCircleRight, ArrowRight, Circle } from 'phosphor-svelte';
+	import { ArrowCircleRight, ArrowRight, Flower } from 'phosphor-svelte';
 
 	import image from '^assets/image';
 
@@ -7,7 +7,6 @@
 	import { internalRoute } from '^constants';
 	import { updateSiteState } from '^state';
 
-	import { IntroductoryBullet, WhatWeOffer } from '^pages/landing';
 	import { OurMissionModal } from '^components/~sections';
 
 	// programmes (for individuals to sign up to); 1:1 mentoring; tailored programs for groups; youth advisory board
@@ -59,6 +58,29 @@
 			imgAlt: 'Paid services banner',
 			title: 'Paid For Services',
 			text: 'For young people, organisations, schools, youth groups, and professionals who want to bring nature-based learning and wellbeing into their work.'
+		}
+	];
+
+	const impact = [
+		'96% gained confidence and practical skills through our nature-based programmes.',
+		'91% reported improved mental and physical wellbeing after taking part.',
+		'90% strengthened their social connections — with many moving on into education, training, or employment.'
+	];
+
+	const support = [
+		{
+			title: 'Volunteer',
+			link: '/volunteer',
+			imgSrc: image.placeholder.axe_chopping,
+			imgAlt: 'Person chopping wood during an outdoor volunteer activity',
+			text: 'Be a part of the team. It can be excellent work experience!'
+		},
+		{
+			title: 'Make a Donation',
+			link: '/donate',
+			imgSrc: image.placeholder.chillies,
+			imgAlt: 'Close-up of chillies',
+			text: 'Any donation is appreciated!'
 		}
 	];
 </script>
@@ -164,8 +186,12 @@
 			<div class="mt-6 flex flex-col gap-3">
 				{#each introductoryBullets as text}
 					<p class="xs:pl-2 flex items-center gap-4">
-						<span class="text-bc-amber/50">
-							<Circle />
+						<span class="text-bc-amber/50 relative inline-block">
+							<Flower weight="fill" />
+
+							<span
+								class="bg-bc-amber/50 absolute top-1/2 left-1/2 h-[4px] w-[4px] -translate-x-1/2 -translate-y-1/2"
+							></span>
 						</span>
 						<span
 							class="decoration-bc-amber/30 leading-relaxed text-black/90 underline underline-offset-2"
@@ -246,60 +272,40 @@
 					</a>
 				{/each}
 			</div>
-
-			<div class="mt-8 flex w-full flex-col justify-between gap-x-40 gap-y-16 md:flex-row">
-				{#each offers as offer}
-					<a
-						class="group/tile focus:ring-bc-amber relative block focus:ring-2 focus:outline-none md:w-[700px]"
-						href={offer.link}
-						aria-label={offer.title}
-					>
-						<div class="relative">
-							<enhanced:img
-								class="aspect-video rounded-sm object-cover"
-								src={offer.imgSrc}
-								alt={offer.imgAlt}
-							/>
-
-							<div
-								class="absolute right-2 bottom-2 z-10 flex justify-end opacity-0 transition-opacity duration-300 ease-linear group-hover/tile:opacity-100"
-							>
-								<span class="text-my-pale-yellow text-[40px]">
-									<ArrowCircleRight weight="fill" />
-								</span>
-							</div>
-						</div>
-
-						<h3
-							class="font-display text-bc-amber xs:text-[32px] mt-[14px] pl-2 text-center text-[38px] font-bold tracking-wide md:text-[36px] lg:text-[42px]"
-						>
-							{offer.title}
-						</h3>
-
-						<p class="xs:mt-2 mt-1 text-center leading-relaxed">
-							{offer.text}
-						</p>
-					</a>
-				{/each}
-			</div>
 		</div>
 	</section>
 
 	<section class="relative mt-20 flex justify-center px-4 md:mt-36 lg:px-40">
 		<div class="max-w-[680px]">
-			<h2 class="font-display text-bc-slate-pine text-[52px] leading-[1.25em] font-bold">
-				Our Impact
-			</h2>
+			<div class="relative inline-block flex-col items-start">
+				<h2 class="text-bc-logo-black/70 font-display text-[26px] font-bold uppercase">
+					Our Impact
+				</h2>
 
-			<p class="mt-3 text-xl leading-relaxed">
-				Of the 192 unique participants we worked with in 2024:
-			</p>
+				<enhanced:img
+					class="absolute bottom-1 h-[2px] w-full opacity-70"
+					src={image.illustration.drawn_line_black}
+				/>
+			</div>
 
-			<div class="mt-5 flex flex-col gap-3">
-				{#each ['96% gained confidence and practical skills through our nature-based programmes.', '91% reported improved mental and physical wellbeing after taking part.', '90% strengthened their social connections — with many moving on into education, training, or employment.'] as text}
-					<IntroductoryBullet>
-						{text}
-					</IntroductoryBullet>
+			<p class="mt-3 leading-relaxed">Of the 192 unique participants we worked with in 2024:</p>
+
+			<div class="mt-6 flex flex-col gap-3">
+				{#each impact as text}
+					<p class="xs:pl-2 flex items-center gap-4">
+						<span class="text-bc-amber/50 relative inline-block">
+							<Flower weight="fill" />
+
+							<span
+								class="bg-bc-amber/50 absolute top-1/2 left-1/2 h-[4px] w-[4px] -translate-x-1/2 -translate-y-1/2"
+							></span>
+						</span>
+						<span
+							class="decoration-bc-amber/30 leading-relaxed text-black/90 underline underline-offset-2"
+						>
+							{text}
+						</span>
+					</p>
 				{/each}
 			</div>
 
@@ -317,60 +323,55 @@
 
 	<section class="relative mt-20 flex justify-center px-4 md:mt-36 lg:px-40">
 		<div>
-			<!-- <h2 class="font-display text-3xl font-bold tracking-wide text-black/70">
-				Ways to Support Us
-			</h2> -->
-			<h2 class="font-display text-bc-slate-pine text-[52px] leading-[1.25em] font-bold">
-				Ways to Support Us
-			</h2>
+			<div class="relative inline-block flex-col items-start">
+				<h2 class="text-bc-logo-black/70 font-display text-[26px] font-bold uppercase">
+					Support Us
+				</h2>
 
-			<div class=" mt-6 flex w-full flex-col justify-start gap-12 md:flex-row">
-				<!-- <div class="">
-					<enhanced:img
-						class="aspect-video rounded-sm object-cover"
-						src={image.placeholder.caregiver_with_partipant_face_to_face}
-						alt=""
-					/>
-					<h3 class="font-display text-bc-amber mt-3 text-center text-[40px] font-bold">
-						Programme Volunteer
-					</h3>
+				<enhanced:img
+					class="absolute bottom-1 h-[2px] w-full opacity-70"
+					src={image.illustration.drawn_line_black}
+				/>
+			</div>
 
-					<p class="mt-1 text-center text-lg leading-relaxed">
-						Help out by supporting us at one or more of our programmes
-					</p>
-				</div> -->
+			<div class="mt-8 flex w-full flex-col justify-between gap-x-40 gap-y-16 md:flex-row">
+				{#each support as item}
+					<a
+						class="group/tile focus:ring-bc-amber relative block focus:ring-2 focus:outline-none md:w-[700px]"
+						href={item.link}
+						aria-label={item.title}
+					>
+						<div class="relative">
+							<enhanced:img
+								class="aspect-square rounded-sm object-cover"
+								src={item.imgSrc}
+								alt={item.imgAlt}
+							/>
 
-				<div class="basis-1/3">
-					<enhanced:img
-						class="aspect-video rounded-sm object-cover"
-						src={image.placeholder.axe_chopping}
-						alt=""
-					/>
+							<div
+								class="from-bc-slate-pine/80 absolute bottom-0 left-0 z-10 flex h-1/2 w-full flex-col items-center justify-end rounded-b-sm bg-gradient-to-t to-transparent p-3 pb-8 tracking-wide"
+							>
+								<h3
+									class="font-display xs:text-[32px] mt-[14px] text-center text-[40px] font-bold text-white md:text-[36px] lg:text-[42px]"
+								>
+									{item.title}
+								</h3>
 
-					<h3 class="font-display text-bc-amber mt-3 text-center text-[40px] font-bold">
-						Volunteer
-					</h3>
+								<p class="mt-3 text-center leading-relaxed text-white">
+									{item.text}
+								</p>
+							</div>
 
-					<p class="mt-1 text-center text-lg leading-relaxed">
-						Be a part of the team. It can be excellent work experience!
-					</p>
-				</div>
-
-				<div class="basis-1/3">
-					<enhanced:img
-						class="aspect-video rounded-sm object-cover"
-						src={image.placeholder.chillies}
-						alt=""
-					/>
-
-					<h3 class="font-display text-bc-amber mt-3 text-center text-[40px] font-bold">
-						Make a Donation
-					</h3>
-
-					<p class="mt-1 text-center text-lg leading-relaxed">
-						These are longer term and can be excellent work experience!
-					</p>
-				</div>
+							<div
+								class="absolute right-2 bottom-2 z-20 flex justify-end opacity-0 transition-opacity duration-300 ease-linear group-hover/tile:opacity-100"
+							>
+								<span class="text-my-pale-yellow text-[40px]">
+									<ArrowCircleRight weight="fill" />
+								</span>
+							</div>
+						</div>
+					</a>
+				{/each}
 			</div>
 		</div>
 	</section>
