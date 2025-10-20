@@ -46,10 +46,10 @@
 	</div>
 
 	<nav
-		class="bg-bc-logo-black/50 xs:p-2 xs:gap-3 flex flex-col items-center gap-[10px] rounded-full p-[7px] sm:gap-4 md:p-4"
+		class="bg-bc-logo-black/50 xs:p-2 xs:gap-3 flex flex-col items-center gap-[10px] rounded-full p-[7px] sm:gap-3 md:p-4"
 	>
 		<button
-			class="xs:text-lg xs:p-2 xs-sm:text-xl cursor-pointer rounded-full border border-white p-[6px] text-white md:text-2xl"
+			class="xs:text-lg xs:p-2 xs-sm:text-xl cursor-pointer rounded-full border border-white p-[6px] text-white sm:text-[22px] md:text-2xl"
 			onclick={() => (isOpen = !isOpen)}
 			type="button"
 		>
@@ -61,7 +61,7 @@
 		</button>
 
 		<a
-			class="xs:text-lg xs:p-2 grid cursor-pointer place-items-center rounded-full border border-white p-[6px] text-white md:text-2xl"
+			class="xs:text-lg xs:p-2 grid cursor-pointer place-items-center rounded-full border border-white p-[6px] text-white sm:text-[22px] md:text-2xl"
 			href={internalRoute['get-in-touch']}
 		>
 			<Tooltip.Provider>
@@ -77,7 +77,7 @@
 		</a>
 
 		<a
-			class="xs:text-lg xs:p-2 grid cursor-pointer place-items-center rounded-full border border-white p-[6px] text-white md:text-2xl"
+			class="xs:text-lg xs:p-2 grid cursor-pointer place-items-center rounded-full border border-white p-[6px] text-white sm:text-[22px] md:text-2xl"
 			href={internalRoute.donate}
 		>
 			<Tooltip.Provider>

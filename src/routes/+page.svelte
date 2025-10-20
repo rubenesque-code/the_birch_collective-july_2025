@@ -100,25 +100,25 @@
 			</video>
 
 			<div
-				class="from-bc-slate-pine absolute bottom-0 left-0 z-10 h-3/4 w-full bg-gradient-to-t to-transparent sm:h-1/2"
+				class="from-bc-slate-pine absolute bottom-0 left-0 z-10 h-3/4 w-full bg-gradient-to-t to-transparent sm:h-2/3"
 			></div>
 
-			<div class="absolute bottom-[40px] z-20 w-full p-4 md:bottom-[100px] md:left-[150px]">
+			<div
+				class="absolute bottom-[40px] z-20 w-full p-4 sm:max-w-[500px] md:bottom-[100px] md:left-[150px]"
+			>
 				<h2
 					class="font-display xs-sm:text-7xl xxs:text-6xl flex flex-col text-[56px] leading-[1.1em] font-semibold tracking-wide text-white"
 				>
 					Connect Through Nature
 				</h2>
 
-				<p class="xs:mt-16 xs:text-xl mt-6 text-lg font-medium text-white">
-					Start today in Bristol!
-				</p>
-				<p class="xs:text-xl mt-4 max-w-[690px] text-lg leading-[1.5em] font-medium text-white">
+				<p class="xs:mt-16 mt-6 font-medium text-white sm:mt-12">Start today in Bristol!</p>
+				<p class="mt-4 max-w-[690px] leading-[1.5em] font-medium text-white">
 					Join in through one of our programmes! They are both free and paid, and range from one-day
 					drop-ins to longer adventures.
 				</p>
 
-				<div class="xs:mt-10 mt-8 flex items-center gap-12">
+				<div class="xs:mt-10 mt-8 flex items-center gap-12 sm:mt-12">
 					<button
 						class="bg-my-pale-yellow xs-sm:px-5 xs-sm:py-3 relative flex items-center gap-4 rounded-3xl px-3 py-2 tracking-wide"
 						type="button"
@@ -137,7 +137,7 @@
 		></div>
 
 		<div class="flex w-full flex-col justify-between gap-y-12 md:flex-row">
-			<div class="w-[600px] max-w-full">
+			<div class="w-full max-w-[550px]">
 				<h2
 					class="font-display text-bc-amber xs-sm:text-[52px] text-[48px] leading-[1.15em] font-bold sm:text-6xl"
 				>
@@ -246,9 +246,7 @@
 							<div
 								class="from-bc-slate-pine/80 absolute bottom-0 left-0 z-10 flex h-1/2 w-full flex-col items-start justify-end rounded-b-sm bg-gradient-to-t to-transparent p-2 pb-6 tracking-wide"
 							>
-								<h3
-									class="font-display xs-sm:text-[42px] mt-[14px] text-center text-[40px] font-bold text-white md:text-[36px] lg:text-[42px]"
-								>
+								<h3 class="card-title text-white">
 									{offer.title}
 								</h3>
 							</div>
@@ -259,7 +257,9 @@
 								{offer.text}
 							</p>
 
-							<span class="text-bc-slate-pine xs-sm:text-3xl mt-3 inline-block text-[26px]">
+							<span
+								class="text-bc-slate-pine xs-sm:text-3xl mt-3 inline-block text-[26px] sm:text-4xl"
+							>
 								<ArrowCircleRight />
 							</span>
 						</div>
@@ -280,7 +280,9 @@
 				/>
 			</div>
 
-			<p class="mt-3 leading-relaxed">Of the 192 unique participants we worked with in 2024:</p>
+			<p class="mt-3 leading-relaxed sm:mt-4">
+				Of the 192 unique participants we worked with in 2024:
+			</p>
 
 			<div class="mt-6 flex flex-col gap-3">
 				{#each impact as text}
@@ -325,39 +327,37 @@
 			</div>
 
 			<div class="mt-8 flex w-full flex-col justify-between gap-x-40 gap-y-16 md:flex-row">
-				{#each support as offer}
+				{#each support as item}
 					<a
 						class="group/tile focus:ring-bc-amber relative block focus:ring-2 focus:outline-none md:w-[700px]"
-						href={offer.link}
-						aria-label={offer.title}
+						href={item.link}
+						aria-label={item.title}
 					>
 						<div class="relative">
 							<enhanced:img
-								class="aspect-square rounded-sm object-cover"
-								src={offer.imgSrc}
-								alt={offer.imgAlt}
+								class="xs-sm:aspect-[4/3] aspect-square rounded-sm object-cover"
+								src={item.imgSrc}
+								alt={item.imgAlt}
 							/>
 
 							<div
 								class="from-bc-slate-pine/80 absolute bottom-0 left-0 z-10 flex h-1/2 w-full flex-col items-start justify-end rounded-b-sm bg-gradient-to-t to-transparent p-4 pb-6 tracking-wide"
 							>
 								<div class="flex w-full items-center justify-between gap-4">
-									<h3
-										class="font-display xs-sm:text-[42px] mt-[14px] text-center text-[40px] font-bold text-white md:text-[36px] lg:text-[42px]"
-									>
-										{offer.title}
+									<h3 class="card-title text-white">
+										{item.title}
 									</h3>
 
-									<span class="xs-sm:translate-y-[6px] text-2xl text-white">
+									<span class="xs-sm:translate-y-[6px] text-2xl text-white sm:text-3xl">
 										<ArrowRight weight="bold" />
 									</span>
 								</div>
 							</div>
 						</div>
 
-						<div class="xs-sm:mt-4 mt-3 pr-4 pl-2">
+						<div class="xs-sm:mt-4 mt-3 flex flex-col items-start pl-2">
 							<p class="leading-relaxed">
-								{offer.text}
+								{item.text}
 							</p>
 						</div>
 					</a>

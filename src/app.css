@@ -173,7 +173,11 @@
 	}
 
 	.section-title {
-		@apply text-bc-logo-black/70 font-display xs:text-[28px] xs-sm:text-[30px] text-[26px] font-bold uppercase;
+		@apply text-bc-logo-black/70 font-display sm-md:text-[32px] xs:text-[28px] xs-sm:text-[30px] text-[26px] font-bold uppercase;
+	}
+
+	.card-title {
+		@apply font-display xs-sm:text-[42px] mt-[14px] text-center text-[40px] font-bold sm:text-[44px];
 	}
 }
 
