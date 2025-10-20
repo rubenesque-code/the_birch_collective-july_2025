@@ -134,13 +134,13 @@
 	</section>
 
 	<section
-		class="xs-sm:px-6 xs-sm:mt-14 relative mt-10 flex justify-center px-4 lg:px-8 2xl:mt-32 2xl:px-40"
+		class="xs-sm:px-6 xs-sm:mt-14 relative mt-10 flex justify-center px-4 lg:px-8 xl:mt-24 2xl:mt-32 2xl:px-40"
 	>
 		<div
 			class="bg-my-pale-yellow absolute top-0 right-0 -z-10 aspect-square w-[80%] translate-x-1/2 -translate-y-1/2 rounded-full 2xl:-top-1/2 2xl:-right-1/2 2xl:-translate-y-1/2"
 		></div>
 
-		<div class="flex w-full flex-col justify-between gap-y-12 2xl:flex-row">
+		<div class="flex w-full flex-col justify-between gap-x-12 gap-y-12 xl:flex-row">
 			<div class="w-full max-w-[550px]">
 				<h2
 					class="font-display text-bc-amber xs-sm:text-[52px] text-[48px] leading-[1.15em] font-bold sm:text-6xl"
@@ -184,11 +184,11 @@
 	</section>
 
 	<section
-		class="xs-sm:mt-20 relative mt-16 flex justify-center px-4 md:px-6 lg:px-8 2xl:mt-36 2xl:px-40"
+		class="xs-sm:mt-20 relative mt-16 flex justify-center px-4 md:px-6 lg:px-8 xl:mt-28 2xl:mt-36 2xl:px-40"
 	>
 		<div class="w-full">
 			<h2
-				class="text-bc-slate-pine font-display xs-sm:text-[50px] text-[46px] leading-[1.15em] font-bold md:text-center"
+				class="text-bc-slate-pine font-display xs-sm:text-[50px] text-[46px] leading-[1.15em] font-bold md:text-center xl:text-[56px]"
 			>
 				Cultivating Purpose, Belonging & Resilience
 			</h2>
@@ -237,7 +237,9 @@
 				/>
 			</div>
 
-			<div class="mt-8 flex w-full flex-col justify-between gap-x-40 gap-y-16 2xl:flex-row">
+			<div
+				class="mt-8 flex w-full flex-col justify-between gap-x-20 gap-y-16 xl:flex-row 2xl:gap-x-40"
+			>
 				{#each offers as offer}
 					<a
 						class="group/tile focus:ring-bc-amber relative block focus:ring-2 focus:outline-none 2xl:w-[700px]"
@@ -252,7 +254,7 @@
 							/>
 
 							<div
-								class="from-bc-slate-pine/80 absolute bottom-0 left-0 z-10 flex h-1/2 w-full flex-col items-start justify-end rounded-b-sm bg-gradient-to-t to-transparent p-2 pb-6 tracking-wide"
+								class="from-bc-slate-pine/80 absolute bottom-0 left-0 z-10 flex h-1/2 w-full flex-col items-start justify-end rounded-b-sm bg-gradient-to-t to-transparent p-2 pb-6 tracking-wide xl:p-4"
 							>
 								<h3 class="card-title text-white">
 									{offer.title}
@@ -260,8 +262,8 @@
 							</div>
 						</div>
 
-						<div class="xs-sm:mt-4 mt-3 pl-2">
-							<p class="max-w-[640px] leading-relaxed">
+						<div class="xs-sm:mt-4 mt-3 pl-2 xl:pl-4">
+							<p class="max-w-[640px] leading-relaxed xl:max-w-[500px]">
 								{offer.text}
 							</p>
 
@@ -338,7 +340,9 @@
 				/>
 			</div>
 
-			<div class="mt-8 flex w-full flex-col justify-between gap-x-40 gap-y-16 2xl:flex-row">
+			<div
+				class="mt-8 flex w-full flex-col justify-between gap-x-20 gap-y-16 xl:flex-row 2xl:gap-x-40"
+			>
 				{#each support as item}
 					<a
 						class="group/tile focus:ring-bc-amber relative block focus:ring-2 focus:outline-none 2xl:w-[700px]"
@@ -367,7 +371,7 @@
 							</div>
 						</div>
 
-						<div class="xs-sm:mt-4 mt-3 flex flex-col items-start pl-2">
+						<div class="xs-sm:mt-4 mt-3 flex flex-col items-start pl-2 xl:pl-4">
 							<p class="max-w-[640px] leading-relaxed">
 								{item.text}
 							</p>
