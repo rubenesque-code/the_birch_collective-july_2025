@@ -111,18 +111,15 @@
 	--color-sidebar-ring: var(--sidebar-ring);
 }
 
-body {
-	@apply text-bc-logo-black bg-white;
-}
+@layer base {
+	body {
+		@apply text-bc-logo-black xs:text-xl bg-white text-lg;
+	}
 
-/* @layer base {
- 	* {
- 		@apply border-border outline-ring/50;
- 	}
- 	body {
- 		@apply bg-background text-foreground;
- 	}
- } */
+	.section-title {
+		@apply font-display text-bc-slate-pine xs:text-[50px] text-[46px] leading-[1.15em] font-bold;
+	}
+}
 
 @font-face {
 	font-family: 'Amatic SC';

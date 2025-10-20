@@ -24,70 +24,75 @@
 </script>
 
 <header class="z-10 flex w-full items-start justify-between">
-	<div>
+	<!-- <div>
 		<enhanced:img class="w-[58px]" src={image.birch.logo.img_only} alt="" />
-	</div>
+	</div> -->
+	<a class="font-display relative flex flex-col text-3xl font-bold" href="/">
+		<span class="translate-x-[20px]">The</span>
+		<span class="translate-x-[40px] translate-y-[-10px] text-[42px]">Birch</span>
+		<span class="translate-x-[0px] translate-y-[-20px]">Collective</span>
+	</a>
 
 	<div class="hidden shrink-0 md:flex">
-		<div class="translate-x-[10px] translate-y-[21px]">
+		<div class="hidden translate-x-[10px] translate-y-[21px]">
 			<enhanced:img class="w-[68px]" src={image.birch.logo.img_only} alt="" />
 		</div>
 
-		<a class="font-display relative flex flex-col text-4xl font-bold" href="/">
+		<a class="font-display flex flex-col text-4xl font-bold" href="/">
 			<span class="translate-x-[20px]">The</span>
 			<span class="translate-x-[40px] translate-y-[-10px] text-[66px]">Birch</span>
 			<span class="translate-x-[0px] translate-y-[-20px]">Collective</span>
 		</a>
 	</div>
+
+	<nav
+		class="bg-bc-logo-black/50 xs:p-2 xs:gap-3 flex flex-col items-center gap-[10px] rounded-full p-[7px] sm:gap-4 md:p-4"
+	>
+		<button
+			class="xs:text-lg xs:p-2 cursor-pointer rounded-full border border-white p-[6px] text-white md:text-2xl"
+			onclick={() => (isOpen = !isOpen)}
+			type="button"
+		>
+			{#if !isOpen}
+				<List />
+			{:else}
+				<X />
+			{/if}
+		</button>
+
+		<a
+			class="xs:text-lg xs:p-2 grid cursor-pointer place-items-center rounded-full border border-white p-[6px] text-white md:text-2xl"
+			href={internalRoute['get-in-touch']}
+		>
+			<Tooltip.Provider>
+				<Tooltip.Root>
+					<Tooltip.Trigger>
+						<ChatCircle />
+					</Tooltip.Trigger>
+					<Tooltip.Content side="left">
+						<p class="text-base">Get in touch</p>
+					</Tooltip.Content>
+				</Tooltip.Root>
+			</Tooltip.Provider>
+		</a>
+
+		<a
+			class="xs:text-lg xs:p-2 grid cursor-pointer place-items-center rounded-full border border-white p-[6px] text-white md:text-2xl"
+			href={internalRoute.donate}
+		>
+			<Tooltip.Provider>
+				<Tooltip.Root>
+					<Tooltip.Trigger>
+						<HandHeart />
+					</Tooltip.Trigger>
+					<Tooltip.Content side="left">
+						<p class="text-base">Donate</p>
+					</Tooltip.Content>
+				</Tooltip.Root>
+			</Tooltip.Provider>
+		</a>
+	</nav>
 </header>
-
-<nav
-	class="bg-bc-logo-black/50 flex flex-row-reverse items-center gap-3 rounded-full p-2 sm:gap-4 md:flex-col md:p-4"
->
-	<button
-		class="cursor-pointer rounded-full border border-white p-2 text-lg text-white sm:p-2 md:text-2xl"
-		onclick={() => (isOpen = !isOpen)}
-		type="button"
-	>
-		{#if !isOpen}
-			<List />
-		{:else}
-			<X />
-		{/if}
-	</button>
-
-	<a
-		class="grid cursor-pointer place-items-center rounded-full border border-white p-2 text-lg text-white md:text-2xl"
-		href={internalRoute['get-in-touch']}
-	>
-		<Tooltip.Provider>
-			<Tooltip.Root>
-				<Tooltip.Trigger>
-					<ChatCircle />
-				</Tooltip.Trigger>
-				<Tooltip.Content side="left">
-					<p class="text-base">Get in touch</p>
-				</Tooltip.Content>
-			</Tooltip.Root>
-		</Tooltip.Provider>
-	</a>
-
-	<a
-		class="grid cursor-pointer place-items-center rounded-full border border-white p-2 text-lg text-white md:text-2xl"
-		href={internalRoute.donate}
-	>
-		<Tooltip.Provider>
-			<Tooltip.Root>
-				<Tooltip.Trigger>
-					<HandHeart />
-				</Tooltip.Trigger>
-				<Tooltip.Content side="left">
-					<p class="text-base">Donate</p>
-				</Tooltip.Content>
-			</Tooltip.Root>
-		</Tooltip.Provider>
-	</a>
-</nav>
 
 <!-- svelte-ignore a11y_click_events_have_key_events -->
 <!-- svelte-ignore a11y_no_static_element_interactions -->

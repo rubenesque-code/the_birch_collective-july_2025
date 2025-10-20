@@ -7,6 +7,7 @@ const internalRoute = {
 	['paid-services']: '/paid-services',
 	['practice-methodology']: '/practice-methodology',
 	donate: '/donate',
+	['about-us']: '/about-us',
 
 	recoupe: '/recoupe',
 	['fresh-air-thursday']: '/fresh-air-thursday',
