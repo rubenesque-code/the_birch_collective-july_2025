@@ -100,17 +100,17 @@
 			</video>
 
 			<div
-				class="from-bc-slate-pine md-lg:h-2/3 absolute bottom-0 left-0 z-10 h-3/4 w-full bg-gradient-to-t to-transparent"
+				class="from-bc-slate-pine absolute bottom-0 left-0 z-10 h-3/4 w-full bg-gradient-to-t to-transparent lg:h-2/3"
 			></div>
 
 			<div class="absolute bottom-[40px] z-20 w-full p-4 lg:bottom-[100px] lg:left-[150px]">
 				<h2
-					class="font-display xs-sm:text-[62px] md-lg:text-7xl xxs:text-6xl flex flex-col text-[56px] leading-[1.1em] font-semibold tracking-wide text-white sm:max-w-[450px]"
+					class="font-display xs-sm:text-[62px] xxs:text-6xl flex flex-col text-[56px] leading-[1.1em] font-semibold tracking-wide text-white sm:max-w-[450px] lg:text-7xl"
 				>
 					Connect Through Nature
 				</h2>
 
-				<p class="md-lg:mt-16 mt-6 font-medium text-white sm:mt-8">Start today in Bristol!</p>
+				<p class="mt-6 font-medium text-white sm:mt-8 lg:mt-16">Start today in Bristol!</p>
 				<p class="mt-4 max-w-[600px] leading-[1.5em] font-medium text-white">
 					Join in through one of our programmes! They're both free and paid, and range from one-day
 					drop-ins to longer adventures.
@@ -155,7 +155,7 @@
 			<!-- svelte-ignore a11y_click_events_have_key_events -->
 			<!-- svelte-ignore a11y_no_static_element_interactions -->
 			<div
-				class="xs-sm:aspect-[4/3] relative aspect-square cursor-pointer md:aspect-[5/3] lg:aspect-video"
+				class="xs-sm:aspect-[4/3] md-lg:aspect-video relative aspect-square cursor-pointer md:aspect-[5/3]"
 				on:click={() => {
 					updateSiteState.showreel.setIsOpen(true);
 				}}
@@ -180,12 +180,12 @@
 	<section class="xs-sm:mt-20 relative mt-16 flex justify-center px-4 md:px-6 lg:mt-36 lg:px-40">
 		<div class="w-full">
 			<h2
-				class="text-bc-slate-pine font-display xs-sm:text-[50px] text-[46px] leading-[1.15em] font-bold"
+				class="text-bc-slate-pine font-display xs-sm:text-[50px] text-[46px] leading-[1.15em] font-bold md:text-center"
 			>
 				Cultivating Purpose, Belonging & Resilience
 			</h2>
 
-			<div class="mt-6 flex flex-col gap-3 md:items-center">
+			<div class="mt-6 flex flex-col gap-3 md:mt-8 md:items-center">
 				{#each introductoryBullets as text}
 					<p class="flex items-center gap-4 md:max-w-[580px]">
 						<span class="text-bc-amber/50 relative inline-block">
@@ -236,7 +236,7 @@
 					>
 						<div class="relative">
 							<enhanced:img
-								class="xs-sm:aspect-[4/3] aspect-square rounded-sm object-cover md:aspect-[5/3]"
+								class="xs-sm:aspect-[4/3] md-lg:aspect-video aspect-square rounded-sm object-cover md:aspect-[5/3]"
 								src={offer.imgSrc}
 								alt={offer.imgAlt}
 							/>
@@ -268,8 +268,8 @@
 	</section>
 
 	<section class="xs-sm:mt-20 relative mt-16 flex justify-center px-4 md:px-6 lg:mt-36 lg:px-40">
-		<div class="max-w-[680px]">
-			<div class="relative inline-block flex-col items-start">
+		<div class="w-full">
+			<div class="relative inline-block flex-col items-start md:items-center">
 				<h2 class="section-title">Our Impact</h2>
 
 				<enhanced:img
@@ -282,9 +282,9 @@
 				Of the 192 unique participants we worked with in 2024:
 			</p>
 
-			<div class="mt-6 flex flex-col gap-3">
+			<div class="mt-6 flex flex-col gap-3 md:items-center">
 				{#each impact as text}
-					<p class="xs-sm:pl-2 flex items-center gap-4">
+					<p class="xs-sm:pl-2 flex items-center gap-4 md:max-w-[580px]">
 						<span class="text-bc-amber/50 relative inline-block">
 							<Flower weight="fill" />
 
@@ -333,7 +333,7 @@
 					>
 						<div class="relative">
 							<enhanced:img
-								class="xs-sm:aspect-[4/3] aspect-square rounded-sm object-cover md:aspect-[5/3]"
+								class="xs-sm:aspect-[4/3] md-lg:aspect-video aspect-square rounded-sm object-cover md:aspect-[5/3]"
 								src={item.imgSrc}
 								alt={item.imgAlt}
 							/>
