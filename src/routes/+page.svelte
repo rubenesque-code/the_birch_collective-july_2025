@@ -105,7 +105,7 @@
 
 			<div class="absolute bottom-[40px] z-20 w-full p-4 md:bottom-[100px] md:left-[150px]">
 				<h2
-					class="font-display xs:text-7xl xxs:text-6xl flex flex-col text-[56px] leading-[1.1em] font-semibold tracking-wide text-white"
+					class="font-display xs-sm:text-7xl xxs:text-6xl flex flex-col text-[56px] leading-[1.1em] font-semibold tracking-wide text-white"
 				>
 					Connect Through Nature
 				</h2>
@@ -120,31 +120,31 @@
 
 				<div class="xs:mt-10 mt-8 flex items-center gap-12">
 					<button
-						class="bg-my-pale-yellow xs:px-5 xs:py-3 relative flex items-center gap-4 rounded-3xl px-3 py-2 tracking-wide"
+						class="bg-my-pale-yellow xs-sm:px-5 xs-sm:py-3 relative flex items-center gap-4 rounded-3xl px-3 py-2 tracking-wide"
 						type="button"
 					>
-						<span class="xs:text-lg text-[17px] font-medium">Get Involved Today</span>
-						<span class="xs:text-2xl text-xl"><ArrowRight /></span>
+						<span class="xs-sm:text-lg text-[17px] font-medium">Get Involved Today</span>
+						<span class="xs-sm:text-2xl text-xl"><ArrowRight /></span>
 					</button>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<section class="xs:px-6 xs:mt-14 relative mt-10 flex justify-center px-4 md:mt-32 lg:px-40">
+	<section class="xs-sm:px-6 xs-sm:mt-14 relative mt-10 flex justify-center px-4 md:mt-32 lg:px-40">
 		<div
-			class="bg-my-pale-yellow absolute -top-1/2 -right-1/2 -z-10 aspect-square w-[80%] -translate-y-1/2 rounded-full"
+			class="bg-my-pale-yellow absolute top-0 right-0 -z-10 aspect-square w-[80%] translate-x-1/2 -translate-y-1/2 rounded-full md:-top-1/2 md:-right-1/2 md:-translate-y-1/2"
 		></div>
 
 		<div class="flex w-full flex-col justify-between gap-y-12 md:flex-row">
 			<div class="w-[600px] max-w-full">
 				<h2
-					class="font-display text-bc-amber xs:text-[52px] text-[48px] leading-[1.15em] font-bold sm:text-6xl"
+					class="font-display text-bc-amber xs-sm:text-[52px] text-[48px] leading-[1.15em] font-bold sm:text-6xl"
 				>
 					Welcome to <span class="">The Birch Collective</span>
 				</h2>
-				<p class="xs:mt-8 mt-6">
-					<span class="text-bc-logo-black xs:text-xl text-lg leading-[1.45em]">
+				<p class="xs-sm:mt-8 mt-6">
+					<span class="text-bc-logo-black xs-sm:text-xl text-lg leading-[1.45em]">
 						The Birch Collective believes in the power of nature, community, and connection. We’re a
 						social enterprise dedicated to helping people aged 16-25 in Bristol and the surrounding
 						areas who might be feeling isolated, overwhelmed, or unsure of their place in the world.
@@ -157,7 +157,7 @@
 			<!-- svelte-ignore a11y_click_events_have_key_events -->
 			<!-- svelte-ignore a11y_no_static_element_interactions -->
 			<div
-				class="relative aspect-square cursor-pointer md:aspect-video"
+				class="xs-sm:aspect-[4/3] relative aspect-square cursor-pointer md:aspect-video"
 				on:click={() => {
 					updateSiteState.showreel.setIsOpen(true);
 				}}
@@ -179,13 +179,17 @@
 		</div>
 	</section>
 
-	<section class="xs:mt-20 relative mt-16 flex justify-center px-4 md:mt-36 lg:px-40">
+	<section class="xs-sm:mt-20 relative mt-16 flex justify-center px-4 md:mt-36 lg:px-40">
 		<div class=" max-w-[680px]">
-			<h2 class="text-bc-slate-pine section-title">Cultivating Purpose, Belonging & Resilience</h2>
+			<h2
+				class="text-bc-slate-pine font-display xs-sm:text-[50px] text-[46px] leading-[1.15em] font-bold"
+			>
+				Cultivating Purpose, Belonging & Resilience
+			</h2>
 
 			<div class="mt-6 flex flex-col gap-3">
 				{#each introductoryBullets as text}
-					<p class="xs:pl-2 flex items-center gap-4">
+					<p class="xs-sm:pl-2 flex items-center gap-4">
 						<span class="text-bc-amber/50 relative inline-block">
 							<Flower weight="fill" />
 
@@ -204,11 +208,11 @@
 
 			<div class="mt-12 flex justify-center">
 				<a
-					class="bg-bc-slate-pine/70 xs:px-5 xs:py-3 relative flex items-center gap-4 rounded-3xl px-3 py-2 tracking-wide text-white"
+					class="bg-bc-slate-pine/70 xs-sm:px-5 xs-sm:py-3 relative flex items-center gap-4 rounded-3xl px-3 py-2 tracking-wide text-white"
 					href={internalRoute['about-us']}
 				>
-					<span class="xs:text-lg text-[17px] font-medium">Read more</span>
-					<span class="xs:text-2xl text-xl"><ArrowRight /></span>
+					<span class="xs-sm:text-lg text-[17px] font-medium">Read more</span>
+					<span class="xs-sm:text-2xl text-xl"><ArrowRight /></span>
 				</a>
 			</div>
 		</div>
@@ -217,9 +221,7 @@
 	<section class="relative mt-20 flex justify-center px-4 md:mt-36 lg:px-40">
 		<div>
 			<div class="relative inline-block flex-col items-start">
-				<h2 class="text-bc-logo-black/70 font-display text-[26px] font-bold uppercase">
-					What We Offer
-				</h2>
+				<h2 class="section-title">What We Offer</h2>
 
 				<enhanced:img
 					class="absolute bottom-1 h-[2px] w-full opacity-70"
@@ -236,7 +238,7 @@
 					>
 						<div class="relative">
 							<enhanced:img
-								class="aspect-square rounded-sm object-cover"
+								class="xs-sm:aspect-[4/3] aspect-square rounded-sm object-cover"
 								src={offer.imgSrc}
 								alt={offer.imgAlt}
 							/>
@@ -245,27 +247,19 @@
 								class="from-bc-slate-pine/80 absolute bottom-0 left-0 z-10 flex h-1/2 w-full flex-col items-start justify-end rounded-b-sm bg-gradient-to-t to-transparent p-2 pb-6 tracking-wide"
 							>
 								<h3
-									class="font-display xs:text-[32px] mt-[14px] text-center text-[40px] font-bold text-white md:text-[36px] lg:text-[42px]"
+									class="font-display xs-sm:text-[42px] mt-[14px] text-center text-[40px] font-bold text-white md:text-[36px] lg:text-[42px]"
 								>
 									{offer.title}
 								</h3>
 							</div>
-
-							<div
-								class="absolute right-2 bottom-2 z-20 flex justify-end opacity-0 transition-opacity duration-300 ease-linear group-hover/tile:opacity-100"
-							>
-								<span class="text-my-pale-yellow text-[40px]">
-									<ArrowCircleRight weight="fill" />
-								</span>
-							</div>
 						</div>
 
-						<div class="xs:mt-2 mt-3 pr-4 pl-2">
+						<div class="xs-sm:mt-4 mt-3 pl-2">
 							<p class="leading-relaxed">
 								{offer.text}
 							</p>
 
-							<span class="text-bc-slate-pine mt-3 inline-block text-[26px]">
+							<span class="text-bc-slate-pine xs-sm:text-3xl mt-3 inline-block text-[26px]">
 								<ArrowCircleRight />
 							</span>
 						</div>
@@ -278,9 +272,7 @@
 	<section class="relative mt-20 flex justify-center px-4 md:mt-36 lg:px-40">
 		<div class="max-w-[680px]">
 			<div class="relative inline-block flex-col items-start">
-				<h2 class="text-bc-logo-black/70 font-display text-[26px] font-bold uppercase">
-					Our Impact
-				</h2>
+				<h2 class="section-title">Our Impact</h2>
 
 				<enhanced:img
 					class="absolute bottom-1 h-[2px] w-full opacity-70"
@@ -292,7 +284,7 @@
 
 			<div class="mt-6 flex flex-col gap-3">
 				{#each impact as text}
-					<p class="xs:pl-2 flex items-center gap-4">
+					<p class="xs-sm:pl-2 flex items-center gap-4">
 						<span class="text-bc-amber/50 relative inline-block">
 							<Flower weight="fill" />
 
@@ -324,9 +316,7 @@
 	<section class="relative mt-20 flex justify-center px-4 md:mt-36 lg:px-40">
 		<div>
 			<div class="relative inline-block flex-col items-start">
-				<h2 class="text-bc-logo-black/70 font-display text-[26px] font-bold uppercase">
-					Support Us
-				</h2>
+				<h2 class="section-title">Support Us</h2>
 
 				<enhanced:img
 					class="absolute bottom-1 h-[2px] w-full opacity-70"
@@ -353,27 +343,19 @@
 							>
 								<div class="flex w-full items-center justify-between gap-4">
 									<h3
-										class="font-display xs:text-[32px] text-center text-[40px] font-bold text-white md:text-[36px] lg:text-[42px]"
+										class="font-display xs-sm:text-[42px] mt-[14px] text-center text-[40px] font-bold text-white md:text-[36px] lg:text-[42px]"
 									>
 										{offer.title}
 									</h3>
 
-									<span class="text-2xl text-white">
+									<span class="xs-sm:translate-y-[6px] text-2xl text-white">
 										<ArrowRight weight="bold" />
 									</span>
 								</div>
 							</div>
-
-							<div
-								class="absolute right-2 bottom-2 z-20 flex justify-end opacity-0 transition-opacity duration-300 ease-linear group-hover/tile:opacity-100"
-							>
-								<span class="text-my-pale-yellow text-[40px]">
-									<ArrowCircleRight weight="fill" />
-								</span>
-							</div>
 						</div>
 
-						<div class="xs:mt-2 mt-3 pr-4 pl-2">
+						<div class="xs-sm:mt-4 mt-3 pr-4 pl-2">
 							<p class="leading-relaxed">
 								{offer.text}
 							</p>

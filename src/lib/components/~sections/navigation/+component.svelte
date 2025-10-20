@@ -24,23 +24,23 @@
 </script>
 
 <header class="z-10 flex w-full items-start justify-between">
-	<!-- <div>
-		<enhanced:img class="w-[58px]" src={image.birch.logo.img_only} alt="" />
-	</div> -->
-	<a class="font-display relative flex flex-col text-3xl font-bold" href="/">
+	<a class="font-display xs-sm:hidden relative flex flex-col text-3xl font-bold" href="/">
 		<span class="translate-x-[20px]">The</span>
 		<span class="translate-x-[40px] translate-y-[-10px] text-[42px]">Birch</span>
 		<span class="translate-x-[0px] translate-y-[-20px]">Collective</span>
 	</a>
 
-	<div class="hidden shrink-0 md:flex">
-		<div class="hidden translate-x-[10px] translate-y-[21px]">
+	<div class="xs-sm:flex hidden shrink-0">
+		<div class="hidden translate-x-[10px] translate-y-[21px] md:block">
 			<enhanced:img class="w-[68px]" src={image.birch.logo.img_only} alt="" />
 		</div>
 
-		<a class="font-display flex flex-col text-4xl font-bold" href="/">
+		<a
+			class="font-display flex flex-col text-[34px] leading-[1.6em] font-bold md:text-4xl"
+			href="/"
+		>
 			<span class="translate-x-[20px]">The</span>
-			<span class="translate-x-[40px] translate-y-[-10px] text-[66px]">Birch</span>
+			<span class="translate-x-[40px] translate-y-[-10px] text-[58px] md:text-[66px]">Birch</span>
 			<span class="translate-x-[0px] translate-y-[-20px]">Collective</span>
 		</a>
 	</div>
@@ -49,7 +49,7 @@
 		class="bg-bc-logo-black/50 xs:p-2 xs:gap-3 flex flex-col items-center gap-[10px] rounded-full p-[7px] sm:gap-4 md:p-4"
 	>
 		<button
-			class="xs:text-lg xs:p-2 cursor-pointer rounded-full border border-white p-[6px] text-white md:text-2xl"
+			class="xs:text-lg xs:p-2 xs-sm:text-xl cursor-pointer rounded-full border border-white p-[6px] text-white md:text-2xl"
 			onclick={() => (isOpen = !isOpen)}
 			type="button"
 		>

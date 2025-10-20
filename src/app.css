@@ -111,16 +111,6 @@
 	--color-sidebar-ring: var(--sidebar-ring);
 }
 
-@layer base {
-	body {
-		@apply text-bc-logo-black xs:text-xl bg-white text-lg;
-	}
-
-	.section-title {
-		@apply font-display text-bc-slate-pine xs:text-[50px] text-[46px] leading-[1.15em] font-bold;
-	}
-}
-
 @font-face {
 	font-family: 'Amatic SC';
 	font-style: normal;
@@ -175,6 +165,16 @@
 	font-weight: 200 800;
 	font-style: normal;
 	font-display: swap;
+}
+
+@layer base {
+	body {
+		@apply text-bc-logo-black xs-sm:text-xl bg-white text-lg;
+	}
+
+	.section-title {
+		@apply text-bc-logo-black/70 font-display xs:text-[28px] xs-sm:text-[30px] text-[26px] font-bold uppercase;
+	}
 }
 
 @theme {
