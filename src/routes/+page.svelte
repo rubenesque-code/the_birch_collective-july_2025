@@ -100,21 +100,17 @@
 			</video>
 
 			<div
-				class="from-bc-slate-pine absolute bottom-0 left-0 z-10 h-3/4 w-full bg-gradient-to-t to-transparent 2xl:h-2/3"
+				class="from-bc-slate-pine 3xl:h-2/3 absolute bottom-0 left-0 z-10 h-3/4 w-full bg-gradient-to-t to-transparent"
 			></div>
 
-			<div
-				class="absolute bottom-[40px] z-20 w-full p-4 lg:px-8 2xl:bottom-[100px] 2xl:left-[150px]"
-			>
+			<div class="3xl:px-20 4xl:px-40 absolute bottom-[40px] z-20 w-full p-4 lg:px-8 2xl:px-12">
 				<h2
 					class="font-display xs-sm:text-[62px] xxs:text-6xl flex flex-col text-[56px] leading-[1.1em] font-semibold tracking-wide text-white sm:max-w-[450px] lg:text-7xl"
 				>
 					Connect Through Nature
 				</h2>
 
-				<p class="mt-6 font-medium text-white sm:mt-8 lg:mt-10 2xl:mt-16">
-					Start today in Bristol!
-				</p>
+				<p class="mt-6 font-medium text-white sm:mt-8 lg:mt-10">Start today in Bristol!</p>
 				<p class="mt-4 max-w-[600px] leading-[1.5em] font-medium text-white">
 					Join in through one of our programmes! They're both free and paid, and range from one-day
 					drop-ins to longer adventures.
@@ -134,14 +130,14 @@
 	</section>
 
 	<section
-		class="xs-sm:px-6 xs-sm:mt-14 relative mt-10 flex justify-center px-4 lg:px-8 xl:mt-24 2xl:mt-32 2xl:px-40"
+		class="xs-sm:px-6 xs-sm:mt-14 3xl:mt-32 3xl:px-20 4xl:px-40 relative mt-10 flex justify-center px-4 lg:px-8 xl:mt-24 2xl:px-12"
 	>
 		<div
-			class="bg-my-pale-yellow absolute top-0 right-0 -z-10 aspect-square w-[80%] translate-x-1/2 -translate-y-1/2 rounded-full 2xl:-top-1/2 2xl:-right-1/2 2xl:-translate-y-1/2"
+			class="bg-my-pale-yellow 3xl:-top-1/2 3xl:-right-1/2 3xl:-translate-y-1/2 absolute top-0 right-0 -z-10 aspect-square w-[80%] translate-x-1/2 -translate-y-1/2 rounded-full"
 		></div>
 
 		<div class="flex w-full flex-col justify-between gap-x-12 gap-y-12 xl:flex-row">
-			<div class="w-full max-w-[550px]">
+			<div class="w-full xl:max-w-[550px] 2xl:max-w-[640px]">
 				<h2
 					class="font-display text-bc-amber xs-sm:text-[52px] text-[48px] leading-[1.15em] font-bold sm:text-6xl"
 				>
@@ -167,7 +163,7 @@
 				}}
 			>
 				<enhanced:img
-					class="h-full w-full max-w-full rounded-md object-cover object-left 2xl:w-[700px]"
+					class="3xl:w-[700px] h-full w-full max-w-full rounded-md object-cover object-left"
 					src={image.placeholder.mission_vid_placeholder}
 					alt=""
 				/>
@@ -184,7 +180,7 @@
 	</section>
 
 	<section
-		class="xs-sm:mt-20 relative mt-16 flex justify-center px-4 md:px-6 lg:px-8 xl:mt-28 2xl:mt-36 2xl:px-40"
+		class="xs-sm:mt-20 3xl:mt-36 3xl:px-20 4xl:px-40 relative mt-16 flex justify-center px-4 md:px-6 lg:px-8 xl:mt-28 2xl:px-12"
 	>
 		<div class="w-full">
 			<h2
@@ -193,23 +189,25 @@
 				Cultivating Purpose, Belonging & Resilience
 			</h2>
 
-			<div class="mt-6 flex flex-col gap-3 md:mt-8 md:items-center">
-				{#each introductoryBullets as text}
-					<p class="flex items-center gap-4 md:max-w-[580px]">
-						<span class="text-bc-amber/50 relative inline-block">
-							<Flower weight="fill" />
+			<div class="flex justify-center">
+				<div class="mt-6 flex w-full flex-col gap-3 md:mt-8 md:max-w-[600px] md:items-center">
+					{#each introductoryBullets as text}
+						<p class="flex items-center gap-4">
+							<span class="text-bc-amber/50 relative inline-block">
+								<Flower weight="fill" />
 
+								<span
+									class="bg-bc-amber/50 absolute top-1/2 left-1/2 h-[4px] w-[4px] -translate-x-1/2 -translate-y-1/2"
+								></span>
+							</span>
 							<span
-								class="bg-bc-amber/50 absolute top-1/2 left-1/2 h-[4px] w-[4px] -translate-x-1/2 -translate-y-1/2"
-							></span>
-						</span>
-						<span
-							class="decoration-bc-amber/30 leading-relaxed text-black/90 underline underline-offset-2"
-						>
-							{text}
-						</span>
-					</p>
-				{/each}
+								class="decoration-bc-amber/30 leading-relaxed text-black/90 underline underline-offset-2"
+							>
+								{text}
+							</span>
+						</p>
+					{/each}
+				</div>
 			</div>
 
 			<div class="mt-12 flex justify-center">
@@ -224,10 +222,8 @@
 		</div>
 	</section>
 
-	<section
-		class="xs-sm:mt-20 relative mt-16 flex justify-center px-4 md:px-6 lg:px-8 2xl:mt-36 2xl:px-40"
-	>
-		<div>
+	<section class="section-standard">
+		<div class="w-full">
 			<div class="relative inline-block flex-col items-start">
 				<h2 class="section-title">What We Offer</h2>
 
@@ -238,11 +234,11 @@
 			</div>
 
 			<div
-				class="mt-8 flex w-full flex-col justify-between gap-x-20 gap-y-16 xl:flex-row 2xl:gap-x-40"
+				class="3xl:gap-x-40 mt-8 flex w-full flex-col justify-between gap-x-20 gap-y-16 xl:flex-row"
 			>
 				{#each offers as offer}
 					<a
-						class="group/tile focus:ring-bc-amber relative block focus:ring-2 focus:outline-none 2xl:w-[700px]"
+						class="group/tile focus:ring-bc-amber 3xl:w-[700px] relative block focus:ring-2 focus:outline-none"
 						href={offer.link}
 						aria-label={offer.title}
 					>
@@ -279,58 +275,55 @@
 		</div>
 	</section>
 
-	<section
-		class="xs-sm:mt-20 relative mt-16 flex justify-center px-4 md:px-6 lg:px-8 2xl:mt-36 2xl:px-40"
-	>
+	<section class="section-standard">
 		<div class="w-full">
-			<div class="relative inline-block flex-col items-start md:items-center">
-				<h2 class="section-title">Our Impact</h2>
+			<h2
+				class="text-bc-slate-pine font-display xs-sm:text-[50px] text-[46px] leading-[1.15em] font-bold md:text-center xl:text-[56px]"
+			>
+				Our Impact
+			</h2>
 
-				<enhanced:img
-					class="absolute bottom-1 h-[2px] w-full opacity-70"
-					src={image.illustration.drawn_line_black}
-				/>
-			</div>
-
-			<p class="md-lg:mt-5 mt-3 leading-relaxed sm:mt-4">
-				Of the 192 unique participants we worked with in 2024:
-			</p>
-
-			<div class="mt-6 flex flex-col gap-3 md:items-center">
-				{#each impact as text}
-					<p class="xs-sm:pl-2 flex items-center gap-4 md:max-w-[580px]">
-						<span class="text-bc-amber/50 relative inline-block">
-							<Flower weight="fill" />
-
-							<span
-								class="bg-bc-amber/50 absolute top-1/2 left-1/2 h-[4px] w-[4px] -translate-x-1/2 -translate-y-1/2"
-							></span>
-						</span>
-						<span
-							class="decoration-bc-amber/30 leading-relaxed text-black/90 underline underline-offset-2"
-						>
-							{text}
-						</span>
+			<div class="flex justify-center">
+				<div class="w-full md:max-w-[600px]">
+					<p class="md-lg:mt-5 text-bc-logo-black/80 mt-3 leading-relaxed sm:mt-4">
+						Of the 192 unique participants we worked with in 2024:
 					</p>
-				{/each}
+
+					<div class="mt-6 flex flex-col gap-3 md:mt-8 md:items-center">
+						{#each impact as text}
+							<p class="flex items-center gap-4">
+								<span class="text-bc-amber/50 relative inline-block">
+									<Flower weight="fill" />
+
+									<span
+										class="bg-bc-amber/50 absolute top-1/2 left-1/2 h-[4px] w-[4px] -translate-x-1/2 -translate-y-1/2"
+									></span>
+								</span>
+								<span
+									class="decoration-bc-amber/30 leading-relaxed text-black/90 underline underline-offset-2"
+								>
+									{text}
+								</span>
+							</p>
+						{/each}
+					</div>
+				</div>
 			</div>
 
 			<div class="mt-12 flex justify-center">
-				<button
-					class="bg-bc-slate-pine/70 flex items-center gap-2 rounded-full px-5 py-[8px] text-lg font-medium text-white"
-					type="button"
+				<a
+					class="bg-bc-slate-pine/70 xs-sm:px-5 xs-sm:py-3 relative flex items-center gap-4 rounded-3xl px-3 py-2 tracking-wide text-white"
+					href={internalRoute['about-us']}
 				>
-					<span>Read More</span>
-					<span><ArrowRight /></span>
-				</button>
+					<span class="xs-sm:text-lg text-[17px] font-medium">Read more</span>
+					<span class="xs-sm:text-2xl text-xl"><ArrowRight /></span>
+				</a>
 			</div>
 		</div>
 	</section>
 
-	<section
-		class="xs-sm:px-6 xs-sm:mt-14 relative mt-10 flex justify-center px-4 lg:px-8 2xl:mt-32 2xl:px-40"
-	>
-		<div>
+	<section class="section-standard">
+		<div class="w-full">
 			<div class="relative inline-block flex-col items-start">
 				<h2 class="section-title">Support Us</h2>
 
@@ -341,11 +334,11 @@
 			</div>
 
 			<div
-				class="mt-8 flex w-full flex-col justify-between gap-x-20 gap-y-16 xl:flex-row 2xl:gap-x-40"
+				class="3xl:gap-x-40 mt-8 flex w-full flex-col justify-between gap-x-20 gap-y-16 xl:flex-row"
 			>
 				{#each support as item}
 					<a
-						class="group/tile focus:ring-bc-amber relative block focus:ring-2 focus:outline-none 2xl:w-[700px]"
+						class="group/tile focus:ring-bc-amber 3xl:w-[700px] relative block focus:ring-2 focus:outline-none"
 						href={item.link}
 						aria-label={item.title}
 					>

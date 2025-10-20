@@ -179,6 +179,10 @@
 	.card-title {
 		@apply font-display xs-sm:text-[42px] mt-[14px] text-center text-[40px] font-bold sm:text-[44px];
 	}
+
+	.section-standard {
+		@apply xs-sm:px-6 xs-sm:mt-14 3xl:mt-32 3xl:px-20 4xl:px-40 relative mt-10 flex justify-center px-4 lg:px-8 2xl:px-12;
+	}
 }
 
 @theme {
