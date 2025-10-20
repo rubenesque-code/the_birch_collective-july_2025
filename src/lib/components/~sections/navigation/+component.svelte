@@ -12,7 +12,7 @@
 </script>
 
 <script lang="ts">
-	let isOpen = $state(false);
+	let isOpen = $state(true);
 
 	$effect(() => {
 		$: browser && toggleBodyScroll({ triggerDisableOn: isOpen });
@@ -100,12 +100,12 @@
 <!-- svelte-ignore a11y_click_events_have_key_events -->
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <div
-	class={`fixed right-0 z-30 h-screen w-screen bg-white/80 transition-opacity duration-300 ease-in-out ${!isOpen ? 'pointer-events-none opacity-0' : ''}`}
+	class={`fixed top-0 right-0 z-30 h-screen w-screen bg-white/80 transition-opacity duration-300 ease-in-out ${!isOpen ? 'pointer-events-none opacity-0' : ''}`}
 	onclick={() => (isOpen = false)}
 ></div>
 
 <div
-	class={`fixed right-0 z-[35] h-screen w-[600px] max-w-screen overflow-y-auto border-l-[2px] border-black/40 bg-white/50 pt-4 pr-[100px] pl-12 shadow-2xl transition-transform duration-300 ease-in-out ${!isOpen ? 'translate-x-full' : ''}`}
+	class={`fixed top-0 right-0 z-[35] h-screen w-[600px] max-w-screen overflow-y-auto border-l-[2px] border-black/40 bg-white/50 pt-4 pr-[100px] pl-12 shadow-2xl transition-transform duration-300 ease-in-out ${!isOpen ? 'translate-x-full' : ''}`}
 >
 	<div class="flex shrink-0">
 		<a class="font-display relative flex flex-col text-4xl font-bold" href="/">
