@@ -5,7 +5,7 @@
 	import { FacebookLogo, InstagramLogo, LinkedinLogo, TiktokLogo } from 'phosphor-svelte';
 </script>
 
-<footer class="flex w-full items-center justify-between px-8 pb-12">
+<footer class="mt-32 flex w-full items-center justify-between px-8 pb-12">
 	<div class="max-w-[800px]">
 		<div class="text-bc-slate-pine flex flex-row gap-8 text-3xl">
 			{#each [{ icon: FacebookLogo, link: socials.fb }, { icon: InstagramLogo, link: socials.insta }, { icon: LinkedinLogo, link: socials.linkedIn }, { icon: TiktokLogo, link: socials.tiktok }] as item}

@@ -104,14 +104,12 @@
 			></div>
 
 			<div class="3xl:px-20 4xl:px-40 absolute bottom-[40px] z-20 w-full p-4 lg:px-8 2xl:px-12">
-				<h2
-					class="font-display xs-sm:text-[62px] xxs:text-6xl flex flex-col text-[56px] leading-[1.1em] font-semibold tracking-wide text-white sm:max-w-[450px] lg:text-7xl"
-				>
-					Connect Through Nature
-				</h2>
+				<h1 class="page-title">Connect Through Nature</h1>
 
-				<p class="mt-6 font-medium text-white sm:mt-8 lg:mt-10">Start today in Bristol!</p>
-				<p class="mt-4 max-w-[600px] leading-[1.5em] font-medium text-white">
+				<p class="mt-6 font-medium text-white sm:mt-8 lg:mt-10 xl:text-[22px]">
+					Start today in Bristol!
+				</p>
+				<p class="mt-4 max-w-[600px] leading-[1.5em] font-medium text-white xl:text-[22px]">
 					Join in through one of our programmes! They're both free and paid, and range from one-day
 					drop-ins to longer adventures.
 				</p>

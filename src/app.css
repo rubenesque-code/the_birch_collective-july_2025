@@ -177,15 +177,19 @@
 	}
 
 	.card-title {
-		@apply font-display xs-sm:text-[42px] mt-[14px] text-center text-[40px] font-bold sm:text-[44px];
+		@apply font-display xs-sm:text-[42px] mt-[14px] text-[40px] leading-[1.35em] font-bold sm:text-[44px];
 	}
 
-	.section-padding {
+	.section-x-padding {
 		@apply xs-sm:px-6 3xl:px-20 4xl:px-40 px-4 lg:px-8 2xl:px-12;
 	}
 
 	.section-standard {
 		@apply xs-sm:px-6 xs-sm:mt-14 3xl:mt-32 3xl:px-20 4xl:px-40 relative mt-10 flex justify-center px-4 lg:px-8 2xl:px-12;
+	}
+
+	.page-title {
+		@apply font-display xs-sm:text-[62px] xxs:text-6xl flex flex-col text-[56px] leading-[1.1em] font-bold tracking-wide text-white sm:max-w-[450px] lg:text-7xl;
 	}
 }
 

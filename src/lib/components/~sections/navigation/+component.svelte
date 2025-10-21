@@ -12,7 +12,7 @@
 </script>
 
 <script lang="ts">
-	let isOpen = $state(true);
+	let isOpen = $state(false);
 
 	$effect(() => {
 		$: browser && toggleBodyScroll({ triggerDisableOn: isOpen });
