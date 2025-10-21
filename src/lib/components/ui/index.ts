@@ -10,3 +10,4 @@ export * as RadioGroup from './radio-group';
 export * from './sonner';
 export { Textarea } from './textarea';
 export * as Tooltip from './tooltip';
+export * as Dialog from './dialog';

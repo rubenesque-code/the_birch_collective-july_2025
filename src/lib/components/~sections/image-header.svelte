@@ -11,17 +11,17 @@
 	}: {
 		heading: string;
 		lead?: string;
-		align?: 'left' | 'right' | 'center';
+		align?: 'left' | 'right' | 'center-left';
 		titleColour?: 'white' | 'yellow';
 	} = $props();
 </script>
 
 <header class="relative flex justify-center">
 	<div
-		class="section-x-padding relative flex w-full max-w-[1800px] justify-center overflow-visible pt-40 pb-20 md:pt-46 lg:pt-52 xl:pb-28"
+		class={`section-x-padding relative box-content w-full overflow-visible pt-40 pb-20 md:pt-46 lg:pt-52 xl:pb-28 ${align !== 'center-left' ? 'max-w-[1800px]' : 'max-w-[1500px]'}`}
 	>
 		<div
-			class={`relative flex w-full ${align === 'right' ? 'lg:justify-end' : align === 'left' ? 'lg:justify-start' : 'justify-center'}`}
+			class={`relative flex w-full ${align === 'right' ? 'lg:justify-end' : 'lg:justify-start'}`}
 		>
 			<div
 				class={`flex max-w-[600px] flex-col ${

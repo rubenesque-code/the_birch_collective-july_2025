@@ -35,7 +35,7 @@ const config = {
 
 			'^pages': 'src/lib/components/~pages',
 
-			'^sections': 'src/lib/~sections',
+			'^sections': 'src/lib/components/~sections',
 
 			'^services': 'src/lib/services',
 

@@ -1,7 +1,7 @@
 <script lang="ts" module>
 	import { ArrowCircleRight } from 'phosphor-svelte';
 
-	import type { EnhandcedImg } from '^assets/image';
+	import type { EnhancedImg } from '^assets/image';
 </script>
 
 <script lang="ts">
@@ -11,7 +11,7 @@
 		link,
 		text,
 		title
-	}: { imgSrc: EnhandcedImg; imgAlt: string; title: string; text: string; link: string } = $props();
+	}: { imgSrc: EnhancedImg; imgAlt: string; title: string; text: string; link: string } = $props();
 </script>
 
 <a class="group/tile max-w-[650px]" href={link}

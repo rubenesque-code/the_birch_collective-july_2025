@@ -1,190 +1,81 @@
 <script lang="ts" module>
-	import { User } from 'phosphor-svelte';
-
-	import image from '^assets/image';
-	import {
-		fresh_air_thursday_introduction,
-		fresh_air_thursday_participant_testimonial,
-		fresh_air_thursday_participant_testimonial_placeholder
-	} from '^assets/videos';
-	import { VideoModal } from '^components';
 	import { amy, james, ro, tim } from '^assets';
+
+	import { ImageHeader, TextSection } from '^sections';
+	import { StaffMember } from '^pages/meet-the-team';
 </script>
 
 <script lang="ts">
-	let playIntro = false;
-	let playTestimonial = false;
+	const teamMembers = [
+		{
+			name: 'Amy Cox',
+			role: 'Founder/Facilitator',
+			imgSrc: amy,
+			body: 'Amy has a background in education, landwork, and craft, with over 10 years of experience working with young people. She completed an apprenticeship in Forestry and green woodworking at the Cherry Wood Project and is a qualified basket maker. Amy has worked on land-based learning projects with partners like Westonbirt Arboretum, South Glos Council, and Off the Record. She co-runs Fireside Forest School, mentoring children and young people to connect with nature for their development and mental health. Amy also leads community weaving workshops and is studying herbalism at the School of Intuitive Herbalism. Amy lives in her yurt on a farm and loves to sleep outside under the stars.'
+		},
+		{
+			name: 'James',
+			role: 'Marketing & Communication Co-ordinator',
+			imgSrc: james,
+			body: 'James has a background in fundraising and communications, having worked at Amnesty International UK, where he developed skills in storytelling and community engagement. He co-founded Mafia Weekend CIC, managing creative projects and initiatives aimed at fostering community connections through film-making. James holds a BA in Acting with Collaborative and devised theatre from the Royal Central School of Speech and Drama.'
+		},
+		{
+			name: 'Ro Fry',
+			role: 'Founder/Facilitator',
+			imgSrc: ro,
+			body: 'Ro is a qualified Primary School Teacher and Forest School Practitioner with a strong focus on experiential education and play. She holds a degree in anthropology from Manchester University, fueling her interest in culture and community life. Ro completed a Land-Based Learning Apprenticeship at Embercombe and has worked with organisations like APE Project, Windmill Hill City Farm, and St Werburghs City Farm, where she managed the Child and Youth Project. Ro has training in Mediation, Non-Violent Communication, is a keen potter and loves climbing trees.'
+		},
+		{
+			name: 'Tim George',
+			role: 'Founder/Facilitator',
+			imgSrc: tim,
+			body: 'Tim is an educator, facilitator, and land-worker with 10 years of experience supporting young people facing emotional distress and neurological diversity. He has worked primarily in the not-for-profit sector with organizations focused on community food, experiential education, and nature-based therapies, including St Werburghs City Farm and Off The Record (Bristol). Tim has training in child and adolescent psychotherapy with the Tavistock and Portman Trust and holds a background in Environmental Policy and Economics from LSE, fostering his commitment to environmental and social justice.'
+		}
+	];
 </script>
 
-<VideoModal
-	bind:isOpen={playIntro}
-	onClickClose={() => (playIntro = false)}
-	mp4Src={fresh_air_thursday_introduction}
+<ImageHeader heading="Meet The Team" align="center-left" />
+
+<TextSection
+	body={[
+		"The Birch Collective is run by three Co-Directors who lead our sessions. Together, we have over 25 years’ experience working with young people, especially those from diverse backgrounds. We've worked in places like pupil referral units, schools, youth mental health services, and youth organizations, supporting teens and young adults just like you."
+	]}
 />
 
-<VideoModal
-	bind:isOpen={playTestimonial}
-	onClickClose={() => (playTestimonial = false)}
-	mp4Src={fresh_air_thursday_participant_testimonial}
-/>
+<section class="section-mt flex justify-center">
+	<div class="section-x-padding box-content max-w-[1200px]">
+		<div>
+			<div class="flex justify-center">
+				<h2 class="font-display text-bc-slate-pine text-center text-6xl font-bold tracking-wide">
+					Staff
+				</h2>
+			</div>
 
-<div class="relative max-w-screen overflow-hidden pb-40">
-	<section class="relative flex justify-center overflow-visible px-80 pt-32 pb-40">
-		<div class="my-shape absolute top-0 left-0 -z-10 h-full w-full">
-			<enhanced:img src={image.placeholder.banner_1} alt="" />
-
-			<div class="from-bc-slate-pine absolute inset-0 bg-gradient-to-t to-transparent"></div>
-		</div>
-
-		<div class="mt-10 flex w-full items-end gap-40">
-			<div class="relative flex">
-				<div class="max-w-[600px] text-white">
-					<h1 class="font-display text-7xl font-bold tracking-wide">Meet The Team</h1>
-				</div>
+			<div class="mt-12 grid w-full max-w-[1200px] gap-12 sm:grid-cols-2 xl:grid-cols-4">
+				{#each teamMembers as item}
+					<StaffMember {...item} />
+				{/each}
 			</div>
 		</div>
-	</section>
+	</div>
+</section>
 
-	<section class="mt-10 px-60">
-		<div class="flex w-full justify-center">
-			<div class="max-w-[768px]">
-				<p class="text-xl leading-relaxed">
-					The Birch Collective is run by three Co-Directors who lead our sessions. Together, we have
-					over 25 years’ experience working with young people, especially those from diverse
-					backgrounds. We've worked in places like pupil referral units, schools, youth mental
-					health services, and youth organizations, supporting teens and young adults just like you.
-				</p>
+<section class="section-mt flex justify-center">
+	<div class="section-x-padding box-content w-full max-w-[1200px]">
+		<div>
+			<div class="flex justify-center">
+				<h2 class="font-display text-bc-slate-pine text-center text-6xl font-bold tracking-wide">
+					Board Members
+				</h2>
 			</div>
+
+			<p class="text-bc-logo-black/70 mt-12 w-full max-w-[1200px] pl-8">Coming soon...</p>
+
+			<!-- <div class="mt-12 grid w-full max-w-[1200px] grid-cols-4 gap-12">
+				{#each teamMembers as item}
+					<StaffMember {...item} />
+				{/each}
+			</div> -->
 		</div>
-	</section>
-
-	<section class="mt-20 px-60">
-		<div class="flex w-full justify-center">
-			<div>
-				<div class="flex justify-center">
-					<div class="w-full max-w-[768px]">
-						<h2
-							class="font-display text-bc-slate-pine text-center text-6xl font-bold tracking-wide"
-						>
-							Staff
-						</h2>
-					</div>
-				</div>
-
-				<div class="mt-12 grid w-full max-w-[1200px] grid-cols-4 gap-12">
-					<div class="flex cursor-pointer flex-col items-center">
-						<enhanced:img
-							class=" aspect-square w-[200px] rounded-full object-cover"
-							src={amy}
-							alt=""
-						/>
-						<p class="mt-4 text-xl font-medium underline decoration-1 underline-offset-6">
-							Amy Cox
-						</p>
-						<p class="mt-3 text-lg">Founder/Facilitator</p>
-					</div>
-
-					<div class="flex cursor-pointer flex-col items-center">
-						<enhanced:img
-							class=" aspect-square w-[200px] rounded-full object-cover"
-							src={james}
-							alt=""
-						/>
-						<p class="mt-4 text-xl font-medium underline decoration-1 underline-offset-6">James</p>
-						<p class="mt-3 text-center text-lg">Marketing & Communication Co-ordinator</p>
-					</div>
-
-					<div class="flex cursor-pointer flex-col items-center">
-						<enhanced:img
-							class=" aspect-square w-[200px] rounded-full object-cover"
-							src={ro}
-							alt=""
-						/>
-						<p class="mt-4 text-xl font-medium underline decoration-1 underline-offset-6">Ro Fry</p>
-						<p class="mt-3 text-lg">Founder/Facilitator</p>
-					</div>
-
-					<div class="flex cursor-pointer flex-col items-center">
-						<enhanced:img
-							class=" aspect-square w-[200px] rounded-full object-cover"
-							src={tim}
-							alt=""
-						/>
-						<p class="mt-4 text-xl font-medium underline decoration-1 underline-offset-6">
-							Tim George
-						</p>
-						<p class="mt-3 text-center text-lg">Founder/Facilitator</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section class="mt-20 px-60">
-		<div class="flex w-full justify-center">
-			<div>
-				<div class="flex justify-center">
-					<div class="w-full max-w-[768px]">
-						<h2
-							class="font-display text-bc-slate-pine text-center text-6xl font-bold tracking-wide"
-						>
-							The Board
-						</h2>
-					</div>
-				</div>
-
-				<div class="mt-12 grid w-full max-w-[1200px] grid-cols-4 gap-12">
-					<div class="flex cursor-pointer flex-col items-center">
-						<div
-							class="bg-bc-pale-sandstone grid aspect-square w-[200px] place-items-center rounded-full object-cover text-8xl text-white"
-						>
-							<User weight="fill" />
-						</div>
-						<p class="mt-4 text-xl font-medium underline decoration-1 underline-offset-6">
-							Member WithoutImage
-						</p>
-						<p class="mt-3 text-lg">Teacher</p>
-					</div>
-
-					<div class="flex cursor-pointer flex-col items-center">
-						<enhanced:img
-							class=" aspect-square w-[200px] rounded-full object-cover"
-							src={james}
-							alt=""
-						/>
-						<p class="mt-4 text-xl font-medium underline decoration-1 underline-offset-6">James</p>
-						<p class="mt-3 text-center text-lg">Marketing & Communication Co-ordinator</p>
-					</div>
-
-					<div class="flex cursor-pointer flex-col items-center">
-						<enhanced:img
-							class=" aspect-square w-[200px] rounded-full object-cover"
-							src={ro}
-							alt=""
-						/>
-						<p class="mt-4 text-xl font-medium underline decoration-1 underline-offset-6">Ro Fry</p>
-						<p class="mt-3 text-lg">Founder/Facilitator</p>
-					</div>
-
-					<div class="flex cursor-pointer flex-col items-center">
-						<enhanced:img
-							class=" aspect-square w-[200px] rounded-full object-cover"
-							src={tim}
-							alt=""
-						/>
-						<p class="mt-4 text-xl font-medium underline decoration-1 underline-offset-6">
-							Tim George
-						</p>
-						<p class="mt-3 text-center text-lg">Founder/Facilitator</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-</div>
-
-<style>
-	.my-shape {
-		clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
-	}
-</style>
+	</div>
+</section>

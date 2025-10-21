@@ -1,13 +1,13 @@
 <script lang="ts" module>
 	import { ArrowCircleRight } from 'phosphor-svelte';
 
-	import type { EnhandcedImg } from '^assets/image';
+	import type { EnhancedImg } from '^assets/image';
 
 	import { ImageHeader } from '^components/~sections';
 
 	type Programme = {
 		link: string;
-		imgSrc: EnhandcedImg;
+		imgSrc: EnhancedImg;
 		imgAlt?: string;
 		title: string;
 		text: string;

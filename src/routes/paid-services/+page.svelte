@@ -2,13 +2,13 @@
 <script lang="ts" module>
 	import { internalRoute } from '^constants';
 
-	import image, { type EnhandcedImg } from '^assets/image';
+	import image, { type EnhancedImg } from '^assets/image';
 
 	import { Page } from '^pages/programme-list';
 
 	type Programme = {
 		link: string;
-		imgSrc: EnhandcedImg;
+		imgSrc: EnhancedImg;
 		imgAlt?: string;
 		title: string;
 		text: string;

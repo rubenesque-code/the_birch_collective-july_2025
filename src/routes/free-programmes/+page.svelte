@@ -2,7 +2,7 @@
 <script lang="ts" module>
 	import { internalRoute } from '^constants';
 
-	import image, { type EnhandcedImg } from '^assets/image';
+	import image, { type EnhancedImg } from '^assets/image';
 	import { group_photo as seeding_change } from '^assets/images/programmes/seeding-change';
 	import { group_photo as steering } from '^assets/images/programmes/steering-group';
 
@@ -10,7 +10,7 @@
 
 	type Programme = {
 		link: string;
-		imgSrc: EnhandcedImg;
+		imgSrc: EnhancedImg;
 		imgAlt?: string;
 		title: string;
 		text: string;

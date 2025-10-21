@@ -1,5 +1,5 @@
 <script lang="ts" module>
-	import image, { type EnhandcedImg } from '^assets/image';
+	import image, { type EnhancedImg } from '^assets/image';
 
 	import { VideoModal } from '^components';
 </script>
@@ -15,7 +15,7 @@
 		isOpen = $bindable(false)
 	}: {
 		title?: string;
-		poster: EnhandcedImg;
+		poster: EnhancedImg;
 		posterAlt?: string;
 		videoSrc: string;
 		ariaLabel?: string;

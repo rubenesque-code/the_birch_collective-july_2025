@@ -2,7 +2,6 @@
 	import image from '^assets/image';
 	import { mission } from '^assets/videos';
 
-	import { VideoModal } from '^components';
 	import { ImageHeader, TextSection, VideoSection } from '^components/~sections';
 </script>
 
@@ -10,17 +9,11 @@
 	let playOurMission = false;
 </script>
 
-<VideoModal
-	bind:isOpen={playOurMission}
-	onClickClose={() => (playOurMission = false)}
-	mp4Src={mission}
-/>
-
-<div class="relative max-w-screen overflow-hidden pb-40">
+<div class="relative max-w-screen overflow-hidden">
 	<ImageHeader
 		heading="About Us"
 		lead="Cultivating belonging, purpose and resilience."
-		align="left"
+		align="center-left"
 	/>
 
 	<section class="section-mt flex justify-center">

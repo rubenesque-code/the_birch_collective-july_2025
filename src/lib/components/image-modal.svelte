@@ -5,7 +5,7 @@
 
 	import { browser } from '$app/environment';
 
-	import type { EnhandcedImg } from '^assets/image';
+	import type { EnhancedImg } from '^assets/image';
 	import { toggleBodyScroll } from '^helpers';
 </script>
 
@@ -21,7 +21,7 @@
 		isOpen: boolean;
 		onClickClose: () => void;
 		isEnhanced?: boolean;
-		src: EnhandcedImg | 'string';
+		src: EnhancedImg | 'string';
 		border?: boolean;
 		children?: Snippet<[]>;
 	}>();
