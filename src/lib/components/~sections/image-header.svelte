@@ -11,7 +11,7 @@
 	}: {
 		heading: string;
 		lead?: string;
-		align?: 'left' | 'right';
+		align?: 'left' | 'right' | 'center';
 		titleColour?: 'white' | 'yellow';
 	} = $props();
 </script>
@@ -21,7 +21,7 @@
 		class="section-x-padding relative flex w-full max-w-[1800px] justify-center overflow-visible pt-40 pb-20 md:pt-46 lg:pt-52 xl:pb-28"
 	>
 		<div
-			class={`relative flex w-full ${align === 'right' ? 'lg:justify-end' : 'lg:justify-start'}`}
+			class={`relative flex w-full ${align === 'right' ? 'lg:justify-end' : align === 'left' ? 'lg:justify-start' : 'justify-center'}`}
 		>
 			<div
 				class={`flex max-w-[600px] flex-col ${

@@ -136,9 +136,7 @@
 
 		<div class="flex w-full flex-col justify-between gap-x-12 gap-y-12 xl:flex-row">
 			<div class="w-full xl:max-w-[550px] 2xl:max-w-[640px]">
-				<h2
-					class="font-display text-bc-amber xs-sm:text-[52px] text-[48px] leading-[1.15em] font-bold sm:text-6xl"
-				>
+				<h2 class="text-bc-amber page-intro-section-main-title">
 					Welcome to <span class="">The Birch Collective</span>
 				</h2>
 				<p class="xs-sm:mt-8 mt-6">
@@ -181,9 +179,7 @@
 		class="xs-sm:mt-20 3xl:mt-36 3xl:px-20 4xl:px-40 relative mt-16 flex justify-center px-4 md:px-6 lg:px-8 xl:mt-28 2xl:px-12"
 	>
 		<div class="w-full">
-			<h2
-				class="text-bc-slate-pine font-display xs-sm:text-[50px] text-[46px] leading-[1.15em] font-bold md:text-center xl:text-[56px]"
-			>
+			<h2 class="text-bc-slate-pine section-title-bold">
 				Cultivating Purpose, Belonging & Resilience
 			</h2>
 
@@ -223,7 +219,7 @@
 	<section class="section-standard">
 		<div class="w-full">
 			<div class="relative inline-block flex-col items-start">
-				<h2 class="section-title">What We Offer</h2>
+				<h2 class="section-title-small">What We Offer</h2>
 
 				<enhanced:img
 					class="absolute bottom-1 h-[2px] w-full opacity-70"
@@ -275,11 +271,7 @@
 
 	<section class="section-standard">
 		<div class="w-full">
-			<h2
-				class="text-bc-slate-pine font-display xs-sm:text-[50px] text-[46px] leading-[1.15em] font-bold md:text-center xl:text-[56px]"
-			>
-				Our Impact
-			</h2>
+			<h2 class="text-bc-slate-pine section-title-bold">Our Impact</h2>
 
 			<div class="flex justify-center">
 				<div class="w-full md:max-w-[600px]">
@@ -323,7 +315,7 @@
 	<section class="section-standard">
 		<div class="w-full">
 			<div class="relative inline-block flex-col items-start">
-				<h2 class="section-title">Support Us</h2>
+				<h2 class="section-title-small">Support Us</h2>
 
 				<enhanced:img
 					class="absolute bottom-1 h-[2px] w-full opacity-70"
