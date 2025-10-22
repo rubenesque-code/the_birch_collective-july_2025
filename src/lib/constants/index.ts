@@ -9,6 +9,7 @@ const internalRoute = {
 	donate: '/donate',
 	['about-us']: '/about-us',
 	testimonials: 'testimonials',
+	['meet-the-team']: 'meet-the-team',
 
 	recoupe: '/recoupe',
 	['fresh-air-thursday']: '/fresh-air-thursday',

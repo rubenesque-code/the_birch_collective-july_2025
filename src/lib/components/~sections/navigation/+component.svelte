@@ -1,5 +1,6 @@
 <script lang="ts" module>
 	import { ChatCircle, HandHeart, List, X } from 'phosphor-svelte';
+	import { useSwipe, type SwipeCustomEvent } from 'svelte-gestures';
 
 	import { browser } from '$app/environment';
 
@@ -21,9 +22,26 @@
 	afterNavigate(() => {
 		isOpen = false;
 	});
+
+	function swipeHandler(event: SwipeCustomEvent) {
+		const direction = event.detail.direction;
+
+		if (direction === 'right') {
+			isOpen = false;
+		}
+	}
+
+	const pageLinks = [
+		{ key: 'free-programmes', label: 'Free Programmes' },
+		{ key: 'paid-services', label: 'Paid Services' },
+		{ key: 'about-us', label: 'About Us' },
+		{ key: 'meet-the-team', label: 'Meet The Team' },
+		{ key: 'practice-methodology', label: 'Practice Methodology' },
+		{ key: 'testimonials', label: 'Testimonials' }
+	] as const;
 </script>
 
-<header class="z-10 flex w-full items-start justify-between">
+<header class="z-50 flex w-full items-start justify-between">
 	<a
 		class="font-display md-lg:hidden sm-md:text-4xl relative flex flex-col text-3xl font-bold"
 		href="/"
@@ -86,33 +104,24 @@
 <!-- svelte-ignore a11y_click_events_have_key_events -->
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <div
-	class={`fixed top-0 right-0 z-30 h-screen w-screen bg-white/80 transition-opacity duration-300 ease-in-out ${!isOpen ? 'pointer-events-none opacity-0' : ''}`}
+	class={`fixed top-0 right-0 z-30 h-screen w-screen bg-white/70 transition-opacity duration-300 ease-in-out ${!isOpen ? 'pointer-events-none opacity-0' : ''}`}
 	onclick={() => (isOpen = false)}
 ></div>
 
 <div
-	class={`fixed top-0 right-0 z-[35] h-screen w-[600px] max-w-screen overflow-y-auto border-l-[2px] border-black/40 bg-white/50 pt-4 pr-[100px] pl-12 shadow-2xl transition-transform duration-300 ease-in-out ${!isOpen ? 'translate-x-full' : ''}`}
+	class={`fixed top-0 right-0 z-[35] h-screen w-[400px] max-w-screen overflow-y-auto border-l-[2px] border-black/40 bg-white pt-4 pr-8 pl-12 shadow-2xl transition-transform duration-300 ease-in-out ${!isOpen ? 'translate-x-full' : ''}`}
+	{...useSwipe(swipeHandler, () => ({
+		timeframe: 300,
+		minSwipeDistance: 50,
+		touchAction: 'none'
+	}))}
 >
-	<div class="flex shrink-0">
-		<a class="font-display relative flex flex-col text-4xl font-bold" href="/">
-			<span class="translate-x-[20px]">The</span>
-			<span class="translate-x-[40px] translate-y-[-10px] text-[66px]">Birch</span>
-			<span class="translate-x-[0px] translate-y-[-20px]">Collective</span>
-		</a>
-	</div>
-
-	<div class="mt-12 flex flex-col gap-8">
-		<a class="font-display text-4xl font-bold" href="/">Home</a>
-		<a class="font-display text-4xl font-bold" href="free-programmes">Free Programmes</a>
-		<a class="font-display text-4xl font-bold" href={internalRoute['paid-services']}
-			>Paid Services</a
-		>
-		<a class="font-display text-4xl font-bold" href="/about-us">About Us</a>
-		<a class="font-display text-4xl font-bold" href="/meet-the-team">Meet The Team</a>
-		<a class="font-display text-4xl font-bold" href="/practice-methodology">Practice Methodology</a>
-		<a class="font-display text-4xl font-bold" href="/testimonials">Testimonials</a>
-		<a class="font-display text-4xl font-bold" href={internalRoute['get-in-touch']}>Get In Touch</a>
-		<!-- <a class="font-display text-4xl font-bold" href="/theory-of-change">Theory of Change</a> -->
-		<!-- <a class="font-display text-4xl font-bold" href="/volunteer">Volunteer</a> -->
+	<div class="xs:text-xl mt-48 flex flex-col items-end gap-6 md:mt-60 lg:text-[22px]">
+		{#each pageLinks as { key, label }, i}
+			<a href={internalRoute[key]} class="">{label}</a>
+			{#if i < pageLinks.length - 1}
+				<div class="border-bc-slate-pine/30 h-[1px] w-[80px] border-b"></div>
+			{/if}
+		{/each}
 	</div>
 </div>

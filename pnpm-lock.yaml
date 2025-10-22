@@ -20,6 +20,9 @@ importers:
       svelte-focus-trap:
         specifier: ^1.2.0
         version: 1.2.0
+      svelte-gestures:
+        specifier: ^5.2.2
+        version: 5.2.2
     devDependencies:
       '@eslint/compat':
         specifier: ^1.2.5
@@ -2128,6 +2131,9 @@ packages:
 
   svelte-focus-trap@1.2.0:
     resolution: {integrity: sha512-/hIUHgKcFlewsQreq8v7DYNBkQe7rR0c94PNBOCsmeUwoIYAy6iXJ1pH0k3rWpjwZHKtUxeXbX1iRFlFhipbeg==}
+
+  svelte-gestures@5.2.2:
+    resolution: {integrity: sha512-Y+chXPaSx8OsPoFppUwPk8PJzgrZ7xoDJKXeiEc7JBqyKKzXer9hlf8F9O34eFuAWB4/WQEvccACvyBplESL7A==}
 
   svelte-parse-markup@0.1.5:
     resolution: {integrity: sha512-T6mqZrySltPCDwfKXWQ6zehipVLk4GWfH1zCMGgRtLlOIFPuw58ZxVYxVvotMJgJaurKi1i14viB2GIRKXeJTQ==}
@@ -4266,6 +4272,8 @@ snapshots:
   svelte-focus-trap@1.2.0:
     dependencies:
       mousetrap: 1.6.5
+
+  svelte-gestures@5.2.2: {}
 
   svelte-parse-markup@0.1.5(svelte@5.35.4):
     dependencies:
