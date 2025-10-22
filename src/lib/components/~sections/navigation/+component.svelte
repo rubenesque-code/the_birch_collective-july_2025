@@ -63,37 +63,23 @@
 			{/if}
 		</button>
 
-		<a
-			class="xs:text-lg xs:p-2 grid cursor-pointer place-items-center rounded-full border border-white p-[6px] text-white sm:text-[22px] lg:text-2xl"
-			href={internalRoute['get-in-touch']}
-		>
-			<Tooltip.Provider>
-				<Tooltip.Root>
-					<Tooltip.Trigger>
-						<ChatCircle />
-					</Tooltip.Trigger>
-					<Tooltip.Content side="left">
-						<p class="text-base">Get in touch</p>
-					</Tooltip.Content>
-				</Tooltip.Root>
-			</Tooltip.Provider>
-		</a>
-
-		<a
-			class="xs:text-lg xs:p-2 grid cursor-pointer place-items-center rounded-full border border-white p-[6px] text-white sm:text-[22px] lg:text-2xl"
-			href={internalRoute.donate}
-		>
-			<Tooltip.Provider>
-				<Tooltip.Root>
-					<Tooltip.Trigger>
-						<HandHeart />
-					</Tooltip.Trigger>
-					<Tooltip.Content side="left">
-						<p class="text-base">Donate</p>
-					</Tooltip.Content>
-				</Tooltip.Root>
-			</Tooltip.Provider>
-		</a>
+		{#each [{ href: internalRoute['get-in-touch'], icon: ChatCircle, label: 'Get in touch' }, { href: internalRoute.donate, icon: HandHeart, label: 'Donate' }] as { href, icon: Icon, label }}
+			<a
+				class="xs:text-lg xs:p-2 grid cursor-pointer place-items-center rounded-full border border-white p-[6px] text-white sm:text-[22px] lg:text-2xl"
+				{href}
+			>
+				<Tooltip.Provider>
+					<Tooltip.Root>
+						<Tooltip.Trigger class="cursor-pointer">
+							<Icon />
+						</Tooltip.Trigger>
+						<Tooltip.Content side="left">
+							<p class="text-base">{label}</p>
+						</Tooltip.Content>
+					</Tooltip.Root>
+				</Tooltip.Provider>
+			</a>
+		{/each}
 	</nav>
 </header>
 

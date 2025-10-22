@@ -5,7 +5,7 @@
 	import { fade, slide } from 'svelte/transition';
 
 	import { isValidEmail } from '^helpers';
-	import { enquiryFormHandler } from '^services';
+	import { sendEnquiryToBirch } from '^services';
 
 	import type { SvelteSubmitEvent } from '^types';
 
@@ -102,22 +102,21 @@
 		postStatus = 'pending';
 
 		toast.promise(
-			() =>
-				enquiryFormHandler.postEnquiry({
-					name: nameValue,
-					email: emailValue,
-					message: messageValue,
-					onError: () => {
-						postStatus = 'error';
-					},
-					onSuccess: () => {
-						postStatus = 'success';
+			sendEnquiryToBirch({
+				name: nameValue,
+				email: emailValue,
+				message: messageValue,
+				onError: () => {
+					postStatus = 'error';
+				},
+				onSuccess: () => {
+					postStatus = 'success';
 
-						setTimeout(resetForm, 500);
+					setTimeout(resetForm, 500);
 
-						setTimeout(() => (postStatus = 'idle'), 3000);
-					}
-				}),
+					setTimeout(() => (postStatus = 'idle'), 3000);
+				}
+			}),
 			{
 				loading: 'Sending form...',
 				success: "Thanks for your enquiry. We'll be in touch shortly.",

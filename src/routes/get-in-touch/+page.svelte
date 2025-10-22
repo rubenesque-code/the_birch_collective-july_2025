@@ -7,11 +7,9 @@
 		PUBLIC_BIRCH_PHONE_2
 	} from '$env/static/public';
 
-	import image from '^assets/image';
-
-	import { Form } from '^pages/get-in-touch';
-	import { socials } from '^constants';
 	import { ImageHeader } from '^components/~sections';
+	import { socials } from '^constants';
+	import { Form } from '^pages/get-in-touch';
 </script>
 
 <div class="">
