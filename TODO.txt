@@ -9,6 +9,8 @@
 - warning on form close: not saved
 - seperate images for programme pages
 - refactor sign-up form
+- 404
+- newsletter sign up
 
 QUESTIONS
 ---------

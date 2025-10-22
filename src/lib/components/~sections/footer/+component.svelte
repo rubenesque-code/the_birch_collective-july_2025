@@ -5,7 +5,9 @@
 	import { FacebookLogo, InstagramLogo, LinkedinLogo, TiktokLogo } from 'phosphor-svelte';
 </script>
 
-<footer class="mt-32 flex w-full items-center justify-between px-8 pb-12">
+<footer
+	class="mt-12 flex w-full flex-col-reverse items-center justify-between gap-x-8 gap-y-10 px-4 pb-12 sm:mt-20 sm:px-8 md:mt-32 md:flex-row"
+>
 	<div class="max-w-[800px]">
 		<div class="text-bc-slate-pine flex flex-row gap-8 text-3xl">
 			{#each [{ icon: FacebookLogo, link: socials.fb }, { icon: InstagramLogo, link: socials.insta }, { icon: LinkedinLogo, link: socials.linkedIn }, { icon: TiktokLogo, link: socials.tiktok }] as item}
@@ -15,10 +17,10 @@
 			{/each}
 		</div>
 
-		<div class="mt-8 flex flex-row gap-x-8 gap-y-4">
+		<div class="mt-8 flex flex-row flex-wrap gap-x-8 gap-y-4">
 			{#each [{ label: 'Free programmes', route: internalRoute['free-programmes'] }, { label: 'Paid services', route: internalRoute['paid-services'] }, { label: 'About us', route: internalRoute['about-us'] }] as item}
 				<a
-					class="text-bc-logo-black/70 text-lg font-medium underline underline-offset-2"
+					class="text-bc-logo-black/70 text-lg font-medium whitespace-nowrap underline underline-offset-2"
 					href={item.route}
 					target="_blank"
 				>
@@ -26,6 +28,7 @@
 				</a>
 			{/each}
 		</div>
+
 		<div class="mt-3 flex flex-row gap-x-8 gap-y-4">
 			{#each [{ label: 'Feedback', route: internalRoute['about-us'] }, { label: 'Make a complaint', route: internalRoute['paid-services'] }] as item}
 				<a
@@ -56,9 +59,9 @@
 		</div>
 	</div>
 
-	<div class="flex items-center gap-8">
-		<enhanced:img class="w-[120px]" src={living_wage_logo} alt="" />
+	<div class="flex w-full shrink-0 items-center justify-start gap-8 md:w-auto md:justify-center">
+		<enhanced:img class="w-[80px] md:w-[120px]" src={living_wage_logo} alt="" />
 
-		<enhanced:img class="w-[70px]" src={logo_img} alt="" />
+		<enhanced:img class="w-[50px] md:w-[70px]" src={logo_img} alt="" />
 	</div>
 </footer>
