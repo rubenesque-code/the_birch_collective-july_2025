@@ -8,6 +8,7 @@ const internalRoute = {
 	['practice-methodology']: '/practice-methodology',
 	donate: '/donate',
 	['about-us']: '/about-us',
+	testimonials: 'testimonials',
 
 	recoupe: '/recoupe',
 	['fresh-air-thursday']: '/fresh-air-thursday',
