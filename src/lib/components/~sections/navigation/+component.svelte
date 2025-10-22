@@ -125,6 +125,7 @@
 		<a class="font-display text-4xl font-bold" href="/meet-the-team">Meet The Team</a>
 		<a class="font-display text-4xl font-bold" href="/practice-methodology">Practice Methodology</a>
 		<a class="font-display text-4xl font-bold" href="/testimonials">Testimonials</a>
+		<a class="font-display text-4xl font-bold" href={internalRoute['get-in-touch']}>Get In Touch</a>
 		<!-- <a class="font-display text-4xl font-bold" href="/theory-of-change">Theory of Change</a> -->
 		<!-- <a class="font-display text-4xl font-bold" href="/volunteer">Volunteer</a> -->
 	</div>

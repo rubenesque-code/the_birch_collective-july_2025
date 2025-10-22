@@ -91,7 +91,7 @@
 	}}
 />
 
-<div class="max-w-screen overflow-hidden pb-40">
+<div class="max-w-screen overflow-hidden">
 	<section class="flex h-screen flex-col md:max-h-screen">
 		<div class="relative h-screen w-screen grow">
 			<video class="absolute top-0 left-0 h-full w-full object-cover" loop muted>

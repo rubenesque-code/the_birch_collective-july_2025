@@ -146,7 +146,7 @@
 </script>
 
 <form
-	class="flex flex-col gap-6 px-3 pt-2 pb-6 sm:px-6 sm:pt-4"
+	class="flex flex-col gap-6 pt-2 pb-6 sm:pt-4"
 	bind:this={form}
 	onsubmit={handleSubmit}
 	novalidate

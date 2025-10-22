@@ -6,7 +6,7 @@
 </script>
 
 <footer
-	class="mt-12 flex w-full flex-col-reverse items-center justify-between gap-x-8 gap-y-10 px-4 pb-12 sm:mt-20 sm:px-8 md:mt-32 md:flex-row"
+	class="mt-32 flex w-full flex-col-reverse items-center justify-between gap-x-8 gap-y-10 px-4 pb-12 sm:px-8 md:mt-40 md:flex-row"
 >
 	<div class="max-w-[800px]">
 		<div class="text-bc-slate-pine flex flex-row gap-8 text-3xl">
