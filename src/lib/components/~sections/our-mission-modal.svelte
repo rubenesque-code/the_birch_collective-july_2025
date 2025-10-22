@@ -44,8 +44,6 @@
 			<button
 				class="md/lg:right-[-14px] md/lg:text-[24px] 3xl:text-[30px] absolute -top-[12px] right-[-10px] z-10 -translate-y-full cursor-pointer text-white/70 md:-top-[16px] md:right-[-12px] md:text-[20px] lg:-right-[20px] lg:text-[22px] xl:-top-[20px] xl:text-[26px] 2xl:text-[28px]"
 				onclick={() => {
-					console.log('X BUTTON');
-
 					props.onClickCloseShowreel();
 				}}
 				type="button"

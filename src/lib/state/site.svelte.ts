@@ -1,36 +1,46 @@
 type Showreel = {
-  isOpen: boolean;
+	isOpen: boolean;
+};
+
+type NewsletterSignupPopover = {
+	isOpen: boolean;
 };
 
 type SiteState = {
-  showreel: Showreel;
+	showreel: Showreel;
+	newsletter: NewsletterSignupPopover;
 };
 
 export const siteInitState: SiteState = {
-  showreel: {
-    isOpen: false
-  }
+	showreel: {
+		isOpen: false
+	},
+	newsletter: {
+		isOpen: true
+	}
 };
 
 export const siteState = $state(siteInitState);
 
 export const updateSiteState = {
-  showreel: {
-    toggleIsOpen: () => {
-      siteState.showreel.isOpen = !siteState.showreel.isOpen;
-    },
+	showreel: {
+		toggleIsOpen: () => {
+			siteState.showreel.isOpen = !siteState.showreel.isOpen;
+		},
 
-    setIsOpen: (value: boolean) => {
-      siteState.showreel.isOpen = value
-    },
+		setIsOpen: (value: boolean) => {
+			siteState.showreel.isOpen = value;
+		}
+	},
+	newsletter: {
+		toggleIsOpen: () => {
+			siteState.newsletter.isOpen = !siteState.newsletter.isOpen;
+		},
 
-    /* 		isOpen: (arg0: { value: boolean; onOpen?: () => void; onClose?: () => void }) => {
-          if (arg0.onOpen) arg0.onOpen();
-          if (arg0.onClose) arg0.onClose();
-    
-          siteState.showreel.isOpen = arg0.value;
-        } */
-  }
+		setIsOpen: (value: boolean) => {
+			siteState.newsletter.isOpen = value;
+		}
+	}
 };
 
 export { type SiteState };

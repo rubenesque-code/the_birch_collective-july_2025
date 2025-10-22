@@ -3,7 +3,7 @@
 
 	import { fly } from 'svelte/transition';
 
-	import { Footer, Navbar, NavbarVisibility } from '^components/~sections';
+	import { Footer, Navbar, NavbarVisibility, NewsletterPopover } from '^components/~sections';
 	import { Toaster } from '^components/ui';
 </script>
 
@@ -29,5 +29,7 @@
 <Footer />
 
 <NavbarVisibility bind:hideHeader />
+
+<NewsletterPopover />
 
 <Toaster toastOptions={{ class: '!text-lg' }} />
