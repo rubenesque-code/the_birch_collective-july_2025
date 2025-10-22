@@ -4,7 +4,7 @@
 		body
 	}: {
 		title?: string;
-		body: string[];
+		body: Array<string | { title: string; text: string }>;
 	} = $props();
 </script>
 

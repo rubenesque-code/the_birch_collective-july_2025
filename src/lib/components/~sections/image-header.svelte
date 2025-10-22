@@ -23,11 +23,7 @@
 		<div
 			class={`relative flex w-full ${align === 'right' ? 'lg:justify-end' : 'lg:justify-start'}`}
 		>
-			<div
-				class={`flex max-w-[600px] flex-col ${
-					align === 'right' ? 'lg:items-end' : 'lg:items-start'
-				}`}
-			>
+			<div class={`flex flex-col ${align === 'right' ? 'lg:items-end' : 'lg:items-start'}`}>
 				<h1
 					id="programmes-heading"
 					class={`page-title ${align === 'right' ? 'lg:text-right' : 'lg:text-left'} ${titleColour === 'white' ? 'text-white' : 'text-my-pale-yellow'}`}

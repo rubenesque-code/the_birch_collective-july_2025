@@ -1,31 +1,16 @@
 <script lang="ts" module>
-	import image from '^assets/image';
+	import { ImageHeader } from '^components/~sections';
 </script>
 
-<div class="relative max-w-screen overflow-hidden pb-40 text-xl leading-relaxed">
-	<section class="relative flex justify-center overflow-visible px-80 pt-32 pb-40">
-		<div class="my-shape absolute top-0 left-0 -z-10 h-full w-full">
-			<enhanced:img src={image.placeholder.banner_1} alt="" />
+<ImageHeader
+	align="center-left"
+	heading="Our Trauma Informed Practise & Community Mental Health Approach"
+/>
 
-			<div class="from-bc-slate-pine absolute inset-0 bg-gradient-to-t to-transparent"></div>
-		</div>
-
-		<div class="mt-10 flex w-full items-end gap-40">
-			<div class="relative flex">
-				<div class="max-w-[750px] text-white">
-					<h1 class="font-display text-7xl leading-[1.05] font-bold tracking-wide">
-						Our Trauma Informed Practise & Community Mental Health Approach
-					</h1>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section class="mt-16 flex justify-center px-60">
+<div class="relative max-w-screen overflow-hidden">
+	<section class="section-x-padding xs-sm:mt-12 mt-10 flex justify-center">
 		<div class="w-full max-w-[768px] leading-relaxed">
-			<h2 class="text-bc-slate-pine font-display mt-4 text-[44px] font-bold">
-				Policies & Practices
-			</h2>
+			<h2 class="text-bc-slate-pine section-title-bold text-left">Policies & Practices</h2>
 
 			<div class="mt-[20px]">
 				<p class="">
@@ -53,16 +38,12 @@
 		</div>
 	</section>
 
-	<section class="mt-16 flex justify-center px-60">
+	<section class="section-x-padding xs-sm:mt-12 mt-10 flex justify-center">
 		<div class="w-full max-w-[768px] leading-relaxed">
-			<h2 class="text-bc-slate-pine font-display mt-4 text-[44px] font-bold">Context</h2>
+			<h2 class="text-bc-slate-pine section-title-bold text-left">Context</h2>
 
 			<div class="mt-[20px]">
-				<h3
-					class="font-display decoration-bc-slate-pine/40 text-3xl font-bold underline decoration-2 underline-offset-4"
-				>
-					Bristol Deprivation
-				</h3>
+				<h3 class="section-title-small">Bristol Deprivation</h3>
 				<p class="mt-4">
 					Statistics from 2019 show that 15% of Bristol’s population lived in the most deprived 10%
 					of areas in England. 14% of the total population of Bristol were found to suffer from
@@ -87,11 +68,7 @@
 					target="_blank">JSNA Health and Wellbeing Profile 2024/25</a
 				>
 
-				<h3
-					class="font-display decoration-bc-slate-pine/40 mt-8 text-3xl font-bold underline decoration-2 underline-offset-4"
-				>
-					Wider Context
-				</h3>
+				<h3 class="section-title-small mt-6">Wider Context</h3>
 
 				<p class="mt-4">
 					On a national level, research suggests that, regardless of individuals histories and
@@ -191,11 +168,9 @@
 		</div>
 	</section>
 
-	<section class="mt-16 flex justify-center px-60">
+	<section class="section-x-padding xs-sm:mt-12 mt-10 flex justify-center">
 		<div class="w-full max-w-[768px] leading-relaxed">
-			<h2 class="text-bc-slate-pine font-display mt-4 text-[44px] font-bold">
-				Foundations for wellbeing
-			</h2>
+			<h2 class="text-bc-slate-pine section-title-bold text-left">Foundations for wellbeing</h2>
 
 			<div class="mt-[20px]">
 				<p class="">It is widely acknowledged that the foundations for wellbeing include:</p>
@@ -227,9 +202,9 @@
 		</div>
 	</section>
 
-	<section class="mt-16 flex justify-center px-60">
+	<section class="section-x-padding xs-sm:mt-12 mt-10 flex justify-center">
 		<div class="w-full max-w-[768px] leading-relaxed">
-			<h2 class="text-bc-slate-pine font-display mt-4 text-[44px] font-bold">Early intervention</h2>
+			<h2 class="text-bc-slate-pine section-title-bold text-left">Early intervention</h2>
 
 			<div class="mt-[20px]">
 				<p class="">
@@ -272,15 +247,9 @@
 		</div>
 	</section>
 
-	<section class="mt-16 flex justify-center px-60">
+	<section class="section-x-padding xs-sm:mt-12 mt-10 flex justify-center">
 		<div class="w-full max-w-[768px] leading-relaxed">
-			<div class="h-[2px] w-4/5 bg-black"></div>
-		</div>
-	</section>
-
-	<section class="mt-16 flex justify-center px-60">
-		<div class="w-full max-w-[768px] leading-relaxed">
-			<h2 class="text-bc-slate-pine font-display mt-4 text-[44px] font-bold">Inclusive Practice</h2>
+			<h2 class="text-bc-slate-pine section-title-bold text-left">Inclusive Practice</h2>
 
 			<div class="mt-[20px]">
 				<p class="">
@@ -330,9 +299,9 @@
 		</div>
 	</section>
 
-	<section class="mt-16 flex justify-center px-60">
+	<section class="section-x-padding xs-sm:mt-12 mt-10 flex justify-center">
 		<div class="w-full max-w-[768px] leading-relaxed">
-			<h2 class="text-bc-slate-pine font-display mt-4 text-[44px] font-bold">Long-term support</h2>
+			<h2 class="text-bc-slate-pine section-title-bold text-left">Long-term support</h2>
 
 			<div class="mt-[20px]">
 				<p class="">
@@ -375,18 +344,12 @@
 		</div>
 	</section>
 
-	<section class="mt-16 flex justify-center px-60">
+	<section class="section-x-padding xs-sm:mt-12 mt-10 flex justify-center">
 		<div class="w-full max-w-[768px] leading-relaxed">
-			<h2 class="text-bc-slate-pine font-display mt-4 text-[44px] font-bold">
-				Trauma-informed practices
-			</h2>
+			<h2 class="text-bc-slate-pine section-title-bold text-left">Trauma-informed practices</h2>
 
 			<div class="mt-[20px]">
-				<h3
-					class="font-display decoration-bc-slate-pine/40 text-3xl font-bold underline decoration-2 underline-offset-4"
-				>
-					Key principles of trauma-informed practice
-				</h3>
+				<h3 class="section-title-small">Key principles of trauma-informed practice</h3>
 
 				<p class="mt-4">
 					There are 6 principles of trauma-informed practice that we incorporate in the ways we work
@@ -401,11 +364,7 @@
 					{/each}
 				</ul>
 
-				<h3
-					class="font-display decoration-bc-slate-pine/40 mt-8 text-3xl font-bold underline decoration-2 underline-offset-4"
-				>
-					How we do this at Birch
-				</h3>
+				<h3 class="section-title-small mt-6">How we do this at Birch</h3>
 
 				<h4 class="mt-6 font-medium">Safety</h4>
 
@@ -458,9 +417,3 @@
 		</div>
 	</section>
 </div>
-
-<style>
-	.my-shape {
-		clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
-	}
-</style>
