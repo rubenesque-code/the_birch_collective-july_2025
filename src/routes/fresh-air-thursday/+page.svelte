@@ -17,8 +17,43 @@
 	import { whatToExpectSection, whyJoinUsSection } from '^content/fresh-air-thursday';
 
 	import { ImageModal } from '^components';
-	import { ImageHeader } from '^components/~pages/programme';
+	import { ImageCarousel, ImageHeader } from '^components/~pages/programme';
 	import { SignUpFormModal } from '^components/~sections';
+
+	const images = [
+		{
+			src: image.placeholder.caregiver_with_partipant_face_to_face,
+			alt: ''
+		},
+		{
+			src: garden_shed_from_outside,
+			alt: ''
+		},
+		{
+			src: participant_woman_glasses,
+			alt: ''
+		},
+		{
+			src: group_and_facilitators_sitting_round_fireplace,
+			alt: ''
+		},
+		{
+			src: image.placeholder.axe_chopping,
+			alt: ''
+		},
+		{
+			src: image.placeholder.chillies,
+			alt: ''
+		},
+		{
+			src: james_and_participants_peace_sign,
+			alt: ''
+		},
+		{
+			src: indoor_workbench,
+			alt: ''
+		}
+	];
 </script>
 
 <script lang="ts">
@@ -39,13 +74,13 @@
 	isEnhanced
 >
 	<a
-		class="mt-2 flex items-center gap-2 text-lg text-black/90 decoration-transparent underline-offset-2 transition-colors duration-200 ease-linear hover:underline hover:decoration-black/30"
+		class="mt-2 flex items-center gap-2 text-black/90 decoration-transparent underline-offset-2 transition-colors duration-200 ease-linear hover:underline hover:decoration-black/30"
 		href="https://maps.app.goo.gl/32cRvbigC2fC3pPF9"
 		target="_blank"><span>See on Google maps</span><span><ArrowUpRight /></span></a
 	>
 </ImageModal>
 
-<div class="relative max-w-screen overflow-hidden pb-40">
+<div class="relative max-w-screen overflow-hidden">
 	<ImageHeader
 		heading="Fresh Air Thursdays"
 		lead={[
@@ -147,7 +182,7 @@
 								</h4>
 							</div>
 
-							<p class="mt-3 text-lg leading-relaxed">{text}</p>
+							<p class="mt-3 leading-relaxed">{text}</p>
 						</div>
 					{/each}
 				</div>
@@ -168,12 +203,10 @@
 					{#each whyJoinUsSection as { text, symbols }}
 						<p class="flex items-center gap-3">
 							<!-- <span class="text-black/40">
-								<Circle />
-							</span> -->
+ 								<Circle />
+ 							</span> -->
 							<span>{[symbols[0]]}</span>
-							<span
-								class="decoration-bc-amber/30 text-xl leading-[1.6em] text-black/90 underline-offset-2"
-							>
+							<span class="decoration-bc-amber/30 leading-[1.6em] text-black/90 underline-offset-2">
 								{text}
 							</span>
 						</p>
@@ -183,56 +216,21 @@
 		</div>
 	</section>
 
-	<section class="mt-24 flex justify-center px-60">
-		<div>
+	<section class="section-mt-lg flex justify-center">
+		<div class="section-x-padding box-content w-full max-w-[1200px]">
 			<p class="text-right text-black/70">
 				Images from <span class="text-bc-amber font-medium italic">Fresh</span>
 			</p>
 
-			<div class="mt-1 flex h-[300px] gap-3">
-				<div class="border-my-grey-3/40 aspect-[192/128] h-full">
-					<enhanced:img
-						class="h-full w-full"
-						src={image.placeholder.caregiver_with_partipant_face_to_face}
-						alt=""
-					/>
-				</div>
-
-				<div class="border-my-grey-3/40 aspect-[256/320] h-full">
-					<enhanced:img class="h-full w-full" src={garden_shed_from_outside} alt="" />
-				</div>
-				<div class="border-my-grey-3/40 aspect-[256/320] h-full">
-					<enhanced:img class="h-full w-full" src={participant_woman_glasses} alt="" />
-				</div>
-				<div class="border-my-grey-3/40 aspect-[3200/2133] h-full">
-					<enhanced:img
-						class="h-full w-full"
-						src={group_and_facilitators_sitting_round_fireplace}
-						alt=""
-					/>
-				</div>
-			</div>
-
-			<div class="mt-3 flex h-[300px] gap-3">
-				<div class="border-my-grey-3/40 aspect-[192/128] h-full">
-					<enhanced:img class="h-full w-full" src={image.placeholder.axe_chopping} alt="" />
-				</div>
-				<div class="border-my-grey-3/40 aspect-[192/128] h-full">
-					<enhanced:img class="h-full w-full" src={image.placeholder.chillies} alt="" />
-				</div>
-				<div class="border-my-grey-3/40 aspect-[256/320] h-full">
-					<enhanced:img class="h-full w-full" src={james_and_participants_peace_sign} alt="" />
-				</div>
-				<div class="border-my-grey-3/40 aspect-[256/320] h-full">
-					<enhanced:img class="h-full w-full" src={indoor_workbench} alt="" />
-				</div>
+			<div class="mt-2">
+				<ImageCarousel {images} />
 			</div>
 		</div>
 	</section>
 
-	<section class="mt-24 flex justify-center px-60">
-		<div class="flex w-full max-w-[768px] flex-col items-center">
-			<p class="text-lg text-black/80">
+	<section class="section-mt-lg flex justify-center">
+		<div class="section-x-padding box-content flex w-full max-w-[768px] flex-col items-center">
+			<p class="text-black/80">
 				<span class="italic"> Ready to get on board?</span>
 				<span class="italic"> Fill out our online form - it takes around 3 minutes.</span>
 			</p>
