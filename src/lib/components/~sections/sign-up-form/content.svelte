@@ -501,7 +501,7 @@
 	</div>
 {/if}
 
-<Carousel.Content hiddenParentClass="flex flex-col h-full  relative" class=" ml-0 h-full w-full">
+<Carousel.Content hiddenParentClass="flex flex-col h-full relative" class=" ml-0 h-full w-full">
 	<Carousel.Item class="flex h-full basis-full flex-col pl-0" id={signUpFormId.intro}>
 		<Card.Root class="ml-0 flex h-full grow flex-col border-none shadow-none">
 			<Card.Content class="flex h-full grow flex-col p-0 text-lg leading-relaxed">

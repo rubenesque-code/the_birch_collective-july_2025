@@ -1,4 +1,5 @@
 <script lang="ts" module>
+	import { onMount } from 'svelte';
 	import { ArrowUpRight } from 'phosphor-svelte';
 
 	import image from '^assets/image';
@@ -18,8 +19,10 @@
 	import { whatToExpectSection, whyJoinUsSection } from '^content/fresh-air-thursday';
 
 	import { ImageModal } from '^components';
-	import { ImageCarousel, ImageHeader } from '^components/~pages/programme';
-	import { PartnersAndSupportersCarousel, SignUpFormModal } from '^components/~sections';
+	import { ImageHeader } from '^components/~pages/programme';
+	import { ImageGalleryDialog, SignUpFormModal } from '^components/~sections';
+	import VideoModal from '^components/video-modal.svelte';
+	import { TextSection, VideoSection } from '^components/~sections';
 
 	const images = [
 		{
@@ -58,15 +61,18 @@
 </script>
 
 <script lang="ts">
-	import { TextSection, VideoSection } from '^components/~sections';
-	import VideoModal from '^components/video-modal.svelte';
-	import { MyImageCarousel } from '^components/~pages/programme';
-
 	let playIntro = false;
 	let playTestimonial = false;
 	let showLocationMap = false;
 	let signUpFormIsOpen = false;
+	let imageCarouselIsOpen = false;
+
+	onMount(() => {
+		console.log(image.placeholder.caregiver_with_partipant_face_to_face);
+	});
 </script>
+
+<ImageGalleryDialog isOpen={imageCarouselIsOpen} {images} />
 
 <SignUpFormModal bind:isOpen={signUpFormIsOpen} onClickClose={() => (signUpFormIsOpen = false)} />
 
@@ -231,46 +237,44 @@
 				Images from <span class="text-bc-amber font-medium italic">Fresh</span>
 			</p>
 
-			<!-- <MyImageCarousel /> -->
+			<div class="relative">
+				<!-- <div
+					class="absolute top-0 right-0 z-10 h-full w-[160px] bg-gradient-to-r from-transparent to-white/70"
+				></div> -->
 
-			<div class="relative mt-1 flex h-[calc(600px+12px)] gap-3 overflow-hidden">
-				<div class="absolute top-0 left-0 -z-10 flex h-full flex-col gap-3">
-					<div class="flex h-[300px] w-full gap-3">
-						<div class="border-my-grey-3/40 aspect-[192/128] h-full">
-							<enhanced:img
-								class="h-full w-full"
-								src={image.placeholder.caregiver_with_partipant_face_to_face}
-								alt=""
-							/>
+				<div
+					class="relative mt-1 flex h-[calc(600px+12px)] gap-3 overflow-hidden"
+					onclick={() => (imageCarouselIsOpen = true)}
+					onkeydown={(e) => {
+						if (e.key === 'Enter' || e.key === ' ') {
+							e.preventDefault();
+							imageCarouselIsOpen = true;
+						}
+					}}
+					role="button"
+					tabindex="0"
+					aria-label="Open image gallery"
+				>
+					<div class="absolute top-0 left-0 flex h-full flex-col gap-3">
+						<div class="flex h-[300px] w-full gap-3">
+							{#each [{ src: image.placeholder.caregiver_with_partipant_face_to_face, alt: '' }, { src: garden_shed_from_outside, alt: '' }, { src: participant_woman_glasses, alt: '' }, { src: group_and_facilitators_sitting_round_fireplace, alt: '' }] as item}
+								<div class="h-full cursor-pointer">
+									<enhanced:img
+										class="h-full w-full"
+										style:aspect-ratio={item.src.img.w / item.src.img.h}
+										src={item.src}
+										alt={item.alt}
+									/>
+								</div>
+							{/each}
 						</div>
 
-						<div class="border-my-grey-3/40 aspect-[256/320] h-full">
-							<enhanced:img class="h-full w-full" src={garden_shed_from_outside} alt="" />
-						</div>
-						<div class="border-my-grey-3/40 aspect-[256/320] h-full">
-							<enhanced:img class="h-full w-full" src={participant_woman_glasses} alt="" />
-						</div>
-						<div class="border-my-grey-3/40 aspect-[3200/2133] h-full">
-							<enhanced:img
-								class="h-full w-full"
-								src={group_and_facilitators_sitting_round_fireplace}
-								alt=""
-							/>
-						</div>
-					</div>
-
-					<div class="flex h-[300px] w-full gap-3">
-						<div class="border-my-grey-3/40 aspect-[192/128] h-full">
-							<enhanced:img class="h-full w-full" src={image.placeholder.axe_chopping} alt="" />
-						</div>
-						<div class="border-my-grey-3/40 aspect-[192/128] h-full">
-							<enhanced:img class="h-full w-full" src={image.placeholder.chillies} alt="" />
-						</div>
-						<div class="border-my-grey-3/40 aspect-[256/320] h-full">
-							<enhanced:img class="h-full w-full" src={james_and_participants_peace_sign} alt="" />
-						</div>
-						<div class="border-my-grey-3/40 aspect-[256/320] h-full">
-							<enhanced:img class="h-full w-full" src={indoor_workbench} alt="" />
+						<div class="flex h-[300px] w-full gap-3">
+							{#each [{ src: image.placeholder.axe_chopping, alt: '' }, { src: image.placeholder.chillies, alt: '' }, { src: james_and_participants_peace_sign, alt: '' }, { src: indoor_workbench, alt: '' }] as item}
+								<div class="h-full" style:aspect-ratio={item.src.img.w / item.src.img.h}>
+									<enhanced:img class="h-full w-full" src={item.src} alt={item.alt} />
+								</div>
+							{/each}
 						</div>
 					</div>
 				</div>
@@ -347,33 +351,3 @@
 		</div>
 	</section>
 </div>
-
-<!-- 	.my-grid {
-		column-count: 4;
-		column-gap: 1rem;
-	} -->
-
-<!-- <div class="mt-6">
-						<p class="text-right text-black/70">
-							Activities from <span class="italic">Fresh</span>
-						</p>
-
-						<div class="mt-1 flex h-[188px] gap-2">
-							<div class="border-my-grey-3/40 aspect-[256/320] h-full">
-								<enhanced:img class="h-full w-full" src={indoor_raised_bed} alt="" />
-							</div>
-							<div class="border-my-grey-3/40 aspect-[256/320] h-full">
-								<enhanced:img class="h-full w-full" src={intertwined_reed_branches} alt="" />
-							</div>
-							<div class="border-my-grey-3/40 aspect-[256/320] h-full">
-								<enhanced:img class="h-full w-full" src={garden_shed_from_outside} alt="" />
-							</div>
-							<div class="border-my-grey-3/40 aspect-[3200/2133] h-full">
-								<enhanced:img
-									class="h-full w-full"
-									src={group_and_facilitators_sitting_round_fireplace}
-									alt=""
-								/>
-							</div>
-						</div>
-					</div> -->
