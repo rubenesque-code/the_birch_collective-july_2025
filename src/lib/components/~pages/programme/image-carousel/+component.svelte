@@ -20,7 +20,7 @@
 
 <Carousel.Root opts={{ loop: true, align: 'start' }} class="w-full ">
 	<Carousel.Content>
-		{#each images as item, i}
+		{#each images as item}
 			<Carousel.Item class="h-[300px]">
 				<enhanced:img
 					class="bg-my-grey-3/20 h-full w-full object-contain"
