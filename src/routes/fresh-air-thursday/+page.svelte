@@ -12,6 +12,7 @@
 	} from '^assets/images/programmes/fresh-air-thursday';
 	import {
 		fresh_air_thursday_introduction,
+		fresh_air_thursday_participant_testimonial,
 		fresh_air_thursday_participant_testimonial_placeholder
 	} from '^assets/videos';
 	import { whatToExpectSection, whyJoinUsSection } from '^content/fresh-air-thursday';
@@ -58,6 +59,7 @@
 
 <script lang="ts">
 	import { TextSection, VideoSection } from '^components/~sections';
+	import VideoModal from '^components/video-modal.svelte';
 
 	let playIntro = false;
 	let playTestimonial = false;
@@ -66,6 +68,12 @@
 </script>
 
 <SignUpFormModal bind:isOpen={signUpFormIsOpen} onClickClose={() => (signUpFormIsOpen = false)} />
+
+<VideoModal
+	bind:isOpen={playTestimonial}
+	onClickClose={() => (playTestimonial = false)}
+	mp4Src={fresh_air_thursday_participant_testimonial}
+/>
 
 <ImageModal
 	bind:isOpen={showLocationMap}
