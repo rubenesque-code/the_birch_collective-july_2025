@@ -46,7 +46,7 @@
 			poster={fresh_air_thursday_participant_testimonial_placeholder}
 			videoSrc={fresh_air_thursday_participant_testimonial}
 			bind:isOpen={playFreshTestimonial}
-			mt={false}
+			marginTop={false}
 		/>
 	</div>
 
@@ -56,7 +56,7 @@
 			poster={recoupe_participant_still}
 			videoSrc={recoupe_participant_testimonial}
 			bind:isOpen={playRecoupeTestimonial}
-			mt={false}
+			marginTop={false}
 		/>
 	</div>
 

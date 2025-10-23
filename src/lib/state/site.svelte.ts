@@ -16,7 +16,7 @@ export const siteInitState: SiteState = {
 		isOpen: false
 	},
 	newsletter: {
-		isOpen: true
+		isOpen: false
 	}
 };
 

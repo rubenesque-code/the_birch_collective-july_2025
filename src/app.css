@@ -184,8 +184,16 @@
 		@apply xs-sm:px-6 3xl:px-20 4xl:px-40 px-4 lg:px-8 2xl:px-12;
 	}
 
-	.section-mt {
+	.section-mt-lg {
 		@apply xs-sm:mt-14 3xl:mt-32 mt-10;
+	}
+
+	.section-mt-md {
+		@apply xs-sm:mt-7 3xl:mt-16 mt-5;
+	}
+
+	.section-mt-sm {
+		@apply xs-sm:mt-5 3xl:mt-8 mt-3;
 	}
 
 	.section-standard {

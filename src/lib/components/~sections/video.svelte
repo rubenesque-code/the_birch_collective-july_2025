@@ -13,7 +13,7 @@
 		ariaLabel = 'Play video',
 		modalCloseCallback,
 		isOpen = $bindable(false),
-		mt = true
+		marginTop
 	}: {
 		title?: string;
 		poster: EnhancedImg;
@@ -22,7 +22,7 @@
 		ariaLabel?: string;
 		modalCloseCallback?: () => void;
 		isOpen: boolean;
-		mt?: boolean;
+		marginTop?: 'md' | 'lg';
 	} = $props();
 
 	if (!poster) poster = image.placeholder.mission_vid_placeholder;
@@ -34,7 +34,9 @@
 	};
 </script>
 
-<section class={`flex justify-center ${mt ? 'section-mt ' : ''}`}>
+<section
+	class={`flex justify-center ${!marginTop ? '' : marginTop === 'md' ? 'section-mt-md ' : 'section-mt-lg'}`}
+>
 	<div class="section-x-padding box-content flex w-full max-w-[900px]">
 		<div class="relative">
 			<p class="text-right text-base text-black/70">{title}</p>

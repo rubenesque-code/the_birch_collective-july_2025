@@ -1,40 +1,24 @@
 <script lang="ts" module>
 	import image from '^assets/image';
 	import { Input, Label } from '^components/ui';
+	import { ImageHeader } from '^components/~sections';
 
 	import { ArrowRight } from 'phosphor-svelte';
 </script>
 
 <div class="relative max-w-screen overflow-hidden pb-40">
-	<section class="relative flex justify-center overflow-visible px-60 pt-32 pb-40">
-		<div class="my-shape absolute top-0 left-0 -z-10 h-full w-full">
-			<enhanced:img src={image.placeholder.banner_1} alt="" />
+	<ImageHeader
+		heading="Donate"
+		lead="100% of your donation goes directly to funding our programmes"
+		align="center-left"
+	/>
 
-			<div class="from-bc-slate-pine absolute inset-0 bg-gradient-to-t to-transparent"></div>
-		</div>
-
-		<div class="relative flex w-full justify-end">
-			<div class="max-w-[600px] text-white">
-				<h1 class="font-display text-right text-7xl font-bold tracking-wide">Donate</h1>
-				<p class="mt-5 text-right text-[22px] leading-relaxed font-medium">
-					100% of your donation goes directly to funding our programmes
-				</p>
-			</div>
-		</div>
-	</section>
-
-	<section class="mt-10 px-60">
-		<div class="flex w-full justify-center">
-			<div class=" w-full max-w-[768px]">
-				<h2 class="text-bc-slate-pine font-display mt-4 text-[44px] font-bold">Donate Today</h2>
-			</div>
-		</div>
-	</section>
-
-	<section class="mt-12 px-60">
+	<section class="section-mt-md section-x-padding">
 		<div class="flex w-full justify-center">
 			<div class="w-full max-w-[768px] text-lg">
-				<div class="border-my-grey-3/70 w-full rounded-lg border py-4">
+				<h2 class="section-title-bold text-left">Donate Today</h2>
+
+				<div class="border-my-grey-3/70 mt-10 w-full rounded-lg border py-4">
 					<div class="border-my-grey-3/70 border-b px-4 pb-4">
 						<h3 class="font-medium">Choose amount</h3>
 					</div>
@@ -102,9 +86,3 @@
 		</div>
 	</section>
 </div>
-
-<style>
-	.my-shape {
-		clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
-	}
-</style>

@@ -40,9 +40,10 @@
 	body={[
 		"The Birch Collective is run by three Co-Directors who lead our sessions. Together, we have over 25 years’ experience working with young people, especially those from diverse backgrounds. We've worked in places like pupil referral units, schools, youth mental health services, and youth organizations, supporting teens and young adults just like you."
 	]}
+	marginTop="md"
 />
 
-<section class="section-mt flex justify-center">
+<section class="section-mt-md flex justify-center">
 	<div class="section-x-padding box-content max-w-[1200px]">
 		<div>
 			<div class="flex justify-center">
@@ -60,7 +61,7 @@
 	</div>
 </section>
 
-<section class="section-mt flex justify-center">
+<section class="section-mt-md flex justify-center">
 	<div class="section-x-padding box-content w-full max-w-[1200px]">
 		<div>
 			<div class="flex justify-center">

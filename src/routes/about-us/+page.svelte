@@ -16,7 +16,7 @@
 		align="center-left"
 	/>
 
-	<section class="section-mt flex justify-center">
+	<section class="section-mt-md flex justify-center">
 		<div class="section-x-padding box-content w-full max-w-[768px]">
 			<h2 class="text-bc-amber page-intro-section-main-title">Connect Through Nature</h2>
 
@@ -37,6 +37,7 @@
 		videoSrc={mission}
 		ariaLabel="Play video: Our Mission"
 		bind:isOpen={playOurMission}
+		marginTop="md"
 	/>
 
 	<TextSection

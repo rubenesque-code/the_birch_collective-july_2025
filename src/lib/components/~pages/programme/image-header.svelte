@@ -1,5 +1,6 @@
 <script lang="ts" module>
 	import image from '^assets/image';
+	import type { Snippet } from 'svelte';
 </script>
 
 <script lang="ts">
@@ -7,18 +8,22 @@
 		heading,
 		lead,
 		align = 'right',
-		titleColour = 'white'
+		headingColour = 'white',
+		children
 	}: {
 		heading: string;
-		lead?: string;
+		lead?: string | string[];
 		align?: 'left' | 'right' | 'center-left';
-		titleColour?: 'white' | 'yellow';
+		headingColour?: 'white' | 'yellow';
+		children?: Snippet<[]>;
 	} = $props();
+
+	const leadNormalised = typeof lead === 'string' ? [lead] : lead;
 </script>
 
 <header class="relative flex justify-center">
 	<div
-		class={`section-x-padding relative box-content w-full overflow-visible pt-40 pb-20 md:pt-46 lg:pt-52 xl:pb-28 ${align !== 'center-left' ? 'max-w-[1800px]' : 'max-w-[1500px]'}`}
+		class={`section-x-padding relative box-content w-full overflow-visible pt-40 pb-20 md:pt-46 lg:pt-52 xl:pb-28 ${align !== 'center-left' ? 'max-w-[1800px]' : 'max-w-[1300px]'}`}
 	>
 		<div
 			class={`relative flex w-full ${align === 'right' ? 'lg:justify-end' : 'lg:justify-start'}`}
@@ -26,20 +31,24 @@
 			<div class={`flex flex-col ${align === 'right' ? 'lg:items-end' : 'lg:items-start'}`}>
 				<h1
 					id="programmes-heading"
-					class={`page-title ${align === 'right' ? 'lg:text-right' : 'lg:text-left'} ${titleColour === 'white' ? 'text-white' : 'text-my-pale-yellow'}`}
+					class={`page-title ${align === 'right' ? 'lg:text-right' : 'lg:text-left'} ${headingColour === 'white' ? 'text-white' : 'text-my-pale-yellow'}`}
 				>
 					{heading}
 				</h1>
 
 				{#if lead}
-					<p
-						class={`mt-5 max-w-[600px] leading-relaxed font-medium text-white xl:text-[22px] ${
-							align === 'right' ? 'lg:text-right' : 'lg:text-left'
-						}`}
-					>
-						{lead}
-					</p>
+					{#each leadNormalised as item, i}
+						<p
+							class={`mt-5 max-w-[600px] leading-relaxed font-medium text-white xl:text-[22px] ${
+								align === 'right' ? 'lg:text-right' : 'lg:text-left'
+							} ${i === 0 && 'font-medium'}`}
+						>
+							{item}
+						</p>
+					{/each}
 				{/if}
+
+				{@render children?.()}
 			</div>
 		</div>
 	</div>
