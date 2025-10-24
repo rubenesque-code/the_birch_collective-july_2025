@@ -153,7 +153,7 @@
 			<!-- svelte-ignore a11y_click_events_have_key_events -->
 			<!-- svelte-ignore a11y_no_static_element_interactions -->
 			<div
-				class="xs-sm:aspect-[4/3] md-lg:aspect-video relative aspect-square cursor-pointer md:aspect-[5/3]"
+				class="section-asset-aspect-ratio relative cursor-pointer"
 				on:click={() => {
 					updateSiteState.showreel.setIsOpen(true);
 				}}
@@ -238,7 +238,7 @@
 					>
 						<div class="relative">
 							<enhanced:img
-								class="xs-sm:aspect-[4/3] md-:aspect-video aspect-square rounded-sm object-cover md:aspect-[5/3]"
+								class="section-asset-aspect-ratio rounded-sm object-cover"
 								src={offer.imgSrc}
 								alt={offer.imgAlt}
 							/>
@@ -334,7 +334,7 @@
 					>
 						<div class="relative">
 							<enhanced:img
-								class="xs-sm:aspect-[4/3] md-lg:aspect-video aspect-square rounded-sm object-cover md:aspect-[5/3]"
+								class="section-asset-aspect-ratio rounded-sm object-cover"
 								src={item.imgSrc}
 								alt={item.imgAlt}
 							/>

@@ -11,6 +11,7 @@
 - refactor sign-up form
 - 404
 - newsletter sign up
+- a 'cut-out' of an image with shadow effect as on original site (copy of plastic)
 
 QUESTIONS
 ---------

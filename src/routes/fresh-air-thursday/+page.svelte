@@ -319,7 +319,7 @@
 							aria-label="play video"
 						>
 							<enhanced:img
-								class="w-full rounded-md"
+								class="aspect-video w-full rounded-md object-cover"
 								src={fresh_air_thursday_participant_testimonial_placeholder}
 								alt={''}
 							/>

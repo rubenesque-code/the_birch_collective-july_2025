@@ -47,7 +47,7 @@
 			class={cn(
 				buttonVariants({
 					variant: 'outline',
-					class: 'border-input w-[280px] justify-start text-left text-base font-normal'
+					class: 'border-input w-[280px] max-w-full justify-start text-left text-base font-normal'
 				}),
 				!value && 'text-muted-foreground '
 			)}

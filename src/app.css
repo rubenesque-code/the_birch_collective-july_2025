@@ -211,6 +211,10 @@
 	.page-intro-section-main-title {
 		@apply font-display xs-sm:text-[52px] text-[48px] leading-[1.15em] font-bold sm:text-6xl;
 	}
+
+	.section-asset-aspect-ratio {
+		@apply xs-sm:aspect-[4/3] md-lg:aspect-video aspect-square md:aspect-[5/3];
+	}
 }
 
 @theme {

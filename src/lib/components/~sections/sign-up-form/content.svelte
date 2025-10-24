@@ -5,7 +5,7 @@
 		parseDate,
 		type DateValue
 	} from '@internationalized/date';
-	import { CheckSquare, SignOut } from 'phosphor-svelte';
+	import { CheckSquare, SignOut, XCircle } from 'phosphor-svelte';
 	import { scale } from 'svelte/transition';
 	import { toast } from 'svelte-sonner';
 
@@ -410,18 +410,16 @@
 	}
 </script>
 
-<div
-	class="bg-bc-logo-black/80 absolute top-8 right-10 z-40 flex items-center gap-2 overflow-visible rounded-full px-3 py-1 text-[15px]"
->
+<div class="absolute top-8 right-10 z-40 flex items-center gap-2 overflow-visible rounded-full">
 	<Tooltip.Provider>
 		<Tooltip.Root>
 			<Tooltip.Trigger>
 				<button
-					class="cursor-pointer rounded-full border border-white p-[6px] text-white"
+					class="text-bc-logo-black/60 cursor-pointer rounded-full text-xl"
 					onclick={onCloseForm}
 					type="button"
 				>
-					<SignOut weight="fill" />
+					<XCircle />
 				</button>
 			</Tooltip.Trigger>
 			<Tooltip.Content class="z-[100] mr-2" side="left">
@@ -431,173 +429,81 @@
 	</Tooltip.Provider>
 </div>
 
-{#if submitStatus !== 'idle'}
-	<div
-		class="absolute inset-0 z-30 grid place-items-center bg-white/90"
-		transition:scale={{ opacity: 0.9, start: 0.9 }}
+<Carousel.Content hiddenParentClass="flex flex-col h-full relative" class="ml-0 h-full w-full">
+	<Carousel.Item
+		class="flex min-h-full basis-full flex-col pt-4 pl-4 md:pl-10"
+		id={signUpFormId.intro}
 	>
-		<div class="max-w-[600px]">
-			{#if submitStatus === 'pending'}
-				<div class="flex items-center gap-3">
-					<svg
-						class="mr-3 -ml-1 size-5 animate-spin"
-						xmlns="http://www.w3.org/2000/svg"
-						fill="none"
-						viewBox="0 0 24 24"
-						><circle
-							class="opacity-25"
-							cx="12"
-							cy="12"
-							r="10"
-							stroke="currentColor"
-							stroke-width="4"
-						></circle><path
-							class="opacity-75"
-							fill="currentColor"
-							d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-						></path></svg
-					>
-					<p class="text-lg">Sending...</p>
-				</div>
-			{:else if submitStatus === 'error'}
-				<div>
-					<p class="text-lg leading-relaxed">
-						Something went wrong sending the form. If the problem persists, please contact: <a
-							class="font-medium"
-							href={`mailto:${PUBLIC_BIRCH_EMAIL}`}
-							target="_blank">{PUBLIC_BIRCH_EMAIL}</a
-						>
-					</p>
+		<enhanced:img class="w-[52px] shrink-0 sm:w-[68px]" src={image.birch.logo.img_only} alt="" />
 
-					<button
-						class="bg-bc-amber mt-6 cursor-pointer rounded-md border px-2 py-1 text-lg text-white"
-						onclick={() => {
-							submitStatus = 'pending';
+		<div class="mt-4 grow overflow-y-auto pr-4 sm:mt-10 md:pr-10">
+			<h1 class="text-bc-amber/70 font-display mt-8 text-2xl font-bold">
+				{slides.intro.title}
+			</h1>
+			<h2 class="font-display text-bc-logo-black mt-4 text-4xl font-bold">
+				{slides.intro.subtitle}
+			</h2>
 
-							setTimeout(() => {
-								handleSubmit();
-							}, 700);
-						}}
-						type="button">Try again</button
-					>
-				</div>
-			{:else}
-				<p class="flex items-center gap-2 text-lg leading-relaxed">
-					<span>Form received.</span>
-					<span class="text-2xl text-green-600">
-						<CheckSquare weight="fill" />
-					</span>
-				</p>
-				<p class="mt-2 text-lg leading-relaxed">
-					A member of the Birch team will contact you shortly.
-				</p>
+			<p class="mt-10 leading-relaxed">{slides.intro.text}</p>
+
+			{#if dev}
+				<button class="mt-8 cursor-pointer rounded-md font-mono" onclick={addMockData} type="button"
+					>Add mock data</button
+				>
 				<button
-					class="bg-bc-amber mt-4 cursor-pointer rounded-md border px-2 py-1 text-lg text-white"
-					onclick={closeModal}
-					type="button">Exit</button
+					class="mt-8 block cursor-pointer rounded-md font-mono"
+					onclick={handleSubmit}
+					type="button">SUBMIT</button
 				>
 			{/if}
 		</div>
-	</div>
-{/if}
-
-<Carousel.Content hiddenParentClass="flex flex-col h-full relative" class=" ml-0 h-full w-full">
-	<Carousel.Item class="flex h-full basis-full flex-col pl-0" id={signUpFormId.intro}>
-		<Card.Root class="ml-0 flex h-full grow flex-col border-none shadow-none">
-			<Card.Content class="flex h-full grow flex-col p-0 text-lg leading-relaxed">
-				<Card.Header class="flex justify-between px-10">
-					<div class="flex shrink-0 -translate-x-[10px]">
-						<div class="translate-x-[10px] translate-y-[21px]">
-							<enhanced:img class="w-[68px]" src={image.birch.logo.img_only} alt="" />
-						</div>
-
-						<a class="font-display relative flex flex-col text-4xl font-bold" href="/">
-							<span class="translate-x-[20px]">The</span>
-							<span class="translate-x-[40px] translate-y-[-10px] text-[66px]">Birch</span>
-							<span class="translate-x-[0px] translate-y-[-20px]">Collective</span>
-						</a>
-					</div>
-				</Card.Header>
-
-				<Card.Content class="mt-10 grow px-10">
-					<h1 class="text-bc-amber/70 font-display mt-8 text-2xl font-bold">
-						{slides.intro.title}
-					</h1>
-					<h2 class="font-display text-bc-logo-black mt-4 text-4xl font-bold">
-						{slides.intro.subtitle}
-					</h2>
-
-					<p class="mt-10 leading-relaxed">{slides.intro.text}</p>
-
-					{#if dev}
-						<button
-							class="mt-8 cursor-pointer rounded-md font-mono"
-							onclick={addMockData}
-							type="button">Add mock data</button
-						>
-						<button
-							class="mt-8 block cursor-pointer rounded-md font-mono"
-							onclick={handleSubmit}
-							type="button">SUBMIT</button
-						>
-					{/if}
-				</Card.Content>
-			</Card.Content>
-		</Card.Root>
 	</Carousel.Item>
 
-	<Carousel.Item class="flex h-full basis-full flex-col pl-0">
-		<Card.Root class="ml-0 flex h-full grow flex-col border-none shadow-none">
-			<Card.Content class="flex h-full grow flex-col  p-0 text-lg leading-relaxed">
-				<Card.Header class="flex justify-between px-10">
-					<div>
-						<h2 class="font-display text-bc-logo-black mt-12 text-4xl font-bold">
-							{slides.confidentiality.title}
-						</h2>
-					</div>
-				</Card.Header>
+	<Carousel.Item class="flex min-h-full basis-full flex-col pt-4 pl-4 md:pl-10">
+		<div class="shrink-0">
+			<h2 class="font-display text-bc-logo-black mt-12 text-4xl font-bold">
+				{slides.confidentiality.title}
+			</h2>
+		</div>
 
-				<Card.Content class="mt-12 grow overflow-y-auto px-10">
-					<p class="">
-						<span>
-							{slides.confidentiality.confidentiality.intro}
-						</span>
-					</p>
-					<p class="border-my-grey-3 bg-my-grey-3/10 mt-6 rounded-md border p-8">
-						{slides.confidentiality.confidentiality.text}
-					</p>
+		<div class="mt-8 grow overflow-y-auto pr-4 md:pr-10">
+			<p class="">
+				{slides.confidentiality.confidentiality.intro}
+			</p>
 
-					<p class="mt-10">
-						{slides.confidentiality.gdpr.intro}
-					</p>
-					<p class="border-my-grey-3 bg-my-grey-3/10 mt-6 rounded-md border p-8">
-						<span>
-							{slides.confidentiality.gdpr.text}
-						</span>
-						<span class="mt-4 flex flex-col gap-2">
-							<span class="flex items-center gap-2">
-								<span>Email:</span>
-								<a
-									class="font-medium"
-									href={`mailto:${PUBLIC_BIRCH_GDPR_CONTACT_EMAIL}`}
-									target="_blank">{PUBLIC_BIRCH_GDPR_CONTACT_EMAIL}</a
-								>
-							</span>
+			<p class="border-my-grey-3 bg-my-grey-3/10 mt-6 rounded-md border p-6 sm:p-8">
+				{slides.confidentiality.confidentiality.text}
+			</p>
 
-							<span class="flex items-center gap-2">
-								<span>Phone:</span>
+			<p class="mt-10">
+				{slides.confidentiality.gdpr.intro}
+			</p>
+			<p class="border-my-grey-3 bg-my-grey-3/10 xs:p-6 mt-6 rounded-md border p-4 sm:p-8">
+				<span>
+					{slides.confidentiality.gdpr.text}
+				</span>
+				<span class="mt-4 flex flex-col gap-2">
+					<span class="flex flex-wrap items-center gap-2">
+						<span>Email:</span>
+						<a
+							class="xxs:text-base xs:text-lg xs:font-medium text-sm"
+							href={`mailto:${PUBLIC_BIRCH_GDPR_CONTACT_EMAIL}`}
+							target="_blank">{PUBLIC_BIRCH_GDPR_CONTACT_EMAIL}</a
+						>
+					</span>
 
-								<a
-									class="font-medium"
-									href={`tel:${PUBLIC_BIRCH_GDPR_CONTACT_PHONE}`}
-									target="_blank">{PUBLIC_BIRCH_GDPR_CONTACT_PHONE}</a
-								>
-							</span>
-						</span>
-					</p>
-				</Card.Content>
-			</Card.Content>
-		</Card.Root>
+					<span class="flex flex-wrap items-center gap-2">
+						<span>Phone:</span>
+
+						<a
+							class="xxs:text-base xs:text-lg xs:font-medium text-sm"
+							href={`tel:${PUBLIC_BIRCH_GDPR_CONTACT_PHONE}`}
+							target="_blank">{PUBLIC_BIRCH_GDPR_CONTACT_PHONE}</a
+						>
+					</span>
+				</span>
+			</p>
+		</div>
 	</Carousel.Item>
 
 	<CarouselItem title={slides.participantDetails.title} showError={showSlideError}>
@@ -1040,6 +946,8 @@
 </Carousel.Content>
 
 <div class="relative flex w-full shrink-0 items-center justify-center p-3">
+	<div></div>
+
 	<div class="relative">
 		<Carousel.Previous
 			class="absolute top-1/2 -left-6 size-7 !-translate-x-full !-translate-y-1/2 translate-none !cursor-pointer "
@@ -1063,4 +971,80 @@
 			{/if}
 		</button>
 	</div>
+
+	<!-- <div class="absolute top-1/2 right-0 -translate-y-1/2">
+		<button class="cursor-pointer rounded-full p-[6px]" onclick={onCloseForm} type="button">
+			<SignOut weight="fill" />
+		</button>
+	</div> -->
 </div>
+
+{#if submitStatus !== 'idle'}
+	<div
+		class="absolute inset-0 z-30 grid place-items-center bg-white/90"
+		transition:scale={{ opacity: 0.9, start: 0.9 }}
+	>
+		<div class="max-w-[600px]">
+			{#if submitStatus === 'pending'}
+				<div class="flex items-center gap-3">
+					<svg
+						class="mr-3 -ml-1 size-5 animate-spin"
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						><circle
+							class="opacity-25"
+							cx="12"
+							cy="12"
+							r="10"
+							stroke="currentColor"
+							stroke-width="4"
+						></circle><path
+							class="opacity-75"
+							fill="currentColor"
+							d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+						></path></svg
+					>
+					<p class="text-lg">Sending...</p>
+				</div>
+			{:else if submitStatus === 'error'}
+				<div>
+					<p class="text-lg leading-relaxed">
+						Something went wrong sending the form. If the problem persists, please contact: <a
+							class="font-medium"
+							href={`mailto:${PUBLIC_BIRCH_EMAIL}`}
+							target="_blank">{PUBLIC_BIRCH_EMAIL}</a
+						>
+					</p>
+
+					<button
+						class="bg-bc-amber mt-6 cursor-pointer rounded-md border px-2 py-1 text-lg text-white"
+						onclick={() => {
+							submitStatus = 'pending';
+
+							setTimeout(() => {
+								handleSubmit();
+							}, 700);
+						}}
+						type="button">Try again</button
+					>
+				</div>
+			{:else}
+				<p class="flex items-center gap-2 text-lg leading-relaxed">
+					<span>Form received.</span>
+					<span class="text-2xl text-green-600">
+						<CheckSquare weight="fill" />
+					</span>
+				</p>
+				<p class="mt-2 text-lg leading-relaxed">
+					A member of the Birch team will contact you shortly.
+				</p>
+				<button
+					class="bg-bc-amber mt-4 cursor-pointer rounded-md border px-2 py-1 text-lg text-white"
+					onclick={closeModal}
+					type="button">Exit</button
+				>
+			{/if}
+		</div>
+	</div>
+{/if}

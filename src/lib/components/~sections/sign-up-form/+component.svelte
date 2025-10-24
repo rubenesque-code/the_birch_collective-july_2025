@@ -48,7 +48,7 @@
 		<div>
 			<div class="relative mx-2 overflow-visible shadow-xl">
 				<Carousel.Root
-					class="relative flex h-[800px] max-h-[90vh] w-[95vw] max-w-[800px] flex-col rounded-lg bg-white px-4 py-3"
+					class="relative flex h-[800px] max-h-[90vh] w-[95vw] max-w-[800px] flex-col rounded-lg bg-white !px-4 !py-3"
 					opts={{ align: 'center', watchDrag: false }}
 				>
 					<Content {onClickClose} />
