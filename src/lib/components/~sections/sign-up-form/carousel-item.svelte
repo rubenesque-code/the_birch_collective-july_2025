@@ -18,7 +18,7 @@
 	} = $props();
 </script>
 
-<Carousel.Item class="flex min-h-full basis-full flex-col pt-4 pl-4 md:pl-10">
+<Carousel.Item class="flex min-h-full basis-full flex-col pt-4 pb-6 pl-4 md:pl-10">
 	<div class="shrink-0">
 		<h2 class="font-display text-bc-logo-black mt-12 text-4xl font-bold">
 			{title}

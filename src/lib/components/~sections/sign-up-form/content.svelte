@@ -431,7 +431,7 @@
 
 <Carousel.Content hiddenParentClass="flex flex-col h-full relative" class="ml-0 h-full w-full">
 	<Carousel.Item
-		class="flex min-h-full basis-full flex-col pt-4 pl-4 md:pl-10"
+		class="flex min-h-full basis-full flex-col pt-4 pb-6 pl-4 md:pl-10"
 		id={signUpFormId.intro}
 	>
 		<enhanced:img class="w-[52px] shrink-0 sm:w-[68px]" src={image.birch.logo.img_only} alt="" />
@@ -459,7 +459,7 @@
 		</div>
 	</Carousel.Item>
 
-	<Carousel.Item class="flex min-h-full basis-full flex-col pt-4 pl-4 md:pl-10">
+	<Carousel.Item class="flex min-h-full basis-full flex-col pt-4 pb-6 pl-4 md:pl-10">
 		<div class="shrink-0">
 			<h2 class="font-display text-bc-logo-black mt-12 text-4xl font-bold">
 				{slides.confidentiality.title}

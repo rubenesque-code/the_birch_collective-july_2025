@@ -7,6 +7,7 @@ import garden_shed_from_outside from '^files/images/programmes/fresh-air-thursda
 import group_and_facilitators_sitting_round_fireplace from '^files/images/programmes/fresh-air-thursday/250403_Garden_0018.jpg?enhanced';
 import james_and_participants_peace_sign from '^files/images/programmes/fresh-air-thursday/250403_Garden_0020.jpg?enhanced';
 import participant_woman_glasses from '^files/images/programmes/fresh-air-thursday/250403_Garden_0013.jpg?enhanced';
+import poster from '^files/images/programmes/fresh-air-thursday/poster.webp?enhanced';
 
 export {
 	participant_woman_glasses,
@@ -16,5 +17,6 @@ export {
 	intertwined_reed_branches,
 	garden_shed_from_outside,
 	group_and_facilitators_sitting_round_fireplace,
-	james_and_participants_peace_sign
+	james_and_participants_peace_sign,
+	poster
 };

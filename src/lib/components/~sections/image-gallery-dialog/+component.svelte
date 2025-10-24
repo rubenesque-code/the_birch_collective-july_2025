@@ -28,7 +28,10 @@
 			>
 		</Dialog.Header>
 
-		<Carousel.Root opts={{ loop: true, align: 'center' }} class="flex h-full w-full grow flex-col ">
+		<Carousel.Root
+			opts={{ loop: true, align: 'center' }}
+			class="flex h-full w-full grow flex-col pt-8"
+		>
 			<Carousel.Content class="ml-0 !h-full w-full grow !pl-0" hiddenParentClass="h-full p-0 !pl-0">
 				{#each images as item}
 					<Carousel.Item class="grabbable h-full w-full cursor-grab  !pl-0 active:cursor-grabbing">

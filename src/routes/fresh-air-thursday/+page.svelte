@@ -1,5 +1,5 @@
 <script lang="ts" module>
-	import { ArrowUpRight } from 'phosphor-svelte';
+	import { ArrowUpRight, MagnifyingGlassPlus } from 'phosphor-svelte';
 
 	import image from '^assets/image';
 	import {
@@ -17,10 +17,11 @@
 	} from '^assets/videos';
 	import { whatToExpectSection, whyJoinUsSection } from '^content/fresh-air-thursday';
 
-	import { ImageModal, Video } from '^components';
+	import { Video } from '^components';
 	import { ContentSectionContainer } from '^components/containers';
+	import { HeaderSignUpButton, ImageDialog } from '^components/~pages/free-programmes';
 	import { ImageHeader } from '^components/~pages/programme';
-	import { ImageGalleryDialog, SignUpFormModal, TextSection } from '^components/~sections';
+	import { ImageGalleryDialog, SignUpFormModal } from '^components/~sections';
 
 	const galleryImages = [
 		{
@@ -70,18 +71,11 @@
 
 <SignUpFormModal bind:isOpen={signUpFormIsOpen} onClickClose={() => (signUpFormIsOpen = false)} />
 
-<ImageModal
+<ImageDialog
 	bind:isOpen={showLocationMap}
-	onClickClose={() => (showLocationMap = false)}
-	src={location_map}
-	isEnhanced
->
-	<a
-		class="mt-2 flex items-center gap-2 text-black/90 decoration-transparent underline-offset-2 transition-colors duration-200 ease-linear hover:underline hover:decoration-black/30"
-		href="https://maps.app.goo.gl/32cRvbigC2fC3pPF9"
-		target="_blank"><span>See on Google maps</span><span><ArrowUpRight /></span></a
-	>
-</ImageModal>
+	imgSrc={location_map}
+	title="How to get to <span class='text-bc-amber italic'>Fresh</span>"
+/>
 
 <div class="relative max-w-screen overflow-hidden">
 	<ImageHeader
@@ -94,13 +88,7 @@
 		headingColour="yellow"
 	>
 		<div class="mt-8">
-			<button
-				class="xs-sm:px-5 xs-sm:py-[10px] relative flex cursor-pointer items-center gap-4 rounded-3xl bg-white px-3 py-2 tracking-wide"
-				onclick={() => (signUpFormIsOpen = true)}
-				type="button"
-			>
-				<span class="xs-sm:text-lg text-[15.5px] font-medium uppercase">Sign Up</span>
-			</button>
+			<HeaderSignUpButton bind:formIsOpen={signUpFormIsOpen} />
 		</div>
 	</ImageHeader>
 
@@ -118,7 +106,7 @@
 
 	<section class="section-mt-md">
 		<ContentSectionContainer type="text">
-			<div class="flex flex-col gap-4 md:gap-[5px]">
+			<div class="flex flex-col gap-4 md:gap-[8px]">
 				{#each [{ title: 'currently running from', text: 'February 20th 2025 - December 18th 2025' }, { title: 'Time', text: '1pm — 5pm' }, { title: 'Age Group', text: 'anyone 16 — 25 years old' }, { title: 'Cost', text: 'free but booking is essential!' }] as item}
 					<p class="info-line">
 						<span class="info-title">{item.title}:</span>
@@ -126,42 +114,49 @@
 					</p>
 				{/each}
 
-				<div class="flex flex-col gap-8 md:flex-row md:items-center">
-					<div class="info-line">
-						<p class="info-title">Location:</p>
+				<div class="flex flex-col">
+					<p class="info-title">Location:</p>
 
-						<div class="relative">
+					<div class="gap-4 md:mt-2 md:flex">
+						<div
+							class="border-my-grey-3/50 relative mt-1 max-w-[230px] cursor-pointer rounded-lg border-[4px] sm:max-w-[300px]"
+							role="button"
+							tabindex="0"
+							aria-label="Show location map"
+							onclick={() => (showLocationMap = true)}
+							onkeydown={(e) => {
+								if (e.key === 'Enter' || e.key === ' ') {
+									e.preventDefault();
+									showLocationMap = true;
+								}
+							}}
+						>
+							<enhanced:img class="aspect-[5/3] object-cover" src={location_map} alt="" />
+
+							<p
+								class="text-bc-logo-black/40 absolute right-1 bottom-1 flex items-center gap-1 text-sm"
+							>
+								<span>Click to </span>
+								<span><MagnifyingGlassPlus weight="light" /></span>
+							</p>
+						</div>
+
+						<div class="relative mt-3">
 							<p class="info-text">Strawberry Lane Community Gardens</p>
 
 							<a
-								class="bottom-0 left-0 mt-1 flex items-center gap-2 text-lg text-black/60 decoration-transparent underline-offset-2 transition-colors duration-200 ease-linear hover:underline hover:decoration-black/30 sm:mt-2 md:absolute md:mt-0 md:translate-y-full"
+								class="bottom-0 left-0 mt-1 flex items-center gap-2 text-lg text-black/60 decoration-transparent underline-offset-2 transition-colors duration-200 ease-linear hover:underline hover:decoration-black/30 sm:mt-2"
 								href="https://maps.app.goo.gl/32cRvbigC2fC3pPF9"
 								target="_blank"><span>See on google maps</span><span><ArrowUpRight /></span></a
 							>
 						</div>
-					</div>
-
-					<div
-						class="border-my-grey-3/50 hidden cursor-pointer border-[6px] md:block"
-						role="button"
-						tabindex="0"
-						aria-label="Show location map"
-						onclick={() => (showLocationMap = true)}
-						onkeydown={(e) => {
-							if (e.key === 'Enter' || e.key === ' ') {
-								e.preventDefault();
-								showLocationMap = true;
-							}
-						}}
-					>
-						<enhanced:img class="w-[200px]" src={location_map} alt="" />
 					</div>
 				</div>
 			</div>
 		</ContentSectionContainer>
 	</section>
 
-	<section class="section-mt-lg">
+	<section class="section-mt-xl">
 		<ContentSectionContainer type="video">
 			<Video
 				title="Fresh — An Intro"
@@ -280,7 +275,7 @@
 			<div class="mt-6 flex justify-center">
 				<div class="relative flex items-center gap-8">
 					<button
-						class="font-display cursor-pointer px-4 py-[6px] text-[27px] font-bold tracking-wide text-white uppercase"
+						class="font-display cursor-pointer px-4 py-[6px] text-[27px] font-bold tracking-wide text-white uppercase md:text-[30px]"
 						onclick={() => (signUpFormIsOpen = true)}
 						type="button">Sign Up Today For Free</button
 					>
@@ -320,7 +315,7 @@
 
 <style>
 	.section-mt-xl {
-		@apply mt-12;
+		@apply mt-12 md:mt-20;
 	}
 	.section-mt-lg {
 		@apply xs-sm:mt-14 3xl:mt-32 mt-10;
@@ -346,7 +341,7 @@
 		@apply text-bc-slate-pine font-display text-[40px] leading-[1.25em] font-bold capitalize;
 	}
 	.after-heading-sm-mt {
-		@apply mt-3 md:mt-[28px];
+		@apply mt-3;
 	}
 	.after-sub-heading-lg-mt {
 		@apply mt-6;
