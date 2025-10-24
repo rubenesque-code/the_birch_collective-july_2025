@@ -2,9 +2,19 @@ import tailwindcss from '@tailwindcss/vite';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 import { enhancedImages } from '@sveltejs/enhanced-img';
+import SvelteTailwindApply from './SvelteTailwindApply';
+import { resolve } from 'node:path';
 
 export default defineConfig({
-	plugins: [tailwindcss(), enhancedImages(), sveltekit()],
+	plugins: [tailwindcss(), enhancedImages(), sveltekit(), SvelteTailwindApply()],
+	resolve: {
+		alias: [
+			{
+				find: '@app-css',
+				replacement: resolve(__dirname, 'src/app.css')
+			}
+		]
+	},
 	test: {
 		projects: [
 			{

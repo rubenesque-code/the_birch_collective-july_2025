@@ -57,3 +57,7 @@ CODE ADVANCEMENTS
 JAMES
 -----
 - name and email for newsletter
+
+CHECKS
+------
+- clicking on image gallery opens dialog
