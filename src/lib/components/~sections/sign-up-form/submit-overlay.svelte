@@ -20,7 +20,7 @@
 </script>
 
 <div
-	class="absolute inset-0 z-30 grid place-items-center bg-white/90 px-8"
+	class="absolute inset-0 z-30 grid place-items-center rounded-lg bg-white/90 px-8"
 	transition:scale={{ opacity: 0.9, start: 0.9 }}
 >
 	<div class="max-w-[600px]">
@@ -52,18 +52,19 @@
 				>
 			</div>
 		{:else}
-			<p class="flex items-center gap-2 text-lg leading-relaxed">
-				<span>Form received.</span>
+			<p class="flex items-center gap-3 text-lg leading-relaxed">
+				<span>Sign up received</span>
 				<span class="text-2xl text-green-600">
 					<CheckSquare weight="fill" />
 				</span>
 			</p>
-			<p class="mt-2 text-lg leading-relaxed">
+
+			<p class="text-bc-logo-black/95 mt-3 text-lg leading-relaxed">
 				A member of the Birch team will contact you shortly.
 			</p>
 
 			<button
-				class="bg-bc-amber mt-4 cursor-pointer rounded-md border px-2 py-1 text-lg text-white"
+				class="bg-bc-amber mt-6 cursor-pointer rounded-md border px-2 py-1 text-[17px] font-medium tracking-wide text-white"
 				onclick={onClose}
 				type="button">Close</button
 			>

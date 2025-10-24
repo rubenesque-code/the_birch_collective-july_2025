@@ -115,12 +115,13 @@
 		</div>
 	</ImageHeader>
 
-	<TextSection
-		body={[
-			'Fresh is our weekly group for 16-25 year olds. We offer a range of activities designed at a pace to make learning accessible and to draw out your creativity. There is no fixed time limit to attendance, attend all year round, once a month or just one off, totally up to you. You can attend until your 26 birthday. If you are older the 26 or reach that age there are opportunities to return as peer mentor to support others, if this is of interest to you.'
-		]}
-		marginTop="lg"
-	/>
+	<div class="section-mt-lg">
+		<TextSection
+			body={[
+				'Fresh is our weekly group for 16-25 year olds. We offer a range of activities designed at a pace to make learning accessible and to draw out your creativity. There is no fixed time limit to attendance, attend all year round, once a month or just one off, totally up to you. You can attend until your 26 birthday. If you are older the 26 or reach that age there are opportunities to return as peer mentor to support others, if this is of interest to you.'
+			]}
+		/>
+	</div>
 
 	<section class="section-mt-md flex justify-center">
 		<div class="section-x-padding box-content w-full max-w-[768px]">
@@ -167,29 +168,28 @@
 		</div>
 	</section>
 
-	<VideoSection
-		title="Fresh — An Intro"
-		poster={image.placeholder.banner_1}
-		posterAlt=""
-		videoSrc={fresh_air_thursday_introduction}
-		ariaLabel=""
-		bind:isOpen={playIntro}
-		marginTop="lg"
-	/>
+	<div class="section-mt-lg">
+		<VideoSection
+			title="Fresh — An Intro"
+			poster={image.placeholder.banner_1}
+			posterAlt=""
+			videoSrc={fresh_air_thursday_introduction}
+			ariaLabel=""
+			bind:isOpen={playIntro}
+		/>
+	</div>
 
 	<section class="section-mt-lg flex justify-center">
 		<div class="section-x-padding box-content w-full max-w-[768px]">
-			<h2 class="sub-h2">What To Expect</h2>
+			<h2 class="heading-sm">What To Expect</h2>
 
-			<div class="mt-3 md:mt-[28px]">
+			<div class="after-heading-sm-mt">
 				<div class="flex flex-col gap-8">
 					{#each whatToExpectSection as { title, text }}
 						<div>
-							<div class="flex items-center gap-6">
-								<h4 class="display-h4">
-									{title}
-								</h4>
-							</div>
+							<h4 class="sub-heading-lg">
+								{title}
+							</h4>
 
 							<p class="mt-3 leading-relaxed">{text}</p>
 						</div>
@@ -201,9 +201,9 @@
 
 	<section class="section-mt-lg flex justify-center">
 		<div class="section-x-padding box-content w-full max-w-[768px]">
-			<h2 class="sub-h2">Why Join Us</h2>
+			<h2 class="heading-sm">Why Join Us</h2>
 
-			<h4 class="display-h4 mt-3">This Is Suitable For You If You're</h4>
+			<h4 class="sub-heading-lg after-heading-sm-mt">This Is Suitable For You If You're</h4>
 
 			<div class="mt-8">
 				<div class="flex flex-col gap-3">
@@ -299,9 +299,9 @@
 				<div class="section-x-padding box-content w-full max-w-[768px]">
 					<div class="w-full">
 						<div class="">
-							<h2 class="sub-h2">Feedback</h2>
+							<h2 class="heading-sm">Feedback</h2>
 
-							<h4 class="display-h4 mt-3">What Participants Say</h4>
+							<h4 class="sub-heading-lg after-heading-sm-mt">What Participants Say</h4>
 						</div>
 					</div>
 				</div>
@@ -339,6 +339,13 @@
 </div>
 
 <style>
+	.section-mt-lg {
+		@apply xs-sm:mt-14 3xl:mt-32 mt-10;
+	}
+	.section-mt-md {
+		@apply xs-sm:mt-7 3xl:mt-16 mt-5;
+	}
+
 	.info-line {
 		@apply flex flex-col gap-1 md:flex-row md:items-center;
 	}
@@ -349,11 +356,14 @@
 		@apply text-base text-black/90 uppercase md:text-[19px];
 	}
 
-	.sub-h2 {
+	.heading-sm {
 		@apply text-my-grey-1 text-[16px] font-medium tracking-wide uppercase;
 	}
-	.display-h4 {
+	.sub-heading-lg {
 		@apply text-bc-slate-pine font-display text-[40px] leading-[1.25em] font-bold capitalize;
+	}
+	.after-heading-sm-mt {
+		@apply mt-3 md:mt-[28px];
 	}
 
 	.image-gallery-row-container {

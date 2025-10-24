@@ -1,16 +1,20 @@
+<script lang="ts" module>
+	import { cn } from '^lib/utils';
+</script>
+
 <script lang="ts">
 	let {
 		title,
 		body,
-		marginTop = 'md'
+		class: className
 	}: {
 		title?: string;
 		body: Array<string | { title: string; text: string }>;
-		marginTop?: 'md' | 'lg';
+		class?: string;
 	} = $props();
 </script>
 
-<section class={`flex justify-center ${marginTop === 'md' ? 'section-mt-md' : 'section-mt-lg'}`}>
+<section class={cn('flex justify-center', className)}>
 	<div class="section-x-padding box-content flex w-full max-w-[768px] flex-col gap-y-4">
 		{#if title}
 			<h2 class="text-bc-slate-pine section-title-bold text-left">{title}</h2>
