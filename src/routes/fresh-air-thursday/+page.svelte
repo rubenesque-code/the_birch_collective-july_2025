@@ -156,7 +156,7 @@
 		</ContentSectionContainer>
 	</section>
 
-	<section class="section-mt-xl">
+	<section class="section-mt-xl relative">
 		<ContentSectionContainer type="video">
 			<Video
 				title="Fresh — An Intro"
