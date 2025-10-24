@@ -5,9 +5,9 @@
 		parseDate,
 		type DateValue
 	} from '@internationalized/date';
-	import { CheckSquare, SignOut, XCircle } from 'phosphor-svelte';
-	import { scale } from 'svelte/transition';
+	import { CheckSquare, XCircle } from 'phosphor-svelte';
 	import { toast } from 'svelte-sonner';
+	import { scale } from 'svelte/transition';
 
 	import { dev } from '$app/environment';
 	import {
@@ -31,7 +31,7 @@
 
 	import { signUpFormId } from '^constants';
 
-	import { Card, Carousel, RadioGroup, Tooltip } from '^components/ui';
+	import { Carousel, RadioGroup, Tooltip } from '^components/ui';
 	import { getEmblaContext } from '^components/ui/carousel/context';
 	import { slides } from '^content/sign-up-form';
 	import CarouselItem from './carousel-item.svelte';
@@ -665,120 +665,126 @@
 		</Question>
 	</CarouselItem>
 
-	<CarouselItem title={slides.identity.title} showError={showSlideError}>
-		<Question
-			title={slides.identity.question.identity1.title}
-			required={slides.identity.question.identity1.required}
-			showError={formState.identity1.showError}
-			errorText={slides.identity.question.identity1.errorText}
-		>
-			<CheckboxGroup
-				options={slides.identity.question.identity1.options.map((option) => ({
-					value: strToLowercaseHyphenated(option),
-					label: option
-				}))}
-				onCheckedChange={() => {
-					showSlideError = false;
-					formState.identity1.showError = false;
-				}}
-				bind:group={formState.identity1.value}
-				idPrefix={signUpFormId.identity}
-			/>
-		</Question>
+	<CarouselItem title={slides.identity.title} showError={showSlideError}
+		><div class="flex flex-col gap-8">
+			<Question
+				title={slides.identity.question.identity1.title}
+				required={slides.identity.question.identity1.required}
+				showError={formState.identity1.showError}
+				errorText={slides.identity.question.identity1.errorText}
+			>
+				<CheckboxGroup
+					options={slides.identity.question.identity1.options.map((option) => ({
+						value: strToLowercaseHyphenated(option),
+						label: option
+					}))}
+					onCheckedChange={() => {
+						showSlideError = false;
+						formState.identity1.showError = false;
+					}}
+					bind:group={formState.identity1.value}
+					idPrefix={signUpFormId.identity}
+				/>
+			</Question>
 
-		<div class="border-bc-amber/30 border-b-2"></div>
+			<div class="border-bc-amber/30 border-b-2"></div>
 
-		<Question
-			title={slides.identity.question.ethnicity.title}
-			required={slides.identity.question.ethnicity.required}
-			showError={formState.ethnicity.showError}
-			errorText={slides.identity.question.ethnicity.errorText}
-		>
-			<Textarea
-				bind:value={formState.ethnicity.value}
-				onkeyup={() => {
-					showSlideError = false;
-					formState.ethnicity.showError = false;
-				}}
-			/>
-		</Question>
+			<Question
+				title={slides.identity.question.ethnicity.title}
+				required={slides.identity.question.ethnicity.required}
+				showError={formState.ethnicity.showError}
+				errorText={slides.identity.question.ethnicity.errorText}
+			>
+				<Textarea
+					bind:value={formState.ethnicity.value}
+					onkeyup={() => {
+						showSlideError = false;
+						formState.ethnicity.showError = false;
+					}}
+				/>
+			</Question>
 
-		<div class="border-bc-amber/30 mt-4 border-b-2"></div>
+			<div class="border-bc-amber/30 mt-4 border-b-2"></div>
 
-		<Question
-			title={slides.identity.question.identity2.title}
-			required={slides.identity.question.identity2.required}
-			showError={formState.identity2.showError}
-			errorText={slides.identity.question.identity2.errorText}
-		>
-			<CheckboxGroup
-				options={slides.identity.question.identity2.options.map((option) => ({
-					value: strToLowercaseHyphenated(option),
-					label: option
-				}))}
-				onCheckedChange={() => {
-					showSlideError = false;
-					formState.identity2.showError = false;
-				}}
-				bind:group={formState.identity2.value}
-				idPrefix={signUpFormId.identity}
-			/>
-		</Question>
-	</CarouselItem>
+			<Question
+				title={slides.identity.question.identity2.title}
+				required={slides.identity.question.identity2.required}
+				showError={formState.identity2.showError}
+				errorText={slides.identity.question.identity2.errorText}
+			>
+				<CheckboxGroup
+					options={slides.identity.question.identity2.options.map((option) => ({
+						value: strToLowercaseHyphenated(option),
+						label: option
+					}))}
+					onCheckedChange={() => {
+						showSlideError = false;
+						formState.identity2.showError = false;
+					}}
+					bind:group={formState.identity2.value}
+					idPrefix={signUpFormId.identity}
+				/>
+			</Question>
+		</div></CarouselItem
+	>
 
-	<CarouselItem title={slides.medicalDetails.title} showError={showSlideError}>
-		<Question
-			title={slides.medicalDetails.question.healthIssues.title}
-			required={slides.medicalDetails.question.healthIssues.required}
-		>
-			<Textarea bind:value={formState.healthIssues.value} />
-		</Question>
+	<CarouselItem title={slides.medicalDetails.title} showError={showSlideError}
+		><div class="flex flex-col gap-8">
+			<Question
+				title={slides.medicalDetails.question.healthIssues.title}
+				required={slides.medicalDetails.question.healthIssues.required}
+			>
+				<Textarea bind:value={formState.healthIssues.value} />
+			</Question>
 
-		<div class="border-bc-amber/30 border-b-2"></div>
+			<div class="border-bc-amber/30 border-b-2"></div>
 
-		<Question
-			title={slides.medicalDetails.question.lifeSavingMedication.title}
-			required={slides.medicalDetails.question.lifeSavingMedication.required}
-			showError={formState.lifeSavingMedication.showError}
-			errorText={slides.medicalDetails.question.lifeSavingMedication.errorText}
-		>
-			<Textarea
-				bind:value={formState.lifeSavingMedication.value}
-				onkeyup={() => {
-					showSlideError = false;
-					formState.lifeSavingMedication.showError = false;
-				}}
-			/>
-		</Question>
-	</CarouselItem>
+			<Question
+				title={slides.medicalDetails.question.lifeSavingMedication.title}
+				required={slides.medicalDetails.question.lifeSavingMedication.required}
+				showError={formState.lifeSavingMedication.showError}
+				errorText={slides.medicalDetails.question.lifeSavingMedication.errorText}
+			>
+				<Textarea
+					bind:value={formState.lifeSavingMedication.value}
+					onkeyup={() => {
+						showSlideError = false;
+						formState.lifeSavingMedication.showError = false;
+					}}
+				/>
+			</Question>
+		</div></CarouselItem
+	>
 
-	<CarouselItem title={slides.programmeInterest.title} showError={showSlideError}>
-		<Question
-			title={slides.programmeInterest.question.programmesOfInterest.title}
-			required={slides.programmeInterest.question.programmesOfInterest.required}
-			bind:showError={formState.programmesOfInterest.showError}
-			errorText={slides.programmeInterest.question.programmesOfInterest.errorText}
-		>
-			<CheckboxGroup
-				options={slides.programmeInterest.question.programmesOfInterest.options.map((label) => ({
-					value: strToLowercaseHyphenated(label),
-					label
-				}))}
-				onCheckedChange={() => {
-					formState.programmesOfInterest.showError = false;
-					showSlideError = false;
-				}}
-				bind:group={formState.programmesOfInterest.value}
-				idPrefix={signUpFormId.programmesOfInterest}
-			/>
-		</Question>
+	<CarouselItem title={slides.programmeInterest.title} showError={showSlideError}
+		><div class="flex flex-col gap-8">
+			<Question
+				title={slides.programmeInterest.question.programmesOfInterest.title}
+				required={slides.programmeInterest.question.programmesOfInterest.required}
+				bind:showError={formState.programmesOfInterest.showError}
+				errorText={slides.programmeInterest.question.programmesOfInterest.errorText}
+			>
+				<CheckboxGroup
+					options={slides.programmeInterest.question.programmesOfInterest.options.map((label) => ({
+						value: strToLowercaseHyphenated(label),
+						label
+					}))}
+					onCheckedChange={() => {
+						formState.programmesOfInterest.showError = false;
+						showSlideError = false;
+					}}
+					bind:group={formState.programmesOfInterest.value}
+					idPrefix={signUpFormId.programmesOfInterest}
+				/>
+			</Question>
 
-		<div class="border-bc-amber/30 border-b-2"></div>
+			<div class="border-bc-amber/30 border-b-2"></div>
 
-		<Question title={slides.programmeInterest.question.hopeToGet.title}>
-			<Textarea bind:value={formState.hopeToGet.value} />
-		</Question>
-	</CarouselItem>
+			<Question title={slides.programmeInterest.question.hopeToGet.title}>
+				<Textarea bind:value={formState.hopeToGet.value} />
+			</Question>
+		</div></CarouselItem
+	>
 
 	<CarouselItem title={slides.referrals.title} showError={showSlideError}>
 		<Question title={slides.referrals.question.referralComment.title}>
@@ -827,121 +833,110 @@
 		</Question>
 	</CarouselItem>
 
-	<CarouselItem title={slides.newsletterPermissions.title} showError={showSlideError}>
-		<Question
-			title={slides.newsletterPermissions.question.imagePermission.title}
-			subtext={slides.newsletterPermissions.question.imagePermission.subtext}
-			required={slides.newsletterPermissions.question.imagePermission.required}
-			bind:showError={formState.imagePermission.showError}
-			errorText={slides.newsletterPermissions.question.imagePermission.errorText}
-		>
-			<RadioGroup.Root
-				bind:value={formState.imagePermission.value}
-				onValueChange={() => {
-					formState.imagePermission.showError = false;
-					showSlideError = false;
-				}}
+	<CarouselItem title={slides.newsletterPermissions.title} showError={showSlideError}
+		><div class="flex flex-col gap-8">
+			<Question
+				title={slides.newsletterPermissions.question.imagePermission.title}
+				subtext={slides.newsletterPermissions.question.imagePermission.subtext}
+				required={slides.newsletterPermissions.question.imagePermission.required}
+				bind:showError={formState.imagePermission.showError}
+				errorText={slides.newsletterPermissions.question.imagePermission.errorText}
 			>
-				{#each slides.newsletterPermissions.question.imagePermission.options as option}
-					<RadioGroupItem
-						value={option}
-						id={signUpFormId.imagePermission + option}
-						labelText={option.charAt(0).toUpperCase() + option.slice(1)}
-					/>
-				{/each}
-			</RadioGroup.Root>
-		</Question>
+				<RadioGroup.Root
+					bind:value={formState.imagePermission.value}
+					onValueChange={() => {
+						formState.imagePermission.showError = false;
+						showSlideError = false;
+					}}
+				>
+					{#each slides.newsletterPermissions.question.imagePermission.options as option}
+						<RadioGroupItem
+							value={option}
+							id={signUpFormId.imagePermission + option}
+							labelText={option.charAt(0).toUpperCase() + option.slice(1)}
+						/>
+					{/each}
+				</RadioGroup.Root>
+			</Question>
 
-		<div class="border-bc-amber/30 border-b-2"></div>
+			<div class="border-bc-amber/30 border-b-2"></div>
 
-		<Question
-			title={slides.newsletterPermissions.question.newsletterPermission.title}
-			subtext={slides.newsletterPermissions.question.newsletterPermission.subtext}
-			required={slides.newsletterPermissions.question.newsletterPermission.required}
-			bind:showError={formState.newsletterPermission.showError}
-			errorText={slides.newsletterPermissions.question.newsletterPermission.errorText}
-		>
-			<RadioGroup.Root
-				bind:value={formState.newsletterPermission.value}
-				onValueChange={() => {
-					formState.newsletterPermission.showError = false;
-					showSlideError = false;
-				}}
+			<Question
+				title={slides.newsletterPermissions.question.newsletterPermission.title}
+				subtext={slides.newsletterPermissions.question.newsletterPermission.subtext}
+				required={slides.newsletterPermissions.question.newsletterPermission.required}
+				bind:showError={formState.newsletterPermission.showError}
+				errorText={slides.newsletterPermissions.question.newsletterPermission.errorText}
 			>
-				{#each slides.newsletterPermissions.question.newsletterPermission.options as option}
-					<RadioGroupItem
-						value={option}
-						id={signUpFormId.newsletterPermission + option}
-						labelText={option.charAt(0).toUpperCase() + option.slice(1)}
-					/>
-				{/each}
-			</RadioGroup.Root>
-		</Question>
+				<RadioGroup.Root
+					bind:value={formState.newsletterPermission.value}
+					onValueChange={() => {
+						formState.newsletterPermission.showError = false;
+						showSlideError = false;
+					}}
+				>
+					{#each slides.newsletterPermissions.question.newsletterPermission.options as option}
+						<RadioGroupItem
+							value={option}
+							id={signUpFormId.newsletterPermission + option}
+							labelText={option.charAt(0).toUpperCase() + option.slice(1)}
+						/>
+					{/each}
+				</RadioGroup.Root>
+			</Question>
 
-		<div class="border-bc-amber/30 border-b-2"></div>
+			<div class="border-bc-amber/30 border-b-2"></div>
 
-		<Question
-			title={slides.newsletterPermissions.question.textUpdatePermission.title}
-			subtext={slides.newsletterPermissions.question.textUpdatePermission.subtext}
-			required={slides.newsletterPermissions.question.textUpdatePermission.required}
-			bind:showError={formState.freshAirThursdayTextPermission.showError}
-			errorText={slides.newsletterPermissions.question.textUpdatePermission.errorText}
-		>
-			<RadioGroup.Root
-				bind:value={formState.freshAirThursdayTextPermission.value}
-				onValueChange={() => {
-					formState.freshAirThursdayTextPermission.showError = false;
-					showSlideError = false;
-				}}
+			<Question
+				title={slides.newsletterPermissions.question.textUpdatePermission.title}
+				subtext={slides.newsletterPermissions.question.textUpdatePermission.subtext}
+				required={slides.newsletterPermissions.question.textUpdatePermission.required}
+				bind:showError={formState.freshAirThursdayTextPermission.showError}
+				errorText={slides.newsletterPermissions.question.textUpdatePermission.errorText}
 			>
-				{#each slides.newsletterPermissions.question.textUpdatePermission.options as option}
-					<RadioGroupItem
-						value={option}
-						id={signUpFormId.textUpdatePermission + option}
-						labelText={option.charAt(0).toUpperCase() + option.slice(1)}
-					/>
-				{/each}
-			</RadioGroup.Root>
-		</Question>
-	</CarouselItem>
+				<RadioGroup.Root
+					bind:value={formState.freshAirThursdayTextPermission.value}
+					onValueChange={() => {
+						formState.freshAirThursdayTextPermission.showError = false;
+						showSlideError = false;
+					}}
+				>
+					{#each slides.newsletterPermissions.question.textUpdatePermission.options as option}
+						<RadioGroupItem
+							value={option}
+							id={signUpFormId.textUpdatePermission + option}
+							labelText={option.charAt(0).toUpperCase() + option.slice(1)}
+						/>
+					{/each}
+				</RadioGroup.Root>
+			</Question>
+		</div></CarouselItem
+	>
 
-	<Carousel.Item class="flex h-full basis-full flex-col pl-0">
-		<Card.Root class="ml-0 flex h-full grow flex-col border-none shadow-none">
-			<Card.Content class="flex h-full grow flex-col p-0 text-lg leading-relaxed">
-				<Card.Header class="flex justify-between px-10">
-					<div class="flex shrink-0 -translate-x-[10px]">
-						<div class="translate-x-[10px] translate-y-[21px]">
-							<enhanced:img class="w-[68px]" src={image.birch.logo.img_only} alt="" />
-						</div>
+	<Carousel.Item
+		class="flex min-h-full basis-full flex-col pt-4 pl-4 md:pl-10"
+		id={signUpFormId.intro}
+	>
+		<enhanced:img class="w-[52px] shrink-0 sm:w-[68px]" src={image.birch.logo.img_only} alt="" />
 
-						<a class="font-display relative flex flex-col text-4xl font-bold" href="/">
-							<span class="translate-x-[20px]">The</span>
-							<span class="translate-x-[40px] translate-y-[-10px] text-[66px]">Birch</span>
-							<span class="translate-x-[0px] translate-y-[-20px]">Collective</span>
-						</a>
-					</div>
-				</Card.Header>
+		<div class="mt-8 grow overflow-y-auto pr-4 sm:mt-10 md:pr-10">
+			<p class="font-display text-bc-amber mt-4 text-center text-4xl font-bold">
+				Thanks for taking the time to complete our sign-up form.
+			</p>
+			<div class="flex flex-col items-center">
+				<p class="mt-8">To finish, click submit at the bottom of the page</p>
+			</div>
 
-				<Card.Content class="mt-16 grow px-10">
-					<p class="font-display text-bc-amber mt-4 text-center text-4xl font-bold">
-						Thanks for taking the time to complete our sign-up form.
-					</p>
-					<div class="flex flex-col items-center">
-						<p class="mt-8">To finish, click submit at the bottom of the page</p>
-					</div>
-
-					<div
-						class="text-bc-logo-black/70 bg-my-grey-3/10 border-my-grey-2 mt-24 flex flex-col rounded-lg border p-4"
-					>
-						<h3 class="font-medium">What happens next?</h3>
-						<p class="mt-2 leading-relaxed">
-							One of the Birch team will be in touch with you shortly about the next steps in
-							joining our programmes.
-						</p>
-					</div>
-				</Card.Content>
-			</Card.Content>
-		</Card.Root>
+			<div
+				class="text-bc-logo-black/70 bg-my-grey-3/10 border-my-grey-2 mt-24 flex flex-col rounded-lg border p-4"
+			>
+				<h3 class="font-medium">What happens next?</h3>
+				<p class="mt-2 leading-relaxed">
+					One of the Birch team will be in touch with you shortly about the next steps in joining
+					our programmes.
+				</p>
+			</div>
+		</div>
 	</Carousel.Item>
 </Carousel.Content>
 
@@ -981,7 +976,7 @@
 
 {#if submitStatus !== 'idle'}
 	<div
-		class="absolute inset-0 z-30 grid place-items-center bg-white/90"
+		class="absolute inset-0 z-30 grid place-items-center bg-white/90 px-8"
 		transition:scale={{ opacity: 0.9, start: 0.9 }}
 	>
 		<div class="max-w-[600px]">
