@@ -5,9 +5,8 @@
 		parseDate,
 		type DateValue
 	} from '@internationalized/date';
-	import { CheckSquare, XCircle } from 'phosphor-svelte';
+	import { XCircle } from 'phosphor-svelte';
 	import { toast } from 'svelte-sonner';
-	import { scale } from 'svelte/transition';
 
 	import { dev } from '$app/environment';
 	import {
@@ -43,6 +42,7 @@
 		Textarea,
 		TextInput
 	} from './elements';
+	import SubmitOverlay from './submit-overlay.svelte';
 
 	// TODO
 	// - gp or other medical... dropdown textarea when clicked on referral source slide
@@ -446,7 +446,7 @@
 
 			<p class="mt-10 leading-relaxed">{slides.intro.text}</p>
 
-			{#if dev}
+			<!-- 			{#if dev}
 				<button class="mt-8 cursor-pointer rounded-md font-mono" onclick={addMockData} type="button"
 					>Add mock data</button
 				>
@@ -455,7 +455,7 @@
 					onclick={handleSubmit}
 					type="button">SUBMIT</button
 				>
-			{/if}
+			{/if} -->
 		</div>
 	</Carousel.Item>
 
@@ -941,8 +941,6 @@
 </Carousel.Content>
 
 <div class="relative flex w-full shrink-0 items-center justify-center p-3">
-	<div></div>
-
 	<div class="relative">
 		<Carousel.Previous
 			class="absolute top-1/2 -left-6 size-7 !-translate-x-full !-translate-y-1/2 translate-none !cursor-pointer "
@@ -966,80 +964,8 @@
 			{/if}
 		</button>
 	</div>
-
-	<!-- <div class="absolute top-1/2 right-0 -translate-y-1/2">
-		<button class="cursor-pointer rounded-full p-[6px]" onclick={onCloseForm} type="button">
-			<SignOut weight="fill" />
-		</button>
-	</div> -->
 </div>
 
 {#if submitStatus !== 'idle'}
-	<div
-		class="absolute inset-0 z-30 grid place-items-center bg-white/90 px-8"
-		transition:scale={{ opacity: 0.9, start: 0.9 }}
-	>
-		<div class="max-w-[600px]">
-			{#if submitStatus === 'pending'}
-				<div class="flex items-center gap-3">
-					<svg
-						class="mr-3 -ml-1 size-5 animate-spin"
-						xmlns="http://www.w3.org/2000/svg"
-						fill="none"
-						viewBox="0 0 24 24"
-						><circle
-							class="opacity-25"
-							cx="12"
-							cy="12"
-							r="10"
-							stroke="currentColor"
-							stroke-width="4"
-						></circle><path
-							class="opacity-75"
-							fill="currentColor"
-							d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-						></path></svg
-					>
-					<p class="text-lg">Sending...</p>
-				</div>
-			{:else if submitStatus === 'error'}
-				<div>
-					<p class="text-lg leading-relaxed">
-						Something went wrong sending the form. If the problem persists, please contact: <a
-							class="font-medium"
-							href={`mailto:${PUBLIC_BIRCH_EMAIL}`}
-							target="_blank">{PUBLIC_BIRCH_EMAIL}</a
-						>
-					</p>
-
-					<button
-						class="bg-bc-amber mt-6 cursor-pointer rounded-md border px-2 py-1 text-lg text-white"
-						onclick={() => {
-							submitStatus = 'pending';
-
-							setTimeout(() => {
-								handleSubmit();
-							}, 700);
-						}}
-						type="button">Try again</button
-					>
-				</div>
-			{:else}
-				<p class="flex items-center gap-2 text-lg leading-relaxed">
-					<span>Form received.</span>
-					<span class="text-2xl text-green-600">
-						<CheckSquare weight="fill" />
-					</span>
-				</p>
-				<p class="mt-2 text-lg leading-relaxed">
-					A member of the Birch team will contact you shortly.
-				</p>
-				<button
-					class="bg-bc-amber mt-4 cursor-pointer rounded-md border px-2 py-1 text-lg text-white"
-					onclick={closeModal}
-					type="button">Exit</button
-				>
-			{/if}
-		</div>
-	</div>
+	<SubmitOverlay bind:submitStatus {handleSubmit} onClose={closeModal} />
 {/if}

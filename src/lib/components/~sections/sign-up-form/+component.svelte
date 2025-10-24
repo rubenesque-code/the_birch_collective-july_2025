@@ -45,15 +45,11 @@
 		class="fixed inset-0 z-[60] grid place-items-center"
 		transition:scale={{ start: 0.9, opacity: 0, duration: 300 }}
 	>
-		<div>
-			<div class="relative mx-2 overflow-visible shadow-xl">
-				<Carousel.Root
-					class="relative flex h-[800px] max-h-[90vh] w-[95vw] max-w-[800px] flex-col rounded-lg bg-white !px-4 !py-3"
-					opts={{ align: 'center', watchDrag: false }}
-				>
-					<Content {onClickClose} />
-				</Carousel.Root>
-			</div>
-		</div>
+		<Carousel.Root
+			class="relative mx-2 flex h-[800px] max-h-[90vh] w-[95vw] max-w-[800px] flex-col rounded-lg bg-white !px-4 !py-3 shadow-xl"
+			opts={{ align: 'center', watchDrag: false }}
+		>
+			<Content {onClickClose} />
+		</Carousel.Root>
 	</div>
 {/if}
