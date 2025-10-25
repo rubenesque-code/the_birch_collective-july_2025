@@ -7,8 +7,10 @@ function emailToEmailHref(email: string, subject: string = 'Enquiry') {
 const toggleBodyScroll = ({ triggerDisableOn }: { triggerDisableOn: boolean }) => {
 	if (triggerDisableOn) {
 		document.body.style.overflow = 'hidden';
+		document.documentElement.style.overflow = 'hidden';
 	} else {
-		document.body.style.overflow = '';
+		document.body.style.overflow = 'auto';
+		document.documentElement.style.overflow = 'auto';
 	}
 };
 

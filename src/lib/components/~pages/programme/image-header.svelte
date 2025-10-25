@@ -39,7 +39,7 @@
 				{#if lead}
 					{#each leadNormalised as item, i}
 						<p
-							class={`mt-5 max-w-[600px] leading-relaxed font-medium text-white xl:text-[22px] ${
+							class={`4xl:text-[26px] 4xl:mt-10 mt-5 max-w-[600px] leading-relaxed font-medium text-white ${
 								align === 'right' ? 'lg:text-right' : 'lg:text-left'
 							} ${i === 0 && 'font-medium'}`}
 						>

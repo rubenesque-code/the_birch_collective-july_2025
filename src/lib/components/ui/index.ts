@@ -11,3 +11,4 @@ export * from './sonner';
 export { Textarea } from './textarea';
 export * as Tooltip from './tooltip';
 export * as Dialog from './dialog';
+export * as AlertDialog from './alert-dialog';

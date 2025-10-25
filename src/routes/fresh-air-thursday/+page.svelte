@@ -24,38 +24,18 @@
 	import { ImageGalleryDialog, SignUpFormModal } from '^components/~sections';
 
 	const galleryImages = [
-		{
-			src: image.placeholder.caregiver_with_partipant_face_to_face,
-			alt: ''
-		},
-		{
-			src: garden_shed_from_outside,
-			alt: ''
-		},
-		{
-			src: participant_woman_glasses,
-			alt: ''
-		},
-		{
-			src: group_and_facilitators_sitting_round_fireplace,
-			alt: ''
-		},
-		{
-			src: image.placeholder.axe_chopping,
-			alt: ''
-		},
-		{
-			src: image.placeholder.chillies,
-			alt: ''
-		},
-		{
-			src: james_and_participants_peace_sign,
-			alt: ''
-		},
-		{
-			src: indoor_workbench,
-			alt: ''
-		}
+		[
+			{ src: image.placeholder.caregiver_with_partipant_face_to_face, alt: '' },
+			{ src: garden_shed_from_outside, alt: '' },
+			{ src: participant_woman_glasses, alt: '' },
+			{ src: group_and_facilitators_sitting_round_fireplace, alt: '' }
+		],
+		[
+			{ src: image.placeholder.axe_chopping, alt: '' },
+			{ src: image.placeholder.chillies, alt: '' },
+			{ src: james_and_participants_peace_sign, alt: '' },
+			{ src: indoor_workbench, alt: '' }
+		]
 	];
 </script>
 
@@ -64,12 +44,12 @@
 	let playTestimonial = $state(false);
 	let showLocationMap = $state(false);
 	let signUpFormIsOpen = $state(false);
-	let imageCarouselIsOpen = $state(false);
+	let galleryIsOpen = $state(false);
 </script>
 
-<ImageGalleryDialog bind:isOpen={imageCarouselIsOpen} images={galleryImages} />
+<ImageGalleryDialog bind:isOpen={galleryIsOpen} images={galleryImages.flat()} />
 
-<SignUpFormModal bind:isOpen={signUpFormIsOpen} onClickClose={() => (signUpFormIsOpen = false)} />
+<SignUpFormModal bind:isOpen={signUpFormIsOpen} />
 
 <ImageDialog
 	bind:isOpen={showLocationMap}
@@ -87,7 +67,7 @@
 		align="center-left"
 		headingColour="yellow"
 	>
-		<div class="mt-8">
+		<div class="4xl:mt-12 mt-8">
 			<HeaderSignUpButton bind:formIsOpen={signUpFormIsOpen} />
 		</div>
 	</ImageHeader>
@@ -106,7 +86,7 @@
 
 	<section class="section-mt-md">
 		<ContentSectionContainer type="text">
-			<div class="flex flex-col gap-4 md:gap-[8px]">
+			<div class="4xl:gap-3 flex flex-col gap-4 md:gap-[8px]">
 				{#each [{ title: 'currently running from', text: 'February 20th 2025 - December 18th 2025' }, { title: 'Time', text: '1pm — 5pm' }, { title: 'Age Group', text: 'anyone 16 — 25 years old' }, { title: 'Cost', text: 'free but booking is essential!' }] as item}
 					<p class="info-line">
 						<span class="info-title">{item.title}:</span>
@@ -134,7 +114,7 @@
 							<enhanced:img class="aspect-[5/3] object-cover" src={location_map} alt="" />
 
 							<p
-								class="text-bc-logo-black/40 absolute right-1 bottom-1 flex items-center gap-1 text-sm"
+								class="text-bc-logo-black/40 4xl:text-base absolute right-1 bottom-1 flex items-center gap-1 text-sm"
 							>
 								<span>Click to </span>
 								<span><MagnifyingGlassPlus weight="light" /></span>
@@ -190,8 +170,8 @@
 		</ContentSectionContainer>
 	</section>
 
-	<section class="section-mt-lg flex justify-center">
-		<div class="section-x-padding box-content w-full max-w-[768px]">
+	<section class="section-mt-lg">
+		<ContentSectionContainer type="text">
 			<h2 class="heading-sm">Why Join Us</h2>
 
 			<h4 class="sub-heading-lg after-heading-sm-mt">This Is Suitable For You If You're</h4>
@@ -200,9 +180,6 @@
 				<div class="flex flex-col gap-3">
 					{#each whyJoinUsSection as { text, symbols }}
 						<p class="flex items-center gap-3">
-							<!-- <span class="text-black/40">
- 								<Circle />
- 							</span> -->
 							<span>{[symbols[0]]}</span>
 							<span class="decoration-bc-amber/30 leading-[1.6em] text-black/90 underline-offset-2">
 								{text}
@@ -211,51 +188,42 @@
 					{/each}
 				</div>
 			</div>
-		</div>
+		</ContentSectionContainer>
 	</section>
 
 	<section class="section-mt-lg flex justify-center">
-		<div class="section-x-padding box-content w-full max-w-[1200px]">
-			<p class="text-right text-base text-black/70">
-				Images from <span class="text-bc-amber font-medium italic">Fresh</span>
-			</p>
-
+		<div class="section-x-padding 4xl:max-w-[1600px] box-content w-full max-w-[1200px]">
 			<div class="relative">
-				<div
-					class="xs:h-[calc(500px+12px)] relative mt-1 flex h-[calc(440px+12px)] gap-3 overflow-hidden sm:h-[calc(600px+12px)]"
-					onclick={() => (imageCarouselIsOpen = true)}
-					onkeydown={(e) => {
-						if (e.key === 'Enter' || e.key === ' ') {
-							e.preventDefault();
-							imageCarouselIsOpen = true;
-						}
-					}}
-					role="button"
-					tabindex="0"
-					aria-label="Open image gallery"
-				>
-					<div class="absolute top-0 left-0 flex h-full flex-col gap-3">
-						<div class="image-gallery-row-container">
-							{#each [{ src: image.placeholder.caregiver_with_partipant_face_to_face, alt: '' }, { src: garden_shed_from_outside, alt: '' }, { src: participant_woman_glasses, alt: '' }, { src: group_and_facilitators_sitting_round_fireplace, alt: '' }] as item}
-								<div class="h-full cursor-pointer">
-									<enhanced:img
-										class="h-full w-full"
-										style:aspect-ratio={item.src.img.w / item.src.img.h}
-										src={item.src}
-										alt={item.alt}
-									/>
-								</div>
-							{/each}
-						</div>
+				<p class="4xl:text-lg text-right text-base text-black/70">
+					Images from <span class="text-bc-amber font-medium italic">Fresh</span>
+				</p>
 
-						<div class="image-gallery-row-container">
-							{#each [{ src: image.placeholder.axe_chopping, alt: '' }, { src: image.placeholder.chillies, alt: '' }, { src: james_and_participants_peace_sign, alt: '' }, { src: indoor_workbench, alt: '' }] as item}
-								<div class="h-full" style:aspect-ratio={item.src.img.w / item.src.img.h}>
-									<enhanced:img
-										class="h-full w-full cursor-pointer"
-										src={item.src}
-										alt={item.alt}
-									/>
+				<div class="relative mt-1">
+					<div
+						class="xs:h-[calc(500px+12px)] 4xl:h-[calc(800px+12px)] relative h-[calc(440px+12px)] sm:h-[calc(600px+12px)]"
+						onclick={() => (galleryIsOpen = true)}
+						onkeydown={(e) => {
+							if (e.key === 'Enter' || e.key === ' ') {
+								e.preventDefault();
+								galleryIsOpen = true;
+							}
+						}}
+						role="button"
+						tabindex="0"
+						aria-label="Open image gallery"
+					>
+						<div class="absolute top-0 left-0 flex h-full w-full flex-col gap-3 overflow-hidden">
+							{#each galleryImages as row, i}
+								<div class="image-gallery-row-container">
+									{#each row as item}
+										<div class="h-full" style:aspect-ratio={item.src.img.w / item.src.img.h}>
+											<enhanced:img
+												class="h-full w-full cursor-pointer"
+												src={item.src}
+												alt={item.alt}
+											/>
+										</div>
+									{/each}
 								</div>
 							{/each}
 						</div>
@@ -275,7 +243,7 @@
 			<div class="mt-6 flex justify-center">
 				<div class="relative flex items-center gap-8">
 					<button
-						class="font-display cursor-pointer px-4 py-[6px] text-[27px] font-bold tracking-wide text-white uppercase md:text-[30px]"
+						class="font-display 4xl:text-[36px] cursor-pointer px-4 py-[6px] text-[27px] font-bold tracking-wide text-white uppercase md:text-[30px]"
 						onclick={() => (signUpFormIsOpen = true)}
 						type="button">Sign Up Today For Free</button
 					>
@@ -318,27 +286,27 @@
 		@apply mt-12 md:mt-20;
 	}
 	.section-mt-lg {
-		@apply xs-sm:mt-14 3xl:mt-32 mt-10;
+		@apply xs-sm:mt-14 4xl:mt-24 mt-10;
 	}
 	.section-mt-md {
-		@apply xs-sm:mt-7 3xl:mt-16 mt-5;
+		@apply xs-sm:mt-7 4xl:mt-16 mt-5;
 	}
 
 	.info-line {
-		@apply flex flex-col gap-[2px] sm:gap-1 md:flex-row md:items-center;
+		@apply 4xl:gap-2 flex flex-col gap-[2px] sm:gap-1 md:flex-row md:items-center;
 	}
 	.info-title {
-		@apply font-display text-bc-amber text-[25px] font-bold capitalize;
+		@apply font-display text-bc-amber 4xl:text-3xl text-[25px] font-bold capitalize;
 	}
 	.info-text {
-		@apply text-base text-black/90 uppercase md:text-[19px];
+		@apply 4xl:text-[23px] text-base text-black/90 uppercase md:text-[19px];
 	}
 
 	.heading-sm {
-		@apply text-my-grey-1 text-[16px] font-medium tracking-wide uppercase;
+		@apply text-my-grey-1 4xl:text-lg text-[16px] font-medium tracking-wide uppercase;
 	}
 	.sub-heading-lg {
-		@apply text-bc-slate-pine font-display text-[40px] leading-[1.25em] font-bold capitalize;
+		@apply text-bc-slate-pine font-display 4xl:text-[48px] text-[40px] leading-[1.25em] font-bold capitalize;
 	}
 	.after-heading-sm-mt {
 		@apply mt-3;
@@ -348,6 +316,6 @@
 	}
 
 	.image-gallery-row-container {
-		@apply xs:h-[250px] flex h-[220px] w-full gap-3 sm:h-[300px];
+		@apply xs:h-[250px] 4xl:h-[400px] flex h-[220px] w-full gap-3 sm:h-[300px];
 	}
 </style>

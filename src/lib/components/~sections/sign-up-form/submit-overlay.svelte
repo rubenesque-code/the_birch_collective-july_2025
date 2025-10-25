@@ -27,7 +27,7 @@
 		{#if submitStatus === 'pending'}
 			<div class="flex items-center gap-3">
 				<LoadingSpinner class="mr-3 -ml-1" />
-				<p class="text-lg">Sending...</p>
+				<p class="text-lg">One sec...</p>
 			</div>
 		{:else if submitStatus === 'error'}
 			<div>

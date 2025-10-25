@@ -1,5 +1,5 @@
 <script lang="ts" module>
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 	import { fade, scale } from 'svelte/transition';
 
 	import { browser } from '$app/environment';
@@ -11,9 +11,8 @@
 </script>
 
 <script lang="ts">
-	let { isOpen = $bindable(), onClickClose } = $props<{
+	let { isOpen = $bindable() } = $props<{
 		isOpen: boolean;
-		onClickClose: () => void;
 	}>();
 
 	$effect(() => toggleBodyScroll({ triggerDisableOn: isOpen }));
@@ -31,7 +30,9 @@
 
 		document.addEventListener('keydown', onkeydown);
 
-		() => document.removeEventListener('keydown', onkeydown);
+		() => {
+			document.removeEventListener('keydown', onkeydown);
+		};
 	});
 </script>
 
@@ -49,7 +50,7 @@
 			class="relative mx-2 flex h-[800px] max-h-[90vh] w-[95vw] max-w-[800px] flex-col rounded-lg bg-white !px-4 !py-3 shadow-xl"
 			opts={{ align: 'center', watchDrag: false }}
 		>
-			<Content {onClickClose} />
+			<Content onClickClose={() => (isOpen = false)} />
 		</Carousel.Root>
 	</div>
 {/if}

@@ -37,7 +37,7 @@
 <div class="relative">
 	{#if title}
 		<p
-			class={`z-10 text-right text-[17px] font-medium sm:text-base ${titlePlacement === 'top' ? 'absolute top-2 right-2 text-white' : 'text-black/70'}`}
+			class={`3xl:text-lg z-10 text-right text-[17px] font-medium sm:text-base ${titlePlacement === 'top' ? 'absolute top-2 right-2 text-white' : 'text-black/70'}`}
 		>
 			{title}
 		</p>

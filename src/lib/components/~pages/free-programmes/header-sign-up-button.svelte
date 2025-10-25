@@ -7,5 +7,5 @@
 	onclick={() => (formIsOpen = true)}
 	type="button"
 >
-	<span class="xs-sm:text-lg text-[15.5px] font-medium uppercase">Sign Up</span>
+	<span class="xs-sm:text-lg 4xl:text-xl text-[15.5px] font-medium uppercase">Sign Up</span>
 </button>

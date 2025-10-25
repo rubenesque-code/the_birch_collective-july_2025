@@ -30,7 +30,7 @@
 
 	import { signUpFormId } from '^constants';
 
-	import { Carousel, RadioGroup, Tooltip } from '^components/ui';
+	import { AlertDialog, Carousel, RadioGroup, Tooltip } from '^components/ui';
 	import { getEmblaContext } from '^components/ui/carousel/context';
 	import { slides } from '^content/sign-up-form';
 	import CarouselItem from './carousel-item.svelte';
@@ -151,16 +151,6 @@
 	}
 
 	function onCloseForm() {
-		if (hasUserInput()) {
-			const confirmed = window.confirm(
-				'Are you sure you want to close the form? You will lose your progress.'
-			);
-
-			if (!confirmed) {
-				return;
-			}
-		}
-
 		resetFormState();
 		closeModal();
 	}
@@ -408,25 +398,53 @@
 			console.error(error);
 		}
 	}
+
+	let showExitAlert = $state(false);
 </script>
 
 <div class="absolute top-8 right-10 z-40 flex items-center gap-2 overflow-visible rounded-full">
-	<Tooltip.Provider>
-		<Tooltip.Root>
-			<Tooltip.Trigger>
-				<button
-					class="text-bc-logo-black/60 cursor-pointer rounded-full text-xl"
-					onclick={onCloseForm}
-					type="button"
+	<AlertDialog.Root bind:open={showExitAlert}>
+		<AlertDialog.Trigger>
+			<Tooltip.Provider>
+				<Tooltip.Root>
+					<Tooltip.Trigger>
+						<button
+							class="text-bc-logo-black/60 cursor-pointer rounded-full text-xl"
+							onclick={() => {
+								if (submitStatus === 'pending') return;
+								if (hasUserInput() && submitStatus !== 'success') showExitAlert = true;
+								else onCloseForm();
+							}}
+							type="button"
+						>
+							<XCircle />
+						</button>
+					</Tooltip.Trigger>
+					<Tooltip.Content class="z-[100] mr-2" side="left">
+						<p class="text-base">Exit form</p>
+					</Tooltip.Content>
+				</Tooltip.Root>
+			</Tooltip.Provider>
+		</AlertDialog.Trigger>
+
+		<AlertDialog.Content class="!z-[100]">
+			<AlertDialog.Header>
+				<AlertDialog.Title>Are you sure?</AlertDialog.Title>
+				<AlertDialog.Description>You're progess will not be saved.</AlertDialog.Description>
+			</AlertDialog.Header>
+
+			<AlertDialog.Footer>
+				<AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
+				<AlertDialog.Action
+					onclick={() => {
+						// document.body.style.overflow = 'auto';
+						// showExitAlert = false;
+						onCloseForm();
+					}}>Continue</AlertDialog.Action
 				>
-					<XCircle />
-				</button>
-			</Tooltip.Trigger>
-			<Tooltip.Content class="z-[100] mr-2" side="left">
-				<p class="text-base">Exit form</p>
-			</Tooltip.Content>
-		</Tooltip.Root>
-	</Tooltip.Provider>
+			</AlertDialog.Footer>
+		</AlertDialog.Content>
+	</AlertDialog.Root>
 </div>
 
 <Carousel.Content hiddenParentClass="flex flex-col h-full relative" class="ml-0 h-full w-full">
@@ -437,16 +455,16 @@
 		<enhanced:img class="w-[52px] shrink-0 sm:w-[68px]" src={image.birch.logo.img_only} alt="" />
 
 		<div class="mt-4 grow overflow-y-auto pr-4 sm:mt-10 md:pr-10">
-			<h1 class="text-bc-amber/70 font-display mt-8 text-2xl font-bold">
+			<h1 class="text-bc-amber/70 font-display mt-8 text-2xl font-bold lg:text-3xl">
 				{slides.intro.title}
 			</h1>
-			<h2 class="font-display text-bc-logo-black mt-4 text-4xl font-bold">
+			<h2 class="font-display text-bc-logo-black mt-4 text-4xl font-bold lg:text-5xl">
 				{slides.intro.subtitle}
 			</h2>
 
 			<p class="mt-10 leading-relaxed">{slides.intro.text}</p>
 
-			<!-- 			{#if dev}
+			{#if dev}
 				<button class="mt-8 cursor-pointer rounded-md font-mono" onclick={addMockData} type="button"
 					>Add mock data</button
 				>
@@ -455,7 +473,7 @@
 					onclick={handleSubmit}
 					type="button">SUBMIT</button
 				>
-			{/if} -->
+			{/if}
 		</div>
 	</Carousel.Item>
 

@@ -169,7 +169,7 @@
 
 @layer base {
 	body {
-		@apply text-bc-logo-black xs-sm:text-xl bg-white text-lg;
+		@apply text-bc-logo-black xs-sm:text-xl 4xl:text-2xl bg-white text-lg;
 	}
 
 	.section-title-small {
@@ -193,7 +193,7 @@
 	}
 
 	.page-title {
-		@apply font-display xs-sm:text-[62px] xxs:text-6xl flex flex-col text-[56px] leading-[1.08em] font-bold tracking-wide text-white sm:max-w-[450px] lg:max-w-[800px] lg:text-7xl;
+		@apply font-display xs-sm:text-[62px] xxs:text-6xl 4xl:text-8xl flex flex-col text-[56px] leading-[1.08em] font-bold tracking-wide text-white sm:max-w-[450px] lg:max-w-[800px] lg:text-7xl;
 	}
 
 	.page-intro-section-main-title {
