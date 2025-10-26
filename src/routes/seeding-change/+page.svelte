@@ -1,5 +1,5 @@
 <script lang="ts" module>
-	import { Circle, Flower } from 'phosphor-svelte';
+	import { Circle, Download, Flower } from 'phosphor-svelte';
 
 	import { seeding_change_intro, seeding_change_intro_still } from '^assets/videos';
 	import {
@@ -95,10 +95,23 @@
 					</p>
 				{/each}
 			</div>
+
+			<div class="mt-6">
+				<a
+					class="text-bc-logo-black/50 flex items-center gap-2 text-base"
+					href="https://drive.google.com/file/d/1Jvi9YNXeQ-szYOVZTjUiFIW8jSOX7S7d/view?usp=sharing"
+					target="_blank"
+				>
+					<span>
+						<Download />
+					</span>
+					<span>Download information pack</span></a
+				>
+			</div>
 		</ContentSectionContainer>
 	</section>
 
-	<section class="section-mt-xl relative">
+	<section class="section-mt-md relative">
 		<ContentSectionContainer type="video">
 			<Video
 				title="Seeding Change — An Intro"
@@ -333,23 +346,26 @@
 		</div>
 	</section>
 
-	<!-- <section class="mt-24 flex justify-center px-60">
-		<div class="w-full max-w-[768px]">
-			<h2 class="text-my-grey-1 text-[16px] font-medium tracking-wide uppercase">Further info</h2>
-			<h4 class="text-bc-slate-pine font-display mt-4 text-[44px] font-bold">Find Out More</h4>
+	<section class="section-mt-lg">
+		<ContentSectionContainer type="text">
+			<h2 class="heading-sm">Info</h2>
 
-			<div class="mt-8">
-				<ul class="mt-4 list-disc text-lg">
-					<li class="underline underline-offset-4">
-						<a
-							href="https://docs.google.com/document/d/1PkstZTgpsy9bWz6ZlaczwFOVMZZV9pgaMnzVDDampUI/export?format=docx"
-							target="_blank">Download information pack</a
-						>
-					</li>
-				</ul>
+			<h4 class="sub-heading-lg after-heading-sm-mt">More Info</h4>
+
+			<div class="after-sub-heading-lg-mt">
+				<a
+					class="flex items-center gap-2 text-base"
+					href="https://drive.google.com/file/d/1Jvi9YNXeQ-szYOVZTjUiFIW8jSOX7S7d/view?usp=sharing"
+					target="_blank"
+				>
+					<span>
+						<Download />
+					</span>
+					<span>Download our information pack</span></a
+				>
 			</div>
-		</div>
-	</section> -->
+		</ContentSectionContainer>
+	</section>
 </div>
 
 <style>
