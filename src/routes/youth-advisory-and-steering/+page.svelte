@@ -168,29 +168,7 @@
 	</section>
 </div>
 
-<!-- <section class="mt-24 flex justify-center px-60">
-		<div class="">
-			<h2 class="text-my-grey-1 text-[16px] font-medium tracking-wide uppercase">Literature</h2>
-
-			<h4 class="text-bc-slate-pine font-display text-[40px] font-bold capitalize">
-				Our Poster With More Info
-			</h4>
-
-			<div class=" mt-12">
-				<enhanced:img
-					class="max-h-[600px] w-[768px] cursor-pointer object-contain"
-					onclick={() => (showPoster = true)}
-					src={poster}
-					alt=""
-				/>
-			</div>
-		</div>
-	</section> -->
-
 <style>
-	.section-mt-xl {
-		@apply mt-12 md:mt-20;
-	}
 	.section-mt-lg {
 		@apply xs-sm:mt-14 4xl:mt-24 mt-10;
 	}
@@ -216,12 +194,5 @@
 	}
 	.after-heading-sm-mt {
 		@apply mt-3;
-	}
-	.after-sub-heading-lg-mt {
-		@apply mt-6;
-	}
-
-	.image-gallery-row-container {
-		@apply xs:h-[250px] 4xl:h-[400px] flex h-[220px] w-full gap-3 sm:h-[300px];
 	}
 </style>

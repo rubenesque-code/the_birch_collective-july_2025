@@ -7,6 +7,7 @@ import photo_album_5 from '^files/images/programmes/seeding-change/photo-album-5
 import photo_album_6 from '^files/images/programmes/seeding-change/photo-album-6.webp?enhanced';
 import photo_album_7 from '^files/images/programmes/seeding-change/photo-album-7.webp?enhanced';
 import photo_album_8 from '^files/images/programmes/seeding-change/photo-album-8.webp?enhanced';
+import photo_album_9 from '^files/images/programmes/seeding-change/photo-album-9.webp?enhanced';
 
 export {
 	group_photo,
@@ -17,5 +18,6 @@ export {
 	photo_album_5,
 	photo_album_6,
 	photo_album_7,
-	photo_album_8
+	photo_album_8,
+	photo_album_9
 };

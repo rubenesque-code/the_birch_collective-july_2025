@@ -47,7 +47,11 @@
 	let galleryIsOpen = $state(false);
 </script>
 
-<ImageGalleryDialog bind:isOpen={galleryIsOpen} images={galleryImages.flat()} />
+<ImageGalleryDialog
+	bind:isOpen={galleryIsOpen}
+	images={galleryImages.flat()}
+	title="Images from <span class='text-bc-amber italic'>Fresh</span>"
+/>
 
 <SignUpFormModal bind:isOpen={signUpFormIsOpen} />
 

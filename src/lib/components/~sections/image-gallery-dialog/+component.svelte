@@ -7,8 +7,13 @@
 <script lang="ts">
 	let {
 		isOpen = $bindable(),
-		images
-	}: { isOpen: boolean; images: Array<{ src: EnhancedImg; alt: string }> } = $props();
+		images,
+		title
+	}: {
+		isOpen: boolean;
+		images: Array<{ src: EnhancedImg; alt: string }>;
+		title?: string;
+	} = $props();
 </script>
 
 <Dialog.Root
@@ -20,13 +25,13 @@
 	<Dialog.Content
 		class="flex h-[1600px] max-h-[calc(100vh-24px)] !w-[1600px] !max-w-[calc(100vw-24px)] flex-col !p-4  md:!pt-12 lg:max-h-[calc(100vh-40px)] lg:!max-w-[calc(100vw-40px)] lg:!p-12"
 	>
-		<Dialog.Header
-			class="absolute top-4 left-4 flex shrink-0 flex-col items-center pb-1 text-center"
-		>
-			<Dialog.Title class="!text-base md:text-lg"
-				>Images from <span class="text-bc-amber font-medium italic">Fresh</span></Dialog.Title
+		{#if title}
+			<Dialog.Header
+				class="absolute top-4 left-4 flex shrink-0 flex-col items-center pb-1 text-center"
 			>
-		</Dialog.Header>
+				<Dialog.Title class="!text-base md:text-lg">{@html title}</Dialog.Title>
+			</Dialog.Header>
+		{/if}
 
 		<Carousel.Root
 			opts={{ loop: true, align: 'center' }}
