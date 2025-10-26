@@ -218,7 +218,7 @@
 
 		// Health info
 		['healthIssues', () => true], // Optional text
-		['lifeSavingMedication', () => true], // Optional text
+		['lifeSavingMedication', () => isNonEmpty(formState.lifeSavingMedication.value)],
 
 		// Identity
 		['identity1', () => hasSelection(formState.identity1.value)],
@@ -269,13 +269,9 @@
 	}
 
 	function handleValidateSlide(index: number) {
-		console.log('index:', index);
 		if (!slideIndexToQuestionIds[index]) return;
 
 		const slideIsValid = validateAnswers(slideIndexToQuestionIds[index]);
-
-		console.log('slideIsValid:', slideIsValid);
-		console.log(formState);
 
 		showSlideError = !slideIsValid;
 
@@ -430,18 +426,12 @@
 		<AlertDialog.Content class="!z-[100]">
 			<AlertDialog.Header>
 				<AlertDialog.Title>Are you sure?</AlertDialog.Title>
-				<AlertDialog.Description>You're progess will not be saved.</AlertDialog.Description>
+				<AlertDialog.Description>Your progress will not be saved.</AlertDialog.Description>
 			</AlertDialog.Header>
 
 			<AlertDialog.Footer>
 				<AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
-				<AlertDialog.Action
-					onclick={() => {
-						// document.body.style.overflow = 'auto';
-						// showExitAlert = false;
-						onCloseForm();
-					}}>Continue</AlertDialog.Action
-				>
+				<AlertDialog.Action onclick={onCloseForm}>Continue</AlertDialog.Action>
 			</AlertDialog.Footer>
 		</AlertDialog.Content>
 	</AlertDialog.Root>

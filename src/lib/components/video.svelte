@@ -45,7 +45,7 @@
 
 	<button
 		type="button"
-		class="focus:ring-bc-amber relative mt-1 w-full rounded-md focus:ring-2 focus:outline-none sm:mt-2"
+		class="focus:ring-bc-amber relative mt-1 w-full cursor-pointer rounded-md focus:ring-2 focus:outline-none sm:mt-2"
 		aria-label={ariaLabel}
 		onclick={open}
 	>

@@ -8,7 +8,7 @@
 
 <div class="flex justify-center">
 	<div
-		class={`section-x-padding box-content w-full ${type === 'text' ? '3xl:max-w-[900px] max-w-[768px]' : '3xl:max-w-[1200px] max-w-[900px]'}`}
+		class={`section-x-padding box-content w-full ${type === 'text' ? '4xl:max-w-[900px] max-w-[768px]' : '4xl:max-w-[1200px] max-w-[900px]'}`}
 	>
 		{@render children()}
 	</div>

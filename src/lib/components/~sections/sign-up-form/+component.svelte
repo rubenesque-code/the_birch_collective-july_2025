@@ -1,5 +1,5 @@
 <script lang="ts" module>
-	import { onDestroy, onMount } from 'svelte';
+	import { onMount } from 'svelte';
 	import { fade, scale } from 'svelte/transition';
 
 	import { browser } from '$app/environment';
