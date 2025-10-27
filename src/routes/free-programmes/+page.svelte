@@ -6,7 +6,7 @@
 	import { group_photo as seeding_change } from '^assets/images/programmes/seeding-change';
 	import { group_photo as steering } from '^assets/images/programmes/steering-group';
 
-	import { Page } from '^pages/programme-list';
+	import { Page } from '^components/~pages-by-type/programme-list';
 
 	type Programme = {
 		link: string;

@@ -23,8 +23,8 @@
 	} from '^assets/images/programmes/seeding-change';
 	import { Video } from '^components';
 	import { ContentSectionContainer } from '^components/containers';
-	import { HeaderSignUpButton } from '^components/~pages/free-programmes';
-	import { ImageHeader } from '^components/~pages/programme';
+	import { HeaderSignUpButton } from '^components/~pages-by-type/free-programme';
+	import { ImageHeader } from '^components/~pages-by-route/programme';
 	import { ImageGalleryDialog } from '^components/~sections';
 
 	const galleryImages = [

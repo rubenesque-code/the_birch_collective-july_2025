@@ -19,8 +19,8 @@
 
 	import { Video } from '^components';
 	import { ContentSectionContainer } from '^components/containers';
-	import { HeaderSignUpButton, ImageDialog } from '^components/~pages/free-programmes';
-	import { ImageHeader } from '^components/~pages/programme';
+	import { HeaderSignUpButton, ImageDialog } from '^components/~pages-by-type/free-programme';
+	import { ImageHeader } from '^components/~pages-by-route/programme';
 	import { ImageGalleryDialog, SignUpFormModal } from '^components/~sections';
 
 	const galleryImages = [

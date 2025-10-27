@@ -1,89 +1,49 @@
 <script lang="ts" module>
-	import { ArrowUpRight, MagnifyingGlassPlus } from 'phosphor-svelte';
-
 	import image from '^assets/image';
 	import {
-		garden_shed_from_outside,
-		group_and_facilitators_sitting_round_fireplace,
-		indoor_workbench,
-		james_and_participants_peace_sign,
-		location_map,
-		participant_woman_glasses
-	} from '^assets/images/programmes/fresh-air-thursday';
+		fresh_air_thursday_introduction as introVideo,
+		fresh_air_thursday_participant_testimonial as testimonialVideo,
+		fresh_air_thursday_participant_testimonial_placeholder as testimonialVideoPlaceholder
+	} from '^videos';
+
+	import * as content from '^content/fresh-air-thursday';
+
 	import {
-		fresh_air_thursday_introduction,
-		fresh_air_thursday_participant_testimonial,
-		fresh_air_thursday_participant_testimonial_placeholder
-	} from '^assets/videos';
-	import { whatToExpectSection, whyJoinUsSection } from '^content/fresh-air-thursday';
-
-	import { Video } from '^components';
-	import { ContentSectionContainer } from '^components/containers';
-	import { HeaderSignUpButton, ImageDialog } from '^components/~pages/free-programmes';
-	import { ImageHeader } from '^components/~pages/programme';
-	import { ImageGalleryDialog, SignUpFormModal } from '^components/~sections';
-
-	const galleryImages = [
-		[
-			{ src: image.placeholder.caregiver_with_partipant_face_to_face, alt: '' },
-			{ src: garden_shed_from_outside, alt: '' },
-			{ src: participant_woman_glasses, alt: '' },
-			{ src: group_and_facilitators_sitting_round_fireplace, alt: '' }
-		],
-		[
-			{ src: image.placeholder.axe_chopping, alt: '' },
-			{ src: image.placeholder.chillies, alt: '' },
-			{ src: james_and_participants_peace_sign, alt: '' },
-			{ src: indoor_workbench, alt: '' }
-		]
-	];
+		ContentSectionContainer,
+		ImageGalleryWithModal,
+		ImageHeader,
+		SignUpFormModal,
+		VideoWithModal
+	} from '^components';
+	import {
+		HeaderSignUpButton,
+		InfoSectionLocation,
+		SignUpPromptSection
+	} from '^pages-by-type/free-programme';
 </script>
 
 <script lang="ts">
 	let playIntro = $state(false);
 	let playTestimonial = $state(false);
-	let showLocationMap = $state(false);
 	let signUpFormIsOpen = $state(false);
-	let galleryIsOpen = $state(false);
 </script>
-
-<ImageGalleryDialog
-	bind:isOpen={galleryIsOpen}
-	images={galleryImages.flat()}
-	title="Images from <span class='text-bc-amber italic'>Fresh</span>"
-/>
 
 <SignUpFormModal bind:isOpen={signUpFormIsOpen} />
 
-<ImageDialog
-	bind:isOpen={showLocationMap}
-	imgSrc={location_map}
-	title="How to get to <span class='text-bc-amber italic'>Fresh</span>"
-/>
-
 <div class="relative max-w-screen overflow-hidden">
 	<ImageHeader
-		heading="Fresh Air Thursdays"
-		lead={[
-			'A weekly group every Thursday. Currently running upto December 18th 2025',
-			"5 minutes from St George's Park, Bristol"
-		]}
+		heading={content.hero.title}
+		lead={content.hero.lead}
 		align="center-left"
 		headingColour="yellow"
 	>
-		<div class="4xl:mt-12 mt-8">
-			<HeaderSignUpButton bind:formIsOpen={signUpFormIsOpen} />
-		</div>
+		<HeaderSignUpButton bind:formIsOpen={signUpFormIsOpen} />
 	</ImageHeader>
 
 	<section class="section-mt-lg">
 		<ContentSectionContainer type="text">
 			<p class="leading-relaxed">
-				Fresh is our weekly group for 16-25 year olds. We offer a range of activities designed at a
-				pace to make learning accessible and to draw out your creativity. There is no fixed time
-				limit to attendance, attend all year round, once a month or just one off, totally up to you.
-				You can attend until your 26 birthday. If you are older the 26 or reach that age there are
-				opportunities to return as peer mentor to support others, if this is of interest to you.
+				{content.hero.intro}
 			</p>
 		</ContentSectionContainer>
 	</section>
@@ -91,62 +51,31 @@
 	<section class="section-mt-md">
 		<ContentSectionContainer type="text">
 			<div class="4xl:gap-3 flex flex-col gap-4 md:gap-[8px]">
-				{#each [{ title: 'currently running from', text: 'February 20th 2025 - December 18th 2025' }, { title: 'Time', text: '1pm — 5pm' }, { title: 'Age Group', text: 'anyone 16 — 25 years old' }, { title: 'Cost', text: 'free but booking is essential!' }] as item}
+				{#each content.info.main as item}
 					<p class="info-line">
 						<span class="info-title">{item.title}:</span>
 						<span class="info-text">{item.text}</span>
 					</p>
 				{/each}
 
-				<div class="flex flex-col">
-					<p class="info-title">Location:</p>
-
-					<div class="gap-4 md:mt-2 md:flex">
-						<div
-							class="border-my-grey-3/50 relative mt-1 max-w-[230px] cursor-pointer rounded-lg border-[4px] sm:max-w-[300px]"
-							role="button"
-							tabindex="0"
-							aria-label="Show location map"
-							onclick={() => (showLocationMap = true)}
-							onkeydown={(e) => {
-								if (e.key === 'Enter' || e.key === ' ') {
-									e.preventDefault();
-									showLocationMap = true;
-								}
-							}}
-						>
-							<enhanced:img class="aspect-[5/3] object-cover" src={location_map} alt="" />
-
-							<p
-								class="text-bc-logo-black/40 4xl:text-base absolute right-1 bottom-1 flex items-center gap-1 text-sm"
-							>
-								<span>Click to </span>
-								<span><MagnifyingGlassPlus weight="light" /></span>
-							</p>
-						</div>
-
-						<div class="relative mt-3">
-							<p class="info-text">Strawberry Lane Community Gardens</p>
-
-							<a
-								class="bottom-0 left-0 mt-1 flex items-center gap-2 text-lg text-black/60 decoration-transparent underline-offset-2 transition-colors duration-200 ease-linear hover:underline hover:decoration-black/30 sm:mt-2"
-								href="https://maps.app.goo.gl/32cRvbigC2fC3pPF9"
-								target="_blank"><span>See on google maps</span><span><ArrowUpRight /></span></a
-							>
-						</div>
-					</div>
-				</div>
+				<InfoSectionLocation
+					mapAlt=""
+					mapLink={content.info.location.mapLink}
+					mapSrc={content.info.location.map}
+					modalTitle={content.info.location.modalTitle}
+					locationText={content.info.location.text}
+				/>
 			</div>
 		</ContentSectionContainer>
 	</section>
 
 	<section class="section-mt-xl relative">
 		<ContentSectionContainer type="video">
-			<Video
+			<VideoWithModal
 				title="Fresh — An Intro"
 				poster={image.placeholder.banner_1}
 				posterAlt=""
-				videoSrc={fresh_air_thursday_introduction}
+				videoSrc={introVideo}
 				ariaLabel=""
 				bind:isOpen={playIntro}
 				titlePlacement="top"
@@ -160,8 +89,9 @@
 
 			<div class="after-heading-sm-mt">
 				<div class="flex flex-col gap-8">
-					{#each whatToExpectSection as { title, text }}
+					{#each content.expect as { title, text }}
 						<div>
+							expect
 							<h4 class="sub-heading-lg">
 								{title}
 							</h4>
@@ -182,7 +112,7 @@
 
 			<div class="after-sub-heading-lg-mt">
 				<div class="flex flex-col gap-3">
-					{#each whyJoinUsSection as { text, symbols }}
+					{#each content.joinUs as { text, symbols }}
 						<p class="flex items-center gap-3">
 							<span>{[symbols[0]]}</span>
 							<span class="decoration-bc-amber/30 leading-[1.6em] text-black/90 underline-offset-2">
@@ -195,69 +125,15 @@
 		</ContentSectionContainer>
 	</section>
 
-	<section class="section-mt-lg flex justify-center">
-		<div class="section-x-padding 4xl:max-w-[1600px] box-content w-full max-w-[1200px]">
-			<div class="relative">
-				<p class="4xl:text-lg text-right text-base text-black/70">
-					Images from <span class="text-bc-amber font-medium italic">Fresh</span>
-				</p>
-
-				<div class="relative mt-1">
-					<div
-						class="xs:h-[calc(500px+12px)] 4xl:h-[calc(800px+12px)] relative h-[calc(440px+12px)] sm:h-[calc(600px+12px)]"
-						onclick={() => (galleryIsOpen = true)}
-						onkeydown={(e) => {
-							if (e.key === 'Enter' || e.key === ' ') {
-								e.preventDefault();
-								galleryIsOpen = true;
-							}
-						}}
-						role="button"
-						tabindex="0"
-						aria-label="Open image gallery"
-					>
-						<div class="absolute top-0 left-0 flex h-full w-full flex-col gap-3 overflow-hidden">
-							{#each galleryImages as row, i}
-								<div class="image-gallery-row-container">
-									{#each row as item}
-										<div class="h-full" style:aspect-ratio={item.src.img.w / item.src.img.h}>
-											<enhanced:img
-												class="h-full w-full cursor-pointer"
-												src={item.src}
-												alt={item.alt}
-											/>
-										</div>
-									{/each}
-								</div>
-							{/each}
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+	<section class="section-mt-lg">
+		<ImageGalleryWithModal
+			images={content.galleryImages}
+			title="Images from <span class='text-bc-amber font-medium italic'>Fresh</span>"
+		/>
 	</section>
 
-	<section class="section-mt-xl flex justify-center">
-		<div class="section-x-padding box-content flex w-full max-w-[768px] flex-col items-center">
-			<p class="text-black/80 italic">
-				<span>Ready to get on board?</span>
-				<span>Fill out our online form - it takes around 3 minutes.</span>
-			</p>
-
-			<div class="mt-6 flex justify-center">
-				<div class="relative flex items-center gap-8">
-					<button
-						class="font-display 4xl:text-[36px] cursor-pointer px-4 py-[6px] text-[27px] font-bold tracking-wide text-white uppercase md:text-[30px]"
-						onclick={() => (signUpFormIsOpen = true)}
-						type="button">Sign Up Today For Free</button
-					>
-
-					<div
-						class="bg-bc-mineral-jade absolute top-0 left-0 -z-10 h-full w-full overflow-visible"
-					></div>
-				</div>
-			</div>
-		</div>
+	<section class="section-mt-xl">
+		<SignUpPromptSection onOpenSignUp={() => (signUpFormIsOpen = true)} />
 	</section>
 
 	<section class="section-mt-xl flex justify-center">
@@ -272,10 +148,10 @@
 
 			<div class="after-sub-heading-lg-mt">
 				<ContentSectionContainer type="video">
-					<Video
-						poster={fresh_air_thursday_participant_testimonial_placeholder}
+					<VideoWithModal
+						poster={testimonialVideoPlaceholder}
 						posterAlt=""
-						videoSrc={fresh_air_thursday_participant_testimonial}
+						videoSrc={testimonialVideo}
 						ariaLabel=""
 						bind:isOpen={playTestimonial}
 					/>
@@ -317,9 +193,5 @@
 	}
 	.after-sub-heading-lg-mt {
 		@apply mt-6;
-	}
-
-	.image-gallery-row-container {
-		@apply xs:h-[250px] 4xl:h-[400px] flex h-[220px] w-full gap-3 sm:h-[300px];
 	}
 </style>

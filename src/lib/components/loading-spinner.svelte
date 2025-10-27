@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from '^lib/utils';
+	import { cn } from '^utils';
 
 	type A = SVGElement['classList'];
 	let { class: className }: { class: string } = $props();

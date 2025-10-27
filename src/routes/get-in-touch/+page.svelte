@@ -9,7 +9,7 @@
 
 	import { ImageHeader } from '^components/~sections';
 	import { socials } from '^constants';
-	import { Form } from '^pages/get-in-touch';
+	import { Form } from '^components/~pages-by-route/get-in-touch';
 </script>
 
 <div class="">

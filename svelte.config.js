@@ -12,6 +12,8 @@ const config = {
 			'^actions': 'src/lib/actions',
 
 			'^assets': 'src/lib/assets',
+			'^images': 'src/lib/assets/images',
+			'^videos': 'src/lib/assets/videos',
 
 			'^components': 'src/lib/components',
 
@@ -31,11 +33,11 @@ const config = {
 
 			'^lib': 'src/lib',
 
-			'^pages/*': 'src/lib/components/~pages/*',
+			'^pages-by-route/*': 'src/lib/components/~pages-by-route/*',
 
-			'^pages': 'src/lib/components/~pages',
+			'^pages-by-type/*': 'src/lib/components/~pages-by-type/*',
 
-			'^sections': 'src/lib/components/~sections',
+			'^sections': 'src/lib/components/sections',
 
 			'^services': 'src/lib/services',
 

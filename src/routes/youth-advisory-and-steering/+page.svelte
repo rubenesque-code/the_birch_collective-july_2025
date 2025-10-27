@@ -6,8 +6,8 @@
 	import { whatToExpectSection } from '^content/steering-group';
 
 	import { ContentSectionContainer } from '^components/containers';
-	import { ImageDialog } from '^components/~pages/free-programmes';
-	import { ImageHeader } from '^components/~pages/programme';
+	import { ImageDialog } from '^components/~pages-by-type/free-programme';
+	import { ImageHeader } from '^components/~pages-by-route/programme';
 </script>
 
 <script lang="ts">

@@ -2,7 +2,7 @@
 	import { amy, james, ro, tim } from '^assets';
 
 	import { ImageHeader, TextSection } from '^sections';
-	import { StaffMember } from '^pages/meet-the-team';
+	import { StaffMember } from '^components/~pages-by-route/meet-the-team';
 </script>
 
 <script lang="ts">

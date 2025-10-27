@@ -4,7 +4,7 @@
 
 	import image, { type EnhancedImg } from '^assets/image';
 
-	import { Page } from '^pages/programme-list';
+	import { Page } from '^components/~pages-by-type/programme-list';
 
 	type Programme = {
 		link: string;
