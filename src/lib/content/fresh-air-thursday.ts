@@ -34,69 +34,80 @@ const info = {
 	}
 };
 
-const expect = [
-	{
-		title: 'Nature Based Craft',
-		text: 'Making all manner of things from willow with our resident willow expert Amy, from baskets to bird feeders, fences to climbing structures for plants. - Natural and traditional building techniques - such as using cob, building using round wood timber or using hazel to make fences. - Making functional or decorative items from found and foraged items in the garden or nearby woodland.',
-		symbols: ['🌿', '🌾', '🧵']
-	},
-	{
-		title: 'Organic horticulture and permaculture',
-		text: 'Our team has many years experience in growing organic vegetables. We will explore and offer learning in a range of wildlife friendly food growing and horticulture techniques and practices. - We also explore wider land management techniques such as; coppicing, hedging, habitat creation and permaculture techniques for designing spaces.',
-		symbols: ['🌱', '🥕', '🌻']
-	},
-	{
-		title: 'Cookery',
-		text: 'Outdoor cookery or cooking on the campfire is a fine art and also a greatly satisfying process. - Ro is a master and loves teaching people suitable recipes but importantly how to build and maintain fires that allow you to cook a wide range of treats, without ending up with burnt grub!',
-		symbols: ['🍲', '🔥', '🍳']
-	},
-	{
-		title: 'Nature based awareness and mindfulness techniques',
-		text: "Alongside all the 'doing' we also encourage people to just be. - During sessions we will share with you simple practices to enable you to feel a greater sense of inner peace, calm and aid in managing stress. - We suggest ways to use the natural world as the lens through which to see the world and our personal struggles through, offering new perspective and comfort.",
-		symbols: ['🧘', '🌙', '🌸']
-	}
-];
-
-const joinUs = [
-	{
-		text: 'Seeking to spend more time in the outdoors and meet new people.',
-		symbols: ['🌳']
-	},
-	{
-		text: 'Struggling with family and relationship issues.',
-		symbols: ['💔']
-	},
-	{
-		text: 'Experiencing feelings of loneliness or isolation.',
-		symbols: ['😔']
-	},
-	{
-		text: 'Struggling to engage with study.',
-		symbols: ['📚']
-	},
-	{
-		text: 'Not in education, employment or training.',
-		symbols: ['❌']
-	},
-	{
-		text: 'Experiencing low-level mental health issues.',
-		symbols: ['🌧️']
-	}
-];
-
-const galleryImages = [
-	[
-		{ src: image.placeholder.caregiver_with_partipant_face_to_face, alt: '' },
-		{ src: garden_shed_from_outside, alt: '' },
-		{ src: participant_woman_glasses, alt: '' },
-		{ src: group_and_facilitators_sitting_round_fireplace, alt: '' }
-	],
-	[
-		{ src: image.placeholder.axe_chopping, alt: '' },
-		{ src: image.placeholder.chillies, alt: '' },
-		{ src: james_and_participants_peace_sign, alt: '' },
-		{ src: indoor_workbench, alt: '' }
+const expect = {
+	heading: 'What To Expect',
+	items: [
+		{
+			title: 'Nature Based Craft',
+			text: 'Making all manner of things from willow with our resident willow expert Amy, from baskets to bird feeders, fences to climbing structures for plants. - Natural and traditional building techniques - such as using cob, building using round wood timber or using hazel to make fences. - Making functional or decorative items from found and foraged items in the garden or nearby woodland.'
+		},
+		{
+			title: 'Organic horticulture and permaculture',
+			text: 'Our team has many years experience in growing organic vegetables. We will explore and offer learning in a range of wildlife friendly food growing and horticulture techniques and practices. - We also explore wider land management techniques such as; coppicing, hedging, habitat creation and permaculture techniques for designing spaces.'
+		},
+		{
+			title: 'Cookery',
+			text: 'Outdoor cookery or cooking on the campfire is a fine art and also a greatly satisfying process. - Ro is a master and loves teaching people suitable recipes but importantly how to build and maintain fires that allow you to cook a wide range of treats, without ending up with burnt grub!'
+		},
+		{
+			title: 'Nature based awareness and mindfulness techniques',
+			text: "Alongside all the 'doing' we also encourage people to just be. - During sessions we will share with you simple practices to enable you to feel a greater sense of inner peace, calm and aid in managing stress. - We suggest ways to use the natural world as the lens through which to see the world and our personal struggles through, offering new perspective and comfort."
+		}
 	]
-];
+};
 
-export { hero, info, expect, joinUs, galleryImages };
+const joinUs = {
+	heading: 'Why Join Us',
+	subheading: "This Is Suitable For You If You're",
+	items: [
+		{
+			text: 'Seeking to spend more time in the outdoors and meet new people.',
+			symbol: '🌳'
+		},
+		{
+			text: 'Struggling with family and relationship issues.',
+			symbol: '💔'
+		},
+		{
+			text: 'Experiencing feelings of loneliness or isolation.',
+			symbol: '😔'
+		},
+		{
+			text: 'Struggling to engage with study.',
+			symbol: '📚'
+		},
+		{
+			text: 'Not in education, employment or training.',
+			symbol: '❌'
+		},
+		{
+			text: 'Experiencing low-level mental health issues.',
+			symbol: '🌧️'
+		}
+	]
+};
+
+const feedback = {
+	heading: 'Feedback',
+	subheading: 'What Participants Say'
+};
+
+const imageGallery = {
+	title: "Images from <span class='text-bc-amber font-medium italic'>Fresh</span>",
+	images: [
+		[
+			{ src: image.placeholder.caregiver_with_partipant_face_to_face, alt: '' },
+			{ src: garden_shed_from_outside, alt: '' },
+			{ src: participant_woman_glasses, alt: '' },
+			{ src: group_and_facilitators_sitting_round_fireplace, alt: '' }
+		],
+		[
+			{ src: image.placeholder.axe_chopping, alt: '' },
+			{ src: image.placeholder.chillies, alt: '' },
+			{ src: james_and_participants_peace_sign, alt: '' },
+			{ src: indoor_workbench, alt: '' }
+		]
+	]
+};
+
+export { hero, info, expect, joinUs, feedback, imageGallery };

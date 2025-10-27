@@ -74,7 +74,7 @@
 	</ImageHeader>
 
 	<section class="section-mt-lg">
-		<ContentSectionContainer type="text">
+		<ContentSectionContainer variant="text">
 			<p class="leading-relaxed">
 				Recoupe is a regenerative ecological project breathing new life into Troopers Hill Woods.
 				Our focus is to work sensitively with the land to create a thriving and diverse working
@@ -87,7 +87,7 @@
 	</section>
 
 	<section class="section-mt-md">
-		<ContentSectionContainer type="text">
+		<ContentSectionContainer variant="text">
 			<div class="4xl:gap-3 flex flex-col gap-4 md:gap-[8px]">
 				{#each [{ title: 'currently running from', text: 'March 2025 - March 2026' }, { title: 'When', text: 'Tuesdays, 1pm — 5pm' }, { title: 'Age Group', text: 'anyone aged 18+' }, { title: 'Cost', text: 'free but booking is essential!' }] as item}
 					<p class="info-line">
@@ -141,7 +141,7 @@
 	</section>
 
 	<section class="section-mt-xl relative">
-		<ContentSectionContainer type="video">
+		<ContentSectionContainer variant="video">
 			<Video
 				title="Recoupe — An Intro"
 				poster={image.placeholder.banner_1}
@@ -155,7 +155,7 @@
 	</section>
 
 	<section class="section-mt-lg">
-		<ContentSectionContainer type="text">
+		<ContentSectionContainer variant="text">
 			<h2 class="heading-sm">What To Expect</h2>
 
 			<div class="after-heading-sm-mt">
@@ -175,7 +175,7 @@
 	</section>
 
 	<section class="section-mt-lg">
-		<ContentSectionContainer type="text">
+		<ContentSectionContainer variant="text">
 			<h2 class="heading-sm">What To Expect</h2>
 
 			<div class="after-heading-sm-mt">
@@ -195,7 +195,7 @@
 	</section>
 
 	<section class="section-mt-lg">
-		<ContentSectionContainer type="text">
+		<ContentSectionContainer variant="text">
 			<h2 class="heading-sm">Why Join Us</h2>
 
 			<h4 class="sub-heading-lg after-heading-sm-mt">This Is Suitable For You If You</h4>
@@ -282,7 +282,7 @@
 
 	<section class="section-mt-xl flex justify-center">
 		<div class="w-full">
-			<ContentSectionContainer type="text">
+			<ContentSectionContainer variant="text">
 				<div class="">
 					<h2 class="heading-sm">Feedback</h2>
 
@@ -291,7 +291,7 @@
 			</ContentSectionContainer>
 
 			<div class="after-sub-heading-lg-mt">
-				<ContentSectionContainer type="video">
+				<ContentSectionContainer variant="video">
 					<Video
 						poster={recoupe_participant_still}
 						posterAlt=""

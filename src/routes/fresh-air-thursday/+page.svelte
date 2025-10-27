@@ -6,7 +6,7 @@
 		fresh_air_thursday_participant_testimonial_placeholder as testimonialVideoPlaceholder
 	} from '^videos';
 
-	import * as content from '^content/fresh-air-thursday';
+	import { expect, feedback, hero, imageGallery, info, joinUs } from '^content/fresh-air-thursday';
 
 	import {
 		ContentSectionContainer,
@@ -31,27 +31,22 @@
 <SignUpFormModal bind:isOpen={signUpFormIsOpen} />
 
 <div class="relative max-w-screen overflow-hidden">
-	<ImageHeader
-		heading={content.hero.title}
-		lead={content.hero.lead}
-		align="center-left"
-		headingColour="yellow"
-	>
+	<ImageHeader heading={hero.title} lead={hero.lead} align="center-left" headingColour="yellow">
 		<HeaderSignUpButton bind:formIsOpen={signUpFormIsOpen} />
 	</ImageHeader>
 
 	<section class="section-mt-lg">
-		<ContentSectionContainer type="text">
+		<ContentSectionContainer variant="text">
 			<p class="leading-relaxed">
-				{content.hero.intro}
+				{hero.intro}
 			</p>
 		</ContentSectionContainer>
 	</section>
 
 	<section class="section-mt-md">
-		<ContentSectionContainer type="text">
-			<div class="4xl:gap-3 flex flex-col gap-4 md:gap-[8px]">
-				{#each content.info.main as item}
+		<ContentSectionContainer variant="text">
+			<div class="info-container">
+				{#each info.main as item}
 					<p class="info-line">
 						<span class="info-title">{item.title}:</span>
 						<span class="info-text">{item.text}</span>
@@ -60,38 +55,36 @@
 
 				<InfoSectionLocation
 					mapAlt=""
-					mapLink={content.info.location.mapLink}
-					mapSrc={content.info.location.map}
-					modalTitle={content.info.location.modalTitle}
-					locationText={content.info.location.text}
+					mapLink={info.location.mapLink}
+					mapSrc={info.location.map}
+					modalTitle={info.location.modalTitle}
+					locationText={info.location.text}
 				/>
 			</div>
 		</ContentSectionContainer>
 	</section>
 
-	<section class="section-mt-xl relative">
-		<ContentSectionContainer type="video">
+	<section class="section-mt-xl">
+		<ContentSectionContainer variant="video">
 			<VideoWithModal
-				title="Fresh — An Intro"
+				bind:isOpen={playIntro}
 				poster={image.placeholder.banner_1}
 				posterAlt=""
-				videoSrc={introVideo}
-				ariaLabel=""
-				bind:isOpen={playIntro}
+				title="Fresh — An Intro"
 				titlePlacement="top"
+				videoSrc={introVideo}
 			/>
 		</ContentSectionContainer>
 	</section>
 
 	<section class="section-mt-lg">
-		<ContentSectionContainer type="text">
-			<h2 class="heading-sm">What To Expect</h2>
+		<ContentSectionContainer variant="text">
+			<h2 class="heading-sm">{expect.heading}</h2>
 
 			<div class="after-heading-sm-mt">
 				<div class="flex flex-col gap-8">
-					{#each content.expect as { title, text }}
+					{#each expect.items as { title, text }}
 						<div>
-							expect
 							<h4 class="sub-heading-lg">
 								{title}
 							</h4>
@@ -105,16 +98,16 @@
 	</section>
 
 	<section class="section-mt-lg">
-		<ContentSectionContainer type="text">
-			<h2 class="heading-sm">Why Join Us</h2>
+		<ContentSectionContainer variant="text">
+			<h2 class="heading-sm">{joinUs.heading}</h2>
 
-			<h4 class="sub-heading-lg after-heading-sm-mt">This Is Suitable For You If You're</h4>
+			<h4 class="sub-heading-lg after-heading-sm-mt">{joinUs.subheading}</h4>
 
 			<div class="after-sub-heading-lg-mt">
 				<div class="flex flex-col gap-3">
-					{#each content.joinUs as { text, symbols }}
+					{#each joinUs.items as { text, symbol }}
 						<p class="flex items-center gap-3">
-							<span>{[symbols[0]]}</span>
+							<span>{symbol}</span>
 							<span class="decoration-bc-amber/30 leading-[1.6em] text-black/90 underline-offset-2">
 								{text}
 							</span>
@@ -126,10 +119,7 @@
 	</section>
 
 	<section class="section-mt-lg">
-		<ImageGalleryWithModal
-			images={content.galleryImages}
-			title="Images from <span class='text-bc-amber font-medium italic'>Fresh</span>"
-		/>
+		<ImageGalleryWithModal images={imageGallery.images} title={imageGallery.title} />
 	</section>
 
 	<section class="section-mt-xl">
@@ -138,16 +128,16 @@
 
 	<section class="section-mt-xl flex justify-center">
 		<div class="w-full">
-			<ContentSectionContainer type="text">
-				<div class="">
-					<h2 class="heading-sm">Feedback</h2>
+			<ContentSectionContainer variant="text">
+				<div>
+					<h2 class="heading-sm">{feedback.heading}</h2>
 
-					<h4 class="sub-heading-lg after-heading-sm-mt">What Participants Say</h4>
+					<h4 class="sub-heading-lg after-heading-sm-mt">{feedback.subheading}</h4>
 				</div>
 			</ContentSectionContainer>
 
 			<div class="after-sub-heading-lg-mt">
-				<ContentSectionContainer type="video">
+				<ContentSectionContainer variant="video">
 					<VideoWithModal
 						poster={testimonialVideoPlaceholder}
 						posterAlt=""
@@ -172,6 +162,9 @@
 		@apply xs-sm:mt-7 4xl:mt-16 mt-5;
 	}
 
+	.info-container {
+		@apply 4xl:gap-3 flex flex-col gap-4 md:gap-[8px];
+	}
 	.info-line {
 		@apply 4xl:gap-2 flex flex-col gap-[2px] sm:gap-1 md:flex-row md:items-center;
 	}

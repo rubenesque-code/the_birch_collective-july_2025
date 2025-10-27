@@ -50,7 +50,7 @@
 	</ImageHeader>
 
 	<section class="section-mt-lg">
-		<ContentSectionContainer type="text">
+		<ContentSectionContainer variant="text">
 			<div class="flex flex-col gap-8">
 				<p class="leading-relaxed">
 					Have Your Say — Shape the Future of The Birch Collective We’re inviting 16–25 year-olds in
@@ -71,7 +71,7 @@
 	</section>
 
 	<section class="section-mt-md">
-		<ContentSectionContainer type="text">
+		<ContentSectionContainer variant="text">
 			<div class="4xl:gap-3 flex flex-col gap-4 md:gap-[8px]">
 				{#each [{ title: 'Dates', text: 'Wednesday 12th, 19th & 26th November' }, { title: 'Time', text: '5.30pm — 8.30pm' }, { title: 'Who For', text: '16 - 25 year olds in Bristol' }, { title: 'Cost', text: 'FREE (only 12 spaces available)' }, { title: 'Reward', text: '£30 shopping voucher for attending all 3 sessions' }] as item}
 					<p class="info-line">
@@ -125,7 +125,7 @@
 	</section>
 
 	<section class="section-mt-lg">
-		<ContentSectionContainer type="text">
+		<ContentSectionContainer variant="text">
 			<h2 class="heading-sm">What To Expect</h2>
 
 			<div class="after-heading-sm-mt">
@@ -148,7 +148,7 @@
 	</section>
 
 	<section class="section-mt-lg">
-		<ContentSectionContainer type="text">
+		<ContentSectionContainer variant="text">
 			<h2 class="heading-sm">Other</h2>
 
 			<h4 class="sub-heading-lg after-heading-sm-mt">Some More Info</h4>

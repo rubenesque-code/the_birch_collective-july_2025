@@ -73,7 +73,7 @@
 	</ImageHeader>
 
 	<section class="section-mt-lg">
-		<ContentSectionContainer type="text">
+		<ContentSectionContainer variant="text">
 			<p class="leading-relaxed">
 				Seeding Change is a free or pay-what-you-can programme for 18–25-year-olds in Bristol who
 				want to feel more connected, confident, and inspired. Over 7 months, you’ll join two
@@ -86,7 +86,7 @@
 	</section>
 
 	<section class="section-mt-md">
-		<ContentSectionContainer type="text">
+		<ContentSectionContainer variant="text">
 			<div class="4xl:gap-3 flex flex-col gap-4 md:gap-[8px]">
 				{#each [{ title: 'Dates', text: 'First 2 night Camp: 5th - 7th September, Second 3 night Camp: 2nd - 5th April with 5 evening Meet-ups in Aug, Oct, Dec, Feb & March over 7 months., Participation needed throughout.' }, { title: 'Who for?', text: '18 - 25 year olds in Bristol' }, { title: 'Where', text: 'A beautiful location in wales 35 minutes from Bristol' }, { title: 'Cost', text: 'Ranges - free and pay what you can' }] as item}
 					<p class="info-line">
@@ -112,7 +112,7 @@
 	</section>
 
 	<section class="section-mt-md relative">
-		<ContentSectionContainer type="video">
+		<ContentSectionContainer variant="video">
 			<Video
 				title="Seeding Change — An Intro"
 				poster={seeding_change_intro_still}
@@ -126,7 +126,7 @@
 	</section>
 
 	<section class="section-mt-lg">
-		<ContentSectionContainer type="text">
+		<ContentSectionContainer variant="text">
 			<h2 class="heading-sm">Details</h2>
 
 			<h4 class="sub-heading-lg after-heading-sm-mt">What is Seeding Change</h4>
@@ -153,7 +153,7 @@
 	</section>
 
 	<section class="section-mt-lg">
-		<ContentSectionContainer type="text">
+		<ContentSectionContainer variant="text">
 			<h2 class="heading-sm">Activities</h2>
 
 			<h4 class="sub-heading-lg after-heading-sm-mt">What To Expect</h4>
@@ -180,7 +180,7 @@
 	</section>
 
 	<section class="section-mt-lg">
-		<ContentSectionContainer type="text">
+		<ContentSectionContainer variant="text">
 			<h2 class="heading-sm">Benefits</h2>
 
 			<h4 class="sub-heading-lg after-heading-sm-mt">What You'll Get From This Journey</h4>
@@ -207,7 +207,7 @@
 	</section>
 
 	<section class="section-mt-lg">
-		<ContentSectionContainer type="text">
+		<ContentSectionContainer variant="text">
 			<h2 class="heading-sm">Why join us</h2>
 
 			<h4 class="sub-heading-lg after-heading-sm-mt">This Is Suitable For You If You</h4>
@@ -228,7 +228,7 @@
 	</section>
 
 	<section class="section-mt-lg">
-		<ContentSectionContainer type="text">
+		<ContentSectionContainer variant="text">
 			<h2 class="heading-sm">The Costs</h2>
 
 			<h4 class="sub-heading-lg after-heading-sm-mt">Pay What You Can — How It Works</h4>
@@ -347,7 +347,7 @@
 	</section>
 
 	<section class="section-mt-lg">
-		<ContentSectionContainer type="text">
+		<ContentSectionContainer variant="text">
 			<h2 class="heading-sm">Info</h2>
 
 			<h4 class="sub-heading-lg after-heading-sm-mt">More Info</h4>
